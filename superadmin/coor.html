@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="tp.css">
+</head>
+
+<body>
+    <div id="content">
+
+        <div id="coordinators">
+            <div class="searchd">
+                <div class="btad">
+                    <div class="lodst">
+                        <i class="fa-solid fa-helmet-safety"></i>
+                        <span></span>
+                    </div>
+                    <button>Add Account</button>
+                </div>
+                <div class="npt">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" name="" id="" placeholder="Search for coordinators...">
+                </div>
+            </div>
+            <ul>
+
+                <li>
+
+                    <i id="men" class="fa-solid fa-ellipsis "></i>
+                    <div class="pfront">
+                        <img src="../images/mali.png" alt="" srcset="">
+                        <h4>Marco Jean</h4>
+                        <p>CICS</p>
+                    </div>
+                    <div class="grupi">
+                        <div class="showact" id="sa">
+                            <i class="fa-regular fa-pen-to-square act1"></i>
+                            <i class="fa-solid fa-user-slash act2"></i>
+                            <i class="fa-solid fa-person-circle-exclamation act3"></i>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+
+                    <i id="men" class="fa-solid fa-ellipsis "></i>
+                    <div class="pfront">
+                        <img src="../images/mali.png" alt="" srcset="">
+                        <h4>Marco Jean</h4>
+                        <p>CICS</p>
+                    </div>
+                    <div class="grupi">
+                        <div class="showact" id="sa">
+                            <i class="fa-regular fa-pen-to-square act1"></i>
+                            <i class="fa-solid fa-user-slash act2"></i>
+                            <i class="fa-solid fa-person-circle-exclamation act3"></i>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+
+                    <i id="men" class="fa-solid fa-ellipsis "></i>
+                    <div class="pfrparent">
+                        <div class="pfront">
+                            <img src="../images/mali.png" alt="" srcset="">
+                            <h4>Marco Jean</h4>
+                            <p>CICS</p>
+                        </div>
+                    </div>
+                    <div class="grupi">
+                        <div class="showact" id="sa">
+                            <i class="fa-regular fa-pen-to-square act1"></i>
+                            <i class="fa-solid fa-user-slash act2"></i>
+                            <i class="fa-solid fa-person-circle-exclamation act3"></i>
+                        </div>
+                    </div>
+                </li>
+                <label for="act1" id="overlayform"></label>
+                <div id="cont-editform">
+                    <div class="editform">
+                        <div class="chpic">
+                            <img src="../images/mali.png" id="profdisplay" alt="" >
+                            <label for="changep">Change profile</label>
+                        </div>
+                        <form action="" method="post">
+                            <input type="file" name="image" id="changep" accept="image/*" onchange="handleimg()">
+                            <input type="username" placeholder="Username" value="Hikusama">                    
+                            <input type="text" placeholder="Password">
+                            <button>update</button>
+                        </form>
+                    </div>
+                </div>
+                <div id="cont-removeform">
+                    <div class="removeform">
+                        <form action="" method="post">
+                            <p>Confirm for deletion</p>
+                            <input type="password" name="remconf" placeholder="Confirm password" id="formpw">
+                            <button>Delete</button>
+                        </form>
+
+                    </div>
+                </div>
+                <div id="cont-viewinform">
+                    <div class="viewinform">
+                            <img src="../images/tamarawraulo.png" id="vinfo" alt="">
+                            <h2>Algea Fernandez</h2>
+                        <div class="inforsonal">
+                            <p id="infoper1">Position<span>Dean</span></p>
+                            <p id="infoper2">Department<span>CICS</span></p>
+                            <p id="infoper3">Room<span>203</span></p>
+                            <p id="infoper4">Email<span>algeo23@gmail.com</span></p>
+                            <p id="infoper5">Trainee<span>0</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <li>
+                    <i id="men" class="fa-solid fa-ellipsis"></i>
+                    <div class="pfront">
+                        <img src="../images/mali.png" alt="" srcset="">
+                        <h4>Marco Jean</h4>
+                        <p>CICS</p>
+                    </div>
+                </li>
+                <li>
+                    <i id="men" class="fa-solid fa-ellipsis"></i>
+                    <div class="pfront">
+                        <img src="../images/mali.png" alt="" srcset="">
+                        <h4>Marco Jean</h4>
+                        <p>CICS</p>
+                    </div>
+                </li> -->
+            </ul>
+
+        </div>
+    </div>
+    <script>
+
+        $(document).ready(function () {
+            $("#coordinators ul").on("click", "#men", function (e) {
+            e.preventDefault();
+            console.log("hikusama");
+
+            const hasClass = $(this).closest("li").find(".grupi").hasClass("grupiNew");
+
+            $("#coordinators ul .grupi").removeClass("grupiNew");
+
+            $(this).closest("li").find(".grupi").addClass("grupiNew");
+
+            if (hasClass) {
+                $(this).closest("li").find(".grupi").removeClass("grupiNew");
+            }
+        });
+
+            $("#coordinators ul").on("click", ".showact .act1", function (e) {
+                e.preventDefault();
+                $("#overlayform").show();
+                $("#cont-editform").show();
+                $("#cont-removeform").hide();
+                $("#cont-viewinform").hide();
+            });
+            $("#coordinators ul").on("click", ".showact .act2", function (e) {
+                e.preventDefault();
+               $("#overlayform").show();
+               $("#cont-removeform").show();
+               $("#cont-editform").hide();
+               $("#cont-viewinform").hide();
+            });
+            $("#coordinators ul").on("click", ".showact .act3", function (e) {
+                e.preventDefault();
+               $("#overlayform").show();
+               $("#cont-removeform").hide();
+               $("#cont-editform").hide();
+               $("#cont-viewinform").show();
+            });
+            
+            $("#coordinators ul").on("click", "#overlayform", function (e) {
+                $(this).hide();
+                $("#cont-removeform").hide();
+               $("#cont-editform").hide();
+               $("#cont-viewinform").hide();
+            });
+
+        });
+        function handleimg() {
+            const profileImage = document.getElementById('profdisplay');
+            const input = document.getElementById('changep');
+            const file = input.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function() {
+                    profileImage.src = reader.result;
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                redpack.style.borderColor = 'white';
+                profileImage.src = 'images/def.png';
+            }
+        }
+        function select(sl) {
+            return document.querySelector(sl);
+        }
+        
+
+
+
+        
+        
+                    // function formS(a) {
+                    //     if (a == "y") {
+                    //         console.log(a);
+                    //         document.getElementById("overlayformm").classList.add("showbacklayer");
+                    //         document.getElementById("editform").classList.add("showeditform");
+                    //     }else{
+                    //         document.getElementById("overlayformm").classList.remove("showbacklayer");
+                    //         document.getElementById("editform").classList.remove("showeditform");
+                    //     }
+            
+                    // }
+        // i += 1;
+        // if (i = i%2) {
+        //     let p = $(this).children.length();
+        //     console.log(p);
+        //     $(this).closest("li").find(".grupi").addClass("act");
+        // }else{
+        //     $(this).closest("li").find(".grupi").removeClass("act");
+        //     console.log(i + "is odd" );
+        // }
+    </script>
+</body>
+
+</html>

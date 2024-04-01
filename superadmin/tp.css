@@ -1,0 +1,1086 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(41, 41, 41);
+    display: flex;
+    flex-direction: row;
+    font-family: sans-serif;
+    color: rgb(223, 223, 223);
+
+}
+
+
+
+.profSide {
+    display: grid;
+    place-items: center;
+    padding: 1.5rem 0;
+}
+
+.profSide h2 {
+    position: relative;
+    display: grid;
+    font-size: 1.4rem;
+    place-items: center;
+}
+
+.outside {
+    height: 100vh;
+    position: relative;
+    transition: .3s;
+    width: 0;
+}
+
+.newAll .outside {
+    width: 13rem;
+}
+
+
+.newAll .sideP {
+    transform: translateX(0);
+}
+
+.sideP {
+    transform: translateX(-8rem);
+    transition: .3s;
+    padding: 0 3rem;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(57, 57, 57);
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    place-items: center;
+}
+
+
+
+.lardgeSide {
+    height: 100vh;
+    position: relative;
+    overflow-y: scroll;
+    place-items: center;
+    width: 100%;
+}
+
+
+
+
+#content>* {
+    /* display: none; */
+}
+
+#content {
+    width: 100%;
+    margin-top: 5rem;
+
+}
+
+
+.bck {
+    position: absolute;
+    width: 100%;
+    height: 3rem;
+    background-color: rgb(57, 57, 57);
+
+}
+
+
+
+
+#sidepic {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+}
+
+.profSide h2::before {
+    position: absolute;
+    font-style: italic;
+    font-size: .9rem;
+    bottom: -12px;
+    color: rgb(253, 94, 2);
+}
+
+.sideP ul {
+    display: grid;
+    row-gap: .5rem;
+    /* z-index: 1; */
+
+}
+
+
+.sideP ul label {
+    cursor: pointer;
+    height: 2.5rem;
+    width: 100%;
+    place-items: center;
+    display: grid;
+    grid-template-columns: 2rem auto;
+    justify-content: start;
+    list-style: none;
+    color: rgb(223, 223, 223);
+    column-gap: .3rem;
+    position: relative;
+    text-transform: capitalize;
+    border-radius: .3rem;
+    padding: 0 .3rem;
+    /* transition:  .4s; */
+}
+
+
+.on a {
+    color: rgb(253, 94, 2) !important;
+}
+
+.on {
+    transition: background-color 0.5s ease;
+    border: solid .1px rgba(253, 94, 2, 0.562);
+    background-color: rgb(41, 41, 41);
+    z-index: 1;
+    color: rgb(253, 94, 2) !important;
+
+}
+
+
+.sideP ul label:hover {
+    color: rgb(253, 94, 2);
+}
+
+.sideP ul label:hover a {
+    color: rgb(253, 94, 2) !important;
+}
+
+.sideP ul label::after {
+    position: absolute;
+    content: '';
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    transition: .4s;
+}
+
+
+
+
+.head {
+
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    height: 3rem;
+    background-color: rgb(57, 57, 57);
+}
+
+
+
+
+
+
+#sideCheck {
+    position: absolute;
+    visibility: hidden;
+}
+
+.cards {
+    margin: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cards li {
+    list-style: none;
+    width: 19rem;
+    height: 6rem;
+    background-color: rgb(57, 57, 57);
+    border: .1px solid rgba(255, 255, 255, 0.089);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-items: center;
+
+}
+
+.cards li::after {
+    position: absolute;
+    height: 3.5rem;
+    width: 1.5rem;
+    content: '';
+    left: -.08rem;
+    top: -1.8rem;
+    transform: rotate(45deg);
+}
+
+.cards li:nth-child(1):after {
+
+    background-color: rgb(0, 191, 224);
+}
+
+.cards li:nth-child(2):after {
+    background-color: rgb(0, 187, 140);
+
+}
+
+.cards li:nth-child(3):after {
+    background: linear-gradient(145deg, red, black);
+
+}
+
+.cards li:nth-child(4):after {
+    background-color: rgb(104, 0, 165);
+
+}
+
+.mgs {
+    display: grid;
+    place-items: center;
+}
+
+.mgs h4 {
+    font-size: 1.8rem;
+}
+
+.mgs p {
+    font-style: italic;
+}
+
+.cards li i {
+    background-color: rgb(223, 223, 223);
+    color: rgb(57, 57, 57);
+    border: solid 3px rgb(116, 116, 116);
+    bottom: -.8rem;
+    left: -.8rem;
+    position: absolute;
+    font-size: 2.3rem;
+    height: 4.6rem;
+    width: 4.6rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+}
+
+#myChart {
+    background-color: rgb(57, 57, 57);
+    border: .1px solid rgba(255, 255, 255, 0.089);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+}
+
+.middleC {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.status {
+    text-align: center;
+    border-radius: .3rem;
+    height: 18.7rem;
+    width: 19rem;
+    padding: 1rem .3rem;
+    background-color: rgb(57, 57, 57);
+    border: .1px solid rgba(255, 255, 255, 0.089);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+.status .headStatus {
+
+    margin-top: 1.5rem;
+    font-size: .7rem;
+    display: flex;
+    justify-content: center;
+    column-gap: .8rem;
+}
+
+.status .headStatus label {
+    padding: .3rem;
+    transition: .3s;
+    border-radius: .5rem;
+    cursor: pointer;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.status .headStatus label::after {
+    content: '';
+    position: absolute;
+    transition: .3s;
+    width: 0;
+    display: grid;
+    place-items: center;
+    height: 3px;
+    background-color: rgb(253, 94, 2);
+    bottom: -3px;
+    border-radius: 8px;
+}
+
+.status .headStatus label:hover::after {
+    width: 100%;
+}
+
+.status .headStatus label:hover {
+    color: rgb(253, 94, 2);
+}
+
+
+
+#toplab2:hover {
+    cursor: ew-resize;
+    color: rgb(253, 94, 2);
+}
+
+#toplab2 {
+    position: absolute;
+    user-select: none;
+    left: 0;
+    width: 6rem;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+.calendar {
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    height: 10rem;
+    width: 19rem;
+    background-color: rgb(57, 57, 57);
+    border: .1px solid rgba(255, 255, 255, 0.089);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+#day {
+    font-size: 4rem;
+}
+
+#month {
+    font-size: 1.2rem;
+}
+
+.mNy {
+    font-style: italic;
+    right: 1rem;
+    top: 1rem;
+    color: rgb(0, 174, 255);
+}
+
+#weekday {
+    font-style: italic;
+    color: rgb(223, 223, 223);
+
+}
+
+.oberlay {
+    position: absolute;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.49);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.oberlay::-webkit-scrollbar {
+    visibility: hidden;
+}
+
+
+a {
+    text-decoration: none;
+    color: rgb(223, 223, 223);
+}
+
+
+
+
+
+
+
+
+
+/* coordinators */
+#coordinators .coordinators-inner {
+    flex-direction: column;
+    place-items: center;
+    row-gap: 3rem;
+    display: grid;
+}
+
+#coordinators {
+    width: 100%;
+    margin-top: 9rem !important;
+
+}
+
+.searchd {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    place-items: center;
+}
+
+.lodst {
+    position: absolute;
+    height: 6rem;
+    width: 10rem;
+    left: 50%;
+    top: -4rem;
+    z-index: -1;
+    display: grid;
+    place-items: center;
+    transform: translate(-50%, 0);
+}
+
+.lodst span {
+    position: absolute;
+    height: 5rem;
+    width: 5rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    z-index: -1;
+    border-radius: 50%;
+    background-color: rgba(223, 223, 223, 0.575);
+    animation-name: ld;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+}
+
+@keyframes ld {
+    0% {
+        height: 2rem;
+        width: 2rem;
+        opacity: 1;
+    }
+
+    50% {
+        height: 5rem;
+        opacity: 0;
+        width: 5rem;
+    }
+}
+
+.searchd .btad i {
+    font-size: 2rem;
+}
+
+.searchd input {
+    padding: 0 2rem 0 2.7rem;
+    width: 20rem;
+    border-radius: 3rem;
+    height: 2.2rem;
+    background-color: rgb(57, 57, 57);
+    color: rgb(223, 223, 223);
+    border: solid .1px rgba(223, 223, 223, 0.308);
+
+}
+
+.searchd button {
+    cursor: pointer;
+    border-radius: .5rem;
+    height: 2rem;
+    width: 8rem;
+    background-color: rgb(57, 57, 57);
+    color: rgb(223, 223, 223);
+    border: solid .1px;
+}
+
+.searchd button:hover {
+    animation-name: buthov;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes buthov {
+
+    0%,
+    100% {
+        color: rgb(223, 223, 223);
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: rgb(223, 223, 223);
+        color: transparent;
+    }
+
+}
+
+.searchd>* {
+    position: relative;
+    width: fit-content;
+}
+
+.searchd .npt i {
+    position: absolute;
+    top: 50%;
+    transform: translate(1rem, -50%);
+}
+
+#coordinators ul {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 0 1rem;
+}
+
+#coordinators li {
+    position: relative;
+    border-radius: .3rem 3rem;
+    height: 8rem;
+    width: 9rem;
+    display: grid;
+    place-items: center;
+    background: rgba(22, 22, 22, 0.55);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border: 1px solid rgba(179, 179, 179, 0.16);
+    overflow: hidden;
+}
+
+#coordinators li::after {
+    top: -1.5rem;
+    left: -1.5rem;
+    content: "";
+    height: 3rem;
+    width: 3rem;
+    background-color: rgb(0, 187, 140);
+    position: absolute;
+    border-radius: 50%;
+}
+
+#coordinators li #men {
+    cursor: pointer;
+    height: 1.4rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    width: 1.4rem;
+    background-color: rgba(43, 43, 43, 0.568);
+    top: 4px;
+    left: 4px;
+    z-index: 2;
+    outline: solid .1px rgba(161, 161, 161, 0.336);
+    position: absolute;
+    transition: .2s;
+}
+
+#coordinators li #men:hover {
+    background-color: rgba(2, 2, 2, 0.774);
+
+}
+
+#coordinators li .pfront {
+    display: grid;
+    place-items: center;
+}
+
+.pfrparent {
+    opacity: 1;
+    display: block;
+    position: relative;
+    z-index: -1;
+}
+
+/* @initial{
+    .sb{
+        opacity: 1;
+    }
+} */
+
+#coordinators li .pfront h4 {
+    margin-top: .5rem;
+}
+
+#coordinators li .pfront p {
+    color: rgb(0, 187, 140);
+    font-style: italic;
+}
+
+#coordinators li img {
+    height: 3.5rem;
+}
+
+.grupi {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: .4s;
+    background-color: rgba(0, 0, 0, 0.808);
+    backdrop-filter: blur(3px);
+
+    display: none;
+}
+
+.grupiNew {
+    display: block;
+}
+
+.showact {
+    display: flex;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    column-gap: .2rem;
+
+}
+
+
+
+.showact>* {
+    border-radius: .4rem;
+    display: grid;
+    place-items: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    outline: solid .1px rgba(161, 161, 161, 0.336);
+    transition: .2s;
+    font-size: .8rem;
+    cursor: pointer;
+
+
+}
+
+.showact>*:nth-child(1):hover {
+
+    border: solid .1px rgba(255, 255, 255, 0.445);
+    background-color: rgba(2, 136, 189, 0.377);
+}
+
+.showact>*:nth-child(2):hover {
+
+    border: solid .1px rgba(255, 255, 255, 0.445);
+    background-color: rgba(233, 0, 0, 0.479);
+}
+
+.showact>*:nth-child(3):hover {
+
+    border: solid .1px rgba(255, 255, 255, 0.445);
+    background-color: rgba(223, 223, 223, 0.438);
+}
+
+/* .showact>*:hover {
+} */
+
+
+
+
+#cont-removeform {
+    border-radius: 1rem;
+    height: fit-content;
+    padding: 3rem 0;
+    width: 18rem;
+    overflow: hidden;
+    position: relative;
+
+}
+
+
+
+#cont-editform {
+    height: fit-content;
+    padding: 3rem 0;
+    width: 18rem;
+    display: grid;
+    place-items: center;
+    border-radius: 10%;
+    /* display: none; */
+
+}
+
+.editform {
+    display: grid;
+    place-items: center;
+    row-gap: 1rem;
+}
+
+.chpic {
+    row-gap: .5rem;
+    display: grid;
+    place-items: center;
+}
+
+.chpic label {
+    outline: solid .1px rgba(223, 223, 223, 0.438);
+    padding: .3rem .8rem;
+    border-radius: .2rem;
+    font-size: .7rem;
+    background-color: rgb(49, 48, 48);
+}
+
+.editform img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    border: solid .2rem rgb(223, 223, 223);
+}
+
+.editform form {
+    display: grid;
+    place-items: center;
+    row-gap: 1rem;
+}
+
+
+
+
+
+.editform form input,
+.cont-addcoor form input {
+    padding: 0 1rem;
+    width: 10rem;
+    height: 2rem;
+    font-size: .8rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid.1px rgba(223, 223, 223, 0.377);
+    background: none;
+    color: rgb(223, 223, 223);
+
+}
+
+.editform form input:focus {
+    outline: none;
+    border-bottom: solid .1px rgb(223, 223, 223);
+
+}
+.cont-addcoor form >  * :focus {
+    outline: none;
+    border-bottom: solid .1px rgb(223, 223, 223);
+
+}
+.cont-addcoor form input:focus label {
+    color: aquamarine;
+    top: -8rem !important;
+}
+
+.cont-addcoor form label{
+    color: rgb(116, 116, 116);
+    font-size: .8rem;
+    cursor: text;
+    position: absolute;
+}
+
+.newcp{
+    top: 0 !important;
+}
+.editform #changep {
+    position: absolute;
+    visibility: hidden;
+}
+
+.editform form button {
+    cursor: pointer;
+    font-size: .9rem;
+    width: 6rem;
+    font-style: italic;
+    font-variant: small-caps;
+    border-radius: .3rem;
+    border: solid .1px rgba(223, 223, 223, 0.479);
+    height: 1.5rem;
+    color: rgb(223, 223, 223);
+    background-color: rgba(2, 136, 189, 0.377);
+    transition: background-color .2s;
+}
+
+.editform form button:hover {
+    background-color: rgba(2, 136, 189, 0.842);
+
+}
+
+
+
+
+
+
+
+
+
+
+.removeform {
+    height: 100%;
+    display: grid;
+    place-items: center;
+
+}
+
+.removeform form {
+    display: grid;
+    place-items: center;
+    row-gap: 1rem;
+}
+
+#formpw {
+    color: rgb(223, 223, 223);
+    padding: 0 2rem;
+    height: 2rem;
+    width: 13rem;
+    border-radius: .8rem;
+    background-color: transparent;
+    border: solid .1px rgba(223, 223, 223, 0.541);
+}
+
+.removeform form button {
+    cursor: pointer;
+    color: rgb(223, 223, 223);
+    border: solid .1px rgba(223, 223, 223, 0.616);
+    border-radius: .5rem;
+    height: 2rem;
+    width: 6rem;
+    background-color: rgba(233, 0, 0, 0.315);
+    transition: .2s;
+}
+
+.removeform form button:hover {
+    background-color: rgba(238, 0, 0, 0.658);
+
+}
+
+
+#cont-editform {
+    animation-name: editporm;
+
+}
+
+#cont-removeform {
+    animation-name: remporm;
+
+}
+
+.cont-addcoor {
+    padding: 2rem .5rem;
+    height: fit-content;
+    width: 17rem;
+}
+
+.cont-addcoor form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+
+
+#cont-editform,
+#cont-removeform,
+#cont-viewinform,
+.cont-addcoor {
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    background: rgba(0, 0, 0, 0.699);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(9px);
+    border: 1px solid rgba(243, 243, 243, 0.377);
+    overflow: hidden;
+    /* display: none; */
+
+
+}
+
+@keyframes editporm {
+    0% {
+        transform: translate(-50%, -35%);
+    }
+
+    50% {
+        transform: translate(-50%, -50%);
+
+    }
+}
+
+
+@keyframes remporm {
+    0% {
+        transform: translate(0, -50%);
+    }
+
+    50% {
+        transform: translate(-50%, -50%);
+
+    }
+}
+
+
+
+#overlayform {
+    position: absolute;
+    display: none;
+    background-color: rgba(124, 170, 255, 0.089);
+    backdrop-filter: blur(3px);
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: 100%;
+
+}
+
+#cont-viewinform {
+    animation-name: viewporm;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    padding: 3rem 0;
+    height: fit-content;
+    width: 17rem;
+    border-radius: .5rem .5rem 8rem 8rem;
+
+}
+
+@keyframes viewporm {
+    0% {
+        top: 45%;
+    }
+
+    50% {
+        top: 50%;
+    }
+}
+
+#cont-viewinform::after {
+    position: absolute;
+    content: '';
+    height: 13rem;
+    width: 3rem;
+    background-color: rgb(0, 187, 140);
+    top: -4rem;
+    transform: rotate(45deg);
+    animation-name: banneraft;
+    animation-duration: .8s;
+    animation-iteration-count: 1;
+}
+
+#cont-viewinform::before {
+    position: absolute;
+    content: '';
+    height: 13rem;
+    width: 3rem;
+    background-color: rgb(0, 187, 140);
+    top: -4rem;
+    right: 0;
+    transform: rotate(-45deg);
+    animation-name: bannerbef;
+    animation-duration: .8s;
+    animation-iteration-count: 1;
+
+}
+
+@keyframes bannerbef {
+    0% {
+        top: -15rem;
+    }
+
+    50% {
+        top: -4rem;
+    }
+}
+
+@keyframes banneraft {
+    0% {
+        top: -15rem;
+    }
+
+    50% {
+        top: -4rem;
+    }
+}
+
+.viewinform {
+    row-gap: 1rem;
+    place-items: center;
+    display: grid;
+}
+
+.viewinform h2 {
+    font-variant: small-caps;
+
+}
+
+.viewinform #vinfo {
+    height: 5rem;
+}
+
+.inforsonal {
+    display: grid;
+    row-gap: .5rem;
+}
+
+.inforsonal p {
+    text-align: center;
+    display: grid;
+    color: rgb(0, 174, 255);
+    font-size: 1rem;
+}
+
+.inforsonal span {
+    font-size: .9rem;
+    color: rgba(223, 223, 223, 0.664);
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width:665px) {
+    .outside {
+        z-index: 2;
+        position: fixed;
+    }
+
+    .newAll #toplab2 {
+        left: 13rem;
+    }
+
+    #toplab2 {
+        left: 0;
+
+    }
+
+    .newAll .oberlay {
+        width: 100%;
+
+    }
+
+    .searchd input {
+        width: 16rem;
+        padding: 0 1rem 0 2.8rem;
+
+    }
+
+
+}
