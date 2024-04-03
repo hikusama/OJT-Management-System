@@ -70,10 +70,19 @@ body {
 
 
 
-#content>* {
-    /* display: none; */
+#content > * {
+    animation-name: porolnav;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
 }
+@keyframes porolnav {
+    0% {
+        transform: translateY(5rem);
+    }50% {
+        transform: translateY(0);
 
+    }
+}
 #content {
     width: 100%;
     margin-top: 5rem;
@@ -622,8 +631,17 @@ a {
 
 #coordinators li img {
     height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    border: solid 3px rgb(223, 223, 223);
 }
+.primaryask img{
+    height: 5.5rem;
+    width: 5.5rem;
+    border-radius: 50%;
+    border: solid 3px rgb(223, 223, 223);
 
+}
 .grupi {
     position: absolute;
     height: 100%;
@@ -718,6 +736,16 @@ a {
     place-items: center;
     row-gap: 1rem;
 }
+.inputeditcont{
+    display: flex;
+    position: relative;
+}
+.inputeditcont i{
+    top: 50%;
+    left: 1rem;
+    transform: translate(-50%,-50%);
+    position: absolute;
+}
 
 .chpic {
     row-gap: .5rem;
@@ -745,14 +773,93 @@ a {
     place-items: center;
     row-gap: 1rem;
 }
+#cont-addcoor{
+    border-radius: 2rem;
+    animation-name: addporm;
+}
+
+.addcoor-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem .5rem;
+    height: fit-content;
+    width: fit-content;
+    max-width:37rem ;
+    min-width: 24rem;
+}
+
+.addcoor-inner form {
+    display: grid;
+    place-items: center;
+    gap: 1rem;
+}
+
+    
+.addcoor-inner form .inptcont{
+    
+    position: relative;
+}
+.addcoor-inner form i{
+    border-radius: 2rem;
+    top: 50%;
+    left: 1rem;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    /* background-color: rgb(223, 223, 223);
+    height: 1rem;
+    width: 1rem; */
+}
+.addcoor-inner .primaryask{
+    display: grid;
+    row-gap:.5rem ;
+}
+
+.addcoor-inner .secondaryask{
+    margin: 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .5rem;
+}
+.addcoor-inner .secondaryask h3{
+    text-align: center;
+    width: 100%;
+}
+
+.addcoor-inner form input{
+    color: rgb(223, 223, 223);
+    background-color: rgb(41, 41, 41);
+    border: solid .1px rgba(223, 223, 223, 0.307);
+    height: 2rem;
+    border-radius: .2rem;
+    padding: 0 2rem;
+}
+
+
+.addcoor-inner .coradbut label{
+    font-variant: small-caps;
+    font-style: italic;
+    display: grid;
+    place-items: center;
+    height: 2rem;
+    width: 8rem;
+    background-color: rgba(116, 116, 116, 0.2);
+    border: solid .1px rgba(223, 223, 223, 0.552);
+    border-radius: .5rem ;
+    cursor: pointer;
+    background-color: rgba(0, 252, 189, 0.289);
+    transition: .3s;
+}
+.addcoor-inner .coradbut label:hover{
+    background-color:rgba(3, 210, 158, 0.679) ;
+}
 
 
 
 
-
-.editform form input,
-.cont-addcoor form input {
-    padding: 0 1rem;
+.editform form input {
+    padding: 0 2rem;
     width: 10rem;
     height: 2rem;
     font-size: .8rem;
@@ -770,27 +877,12 @@ a {
     border-bottom: solid .1px rgb(223, 223, 223);
 
 }
-.cont-addcoor form >  * :focus {
-    outline: none;
-    border-bottom: solid .1px rgb(223, 223, 223);
 
-}
-.cont-addcoor form input:focus label {
-    color: aquamarine;
-    top: -8rem !important;
-}
-
-.cont-addcoor form label{
-    color: rgb(116, 116, 116);
-    font-size: .8rem;
-    cursor: text;
-    position: absolute;
-}
 
 .newcp{
     top: 0 !important;
 }
-.editform #changep {
+.editform #changep , #changep2{
     position: absolute;
     visibility: hidden;
 }
@@ -873,26 +965,24 @@ a {
 
 }
 
-.cont-addcoor {
-    padding: 2rem .5rem;
-    height: fit-content;
-    width: 17rem;
-}
 
-.cont-addcoor form {
+#addNewcoor{
+    position: absolute;
+    visibility: hidden;
+}
+.coradbut{
+    margin-top: 2rem;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    width: 100%;
+    place-items: center;
 }
-
-
 
 
 #cont-editform,
 #cont-removeform,
 #cont-viewinform,
-.cont-addcoor {
+#cont-addcoor {
     animation-duration: .5s;
     animation-iteration-count: 1;
     background: rgba(0, 0, 0, 0.699);
@@ -904,9 +994,19 @@ a {
     -webkit-backdrop-filter: blur(9px);
     border: 1px solid rgba(243, 243, 243, 0.377);
     overflow: hidden;
-    /* display: none; */
+    display: none;
 
 
+}
+@keyframes addporm {
+    0% {
+        transform: translate(-50%, -35%);
+    }
+
+    50% {
+        transform: translate(-50%, -50%);
+
+    }
 }
 
 @keyframes editporm {
@@ -932,7 +1032,15 @@ a {
     }
 }
 
+@keyframes viewporm {
+    0% {
+        top: 45%;
+    }
 
+    50% {
+        top: 50%;
+    }
+}
 
 #overlayform {
     position: absolute;
@@ -959,15 +1067,7 @@ a {
 
 }
 
-@keyframes viewporm {
-    0% {
-        top: 45%;
-    }
 
-    50% {
-        top: 50%;
-    }
-}
 
 #cont-viewinform::after {
     position: absolute;
@@ -1084,3 +1184,15 @@ a {
 
 
 }
+@media screen and (min-width:900px) {
+    .addcoor-inner{
+
+    }
+
+}
+
+
+
+
+
+
