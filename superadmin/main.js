@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
         checkbox.checked = false;
         document.body.classList.remove('newAll');
     }
-$("#overview").show();
+    $("#overview").show();
 
 });
 
@@ -68,23 +68,25 @@ new Chart("myChart", {
     }
 });
 
+
+
+// counting function 
 function countTo(target, elementId, duration) {
     const element = document.getElementById(elementId);
-    const increment = target / (duration / 1000); // Increment value per millisecond
+    const increment = target / (duration / 1000); 
     let current = 0;
 
     const intervalId = setInterval(() => {
         current += increment;
         if (current >= target) {
             clearInterval(intervalId);
-            current = target; // Ensure exact target value is displayed
+            current = target; 
         }
-        element.textContent = Math.round(current); // Update text content
-    }, 1); // Run every millisecond
+        element.textContent = Math.round(current);
+    }, 1); 
 }
 
-// Start counting animation for each element
-
+// Start counting animation per user
 countTo(studval, "studnum", 400000);
 countTo(coorval, "coor", 400000);
 countTo(trval, "trainees", 400000);
@@ -93,6 +95,9 @@ countTo(admins, "ad", 400000);
 
 $(document).ready(function () {
 
+
+
+    // side nav displaying content
 
     $(document).on("click", "#tabs label", function (e) {
         e.preventDefault(); // Prevent default link behavior
@@ -172,19 +177,33 @@ $(document).ready(function () {
         //     break;
         // }
         $("#content > *").hide();
-
-
         $("#" + page).show();
-        checkbox.checked = false;
-        handleCheckboxChange();
+        if (handleDeviceWidth()) {
+            checkbox.checked = false;
+            handleCheckboxChange();
+        }
         if (page == "overview") {
-            countTo(studval, "studnum", 400000);
-            countTo(coorval, "coor", 400000);
-            countTo(trval, "trainees", 400000);
-            countTo(admins, "ad", 400000);
+            countTo(studval, "studnum", 40000);
+            countTo(coorval, "coor", 40000);
+            countTo(trval, "trainees", 40000);
+            countTo(admins, "ad", 40000);
+        }
+        if (page != "coordinators") {
+            $("#overlayform").hide();
+            $("#cont-removeform").hide();
+            $("#cont-editform").hide();
+            $("#cont-viewinform").hide();
+            $("#cont-addcoor").hide();
+        $("#coordinators ul .grupi").removeClass("grupiNew");
+
         }
     });
 
+
+
+
+
+    // menu 3 dots
     $("#coordinators ul").on("click", "#men", function (e) {
         e.preventDefault();
         console.log("hikusama");
@@ -199,6 +218,10 @@ $(document).ready(function () {
             $(this).closest("li").find(".grupi").removeClass("grupiNew");
         }
     });
+
+
+
+    // action edit, view and delete form i mean the view is not form hehe
 
     $("#coordinators ul").on("click", ".showact .act1", function (e) {
         e.preventDefault();
@@ -221,9 +244,19 @@ $(document).ready(function () {
         $("#cont-editform").hide();
         $("#cont-viewinform").show();
     });
+    $("#coordinators .btad").on("click", "#addcooraccount", function (e) {
+        e.preventDefault();
+        $("#overlayform").show();
+        $("#cont-removeform").hide();
+        $("#cont-editform").hide();
+        $("#cont-viewinform").hide();
+        $("#cont-addcoor").show();
+
+    });
 
     $("#coordinators ul").on("click", "#overlayform", function (e) {
         $(this).hide();
+        $("#cont-addcoor").hide();
         $("#cont-removeform").hide();
         $("#cont-editform").hide();
         $("#cont-viewinform").hide();
@@ -232,6 +265,10 @@ $(document).ready(function () {
 });
 
 
+
+
+
+// date and time obviously
 const currentDate = new Date();
 
 const year = currentDate.getFullYear();
@@ -249,25 +286,72 @@ select('#weekday').textContent = weekday;
 
 
 
+// uploading profile 2section
 
-function handleimg() {
+function handleimg(a) {
     const profileImage = $('#profdisplay');
-    const input = $('#changep');
-    const file = input.files[0];
+    const input = $('#changep')[0];
+    const profileImage2 = $('#profdisplay2');
+    const input2 = $('#changep2')[0];
 
-    if (file) {
-        const reader = new FileReader();
+    if (a === 2) {
+        const file2 = input2.files[0];
+        if (file2) {
+            const reader2 = new FileReader();
+            console.log("file2");
 
-        reader.onload = function () {
-            profileImage.src = reader.result;
-        };
+            reader2.onload = function () {
+                profileImage2.attr('src', reader2.result);
+            };
 
-        reader.readAsDataURL(file);
+            reader2.readAsDataURL(file2);
+        } else {
+            console.log("invalid");
+            profileImage.attr('src', 'images/def.png');
+
+        }
+    } else if (a === 1) {
+        const file = input.files[0];
+        if (file) {
+            const reader = new FileReader();
+            console.log("file1");
+
+            reader.onload = function () {
+                profileImage.attr('src', reader.result);
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            console.log("invalid");
+            profileImage.attr('src', 'images/def.png');
+
+        }
+    }
+
+
+
+
+
+
+
+
+}
+
+
+// for the check box nav
+function handleDeviceWidth() {
+    const deviceWidth = window.innerWidth;
+    if (deviceWidth <= 665) {
+        return true;
     } else {
-        redpack.style.borderColor = 'white';
-        profileImage.src = 'images/def.png';
+        return false;
     }
 }
+
+handleDeviceWidth();
+
+window.addEventListener('resize', handleDeviceWidth);
+
 function select(sl) {
     return document.querySelector(sl);
 }
