@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+
     <link rel="stylesheet" href="tp.css">
     <title>Document</title>
 </head>
@@ -14,101 +18,80 @@
         <div class="cont-addcoor">
             <form action="" method="post">
 
+                <div class="primaryask">
+                    <div class="chpic">
+                        <img src="../images/mali.png" id="profdisplay2" alt="">
+                        <label for="changep2">Choose profile</label>
+                        <input type="file" name="image" id="changep2" accept="image/*" onchange="handleimg(2)">
 
-                <div class="inptcont">
-                    <label for="fnamec" class="">
-                        First name</label>
-                    <input id="fnamec" type="text" name="fname" ">
+                    </div>
+                    <div class="inptcont">
+                        <i class="fas fa-user"></i>
+                        <input type=" text" id="usernamec" placeholder="Username" name="username">
+                    </div>
+
+                    <div class="inptcont">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="passwordc" placeholder="Password" name="userpassword" class="border">
+                    </div>
+
+
+                    <div class="inptcont">
+                        <i class="fas fa-lock"></i>
+                        <input class="CP" id="confirm_passwordc" type="password" placeholder="Confirm Password"
+                            name="confirm_password">
+                    </div>
+                </div>
+                <div class="secondaryask">
+                    <h3>Personal info</h3>
+                    <div class="inptcont">
+                        <i class="fas fa-user"></i>
+                        <input id="fnamec" type="text" placeholder="First name" name="fname" ">
                 </div>
 
 
 
-                <div class="inptcont">
-                    <label for="lnamec" class="">
-                        Last name </label>
-                    <input id="lnamec" type="text" name="lname" >
+                <div class=" inptcont">
+                        <i class="fas fa-user"></i>
+                        <input id="lnamec" type="text" placeholder="Last name" name="lname">
+                    </div>
+
+                    <div class="inptcont">
+                        <i class="fas fa-user"></i>
+                        <input id="mnamec" type="text" placeholder=" Middle name" name="mname">
+                    </div>
+
+                    <div class="inptcont">
+                        <i class="fas fa-envelope"></i>
+                        <input id="emailc" type="email" placeholder="E-mail " name="email">
+                    </div>
+
+                    <div class="inptcont">
+                        <i class="fas fa-briefcase"></i>
+                        <input id="positionc" type="text" placeholder="Position" name="position">
+                    </div>
+
+                    <div class="inptcont">
+                        <i class="fas fa-building"></i>
+                        <input id="departmentc" type="text" placeholder="Department" name="department">
+                    </div>
+
+                    <div class="inptcont">
+                        <i class="fas fa-door-open"></i>
+                        <input id="roomc" type="text" placeholder="Room" name="room">
+                    </div>
                 </div>
 
 
-                <div class="inptcont">
-                    <label for="mnamec" class="">
-                        Middle name</label>
-                    <input id="mnamec" type="text" name="mname" >
-                </div>
-
-
-                <div class="inptcont">
-                    <label for="emailc" class="">
-                        E-mail </label>
-                    <input id="emailc" type="email" name="email" >
-                </div>
-
-
-                <div class="inptcont">
-                    <label for="positionc" class="">
-                        Position</label>
-                    <input id="positionc" type="text" name="position" >
-                </div>
-
-
-                <div class="inptcont">
-                    <label for="departmentc" class="">
-                        Department</label>
-                    <input id="departmentc" type="text" name="department" >
-                </div>
-
-
-                <div class="inptcont">
-                    <label for="roomc" class="">
-                        Room</label>
-                    <input id="roomc" type="text" name="room" >
-                </div>
-
-
-                <div class="inptcont">
-                    <label for="usernamec" class="">
-                        Username
-                    </label>
-                    <input type=" text" id="usernamec" name="username" >
-                </div>
-
-
-                <div class="inptcont">
-                    <label for="passwordc" class="">
-                        Password
-                    </label>
-                    <input type="password" id="passwordc"  name="userpassword" class="border">
-                </div>
-
-
-                <div class="inptcont">
-                    <label for="confirm_passwordc" id="cp" class="">
-                        Confirm password
-                    </label>
-                    <input class="CP" id="confirm_passwordc" type="password" name="confirm_password" >
-                </div>
-
+                <button id="addNewcoor"></button>
 
             </form>
+            <div class="coradbut">
+                <label for="addNewcoor">Add</label>
+            </div>
         </div>
-        <!-- <div id="cont-editform">
-                <div class="editform">
-                    <div class="chpic">
-                        <img src="../images/mali.png" id="profdisplay" alt="" >
-                        <label for="changep">Change profile</label>
-                    </div>
-                    <form action="" method="post">
-                        <input type="file" name="image" id="changep" accept="image/*" onchange="handleimg()">
-                        <input type="username" placeholder="Username" value="Hikusama">                    
-                        <input type="text" placeholder="Password">
-                        <button>update</button>
-                    </form>
-                </div>
-            </div> -->
-    </div>
-    <script>
 
-    </script>
+    </div>
 </body>
 
 </html>
