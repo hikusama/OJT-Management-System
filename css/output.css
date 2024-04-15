@@ -56,15 +56,9 @@ img{
   z-index: 2;
 }
 
-.but {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 60%;
 
-}
 
-.but label {
+#xplore {
   /* display: none; */
   padding: .5rem 3rem;
   letter-spacing: 3px;
@@ -77,9 +71,13 @@ img{
   border-radius: 10px;
   border: solid rgb(161, 161, 161) 1.3px;
   transition: color .3s;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 60%;
 }
 
-.but label:hover {
+#xplore:hover {
   border: solid rgb(253, 207, 2) 1.3px;
   color: rgb(253, 207, 2);
 
@@ -112,11 +110,47 @@ img{
   left: 50%;
   top: 50%;
   
+  
 }
+
+#signup{
+  display: none;
+}
+#signup form > *{
+  border: 1px solid rgba(255, 255, 255, 0.381);
+  animation-name: trisection;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+@keyframes trisection {
+  0%{
+    opacity: 0;
+    transform: translateX(-3.5rem) rotate(-5deg);
+  }50%{
+    transform: translateY(0) rotate(0);
+    
+  }
+}
+
+
 #signup form {
   display: flex;
   place-items: center;
   justify-content: center;
+}
+#logn{
+  animation-name: smoothlog;
+  animation-duration: .5s ;
+  animation-iteration-count: 1;
+}
+@keyframes smoothlog {
+  0%{
+    transform: translateX(3.5rem) rotate(5deg);
+  }50%{
+    transform: translateX(0) rotate(0);
+    
+  }
 }
 #logn form {
   padding: 3.5rem 3.5rem;
@@ -125,14 +159,17 @@ img{
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12.5px);
   -webkit-backdrop-filter: blur(12.5px);
-  border: 1px solid rgba(54, 54, 54, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.381);
   text-align: center;
   display: flex;
   flex-direction: column;
   row-gap: 11px;
   position: relative;
 }
+/* #logn form{
+  border: 1px solid rgba(255, 255, 255, 0.381);
 
+} */
 #logn form input , #signup input{ 
   color: rgb(255, 255, 255);
   height: 2.4rem;
@@ -250,7 +287,11 @@ img{
   box-shadow: inset 6rem 0 0 rgb(161, 161, 161);
 }
 
-
+#contentry{
+  position: ;
+  height: 100vh;
+  width: 100vw;
+}
 
 .icon-input-container {
   position: relative;
@@ -272,11 +313,13 @@ img{
   -webkit-backdrop-filter: blur(13.1px);
 }
 
-.overlay{
+.overlaylogn{
   height: 100vh;
   width: 100vw;
   display: none;
-  background-color: rgba(0, 0, 0, 0.678);
+  position: absolute;
+  background-color: rgba(17, 18, 20, 0.556);
+
 }
 .entry{
   display: none;
@@ -363,7 +406,6 @@ img{
 
 
 #last{
-  padding: 3.5rem 3.5rem;
   background: rgba(54, 54, 54, 0.68);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -376,6 +418,11 @@ img{
   row-gap: 11px;
   width: 20rem;
   display: none;
+}
+#last .balotlast{
+  display: grid;
+  padding: 3.5rem 3.5rem;
+  row-gap: .5rem;
 }
 
 .picpackall {

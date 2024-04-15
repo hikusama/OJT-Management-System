@@ -183,10 +183,10 @@ $(document).ready(function () {
             handleCheckboxChange();
         }
         if (page == "overview") {
-            countTo(studval, "studnum", 40000);
-            countTo(coorval, "coor", 40000);
-            countTo(trval, "trainees", 40000);
-            countTo(admins, "ad", 40000);
+            countTo(studval, "studnum", 400000);
+            countTo(coorval, "coor", 400000);
+            countTo(trval, "trainees", 400000);
+            countTo(admins, "ad", 400000);
         }
         if (page != "coordinators") {
             $("#overlayform").hide();

@@ -13,6 +13,149 @@ body {
 
 }
 
+.outlosd {
+    background-color: rgb(41, 41, 41);
+    position: fixed;
+    display: none;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.innerloadsd {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+}
+
+.bar {
+    width: 7px;
+    height: 18px;
+    margin: 0 9px;
+    border-radius: 10px;
+    animation: loading_5192 1s ease-in-out infinite;
+    background-color: aqua;
+}
+
+.bar:nth-child(1) {
+    animation-delay: 0.01s;
+}
+
+.bar:nth-child(2) {
+    animation-delay: 0.09s;
+}
+
+.bar:nth-child(3) {
+    animation-delay: 0.19s;
+}
+
+.bar:nth-child(4) {
+    animation-delay: 0.29s;
+}
+
+@keyframes loading_5192 {
+    0% {
+        transform: scale(1);
+    }
+
+    20% {
+        transform: scale(1, 2.5);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+}
+
+/* 
+.outlast{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+.wrloadr{
+    background-color: rgb(41, 41, 41);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.loader {
+    display: inline-block;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+  }
+  
+  .loader div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #90e7e7;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  
+  .loader div:nth-child(1) {
+    left: 8px;
+    animation: flip1 0.6s infinite;
+  }
+  
+  .loader div:nth-child(2) {
+    left: 8px;
+    animation: flip2 0.6s infinite;
+  }
+  
+  .loader div:nth-child(3) {
+    left: 32px;
+    animation: flip2 0.6s infinite;
+  }
+  
+  .loader div:nth-child(4) {
+    left: 56px;
+    animation: flip3 0.6s infinite;
+  }
+  
+  @keyframes flip1 {
+    0% {
+      transform: scale(0);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes flip3 {
+    0% {
+      transform: scale(1);
+    }
+  
+    100% {
+      transform: scale(0);
+    }
+  }
+  
+  @keyframes flip2 {
+    0% {
+      transform: translate(0, 0);
+    }
+  
+    100% {
+      transform: translate(24px, 0);
+    }
+  } */
 
 
 .profSide {
@@ -70,23 +213,27 @@ body {
 
 
 
-#content > * {
-    animation-name: porolnav;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
+#content>* {
+    /* animation-name: porolnav; */
+    /* animation-duration: 1s;
+    animation-iteration-count: 1; */
 }
+
 @keyframes porolnav {
     0% {
         transform: translateY(5rem);
-    }50% {
+    }
+
+    50% {
         transform: translateY(0);
 
     }
 }
-#content {
-    width: 100%;
-    margin-top: 5rem;
 
+#content {
+
+    width: 100%;
+    margin-top: 6rem;
 }
 
 
@@ -435,7 +582,9 @@ a {
 
 #coordinators {
     width: 100%;
-    margin-top: 9rem !important;
+
+
+
 
 }
 
@@ -541,7 +690,7 @@ a {
     width: fit-content;
 }
 
-.searchd .npt i {
+.searchd #searchForm i {
     position: absolute;
     top: 50%;
     transform: translate(1rem, -50%);
@@ -568,6 +717,16 @@ a {
     -webkit-backdrop-filter: blur(9px);
     border: 1px solid rgba(179, 179, 179, 0.16);
     overflow: hidden;
+    animation-name: smootlidp;
+    animation-iteration-count: 1;
+    animation-duration: .5s;
+
+}
+
+@keyframes smootlidp {
+    0% {
+        opacity: 0;
+    }
 }
 
 #coordinators li::after {
@@ -625,6 +784,8 @@ a {
 }
 
 #coordinators li .pfront p {
+    font-variant: small-caps;
+    text-align: center;
     color: rgb(0, 187, 140);
     font-style: italic;
 }
@@ -635,13 +796,16 @@ a {
     border-radius: 50%;
     border: solid 3px rgb(223, 223, 223);
 }
-.primaryask img{
+
+.primaryask img,
+.secondaryaskedit img {
     height: 5.5rem;
     width: 5.5rem;
     border-radius: 50%;
     border: solid 3px rgb(223, 223, 223);
 
 }
+
 .grupi {
     position: absolute;
     height: 100%;
@@ -708,7 +872,8 @@ a {
 
 
 
-#cont-removeform {
+#cont-removeform,
+#cont-confirmforedit {
     border-radius: 1rem;
     height: fit-content;
     padding: 3rem 0;
@@ -721,12 +886,13 @@ a {
 
 
 #cont-editform {
+    background: rgb(0, 0, 0) ;
     height: fit-content;
-    padding: 3rem 0;
-    width: 18rem;
+    padding: 3rem 1.5rem;
+    /* width: 18rem; */
     display: grid;
     place-items: center;
-    border-radius: 10%;
+    border-radius: 2rem;
     /* display: none; */
 
 }
@@ -736,14 +902,16 @@ a {
     place-items: center;
     row-gap: 1rem;
 }
-.inputeditcont{
+
+.inputeditcont {
     display: flex;
     position: relative;
 }
-.inputeditcont i{
+
+.inputeditcont i {
     top: 50%;
     left: 1rem;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     position: absolute;
 }
 
@@ -751,6 +919,7 @@ a {
     row-gap: .5rem;
     display: grid;
     place-items: center;
+    width: 100%;
 }
 
 .chpic label {
@@ -760,8 +929,10 @@ a {
     font-size: .7rem;
     background-color: rgb(49, 48, 48);
 }
-
-.editform img {
+#secondaryErrorDisplay{
+    text-align: center;
+}
+.editform img,#profdisplay3 {
     height: 5rem;
     width: 5rem;
     border-radius: 50%;
@@ -773,20 +944,35 @@ a {
     place-items: center;
     row-gap: 1rem;
 }
-#cont-addcoor{
+
+#cont-addcoor {
     border-radius: 2rem;
     animation-name: addporm;
 }
 
-.addcoor-inner {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.addcoor-inner,
+.editcoor-inner {
+    display: grid;
+    place-items: center;
     padding: 2rem .5rem;
     height: fit-content;
     width: fit-content;
-    max-width:37rem ;
-    min-width: 24rem;
+    max-width: 37rem;
+    min-width: 21rem;
+}
+
+#back {
+    position: absolute;
+    right: -.6rem;
+    top: -.6rem;
+    font-size: 1.7rem;
+    transition: .3s;
+    display: none;
+}
+
+#back:hover {
+    color: red;
+    cursor: pointer;
 }
 
 .addcoor-inner form {
@@ -795,12 +981,14 @@ a {
     gap: 1rem;
 }
 
-    
-.addcoor-inner form .inptcont{
-    
+.addcoor-inner form .inptcont,
+.editcoor-inner form .inptcont {
+    width: fit-content;
     position: relative;
 }
-.addcoor-inner form i{
+
+.addcoor-inner form i,
+.editcoor-inner form i {
     border-radius: 2rem;
     top: 50%;
     left: 1rem;
@@ -810,26 +998,142 @@ a {
     height: 1rem;
     width: 1rem; */
 }
-.addcoor-inner .primaryask{
-    display: grid;
-    row-gap:.5rem ;
+
+.tabinedit {
+    margin-bottom: 2rem;
 }
 
-.addcoor-inner .secondaryask{
-    margin: 0 1rem;
+.tabinedit button:nth-child(1) {
+    background-color: rgb(193, 77, 0);
+    /* opacity: 40%; */
+}
+
+.tabinedit button:nth-child(2) {}
+
+.tabinedit button {
+    cursor: pointer;
+    font-size: .85rem;
+    height: 2rem;
+    width: 9rem;
+    border-radius: .3rem;
+    background-color: transparent;
+    color: rgb(223, 223, 223);
+    border: solid .1px rgba(223, 223, 223, 0.56);
+
+}
+
+.tabinedit button:hover {
+    background-color: rgb(193, 77, 0) !important;
+}
+
+.primaryask,
+.primaryaskedit {
+    display: grid;
+    place-items: center;
+    row-gap: .5rem;
+}
+.formsact{
+    position: relative;
+    width: 100%;
+
+}
+.editcoor-inner form {
     display: flex;
+    flex-direction: column;
+
+}
+
+.loadingSc{
+    background-color: black;
+    display: none;
+    z-index: 2;
+    position: absolute;
+    /* display: ; */
+    width: 100%;
+    height: 100%;
+    
+}
+
+.loadingSc-inner {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    /* position: absolute; */
+    /* width: fit-content; */
+}
+
+.eloader2 {
+    width: 48px;
+    height: 48px;
+    border: 3px dotted #fff;
+    border-style: solid solid dotted dotted;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotation 2s linear infinite;
+}
+
+.eloader2::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 3px dotted #ff3d00;
+    border-style: solid solid dotted;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    animation: rotationBack 1s linear infinite;
+    transform-origin: center center;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotationBack {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+
+
+
+.secondaryask,
+.secondaryaskedit-inner {
+    display: flex;
+    margin: 0 1rem;
     flex-wrap: wrap;
     justify-content: center;
     gap: .5rem;
 }
-.addcoor-inner .secondaryask h3{
+
+.addcoor-inner .secondaryask h3 {
     text-align: center;
     width: 100%;
 }
 
-.addcoor-inner form input{
+.addcoor-inner form input,
+.editcoor-inner form input {
     color: rgb(223, 223, 223);
-    background-color: rgb(41, 41, 41);
+    background-color: rgb(251 251 251 / 0%);
     border: solid .1px rgba(223, 223, 223, 0.307);
     height: 2rem;
     border-radius: .2rem;
@@ -837,7 +1141,9 @@ a {
 }
 
 
-.addcoor-inner .coradbut label{
+
+.addcoor-inner .coradbut label
+ {
     font-variant: small-caps;
     font-style: italic;
     display: grid;
@@ -846,49 +1152,39 @@ a {
     width: 8rem;
     background-color: rgba(116, 116, 116, 0.2);
     border: solid .1px rgba(223, 223, 223, 0.552);
-    border-radius: .5rem ;
+    border-radius: .5rem;
     cursor: pointer;
     background-color: rgba(0, 252, 189, 0.289);
     transition: .3s;
 }
-.addcoor-inner .coradbut label:hover{
-    background-color:rgba(3, 210, 158, 0.679) ;
+
+
+
+.addcoor-inner .coradbut label:hover {
+    background-color: rgba(3, 210, 158, 0.679);
 }
 
 
 
 
-.editform form input {
-    padding: 0 2rem;
-    width: 10rem;
-    height: 2rem;
-    font-size: .8rem;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: solid.1px rgba(223, 223, 223, 0.377);
-    background: none;
-    color: rgb(223, 223, 223);
-
-}
-
-.editform form input:focus {
-    outline: none;
-    border-bottom: solid .1px rgb(223, 223, 223);
-
-}
 
 
-.newcp{
-    top: 0 !important;
-}
-.editform #changep , #changep2{
+
+
+
+
+
+.editform #changep,
+#changep2,
+#changep3 {
     position: absolute;
     visibility: hidden;
 }
 
-.editform form button {
+.editcoor-inner .coradbut button {
     cursor: pointer;
+    display: grid;
+    place-items: center;
     font-size: .9rem;
     width: 6rem;
     font-style: italic;
@@ -901,7 +1197,7 @@ a {
     transition: background-color .2s;
 }
 
-.editform form button:hover {
+.editcoor-inner .coradbut label:hover {
     background-color: rgba(2, 136, 189, 0.842);
 
 }
@@ -915,20 +1211,36 @@ a {
 
 
 
-.removeform {
+.removeform,
+.innerforeditform {
     height: 100%;
     display: grid;
     place-items: center;
 
 }
 
-.removeform form {
+.removeform form,
+.innerforeditform form {
     display: grid;
     place-items: center;
     row-gap: 1rem;
 }
 
-#formpw {
+.wr {
+    position: relative;
+
+}
+
+.wr i {
+    position: absolute;
+    top: 50%;
+    left: 1.2rem;
+    transform: translate(-50%, -50%);
+}
+
+#pwdd,
+#uname,
+#conftopass {
     color: rgb(223, 223, 223);
     padding: 0 2rem;
     height: 2rem;
@@ -965,27 +1277,38 @@ a {
 
 }
 
+.secondaryaskedit {}
 
-#addNewcoor{
+
+#addNewcoor {
     position: absolute;
     visibility: hidden;
+    height: 0;
+    width: 0;
 }
-.coradbut{
+
+.coradbut {
     margin-top: 2rem;
     display: flex;
     justify-content: center;
     width: 100%;
     place-items: center;
 }
+#cont-removeform,
+#cont-viewinform,
+#cont-addcoor,
+#cont-confirmforedit{
+    background: linear-gradient(transparent, rgb(0 0 0 / 70%)) !important;
 
+}
 
 #cont-editform,
 #cont-removeform,
 #cont-viewinform,
-#cont-addcoor {
-    animation-duration: .5s;
+#cont-addcoor,
+#cont-confirmforedit {
+    animation-duration: .3s;
     animation-iteration-count: 1;
-    background: rgba(0, 0, 0, 0.699);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -993,43 +1316,70 @@ a {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(9px);
     border: 1px solid rgba(243, 243, 243, 0.377);
-    overflow: hidden;
+    /* overflow: hidden; */
     display: none;
 
 
 }
-@keyframes addporm {
-    0% {
-        transform: translate(-50%, -35%);
-    }
+
+#cont-confirmforedit {
+    animation-name: reqdit;
+
+}
+
+#cont-confirmforedit #ver {
+    height: 1.5rem;
+    width: 5rem;
+    border-radius: .5rem;
+    border: solid .1px rgba(243, 243, 243, 0.377);
+    background-color: rgba(2, 136, 189, 0.377);
+    color: rgb(223, 223, 223);
+    font-variant: small-caps;
+    font-style: italic;
+    animation-name: verifybl;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    cursor: pointer;
+
+}
+
+@keyframes verifybl {
+    0% {}
 
     50% {
-        transform: translate(-50%, -50%);
-
+        opacity: 50%;
     }
+}
+
+
+@keyframes reqdit {
+    0% {
+        left: 35%;
+    }
+
+}
+
+@keyframes addporm {
+    0% {
+        top: 35%;
+    }
+
 }
 
 @keyframes editporm {
     0% {
-        transform: translate(-50%, -35%);
+        left: 35%;
     }
 
-    50% {
-        transform: translate(-50%, -50%);
-
-    }
 }
 
 
 @keyframes remporm {
     0% {
-        transform: translate(0, -50%);
+        left: 65%;
     }
 
-    50% {
-        transform: translate(-50%, -50%);
 
-    }
 }
 
 @keyframes viewporm {
@@ -1037,22 +1387,28 @@ a {
         top: 45%;
     }
 
-    50% {
-        top: 50%;
-    }
 }
 
-#overlayform {
-    position: absolute;
+#overlayform,
+#overlayform2 {
+    position: fixed;
     display: none;
-    background-color: rgba(124, 170, 255, 0.089);
     backdrop-filter: blur(3px);
-
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: 100%;
     width: 100%;
+
+}
+
+#overlayform {
+    background-color: rgba(124, 170, 255, 0.089);
+
+}
+
+#overlayform2 {
+    background-color: rgb(0 0 0 / 56%);
 
 }
 
@@ -1064,7 +1420,7 @@ a {
     height: fit-content;
     width: 17rem;
     border-radius: .5rem .5rem 8rem 8rem;
-
+    overflow: hidden;
 }
 
 
@@ -1125,11 +1481,22 @@ a {
 
 .viewinform h2 {
     font-variant: small-caps;
-
+    text-align: center;
+    font-size: 1.2rem;
+    text-transform: lowercase;
+    color: rgb(235 235 235);
 }
 
 .viewinform #vinfo {
     height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    border: solid .2rem rgb(0, 187, 140);
+    transition: .3s;
+}
+
+.viewinform #vinfo:hover {
+    transform: scale(1.5);
 }
 
 .inforsonal {
@@ -1149,7 +1516,212 @@ a {
     color: rgba(223, 223, 223, 0.664);
 }
 
+#errorDisplay {
+    margin-top: 1.5rem;
+    text-align: center;
+}
 
+
+.addedsuc h2 {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.addedsuc {
+    position: fixed;
+    display: none;
+    height: 18rem;
+    padding: 2rem 0;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to right, transparent, rgba(49, 79, 104, 0.628), rgb(44, 80, 104), rgba(40, 56, 69, 0.628), transparent);
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    animation-name: spread;
+    overflow: hidden;
+}
+
+@keyframes spread {
+    0% {
+        width: 0;
+    }
+}
+
+.name {
+    text-align: start;
+    animation-name: poptxt;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    display: grid;
+    place-items: center;
+
+}
+
+.name h1 {
+    font-variant: small-caps;
+    text-transform: lowercase;
+    font-style: italic;
+
+}
+
+@keyframes poptxt {
+    0% {
+        transform: translateX(1.5rem);
+        opacity: 0;
+    }
+
+    40% {
+        transform: translateX(1.5rem);
+        opacity: 0;
+
+    }
+}
+
+.pannelanim {
+    height: 100%;
+    place-items: center;
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    /* animation-name: showuplast;
+    animation-duration: .5s;
+    animation-iteration-count: 1; */
+}
+
+@keyframes showuplast {
+    0% {
+        opacity: 0%;
+    }
+}
+
+.showsuc {
+    display: block !important;
+}
+
+/* #ds1 {
+    z-index: 1;
+    height: 5rem;
+    top: 100%;
+    transform: rotate(14.5deg) translate(-50%,-50%);
+    left:40%;
+    position: absolute;
+    animation-name: added;
+    animation-duration: 1.3s;
+    animation-iteration-count: 1;
+}
+.imgpart{
+    position: relative;
+
+}
+
+@keyframes added {
+    0% {
+        top: 150%;
+    }
+
+    30% {
+        top: 150%;
+
+    }
+
+    85% {
+        top: 150%;
+
+    }
+} */
+/* 
+.distributed h3 span {
+    color: rgb(0, 174, 255);
+}
+
+.distributed h3 {
+    font-style: italic;
+    font-variant: small-caps;
+}
+
+.distributed {
+    margin-top: 2rem;
+    display: inline-block;
+    place-items: center;
+    row-gap: 1rem;
+}
+
+.distributed #blinkround {
+    height: 2.5rem;
+    border-radius: 50%;
+    width: 2.5rem;
+    background-color: rgb(0, 187, 140);
+    animation-name: bxbad;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bxbad {
+    0% {
+        box-shadow: 0 0 0 0;
+    }
+
+    50% {
+        box-shadow: 0 0 0 16px rgba(0, 187, 140, 0);
+
+    }
+} */
+
+
+
+#displayaddanim {
+    width: 10rem;
+    max-height: 13rem;
+    border-radius: 1rem;
+    border: solid 2px rgb(143, 158, 173);
+    animation-name: pop;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes pop {
+    0% {
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+
+    40% {
+        transform: translateY(1rem);
+        opacity: 0;
+
+    }
+}
+
+#responsetodel {
+    text-align: center;
+}
+
+#done {
+    height: 2.5rem;
+    width: 8rem;
+    background: rgba(0, 101, 216, 0.13);
+    border: solid .1px rgb(255, 255, 255);
+    border-radius: 1.5rem;
+    color: rgb(223, 223, 223);
+    font-size: .95rem;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    transition: .3s;
+
+}
+
+
+
+#done:hover {
+    transform: scale(.9);
+}
 
 
 
@@ -1184,15 +1756,10 @@ a {
 
 
 }
-@media screen and (min-width:900px) {
-    .addcoor-inner{
 
+@media screen and (max-width:529px) {
+    .addedsuc {
+        height: 30rem;
     }
 
 }
-
-
-
-
-
-

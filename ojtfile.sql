@@ -39,7 +39,7 @@ CREATE TABLE supervisors (
   position varchar(50) NOT NULL,
   department varchar(50) NOT NULL,
   room varchar(50) NOT NULL,
-  profile_pic mediumblob NOT NULL,
+  profile_pic longblob NOT NULL,
   PRIMARY KEY (supervisor_info_id),
   KEY users_id (users_id),
   CONSTRAINT supervisor_ibfk_1 FOREIGN KEY (users_id) REFERENCES users (user_id)

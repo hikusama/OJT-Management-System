@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-    <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="tp.css">
+    <title>Document</title>
 </head>
-
 <body>
     <div id="content">
-
-        <div id="coordinators">
+        <div id="cont-admins">
             <div class="searchd">
                 <div class="btad">
                     <div class="lodst">
@@ -34,7 +28,7 @@
 
                     <i id="men" class="fa-solid fa-ellipsis "></i>
                     <div class="pfront">
-                        <img src="../images/mali.png" alt="" srcset="">
+                        <img src="../images/mali.png" alt="" srcset="" id="myproffromdb">
                         <h4>Marco Jean</h4>
                         <p>CICS</p>
                     </div>
@@ -120,6 +114,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <!-- <li>
                     <i id="men" class="fa-solid fa-ellipsis"></i>
                     <div class="pfront">
@@ -137,105 +132,7 @@
                     </div>
                 </li> -->
             </ul>
-
         </div>
     </div>
-    <script>
-
-        $(document).ready(function () {
-            $("#coordinators ul").on("click", "#men", function (e) {
-            e.preventDefault();
-            console.log("hikusama");
-
-            const hasClass = $(this).closest("li").find(".grupi").hasClass("grupiNew");
-
-            $("#coordinators ul .grupi").removeClass("grupiNew");
-
-            $(this).closest("li").find(".grupi").addClass("grupiNew");
-
-            if (hasClass) {
-                $(this).closest("li").find(".grupi").removeClass("grupiNew");
-            }
-        });
-
-            $("#coordinators ul").on("click", ".showact .act1", function (e) {
-                e.preventDefault();
-                $("#overlayform").show();
-                $("#cont-editform").show();
-                $("#cont-removeform").hide();
-                $("#cont-viewinform").hide();
-            });
-            $("#coordinators ul").on("click", ".showact .act2", function (e) {
-                e.preventDefault();
-               $("#overlayform").show();
-               $("#cont-removeform").show();
-               $("#cont-editform").hide();
-               $("#cont-viewinform").hide();
-            });
-            $("#coordinators ul").on("click", ".showact .act3", function (e) {
-                e.preventDefault();
-               $("#overlayform").show();
-               $("#cont-removeform").hide();
-               $("#cont-editform").hide();
-               $("#cont-viewinform").show();
-            });
-            
-            $("#coordinators ul").on("click", "#overlayform", function (e) {
-                $(this).hide();
-                $("#cont-removeform").hide();
-               $("#cont-editform").hide();
-               $("#cont-viewinform").hide();
-            });
-
-        });
-        function handleimg() {
-            const profileImage = document.getElementById('profdisplay');
-            const input = document.getElementById('changep');
-            const file = input.files[0];
-
-            if (file) {
-                const reader = new FileReader();
-
-                reader.onload = function() {
-                    profileImage.src = reader.result;
-                };
-
-                reader.readAsDataURL(file);
-            } else {
-                redpack.style.borderColor = 'white';
-                profileImage.src = 'images/def.png';
-            }
-        }
-        function select(sl) {
-            return document.querySelector(sl);
-        }
-        
-
-
-
-        
-        
-                    // function formS(a) {
-                    //     if (a == "y") {
-                    //         console.log(a);
-                    //         document.getElementById("overlayformm").classList.add("showbacklayer");
-                    //         document.getElementById("editform").classList.add("showeditform");
-                    //     }else{
-                    //         document.getElementById("overlayformm").classList.remove("showbacklayer");
-                    //         document.getElementById("editform").classList.remove("showeditform");
-                    //     }
-            
-                    // }
-        // i += 1;
-        // if (i = i%2) {
-        //     let p = $(this).children.length();
-        //     console.log(p);
-        //     $(this).closest("li").find(".grupi").addClass("act");
-        // }else{
-        //     $(this).closest("li").find(".grupi").removeClass("act");
-        //     console.log(i + "is odd" );
-        // }
-    </script>
 </body>
-
 </html>

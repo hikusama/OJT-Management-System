@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Checker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <input type="text" id="userInput" placeholder="Type a food item">
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function(){
+            $('#userInput').keyup(function(){
+                var inputValue = $(this).val();
+                $.ajax({
+                    url: 'foodstore.php',
+                    method: 'POST',
+                    data: {food: inputValue},
+                    success: function(response){
+                        $('#result').html(response);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

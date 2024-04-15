@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+
+
+
 function get_username(object $pdo, string $username)
 {
     $query = "SELECT username FROM users WHERE username = :username;";
@@ -14,7 +17,7 @@ function get_username(object $pdo, string $username)
 }
 function get_email(object $pdo, string $email)
 {
-    $query = "SELECT email FROM students WHERE email = :email;";
+    $query = "SELECT email FROM supervisors WHERE email = :email;";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(":email", $email);
     $stmt->execute();
@@ -23,9 +26,13 @@ function get_email(object $pdo, string $email)
     return $result;
 }
 
+
+
+
+
 function set_user(object $pdo, string $username, string $userpassword)
 {
-    $user_role = "Student";
+    $user_role = "Supervisor";
     $options = [
         'cost' => 12
     ];
@@ -36,70 +43,63 @@ function set_user(object $pdo, string $username, string $userpassword)
     $stmt->bindParam(":userpassword", $hashedPassword);
     $stmt->bindParam(":user_role", $user_role);
     $stmt->execute();
+    
 }
+
+
+
 
 function set_user_info(
     object $pdo,
-    int $users_id,
-    int $student_id,
+    string $users_id,
     string $ImageData,
     string $firstname,
     string $lastname,
     string $middlename,
     string $email,
-    string $contact,
-    string $address,
-    string $year_level,
-    string $course,
+    string $position,
     string $department,
+    string $room,
     string $gender
 ) {
-    $duty_Status = "offDuty";
 
-    $query = "INSERT INTO students (
+    $query = "INSERT INTO supervisors (
     users_id, 
-    student_id,
-    ImageData,
+    profile_pic,
     firstname, 
     lastname, 
     middlename, 
     email, 
-    contact, 
-    address, 
-    year_level, 
-    course, 
+    position,
     department, 
-    gender, 
-    duty_Status) 
+    room, 
+    gender
+    )
+
     VALUES (
     :users_id, 
-    :student_id, 
     :ImageData, 
     :firstname, 
     :lastname, 
     :middlename, 
     :email, 
-    :contact, 
-    :address, 
-    :year_level, 
-    :course, 
-    :department, 
-    :gender, 
-    :duty_Status) ;";
+    :position,
+    :department,
+    :room, 
+    :gender 
+    ) ;";
+
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(":users_id", $users_id);
-    $stmt->bindParam(":student_id", $student_id);
     $stmt->bindParam(":ImageData", $ImageData, PDO::PARAM_LOB);
     $stmt->bindParam(":firstname", $firstname);
     $stmt->bindParam(":lastname", $lastname);
     $stmt->bindParam(":middlename", $middlename);
     $stmt->bindParam(":email", $email);
-    $stmt->bindParam(":contact", $contact);
-    $stmt->bindParam(":address", $address);
-    $stmt->bindParam(":year_level", $year_level);
-    $stmt->bindParam(":course", $course);
+    $stmt->bindParam(":position", $position);
     $stmt->bindParam(":department", $department);
+    $stmt->bindParam(":room", $room);
     $stmt->bindParam(":gender", $gender);
-    $stmt->bindParam(":duty_Status", $duty_Status);
     $stmt->execute();
 }
+

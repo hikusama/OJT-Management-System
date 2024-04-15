@@ -57,7 +57,7 @@ function signup_inputs()
     }
     echo '<div class="betsign">
     <div class="top">
-        <label  ><a  href="index.php" >Login
+        <label  ><a  href="#logn" >Login
             </a></label>
         <label class="noepek">Sign Up</label>
     </div>
@@ -149,8 +149,8 @@ check_signup_errors();
 
 
     echo '<div id="last">
-
-    <div class="lasti">
+<div class="balotlast">
+    <div class="nxbk">
         <i id="backToSecond" class="fa-solid fa-circle-right fa-flip-horizontal fa-2xl" style="color: #ffffff;"></i>
         <i></i>
     </div>';
@@ -187,14 +187,14 @@ check_signup_errors();
 
     echo '<div class="betsign">
     <div class="top">
-        <label for="ch2"><a href="index.php">Login
+        <label for="ch2"><a href="#logn">Login
             </a></label>
         <label class="noepek">Sign Up</label>
     </div>
-    <input type="file" name="image" id="image" accept="image/*" onchange="handleImageChange()">
+    <input type="file" name="image" id="image" accept="image/*" onchange="handleImgLogin()">
     <button id="btsign" type="submit" >Signup</button></div>
     
-    </div>';
+    </div></div>';
 }
 
 function check_signup_errors()

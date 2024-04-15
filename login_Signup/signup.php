@@ -1,7 +1,7 @@
 <?php
 require_once '../includes/config.php';
 // require_once '../includes/session.php';
-session_start();
+// session_start();
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -93,27 +93,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: ../Register.php?success=false");
             die();
         }
-        $user_id = create_user(
-            $pdo,
-            $username,
-            $userpassword
-        );
-        create_user_info(
-            $pdo,
-            $user_id,
-            $student_id,
-            $ImageData,
-            $firstname,
-            $lastname,
-            $middlename,
-            $email,
-            $contact,
-            $address,
-            $year_level,
-            $course,
-            $department,
-            $gender
-        );
+        // $user_id = create_user(
+        //     $pdo,
+        //     $username,
+        //     $userpassword
+        // );
+        // create_user_info(
+        //     $pdo,
+        //     $user_id,
+        //     $student_id,
+        //     $ImageData,
+        //     $firstname,
+        //     $lastname,
+        //     $middlename,
+        //     $email,
+        //     $contact,
+        //     $address,
+        //     $year_level,
+        //     $course,
+        //     $department,
+        //     $gender
+        // );
         header("Location: ../Register.php?signup=success");
         $pdo = null;
         $stmt = null;

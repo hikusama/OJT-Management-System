@@ -1,9 +1,9 @@
 <?php
 
 $host = 'localhost';
-$dbname = 'ojtm';
+$dbname = 'ojtsys';
 $dbusername = 'root';
-$dbuserpassword = 'incent';
+$dbuserpassword = '';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbuserpassword);

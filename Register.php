@@ -24,16 +24,7 @@ session_start();
     <label onclick="ober()" for="ch" class="overlay"></label>
     <div class="entry" style="display: block;">
 
-        <div id="signup">
-            <form id="signupForm" action="login_Signup/signup.php" method="post" enctype="multipart/form-data">
-
-                <?php signup_inputs();
-
-                ?>
-
-
-            </form>
-        </div>
+        
     </div>
 
 
