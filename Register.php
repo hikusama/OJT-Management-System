@@ -85,11 +85,9 @@ session_start();
 
             if (file) {
                 const reader = new FileReader();
-
                 reader.onload = function() {
                     profileImage.src = reader.result;
                 };
-
                 reader.readAsDataURL(file);
             } else {
                 redpack.style.borderColor = 'white';
@@ -98,10 +96,6 @@ session_start();
         }
 
 
-        function $(s) {
-            return document.querySelector(s);
-
-        }
     </script>
 
 </body>

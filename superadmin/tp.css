@@ -876,7 +876,6 @@ a {
 #cont-confirmforedit {
     border-radius: 1rem;
     height: fit-content;
-    padding: 3rem 0;
     width: 18rem;
     overflow: hidden;
     position: relative;
@@ -885,23 +884,25 @@ a {
 
 
 
-#cont-editform {
-    background: rgb(0, 0, 0) ;
-    height: fit-content;
+.editcoor-inner {
+    background: rgb(0, 0, 0);
+    height: 100%;
     padding: 3rem 1.5rem;
-    /* width: 18rem; */
+    width: 18rem;
     display: grid;
     place-items: center;
-    border-radius: 2rem;
-    /* display: none; */
+    border-radius: .8rem;
+    display: none;
+    border: 1px solid rgba(243, 243, 243, 0.377);
+
 
 }
 
-.editform {
+/* .editform {
     display: grid;
     place-items: center;
     row-gap: 1rem;
-}
+} */
 
 .inputeditcont {
     display: flex;
@@ -929,29 +930,34 @@ a {
     font-size: .7rem;
     background-color: rgb(49, 48, 48);
 }
-#secondaryErrorDisplay{
-    text-align: center;
-}
-.editform img,#profdisplay3 {
+
+
+/* 
+.editform img,
+#profdisplay3 {
     height: 5rem;
     width: 5rem;
     border-radius: 50%;
     border: solid .2rem rgb(223, 223, 223);
-}
-
+} */
+/* 
 .editform form {
     display: grid;
     place-items: center;
     row-gap: 1rem;
-}
+} */
 
 #cont-addcoor {
     border-radius: 2rem;
     animation-name: addporm;
 }
-
+.editcoor-inner {
+    background: linear-gradient(transparent, rgb(0 0 0 / 70%)) !important;
+      
+}
 .addcoor-inner,
 .editcoor-inner {
+    min-height: 18rem;
     display: grid;
     place-items: center;
     padding: 2rem .5rem;
@@ -967,7 +973,6 @@ a {
     top: -.6rem;
     font-size: 1.7rem;
     transition: .3s;
-    display: none;
 }
 
 #back:hover {
@@ -1032,26 +1037,28 @@ a {
     place-items: center;
     row-gap: .5rem;
 }
-.formsact{
+
+.formsact {
     position: relative;
     width: 100%;
 
 }
+
 .editcoor-inner form {
     display: flex;
     flex-direction: column;
 
 }
 
-.loadingSc{
-    background-color: black;
+.loadingSc {
+
     display: none;
     z-index: 2;
     position: absolute;
     /* display: ; */
     width: 100%;
     height: 100%;
-    
+
 }
 
 .loadingSc-inner {
@@ -1142,8 +1149,7 @@ a {
 
 
 
-.addcoor-inner .coradbut label
- {
+.addcoor-inner .coradbut label {
     font-variant: small-caps;
     font-style: italic;
     display: grid;
@@ -1174,14 +1180,14 @@ a {
 
 
 
-.editform #changep,
+/* .editform #changep, */
 #changep2,
 #changep3 {
     position: absolute;
     visibility: hidden;
 }
 
-.editcoor-inner .coradbut button {
+.editcoor-inner .coradbut2 button {
     cursor: pointer;
     display: grid;
     place-items: center;
@@ -1215,6 +1221,7 @@ a {
 .innerforeditform {
     height: 100%;
     display: grid;
+    padding: 3rem 0;
     place-items: center;
 
 }
@@ -1288,17 +1295,18 @@ a {
 }
 
 .coradbut {
-    margin-top: 2rem;
     display: flex;
     justify-content: center;
     width: 100%;
     place-items: center;
 }
+
 #cont-removeform,
 #cont-viewinform,
 #cont-addcoor,
-#cont-confirmforedit{
+#cont-confirmforedit {
     background: linear-gradient(transparent, rgb(0 0 0 / 70%)) !important;
+    border: 1px solid rgba(243, 243, 243, 0.377);
 
 }
 
@@ -1315,7 +1323,6 @@ a {
     transform: translate(-50%, -50%);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(9px);
-    border: 1px solid rgba(243, 243, 243, 0.377);
     /* overflow: hidden; */
     display: none;
 
@@ -1408,7 +1415,7 @@ a {
 }
 
 #overlayform2 {
-    background-color: rgb(0 0 0 / 56%);
+    background-color:rgb(0 0 0 / 79%);
 
 }
 
@@ -1516,9 +1523,15 @@ a {
     color: rgba(223, 223, 223, 0.664);
 }
 
-#errorDisplay {
-    margin-top: 1.5rem;
+#errorDisplay, #secondaryErrorDisplay {
+    padding: 1.5rem 0;
     text-align: center;
+    width: 100%;
+}
+#reqeditresponse p{
+    padding: .5rem 0;
+    text-align: center;
+
 }
 
 
@@ -1526,11 +1539,14 @@ a {
     text-align: center;
     text-transform: capitalize;
 }
+.addedsuc h1, .addedsuc2 h1 {
+    text-align: center;
+}
 
-.addedsuc {
+.addedsuc, .addedsuc2 {
     position: fixed;
     display: none;
-    height: 18rem;
+    height: fit-content;
     padding: 2rem 0;
     width: 100%;
     top: 50%;
@@ -1674,12 +1690,16 @@ a {
     }
 } */
 
-
+#primaryErrorDisplay, #secondaryErrorDisplay{
+    font-size: .9rem;
+    text-align: center;
+    padding: .5rem 0;
+}
 
 #displayaddanim {
     width: 10rem;
     max-height: 13rem;
-    border-radius: 1rem;
+    border-radius: 1rem 3rem;
     border: solid 2px rgb(143, 158, 173);
     animation-name: pop;
     animation-duration: 1s;
@@ -1703,7 +1723,7 @@ a {
     text-align: center;
 }
 
-#done {
+#done ,#done2{
     height: 2.5rem;
     width: 8rem;
     background: rgba(0, 101, 216, 0.13);
@@ -1757,9 +1777,3 @@ a {
 
 }
 
-@media screen and (max-width:529px) {
-    .addedsuc {
-        height: 30rem;
-    }
-
-}

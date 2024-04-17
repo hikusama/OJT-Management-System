@@ -13,11 +13,11 @@
 
 <body>
     <div id="content">
-        <label for="act1" id="overlayform" style="display: block;">
 
-        </label>
+        <label for="" id="overlayform2">
 
-        <!-- <div id="cont-editform" style="display: block;">
+            </lab el>
+            <!-- <div id="cont-editform" style="display: block;">
             <div class="editform">
                 <div class="chpic">
                     <img src="../images/mali.png" id="profdisplay" alt="">
@@ -31,59 +31,50 @@
                 </form>
             </div>
         </div> -->
-        <div id="cont-editform" style="display: block;">
-            <div class="editcoor-inner">
-                <i class="fa-regular fa-circle-xmark" id="back"></i>
-                <div class="tabinedit">
-                    <button id="button1">Login Credentials</button>
-                    <button id="button2">Personal Information</button>
-                </div>
-                <div class="formsact">
-
-                    <div class="loadingSc">
-                        <div class="loadingSc-inner">
-                            <span class="eloader2"></span>
-                        </div>
+            <div id="cont-editform" style="display: block;">
+                <div class="editcoor-inner">
+                    <i class="fa-regular fa-circle-xmark" id="back"></i>
+                    <div class="tabinedit">
+                        <button id="button1">Login Credentials</button>
+                        <button id="button2">Personal Information</button>
                     </div>
-                    <form id="primarysec" enctype="multipart/form-data">
-                        <div class="primaryaskedit"></div>
-                        <!--                
-    <div class="loader">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-</div>
-                        <div class="inptcont">
-                            <i class="fas fa-user"></i>
-                            <input type=" text" id="usernamee" placeholder="Username" name="username">
-                        </div>
-                        <div class="inptcont">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" id="passworde" placeholder="Password" name="userpassword"
-                                class="border">
-                        </div>
-                        <div class="inptcont">
-                            <i class="fas fa-lock"></i>
-                            <input class="CP" id="confirm_passworde" type="password" placeholder="Confirm Password"
-                                name="confirm_password">
-                        </div>
-                        <div class="coradbut">
-                            <label for="addNewcoor">update</label>
-                        </div> -->
-
-                    </form>
-                    <form id="secondarysec">
-
-                        <div class="secondaryaskedit">
-                            <div class="secondaryaskedit-inner"></div>
-                            <div id="secondaryErrorDisplay">
+                    <div class="formsact">
+                        <div class="loadingSc">
+                            <div class="loadingSc-inner">
+                                <span class="eloader2"></span>
                             </div>
                         </div>
-                    </form>
+                        <form id="primarysec" enctype="multipart/form-data">
+                            <div class="primaryaskedit"></div>
+
+
+
+                        </form>
+                        <form id="secondarysec">
+                            <div class="secondaryaskedit">
+                                <div class="secondaryaskedit-inner"></div>
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <div class="addedsuc">
+                <div class="pannelanim">
+                    <img src="../images/fakeshelby.png" id="displayaddanim" alt="">
+                    <div class="name">
+                        <h1>ADDED SUCCESSFULLY</h1>
+                        <h2>Algeo Fernandez</h2>
+                        <button id="done">Done</button>
+                    </div>
                 </div>
 
+
+                <audio id="addedSound">
+                    <source src="../soundinteract/allstamp.mp3" type="audio/mpeg">
+                </audio>
             </div>
-        </div>
     </div>
 </body>
 

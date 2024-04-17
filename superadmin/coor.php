@@ -115,19 +115,32 @@
                 </label>
 
                 <div id="cont-editform">
-                    <div class="editform">
-                        <div class="chpic">
-                            <img src="../images/mali.png" id="profdisplay" alt="">
-                            <label for="changep">Change profile</label>
+                    <div class="editcoor-inner">
+                        <i class="fa-regular fa-circle-xmark" id="back"></i>
+                        <div class="tabinedit">
+                            <button id="button1">Login Credentials</button>
+                            <button id="button2">Personal Information</button>
                         </div>
-                        <form method="post">
-                            <input type="file" name="image" id="changep" accept="image/*" onchange="handleimg(1)">
-                            <input type="username" placeholder="Username" value="Hikusama">
-                            <input type="text" placeholder="Password">
-                            <button>update</button>
-                        </form>
+                        <div class="formsact">
+                            <div class="loadingSc">
+                                <div class="loadingSc-inner">
+                                    <span class="eloader2"></span>
+                                </div>
+                            </div>
+                            <form id="primarysec" enctype="multipart/form-data">
+                                <div class="primaryaskedit"></div>
+                            </form>
+                            <form id="secondarysec">
+                                <div class="secondaryaskedit">
+                                    <div class="secondaryaskedit-inner"></div>
+
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
+
                 <div id="cont-confirmforedit">
                     <div class="innerforeditform">
                         <form id="editformreq">
@@ -243,11 +256,24 @@
                 </div>
                 <div class="addedsuc">
                     <div class="pannelanim">
-                        <img src="../images/fakeshelby.png" id="displayaddanim" alt="">
+                        <img src="" id="displayaddanim" alt="">
                         <div class="name">
-                            <h1>ADDED SUCCESSFULLY</h1>
-                            <h2>Algeo Fernandez</h2>
+                            <h1></h1>
+                            <h2></h2>
                             <button id="done">Done</button>
+                        </div>
+                    </div>
+
+
+                    <audio id="addedSound">
+                        <source src="../soundinteract/allstamp.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="addedsuc2">
+                    <div class="pannelanim">
+                        <div class="name">
+                            <h1></h1>
+                            <button id="done2">Done</button>
                         </div>
                     </div>
 

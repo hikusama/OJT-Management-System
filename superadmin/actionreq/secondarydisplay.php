@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($result["profile_pic"]) ?>" alt="" srcset="" id="profdisplay3">
             <input type="file" name="image" id="changep3" accept="image/*" onchange="handleimg(3)">
 
-            <label for="changep3">Change profile</label>
+            <label for="changep3" id="chngp3">Change profile</label>
         </div>
 
         <div class="inptcont">
@@ -61,8 +61,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <i class="fas fa-mars"></i>
             <input id="gne" type="text" placeholder="Gender" name="gender" value="<?php echo $result["gender"] ?>">
         </div>
-        <div class="coradbut">
-            <button id="us<?php echo $result['supervisor_info_id'] ?>">update</button>
+        <div id="secondaryErrorDisplay">
+                            </div>
+        <div class="coradbut2">
+            <button class="scFrButton" id="<?php echo 'us' . $result['supervisor_info_id'] ?>" >update</button>
         </div>
 <?php
     } else {

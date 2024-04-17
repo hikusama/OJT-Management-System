@@ -44,23 +44,6 @@ function is_empty_update_personal_inputs(
 }
 
 
-function is_email_registered(object $pdo, string $email)
-{
-    if (get_email($pdo, $email)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function is_invalid_email(string $email)
-{
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 
 function is_username_taken(object $pdo, string $username)
@@ -82,7 +65,45 @@ function is_password_not_matched(string $confirm_password, string $userpassword)
     }
 }
 
+function update_Login_Cred_UserN_Only(
+    object $pdo,
+    int $key,
+    string $username
+){
+    update_Only_Username_Cred(
+        $pdo,
+        $key,
+        $username
+    );
+}
 
+function update_Login_Cred_Pw_Only(
+    object $pdo,
+    int $key,
+    string $userpassword
+){
+    update_Only_Pw_Cred(
+        $pdo,
+        $key,
+        $userpassword
+    );
+}
+
+
+function updateLoginCredAll(
+    object $pdo,
+    int $key,
+    string $username,
+    string $userpassword
+) {
+
+    update_Cred(
+        $pdo,
+        $key,
+        $username,
+        $userpassword
+    );
+}
 
 
 function updatePersonal(
@@ -95,7 +116,7 @@ function updatePersonal(
     string $position,
     string $department,
     string $room,
-    string $gender,
+    string $gender
 ) {
 
     set_update_personal_info(

@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute(['searchQuery' => $searchQuery]);
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
     if ($result) {
 ?>
         <div class="inptcont">
@@ -18,16 +18,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="inptcont">
             <i class="fas fa-lock"></i>
-            <input type="password" id="passworde" placeholder="New Password" name="userpassword" class="border"  >
+            <input type="password" id="passworde" placeholder="New Password" name="userpassword" class="border">
         </div>
         <div class="inptcont">
             <i class="fas fa-lock"></i>
             <input class="CP" id="confirm_passworde" type="password" placeholder="Confirm Password" name="confirm_password">
         </div>
-        <div class="coradbut">
-            <label for="addNewcoor">update</label>
+        <div id="primaryErrorDisplay">
         </div>
-
+        <div class="coradbut2">
+            <button  class="prdp" id="us<?php echo $result['user_id'] ?>" >update</button>
+        </div>
 <?php
     } else {
         echo "nahh youd loose";

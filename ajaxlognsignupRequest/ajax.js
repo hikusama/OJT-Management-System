@@ -34,6 +34,31 @@ $(document).ready(function () {
 
 
 
+    $("#loginRequest").submit(function(e) {
+        e.preventDefault();
+        formData = new FormData();
+
+        formData.append('username', $('#Logusername').val());
+        formData.append('password', $('#Logpassword').val());
+
+        console.log($('#Logusername').val());
+        console.log($('#Logpassword').val());
+        $.ajax({
+            url: '../OJT-MANAGEMENT-SYSTEM/login_Signup/login.php',
+            data: formData,
+            method: 'post' ,
+            contentType:false ,
+            processData: false,
+            success: function (response) {
+                $('#loginErrors').html(response);
+            },
+            complete: function () {
+                
+            }
+        });
+
+        
+    });
 
 
     $("#contentry").on("click", ".nxbk i", function (e) {
@@ -94,4 +119,8 @@ function handleImgLogin() {
         profileImage.attr('src', 'images/def.png');
 
     }
+}
+
+function mv(a) {
+    return document.querySelector(a);
 }

@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
- 
+
     try {
         require_once 'signup_model.php';
         require_once 'signup_contr.php';
@@ -73,55 +73,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $errors["not_matched"] = "Password not matched!";
         }
 
-        if ($errors) {
-            $_SESSION["errors_signup"] = $errors;
-            $signupData = [
-                "student_id" => $student_id,
-                "firstname" => $firstname,
-                "lastname" => $lastname,
-                "middlename" => $middlename,
-                "email" => $email,
-                "contact" => $contact,
-                "address" => $address,
-                "year_level" => $year_level,
-                "course" => $course,
-                "department" => $department,
-                "gender" => $gender,
-                "username" => $username
-            ];
-            $_SESSION["signup_data"] = $signupData;
-            header("Location: ../Register.php?success=false");
-            die();
+        if (!$errors) {
+            
+            // create_user_info(
+            //     $pdo,
+            //     $user_id,
+            //     $student_id,
+            //     $ImageData,
+            //     $firstname,
+            //     $lastname,
+            //     $middlename,
+            //     $email,
+            //     $contact,
+            //     $address,
+            //     $year_level,
+            //     $course,
+            //     $department,
+            //     $gender
+            // );
+            
+        }else{
+            foreach ($errors as $error) {
+                echo '<h4 class="formError" style="color:red;font-family:sans-serif;">' . $error . '</h4>';
+            }
         }
         // $user_id = create_user(
         //     $pdo,
         //     $username,
         //     $userpassword
         // );
-        // create_user_info(
-        //     $pdo,
-        //     $user_id,
-        //     $student_id,
-        //     $ImageData,
-        //     $firstname,
-        //     $lastname,
-        //     $middlename,
-        //     $email,
-        //     $contact,
-        //     $address,
-        //     $year_level,
-        //     $course,
-        //     $department,
-        //     $gender
-        // );
-        header("Location: ../Register.php?signup=success");
-        $pdo = null;
-        $stmt = null;
-        die();
+
     } catch (PDOException $e) {
         die("Query Failed: " . $e->getMessage());
     }
 } else {
-    header("Location: ../Register.php");
+    header("Location: ../index.php");
     die();
 }
