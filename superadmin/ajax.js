@@ -1,8 +1,14 @@
 
 
 
+let loadingScreen = $(".outlosd");
 
 
+// $('.addedsuc2').hide();
+// $('.addedsuc').hide();
+let suprevId, userId, fn, query = '';
+let fnameec, lnameec, mnameec, positionec, departmentec, roomec, gnec;
+let searchQuery = "%" + query + "%";
 
 
 
@@ -11,30 +17,174 @@
 
 $(document).ready(function () {
 
+    $(document).on("click", "#tabs label", function (e) {
+        e.preventDefault(); // Prevent default link behavior
 
-    // $('.addedsuc2').hide();
-    // $('.addedsuc').hide();
-    let loadingScreen = $(".outlosd");
-    let suprevId, userId, fn, query = '';
-    let searchQuery = "%" + query + "%";
-    let fnameec, lnameec, mnameec, positionec, departmentec, roomec, gnec;
+        $("#tabs label").removeClass("on");
+        $(this).addClass("on");
 
+        var page = $(this).find("a").attr("href").substr(1);
+        // console.log(page);
+        // switch (page) {
+        //     case "overview":
+        //         $("#coordinators").hide();
+        //         $("#admins").hide();
+        //         $("#students").hide();
+        //         $("#enroll").hide();
+        //         $("#mails").hide();
+        //         $("#settings").hide();
+        //         // $("#overview").hide();
+        //     break;
+        //     case "coordinators":
+        //         // $("#coordinators").hide();
+        //         $("#admins").hide();
+        //         $("#students").hide();
+        //         $("#enroll").hide();
+        //         $("#mails").hide();
+        //         $("#settings").hide();
+        //         $("#overview").hide();
+        //     break;
+        //     case "admins":
+        //         $("#coordinators").hide();
+        //         // $("#admins").hide();
+        //         $("#students").hide();
+        //         $("#enroll").hide();
+        //         $("#mails").hide();
+        //         $("#settings").hide();
+        //         $("#overview").hide();
+        //     break;
+        //     case "students":
+        //         $("#coordinators").hide();
+        //         $("#admins").hide();
+        //         // $("#students").hide();
+        //         $("#enroll").hide();
+        //         $("#mails").hide();
+        //         $("#settings").hide();
+        //         $("#overview").hide();
+        //     break;
+        //     case "enroll":
+        //         $("#coordinators").hide();
+        //         $("#admins").hide();
+        //         $("#students").hide();
+        //         // $("#enroll").hide();
+        //         $("#mails").hide();
+        //         $("#settings").hide();
+        //         $("#overview").hide();
+        //     break;
+        //     case "mails":
+        //         $("#coordinators").hide();
+        //         $("#admins").hide();
+        //         $("#students").hide();
+        //         $("#enroll").hide();
+        //         // $("#mails").hide();
+        //         $("#settings").hide();
+        //         $("#overview").hide();
+        //     break;
+        //     case "setting":
+        //         $("#coordinators").hide();
+        //         $("#admins").hide();
+        //         $("#students").hide();
+        //         $("#enroll").hide();
+        //         $("#mails").hide();
+        //         // $("#settings").hide();
+        //         $("#overview").hide();
+        //     break;
 
+        //     default:
+        //         $("#content").hide();
+        //     break;
+        // }
+        $("#content > *").hide();
+        $("#" + page).show();
+        if (handleDeviceWidth()) {
+            checkbox.checked = false;
+            handleCheckboxChange();
+        }
+        if (page == "overview") {
+            countTo(studval, "studnum", 400000);
+            countTo(coorval, "coor", 400000);
+            countTo(trval, "trainees", 400000);
+            countTo(admins, "ad", 400000);
+            $("#coordinators").hide();
+            $("#coordinators ul").html('');
+        } else if (page == "coordinators") {
+            $("#overlayform").hide();
+            $("#coordinators").show();
+            console.log('coordinators');
 
+            $('.outlosd').show();
 
-    $.ajax({
-        url: 'search.php',
-        method: 'GET',
-        data: { query: searchQuery },
-        success: function (response) {
-            $("#searchResults").html(response);
-        },
+            $.ajax({
+
+                url: 'search.php',
+                method: 'GET',
+                data: { query: searchQuery },
+                success: function (response) {
+                    $("#searchResults").html(response);
+                }, complete: function () {
+                    $('.outlosd').hide();
+                }
+            });
+        } else if (page == "admins") {
+            console.log('admins');
+            $("#coordinators").hide();
+            $("#coordinators ul").html('');
+
+        } else if (page == "student") {
+            console.log('student');
+            $("#coordinators").hide();
+            $("#coordinators ul").html('');
+
+        } else if (page == "enroll") {
+            console.log('enroll');
+            $("#coordinators").hide();
+            $("#coordinators ul").html('');
+
+        } else if (page == "mails") {
+            console.log('mails');
+            $("#coordinators").hide();
+            $("#coordinators ul").html('');
+
+        } else if (page == "settings") {
+            console.log('settings');
+            $("#coordinators").hide();
+            $("#coordinators ul").html('');
+
+        }
+
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // loadingScreen.show();
+
+    // $.ajax({
+
+    //     url: 'search.php',
+    //     method: 'GET',
+    //     data: { query: searchQuery },
+    //     success: function (response) {
+    //         $("#searchResults").html(response);
+    //     },            complete: function () {
+    //         loadingScreen.hide();
+    //     }
+    // });
 
     $("#searchForm").submit(function (event) {
         event.preventDefault();
 
-        loadingScreen.show();
+        $('.outlosd').show();
         let query = $("#searchInput").val();
 
         let searchQuery = "%" + query + "%";
@@ -47,12 +197,12 @@ $(document).ready(function () {
                 $("#searchResults").html(response);
             },
             complete: function () {
-                loadingScreen.hide();
+                $('.outlosd').hide();
             }
         });
     });
 
-    let ap;
+    let checkAdd;
     $('#changep2, #fnamec, #lnamec, #mnamec, #emailc, #positionc, #departmentc, #roomc, #gn, #usernamec, #passwordc, #confirm_passwordc').on('change', function () {
         formData = new FormData();
 
@@ -81,6 +231,9 @@ $(document).ready(function () {
             processData: false,
             success: function (response) {
                 $('#errorDisplay').html(response);
+                checkAdd = response;
+            },
+            complete: function () {
 
             }
         });
@@ -93,10 +246,11 @@ $(document).ready(function () {
 
 
     // let fnout,lnout;
+    let addRes;
     $('#coordinators').on("click", ".coradbut label", function (e) {
         e.preventDefault();
-        if ($('#errorDisplay .setd').html() === 'All Set') {
-            loadingScreen.show();
+        if (checkAdd === 'All Set') {
+            $('.outlosdadd').show();
             console.log('enteredfff');
             fnout = $('#fnamec').val();
             mdnout = $('#mnamec').val();
@@ -123,13 +277,14 @@ $(document).ready(function () {
                 contentType: false,
                 processData: false,
                 success: function (response) {
+                    $('#errorDisplay').html('');
                     $('#errorDisplay').html(response);
-
+                    addRes = response;
 
                 },
                 complete: function () {
-                    loadingScreen.hide();
-                    if ($('#errorDisplay p').html() == 'success') {
+                    $('.outlosdadd').hide();
+                    if (addRes == 'success') {
                         console.log('adadad');
                         $("#cont-addcoor").hide();
                         $("#cont-removeform").hide();
@@ -138,9 +293,10 @@ $(document).ready(function () {
                         $("#cont-viewinform").hide();
                         $("#overlayform2").show();
                         $(".addedsuc").show();
-                        $(".addedsuc .name h1").html("added successfully");
+                        $(".addedsuc .name h1").html("Coordinator");
+                        $(".addedsuc .name h3").html("added successfully");
                         let setC = document.querySelector(".addedsuc .name h1");
-                        setC.style.color = "rgb(0, 184, 77)";
+                        setC.style.color = "#23e155ad";
                         fulln = fnout + ' ' + mdnout + ' ' + lnout;
                         forresponseinact(fulln, 1, emptfile);
                     }
@@ -153,17 +309,28 @@ $(document).ready(function () {
 
 
     });
+    // $('#delG').click(function (e) {
+    //     e.preventDefault();
+
+    // });
 
 
-
+let removeResponse;
     $('#rmformreq').submit(function (event) {
         event.preventDefault();
         let formData = new FormData();
-        loadingScreen.show();
+        $(".outlosdrm").show();
         formData.append('password', $('#pwdd').val());
         formData.append('suprevId', suprevId);
         formData.append('userId', userId);
+        document.getElementById('delG').style.transform = 'translateX(13rem)';
 
+
+
+
+
+        isreadyrem = true;
+        document.getElementById('delG').style.transform = 'translateX(0)';
         $.ajax({
             url: 'actionreq/delete.php',
             method: 'POST',
@@ -172,11 +339,11 @@ $(document).ready(function () {
             processData: false,
             success: function (response) {
                 $('#responsetodel').html(response);
+                removeResponse = response;
             },
             complete: function () {
 
-                if ($('#responsetodel .successresp').html() == 'success') {
-
+                if (removeResponse == 'success') {
                     $("#overlayform2").show();
                     $(".addedsuc").show();
                     $("#cont-addcoor").hide();
@@ -184,16 +351,24 @@ $(document).ready(function () {
                     $("#cont-confirmforedit").hide();
                     $("#cont-editform").hide();
                     $("#cont-viewinform").hide();
-                    $(".addedsuc .name h1").html("deleted successfully");
-                    let setC = document.querySelector(".addedsuc .name h1");
+                    $(".addedsuc .name h3").html("deleted successfully");
+                    let setC = document.querySelector(".addedsuc .name h3");
                     setC.style.color = "red";
                     $("#blinkround").hide();
 
                     forresponseinact(fn, 2, filepicfordel);
                 }
-                loadingScreen.hide();
+                setTimeout(() => {
+                    document.getElementById('delG').style.transform = 'translateX(0)';
+                    $(".outlosdrm").hide();
+                }, 2000);
+
             }
+
         });
+
+
+
 
     });
 
@@ -213,7 +388,7 @@ $(document).ready(function () {
     $('#editformreq').submit(function (event) {
         event.preventDefault();
         let formData = new FormData();
-        loadingScreen.show();
+        $('.outlosdrmqrm').show();
         formData.append('conftopass', $('#conftopass').val());
         formData.append('userId', userId);
 
@@ -226,9 +401,9 @@ $(document).ready(function () {
             success: function (response) {
 
                 $('#reqeditresponse').html(response);
-
             },
             complete: function () {
+
                 if ($('#reqeditresponse p').html() === "You Are Verified!!") {
                     $('#cont-confirmforedit').hide();
                     $('#cont-editform').show();
@@ -265,7 +440,8 @@ $(document).ready(function () {
                         }
                     });
                 }
-                loadingScreen.hide();
+                $('.outlosdrmqrm').hide();
+
             }
         });
 
@@ -332,7 +508,7 @@ $(document).ready(function () {
 
 
 
-    let pasid, reloadFrButton;
+    let pasid, reloadFrButton, secondaryRs;
     $('#secondarysec').submit(function (event) {
         event.preventDefault();
         formData = new FormData();
@@ -370,14 +546,15 @@ $(document).ready(function () {
             success: function (response) {
 
                 $('#secondaryErrorDisplay').html(response);
-
+                secondaryRs = response;
             },
             complete: function () {
                 loadingScreen.hide();
-                if ($('#secondaryErrorDisplay p').html() == 'success') {
+                if (secondaryRs == 'success') {
                     $("#overlayform2").show();
                     $('.addedsuc2').show();
-                    $('.addedsuc2 h1').html('Personal Information updated succesfully');
+                    $('.addedsuc2 h1').html('Personal Information');
+                    $('.addedsuc2 h3').html('updated succesfully');
                     $('#secondaryErrorDisplay').html("");
                 } else {
                     $('#cont-editform').show();
@@ -454,7 +631,7 @@ $(document).ready(function () {
     });
 
 
-
+    let prResponse;
     $('#primarysec').submit(function (event) {
         event.preventDefault();
         loadingScreen.show();
@@ -475,26 +652,29 @@ $(document).ready(function () {
             processData: false,
             success: function (response) {
                 $('#primaryErrorDisplay').html(response);
-
+                prResponse = response;
             },
             complete: function () {
-                if ($('#primaryErrorDisplay p').html() == 'username updated succesfully') {
+                if (prResponse == 'username updated succesfully') {
                     $("#overlayform2").show();
                     $('.addedsuc2').show();
-                    $('.addedsuc2 h1').html('username updated succesfully');
+                    $('.addedsuc2 h1').html('username');
+                    $('.addedsuc2 h3').html('updated succesfully');
                     $('#primaryErrorDisplay').html("");
                     loadingScreen.hide();
-                } else if ($('#primaryErrorDisplay p').html() == 'password updated succesfully') {
+                } else if (prResponse == 'password updated succesfully') {
                     $("#overlayform2").show();
                     $('.addedsuc2').show();
-                    $('.addedsuc2 h1').html('password updated succesfully');
+                    $('.addedsuc2 h1').html('password');
+                    $('.addedsuc2 h3').html('updated succesfully');
                     $('#primaryErrorDisplay').html("");
                     loadingScreen.hide();
 
-                } else if ($('#primaryErrorDisplay p').html() == 'login credentials updated succesfully') {
+                } else if (prResponse == 'login credentials updated succesfully') {
                     $("#overlayform2").show();
                     $('.addedsuc2').show();
-                    $('.addedsuc2 h1').html('login credentials updated succesfully');
+                    $('.addedsuc2 h1').html('login credentials');
+                    $('.addedsuc2 h3').html('updated succesfully');
                     $('#primaryErrorDisplay').html("");
 
                     loadingScreen.hide();
@@ -712,7 +892,6 @@ $(document).ready(function () {
         let catchid = $(this).closest("li").find(".showact .act2").attr('id');
         let nIndex = catchid.indexOf('n');
         let valueBeforeN = catchid.substring(3, nIndex);
-        loadingScreen.show();
         // console.log(" before N:" + valueBeforeN);
         let suprevId = parseInt(valueBeforeN);
         // console.log(suprevId);
@@ -727,6 +906,7 @@ $(document).ready(function () {
             processData: false,
             success: function (response) {
                 $("#cont-viewinform").html(response);
+
             },
             error: function (xhr, status, error) {
                 console.error(xhr.responseText);
@@ -734,7 +914,12 @@ $(document).ready(function () {
                 console.error("Error: " + error);
             },
             complete: function () {
-                loadingScreen.hide();
+                $('.outlosdviewinfo').show();
+
+                setTimeout(() => {
+                    $('.outlosdviewinfo').hide();
+
+                }, 2000);
                 if ($("#cont-viewinform")) {
 
                     let prp = $("#vinfo");
@@ -1035,7 +1220,7 @@ function handleimg(a) {
 
 function forresponseinact(fulln, nmbr, mfile) {
     const profileImage = $('#displayaddanim');
-    nm = $('.name h2');
+    nm = $('.addedsuc .name h1');
     nm.html(fulln);
 
     if (nmbr == 1) {

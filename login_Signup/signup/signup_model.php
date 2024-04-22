@@ -12,6 +12,30 @@ function get_username(object $pdo, string $username)
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result;
 }
+
+function get_student_id(object $pdo, int $student_id)
+{
+    $query = "SELECT student_id FROM students WHERE student_id = :student_id;";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":student_id", $student_id);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 function get_email(object $pdo, string $email)
 {
     $query = "SELECT email FROM students WHERE email = :email;";
@@ -22,6 +46,24 @@ function get_email(object $pdo, string $email)
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function set_user(object $pdo, string $username, string $userpassword)
 {
@@ -38,6 +80,15 @@ function set_user(object $pdo, string $username, string $userpassword)
     $stmt->execute();
 }
 
+
+
+
+
+
+
+
+
+
 function set_user_info(
     object $pdo,
     int $users_id,
@@ -47,7 +98,7 @@ function set_user_info(
     string $lastname,
     string $middlename,
     string $email,
-    string $contact,
+    int $contact,
     string $address,
     string $year_level,
     string $course,
@@ -59,14 +110,14 @@ function set_user_info(
     $query = "INSERT INTO students (
     users_id, 
     student_id,
-    ImageData,
+    profile_pic,
     firstname, 
     lastname, 
     middlename, 
     email, 
     contact, 
     address, 
-    year_level, 
+    year_levelnsection, 
     course, 
     department, 
     gender, 

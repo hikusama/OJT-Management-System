@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $room,
                     $gender
                 );
-                echo '<p class="setd" style="color:green;font-family:sans-serif;">success</p>';
+                echo 'success';
             } else {
                 echo "<h4 style='color:rgb(2, 136, 189);'>Make changes to update</h4>";
             }

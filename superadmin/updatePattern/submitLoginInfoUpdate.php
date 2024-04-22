@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $key,
                     $username
                 );
-                echo '<p class="setd" style="color:green;font-family:sans-serif;">username updated succesfully</p>';
+                echo 'username updated succesfully';
 
             } else if (($firstusername == $username) && !empty($userpassword) && !empty($confirm_password)) {
                 update_Login_Cred_Pw_Only(
@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $key,
                     $userpassword
                 );
-                echo '<p class="setd" style="color:green;font-family:sans-serif;">password updated succesfully</p>';
+                echo 'password updated succesfully';
             } else if (($firstusername != $username  && !empty($userpassword) && !empty($confirm_password))) {
                 updateLoginCredAll(
                     $pdo,
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $username,
                     $userpassword
                 );
-                echo '<p class="setd" style="color:green;font-family:sans-serif;">login credentials updated succesfully</p>';
+                echo 'login credentials updated succesfully';
 
 
             } else if (($firstusername == $username) && empty($userpassword) && empty($confirm_password)) {

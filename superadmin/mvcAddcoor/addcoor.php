@@ -89,12 +89,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $username,
                     $userpassword
                 );
-                echo '<p class="formsuc" style="color:green;font-family:sans-serif;">success</p>';
+                echo 'success';
             }
         }
 
         if (!$errors) {
-            echo '<p class="setd" style="color:green;font-family:sans-serif;">All Set</p>';
+            if (!isset($_POST['iseror'])) {
+                echo 'All Set';
+            }
         } else {
             foreach ($errors as $error) {
                 echo '<p class="formError" style="color:red;font-family:sans-serif;">' . $error . '</p>';

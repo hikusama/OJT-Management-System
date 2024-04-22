@@ -14,6 +14,64 @@ img {
   -webkit-user-drag: none;
 }
 
+#fullload {
+  background-color: rgb(41, 41, 41);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 3;
+}
+
+#tommy {
+  border-radius: 50%;
+  height: 7rem;
+  border: solid 5px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-name: bordertom;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bordertom {
+  0% {
+    border-color: rgb(253, 94, 2);
+  }
+
+  25% {
+    border-color: rgb(104, 0, 165);
+
+  }
+
+  50% {
+    border-color: rgb(0, 187, 140);
+
+  }
+
+  75% {
+    border-color: rgb(0, 174, 255);
+
+  }
+
+  100% {
+    border-color: rgb(253, 94, 2);
+
+  }
+}
+
+#fullload h5 {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(255, 60, 0);
+}
 
 .side {
   background-color: rgb(253, 207, 2);
@@ -121,7 +179,6 @@ img {
 }
 
 #signup form>* {
-  border: 1px solid rgba(255, 255, 255, 0.381);
   animation-name: trisection;
   animation-duration: 1s;
   animation-iteration-count: 1;
@@ -139,6 +196,15 @@ img {
   }
 }
 
+#SN::-webkit-outer-spin-button,
+#SN::-webkit-inner-spin-button,
+#CNT::-webkit-outer-spin-button,
+#CNT::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 
 #signup form {
   display: flex;
@@ -147,6 +213,7 @@ img {
 }
 
 #logn {
+  position: relative;
   animation-name: smoothlog;
   animation-duration: .5s;
   animation-iteration-count: 1;
@@ -164,9 +231,9 @@ img {
 }
 
 #logn form {
+  overflow: hidden;
+  border-radius: 1.5rem;
   padding: 3.5rem 3.5rem;
-  background: rgba(54, 54, 54, 0.68);
-  border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12.5px);
   -webkit-backdrop-filter: blur(12.5px);
@@ -183,8 +250,10 @@ img {
 
 } */
 #logn form input,
-#signup input {
-  color: rgb(255, 255, 255);
+#signup input,
+#YL,
+#GN {
+  color: rgb(235, 235, 235);
   height: 2.4rem;
   padding: 0 2.4rem;
   width: 12rem;
@@ -195,19 +264,32 @@ img {
   border: 1px solid rgba(85, 85, 85, 0.85);
 }
 
+#YL {
+  color: rgb(128, 128, 128);
+
+}
+
+#GN {
+  color: rgb(128, 128, 128);
+
+}
+
 #signup form textarea {
   color: rgb(255, 255, 255);
-  padding: 0 2.4rem;
-  max-height: 3rem;
-  min-height: 3rem;
-  max-width: 12rem;
-  min-width: 12rem;
+  padding: 1rem 2.4rem;
+  height: 3rem;
+  width: 12rem;
+  resize: none;
   border-radius: 13px;
   backdrop-filter: blur(13.1px);
   -webkit-backdrop-filter: blur(13.1px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   background-color: rgb(41, 41, 41);
   border: 1px solid rgba(85, 85, 85, 0.85);
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
 }
 
 #ch,
@@ -295,7 +377,27 @@ img {
   cursor: pointer;
 }
 
-
+/*
+  ---------next and back buton
+*/
+/* #nextToFill{
+  transition: .3s ease-in;
+  height:2rem;
+  width:6rem;
+  border-radius:.5rem;
+  border:solid .1px ;
+  color:white;
+  margin-top:1rem;
+  background:rgb(0 191 224 / 46%);
+  animation-name:nx;
+  animation-duration:1s;
+  animation-iteration-count:infinite;
+  position:relative;
+}
+#nextToFill:hover{
+  cursor: pointer;
+  background-color: #3498db;
+} */
 
 #btlog,
 #btsign {
@@ -321,7 +423,7 @@ img {
 }
 
 #contentry {
-  position: ;
+  /* position: ; */
   height: 100vh;
   width: 100vw;
 }
@@ -382,10 +484,40 @@ img {
   font-size: .8rem;
 }
 
+#signupResponse1stsection,
+#signupResponse2ndsection,
+#signupResponselastsection {
+  color: rgb(0 195 17);
+  font-family: sans-serif;
+
+}
+
+#signupResponse1stsection > * , #signupResponse2ndsection > *,
+#signupResponselastsection > *{
+  animation-name: responseSignup;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+}
+
+@keyframes responseSignup {
+  0% {
+    opacity: 50%;
+    transform: translateX(-1.5rem);
+  }
+}
+
 .nxbk i,
 .lasti i {
   cursor: pointer;
   transition: .3s;
+  height: 1rem;
+  width: 1rem;
+  border: solid .1px;
+  border-radius: 50%;
+}
+
+#sim {
+  opacity: 50%;
 }
 
 .lasti i:hover {
@@ -398,12 +530,85 @@ img {
 }
 
 .nxbk {
+  position: relative;
   margin-top: 1rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
+.nxbk button {
+  border-radius: .5rem;
+  height: 2rem;
+  width: 3rem;
+  border: solid .1px rgba(255, 255, 255, 0.644);
+  /* font-family: sans-serif; */
+  font-size: .8rem;
+  font-variant: small-caps;
+  color: #fff;
+  cursor: pointer;
+}
+
+#nextToSecond,
+#backToSecond {
+  background-color: #85858588;
+  opacity: 50%;
+  transform: translateX(5rem);
+}
+
+#backToFirst,
+#nextToLast {
+  background-color: #85858588;
+  opacity: 50%;
+
+}
+
+#backToFirst,
+#backToSecond {
+  opacity: 100% !important;
+}
+
+.newFirst {
+  animation-name: newF;
+  animation-duration: .5s;
+  animation-iteration-count: infinite;
+  background-color: #007fe7c5 !important;
+  opacity: 100% !important;
+}
+
+.newSecond {
+  animation-name: newS;
+  animation-duration: .5s;
+  animation-iteration-count: infinite;
+  background-color: #007fe7c5 !important;
+  opacity: 100% !important;
+}
+
+
+
+@keyframes newF {
+  0% {
+    box-shadow: 0 0 .5rem .5rem #ffffff57;
+
+  }
+
+  50% {}
+}
+
+@keyframes newS {
+  0% {
+    box-shadow: 0 0 .5rem .5rem #ffffff57;
+
+  }
+
+  50% {}
+}
+
+
+/* #firstSectionButtonControll button:nth-child(1){
+  opacity: 50%;
+  background-color: gray;
+} */
 .lasti {
   margin-bottom: 1rem;
   width: 100%;
@@ -415,12 +620,11 @@ img {
 
 #first {
   padding: 3.5rem 3.5rem;
-  background: rgba(54, 54, 54, 0.68);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12.5px);
   -webkit-backdrop-filter: blur(12.5px);
-  border: 1px solid rgba(54, 54, 54, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.381) !important;
   text-align: center;
   display: flex;
   place-items: center;
@@ -435,12 +639,11 @@ img {
 
 #second {
   padding: 3.5rem 3.5rem;
-  background: rgba(54, 54, 54, 0.68);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12.5px);
   -webkit-backdrop-filter: blur(12.5px);
-  border: 1px solid rgba(54, 54, 54, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.381) !important;
   text-align: center;
   place-items: center;
   width: 20rem;
@@ -449,12 +652,12 @@ img {
 
 
 #last {
-  background: rgba(54, 54, 54, 0.68);
+  overflow: hidden;
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12.5px);
   -webkit-backdrop-filter: blur(12.5px);
-  border: 1px solid rgba(54, 54, 54, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.381) !important;
   text-align: center;
   place-items: center;
   flex-direction: column;
@@ -476,12 +679,11 @@ img {
 }
 
 .packim {
-  height: 9rem;
-  width: 9rem;
-  border: solid 3px #fff;
+  height: 6rem;
+  width: 6rem;
+  border: solid 1px #fff;
   border-radius: 50%;
   place-items: end;
-
 }
 
 .packim li {
@@ -493,8 +695,8 @@ img {
 }
 
 .packim li img {
-  height: 8.69rem;
-  width: 8.69rem;
+  height: 5.69rem;
+  width: 5.69rem;
   border-radius: 50%;
 }
 
@@ -504,15 +706,15 @@ img {
 
 .packim .plus {
   background-color: rgb(51, 63, 80);
-  height: 2rem;
+  height: 1.5rem;
   cursor: pointer;
-  width: 2rem;
+  width: 1.5rem;
   border-radius: 50%;
   display: grid;
   place-items: center;
   transition: .3s;
   top: 80%;
-  right: 1rem;
+  right: .5rem;
 }
 
 #image {
@@ -534,7 +736,6 @@ img {
   transition: transform .3s;
   height: 80%;
   width: 80%;
-
 }
 
 
@@ -557,12 +758,7 @@ img {
   display: flex !important;
 }
 
-#gn input {
-  cursor: pointer;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-}
+
 
 .ml {
 
@@ -582,16 +778,8 @@ img {
 
 }
 
-#gn {
-  column-gap: 2rem;
-  display: flex !important;
-  justify-content: center;
 
-}
 
-#adrs {
-  padding-top: 1rem !important;
-}
 
 a {
   font-size: .8rem;
@@ -604,14 +792,137 @@ a {
 
 #loginErrors h4 {
   animation-name: errorpr;
-  animation-duration: 1s;
+  animation-duration: .5s;
   animation-iteration-count: 1;
-  
+
 }
 
 @keyframes errorpr {
-  0%{
-    opacity:0;
-    transform:translateX(-1rem);
+  0% {
+    opacity: 0;
+    transform: translateX(-1.5rem);
+  }
+}
+
+.redirect {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  background-color: rgb(41, 41, 41);
+
+}
+
+.redirect-inner {
+  gap: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+
+}
+
+.redirect-inner button {
+  height: 4rem;
+  cursor: pointer;
+  transition: .3s;
+  color: white;
+  border: 1px solid rgb(255 255 255 / 57%) !important;
+  width: 8rem;
+  border-radius: .5rem;
+  animation-name: ask;
+  animation-duration: .8s;
+  animation-iteration-count: 1;
+}
+
+@keyframes ask {
+  0% {
+    opacity: 50%;
+    transform: translateX(-2rem);
+  }
+}
+
+.redirect-inner button:nth-child(1) {
+  background: rgb(11 117 248 / 30%);
+}
+
+.redirect-inner button:nth-child(2) {
+  background: rgb(11 117 248 / 73%);
+}
+
+
+
+.redirect-inner button:hover {
+  transform: scale(.85);
+}
+
+
+
+
+
+.outlosd,
+.outlosdsign {
+  background-color: rgb(41, 41, 41);
+  position: absolute;
+  display: none;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.innerloadsd {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+}
+
+.bar {
+  width: 7px;
+  height: 18px;
+  margin: 0 9px;
+  border-radius: 10px;
+  animation: loading_5192 1s ease-in-out infinite;
+  background-color: aqua;
+}
+
+.bar:nth-child(1) {
+  animation-delay: 0.01s;
+}
+
+.bar:nth-child(2) {
+  animation-delay: 0.09s;
+}
+
+.bar:nth-child(3) {
+  animation-delay: 0.19s;
+}
+
+.bar:nth-child(4) {
+  animation-delay: 0.29s;
+}
+
+@keyframes loading_5192 {
+  0% {
+    transform: scale(1);
+  }
+
+  20% {
+    transform: scale(1, 2.5);
+  }
+
+  40% {
+    transform: scale(1);
   }
 }

@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/config.php';
+require_once '../../includes/config.php';
 // require_once '../includes/session.php';
 // session_start();
 
@@ -9,41 +9,53 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $firstname = $_POST["firstname"];
     $lastname = $_POST["lastname"];
     $middlename = $_POST["middlename"];
-    $email = $_POST["email"];
-    $contact = $_POST["contact"];
     $year_level = $_POST["year_level"];
+    $email = $_POST["email"];
+    $gender = $_POST["gender"];
+    $contact = intval($_POST["contact"]);
     $address = $_POST["address"];
     $course = $_POST["course"];
     $department = $_POST["department"];
-    $gender = $_POST["gender"];
     $username = $_POST["username"];
     $userpassword = $_POST["userpassword"];
     $confirm_password = $_POST["confirm_password"];
-    $user_role;
 
 
 
 
+    $errors = [];
     try {
         require_once 'signup_model.php';
         require_once 'signup_contr.php';
-        
-    
 
-        $errors = [];
+
         if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-            $ImageData = file_get_contents($_FILES['image']['tmp_name']);
+            $allowedExtensions = ['jpg', 'jpeg', 'png'];
+            $fileExtension = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
+            $fileSize = $_FILES['image']['size']; // Size of the uploaded file in bytes
+
+            $maxFileSize = 1 * 1024 * 1024;
+
+            if (in_array($fileExtension, $allowedExtensions)) {
+                if ($fileSize <= $maxFileSize) {
+                    $ImageData = file_get_contents($_FILES['image']['tmp_name']);
+                } else {
+                    $errors["pic_error"] = "The file size exceeds the maximum allowed limit (1 MB)!";
+                }
+            } else {
+                $errors["pic_error"] = "Only JPG and PNG files are allowed for profile pictures!";
+            }
         } else {
-            $errors["pic_error"] = "Please choose a profile pic!!";
+            $errors["pic_error"] = "Please choose a profile pic!";
         }
+
         if (is_empty_inputs(
             $student_id,
+            $username,
+            $userpassword,
             $firstname,
             $lastname,
             $middlename,
-            $username,
-            $userpassword,
-            $confirm_password,
             $email,
             $address,
             $contact,
@@ -54,11 +66,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         )) {
             $errors["empty_inputs"] = "Please fill all fields!";
         }
-        if (is_invalid_email($email)) {
-            $errors["invalid_email"] = "Please input valid email!";
-        }
         if (is_studentid_invalid($student_id)) {
             $errors["invalid_studid"] = "Student id must integer Integer!";
+        }
+        if (is_invalid_email($email)) {
+            $errors["invalid_email"] = "Please input valid email!";
         }
         if (is_username_taken($pdo, $username)) {
             $errors["username_taken"] = "Username already taken!";
@@ -66,6 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (is_email_registered($pdo, $email)) {
             $errors["email_registered"] = "Email has been already registered!";
         }
+
         // if(is_userInput_int($contact)){
         //     $errors["int_input"] = "Please input contact number!";
         // }
@@ -74,25 +87,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         if (!$errors) {
-            
-            // create_user_info(
-            //     $pdo,
-            //     $user_id,
-            //     $student_id,
-            //     $ImageData,
-            //     $firstname,
-            //     $lastname,
-            //     $middlename,
-            //     $email,
-            //     $contact,
-            //     $address,
-            //     $year_level,
-            //     $course,
-            //     $department,
-            //     $gender
-            // );
-            
-        }else{
+
+            create_user_info(
+                $pdo,
+                $student_id,
+                $ImageData,
+                $firstname,
+                $lastname,
+                $middlename,
+                $email,
+                $contact,
+                $address,
+                $year_level,
+                $course,
+                $department,
+                $gender,
+                $username,
+                $userpassword
+            );
+            echo 'Account Created Successfully';
+        } else {
             foreach ($errors as $error) {
                 echo '<h4 class="formError" style="color:red;font-family:sans-serif;">' . $error . '</h4>';
             }

@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/config.php';
+require_once '../../includes/config.php';
 // require_once '../includes/session.php';
 session_start();
 
@@ -40,7 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // $_SESSION["signup_data"] = $signupData;
 
             $_SESSION["user_id"] = $result["user_id"];
-            $_SESSION["username"] = htmlspecialchars($result["username"]);
+            $_SESSION['username'] = $result['username'];
+            $_SESSION['user_role'] = $result['user_role'];
         } else {
             foreach ($errors as $error) {
                 echo '<h4 class="formError" style="color:red;font-family:sans-serif;">' . $error . '</h4>';

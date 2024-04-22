@@ -13,9 +13,44 @@ body {
 
 }
 
-.outlosd {
-    background-color: rgb(41, 41, 41);
+#fullload {
     position: fixed;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+}
+
+#tommy {
+    border-radius: 50%;
+    height: 7rem;
+    border: solid 3px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#fullload h5 {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 60, 0);
+}
+
+.outlosd,
+.outlosdrm,
+.outlosdrmqrm,
+.outlosdvw,
+.outlosdviewinfo,
+.outlosdadd {
+    background-color: rgb(41, 41, 41);
+    position: absolute;
+    z-index: 2;
     display: none;
     height: 100%;
     width: 100%;
@@ -172,6 +207,7 @@ body {
 }
 
 .outside {
+    z-index: 6;
     height: 100vh;
     position: relative;
     transition: .3s;
@@ -198,6 +234,8 @@ body {
     flex-direction: column;
     row-gap: 1.5rem;
     place-items: center;
+    z-index: 2;
+    position: relative;
 }
 
 
@@ -324,8 +362,7 @@ body {
 
 
 .head {
-
-    z-index: 1;
+    z-index: 5;
     position: fixed;
     width: 100%;
     height: 3rem;
@@ -547,7 +584,7 @@ body {
 .oberlay {
     position: absolute;
     height: 100%;
-    z-index: 1;
+    z-index: 5;
     background: rgba(0, 0, 0, 0.49);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
@@ -574,6 +611,7 @@ a {
 
 /* coordinators */
 #coordinators .coordinators-inner {
+
     flex-direction: column;
     place-items: center;
     row-gap: 3rem;
@@ -582,13 +620,15 @@ a {
 
 #coordinators {
     width: 100%;
-
+    display: none;
 
 
 
 }
 
 .searchd {
+    position: relative;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -951,10 +991,12 @@ a {
     border-radius: 2rem;
     animation-name: addporm;
 }
+
 .editcoor-inner {
     background: linear-gradient(transparent, rgb(0 0 0 / 70%)) !important;
-      
+
 }
+
 .addcoor-inner,
 .editcoor-inner {
     min-height: 18rem;
@@ -965,6 +1007,7 @@ a {
     width: fit-content;
     max-width: 37rem;
     min-width: 21rem;
+    overflow: hidden;
 }
 
 #back {
@@ -1315,6 +1358,7 @@ a {
 #cont-viewinform,
 #cont-addcoor,
 #cont-confirmforedit {
+    z-index: 4;
     animation-duration: .3s;
     animation-iteration-count: 1;
     position: absolute;
@@ -1398,6 +1442,7 @@ a {
 
 #overlayform,
 #overlayform2 {
+    z-index: 4;
     position: fixed;
     display: none;
     backdrop-filter: blur(3px);
@@ -1415,7 +1460,7 @@ a {
 }
 
 #overlayform2 {
-    background-color:rgb(0 0 0 / 79%);
+    background-color: rgb(0 0 0 / 79%);
 
 }
 
@@ -1523,28 +1568,39 @@ a {
     color: rgba(223, 223, 223, 0.664);
 }
 
-#errorDisplay, #secondaryErrorDisplay {
+#errorDisplay,
+#secondaryErrorDisplay {
     padding: 1.5rem 0;
     text-align: center;
     width: 100%;
 }
-#reqeditresponse p{
-    padding: .5rem 0;
+
+#reqeditresponse p {
     text-align: center;
 
 }
 
 
-.addedsuc h2 {
-    text-align: center;
-    text-transform: capitalize;
+
+
+.addedsuc h1,
+.addedsuc2 h1 {
+    /* text-align: center; */
+    font-variant: small-caps;
+    text-transform:lowercase;
+
+    color: #009fff99;
 }
-.addedsuc h1, .addedsuc2 h1 {
-    text-align: center;
+.addedsuc2 h3 {
+    text-transform:lowercase;
+    font-variant: small-caps;
+    color: #23e155ad;
+    font-style: italic;
 }
 
-.addedsuc, .addedsuc2 {
-    position: fixed;
+.addedsuc,
+.addedsuc2 {
+    position: absolute;
     display: none;
     height: fit-content;
     padding: 2rem 0;
@@ -1557,8 +1613,11 @@ a {
     animation-iteration-count: 1;
     animation-name: spread;
     overflow: hidden;
+    z-index: 4;
 }
-
+.name h3{
+    font-variant: small-caps;
+}
 @keyframes spread {
     0% {
         width: 0;
@@ -1575,12 +1634,7 @@ a {
 
 }
 
-.name h1 {
-    font-variant: small-caps;
-    text-transform: lowercase;
-    font-style: italic;
 
-}
 
 @keyframes poptxt {
     0% {
@@ -1690,7 +1744,8 @@ a {
     }
 } */
 
-#primaryErrorDisplay, #secondaryErrorDisplay{
+#primaryErrorDisplay,
+#secondaryErrorDisplay {
     font-size: .9rem;
     text-align: center;
     padding: .5rem 0;
@@ -1723,7 +1778,8 @@ a {
     text-align: center;
 }
 
-#done ,#done2{
+#done,
+#done2 {
     height: 2.5rem;
     width: 8rem;
     background: rgba(0, 101, 216, 0.13);
@@ -1750,7 +1806,7 @@ a {
 
 @media screen and (max-width:665px) {
     .outside {
-        z-index: 2;
+        /* z-index: 2; */
         position: fixed;
     }
 
@@ -1776,4 +1832,3 @@ a {
 
 
 }
-

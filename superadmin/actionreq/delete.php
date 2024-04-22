@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 if ($stmt->rowCount() > 0 && $stmt2->rowCount() > 0) {
 
-                    echo '<p class="successresp" style="color:green;font-family:sans-serif;">success</p>';
+                    echo 'success';
                 }
             }
         } catch (PDOException $e) {

@@ -17,6 +17,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result) {
 ?>
+        <div class="outlosdviewinfo">
+            <div class="innerloadsd">
+                <div class="loader">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
         <div class="viewinform">
             <img src="<?php echo $imgSrc ?>" id="vinfo" alt="">
             <h2><?php echo $result["lastname"]  . ", " . $result["middlename"] . " " . $result["firstname"]; ?></h2>

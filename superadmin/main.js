@@ -1,3 +1,4 @@
+
 const checkbox = document.getElementById('sideCheck');
 
 function handleCheckboxChange() {
@@ -93,176 +94,7 @@ countTo(trval, "trainees", 400000);
 countTo(admins, "ad", 400000);
 
 
-$(document).ready(function () {
 
-
-
-    // side nav displaying content
-
-    $(document).on("click", "#tabs label", function (e) {
-        e.preventDefault(); // Prevent default link behavior
-
-        $("#tabs label").removeClass("on");
-        $(this).addClass("on");
-
-        var page = $(this).find("a").attr("href").substr(1);
-        console.log(page);
-        // switch (page) {
-        //     case "overview":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         // $("#overview").hide();
-        //     break;
-        //     case "coordinators":
-        //         // $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "admins":
-        //         $("#coordinators").hide();
-        //         // $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "students":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         // $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "enroll":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         // $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "mails":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         // $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "setting":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         // $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-
-        //     default:
-        //         $("#content").hide();
-        //     break;
-        // }
-        $("#content > *").hide();
-        $("#" + page).show();
-        if (handleDeviceWidth()) {
-            checkbox.checked = false;
-            handleCheckboxChange();
-        }
-        if (page == "overview") {
-            countTo(studval, "studnum", 400000);
-            countTo(coorval, "coor", 400000);
-            countTo(trval, "trainees", 400000);
-            countTo(admins, "ad", 400000);
-        }
-        if (page != "coordinators") {
-            $("#overlayform").hide();
-            $("#cont-removeform").hide();
-            $("#cont-editform").hide();
-            $("#cont-viewinform").hide();
-            $("#cont-addcoor").hide();
-        $("#coordinators ul .grupi").removeClass("grupiNew");
-
-        }
-    });
-
-
-
-
-
-    // menu 3 dots
-    $("#coordinators ul").on("click", "#men", function (e) {
-        e.preventDefault();
-        console.log("hikusama");
-
-        const hasClass = $(this).closest("li").find(".grupi").hasClass("grupiNew");
-
-        $("#coordinators ul .grupi").removeClass("grupiNew");
-
-        $(this).closest("li").find(".grupi").addClass("grupiNew");
-
-        if (hasClass) {
-            $(this).closest("li").find(".grupi").removeClass("grupiNew");
-        }
-    });
-
-
-
-    // action edit, view and delete form i mean the view is not form hehe
-
-    $("#coordinators ul").on("click", ".showact .act1", function (e) {
-        e.preventDefault();
-        $("#overlayform").show();
-        $("#cont-editform").show();
-        $("#cont-removeform").hide();
-        $("#cont-viewinform").hide();
-    });
-    $("#coordinators ul").on("click", ".showact .act2", function (e) {
-        e.preventDefault();
-        $("#overlayform").show();
-        $("#cont-removeform").show();
-        $("#cont-editform").hide();
-        $("#cont-viewinform").hide();
-    });
-    $("#coordinators ul").on("click", ".showact .act3", function (e) {
-        e.preventDefault();
-        $("#overlayform").show();
-        $("#cont-removeform").hide();
-        $("#cont-editform").hide();
-        $("#cont-viewinform").show();
-    });
-    $("#coordinators .btad").on("click", "#addcooraccount", function (e) {
-        e.preventDefault();
-        $("#overlayform").show();
-        $("#cont-removeform").hide();
-        $("#cont-editform").hide();
-        $("#cont-viewinform").hide();
-        $("#cont-addcoor").show();
-
-    });
-
-    $("#coordinators ul").on("click", "#overlayform", function (e) {
-        $(this).hide();
-        $("#cont-addcoor").hide();
-        $("#cont-removeform").hide();
-        $("#cont-editform").hide();
-        $("#cont-viewinform").hide();
-    });
-
-});
 
 
 
@@ -288,54 +120,54 @@ select('#weekday').textContent = weekday;
 
 // uploading profile 2section
 
-function handleimg(a) {
-    const profileImage = $('#profdisplay');
-    const input = $('#changep')[0];
-    const profileImage2 = $('#profdisplay2');
-    const input2 = $('#changep2')[0];
+// function handleimg(a) {
+//     const profileImage = $('#profdisplay');
+//     const input = $('#changep')[0];
+//     const profileImage2 = $('#profdisplay2');
+//     const input2 = $('#changep2')[0];
 
-    if (a === 2) {
-        const file2 = input2.files[0];
-        if (file2) {
-            const reader2 = new FileReader();
-            console.log("file2");
+//     if (a === 2) {
+//         const file2 = input2.files[0];
+//         if (file2) {
+//             const reader2 = new FileReader();
+//             console.log("file2");
 
-            reader2.onload = function () {
-                profileImage2.attr('src', reader2.result);
-            };
+//             reader2.onload = function () {
+//                 profileImage2.attr('src', reader2.result);
+//             };
 
-            reader2.readAsDataURL(file2);
-        } else {
-            console.log("invalid");
-            profileImage.attr('src', 'images/def.png');
+//             reader2.readAsDataURL(file2);
+//         } else {
+//             console.log("invalid");
+//             profileImage.attr('src', 'images/def.png');
 
-        }
-    } else if (a === 1) {
-        const file = input.files[0];
-        if (file) {
-            const reader = new FileReader();
-            console.log("file1");
+//         }
+//     } else if (a === 1) {
+//         const file = input.files[0];
+//         if (file) {
+//             const reader = new FileReader();
+//             console.log("file1");
 
-            reader.onload = function () {
-                profileImage.attr('src', reader.result);
-            };
+//             reader.onload = function () {
+//                 profileImage.attr('src', reader.result);
+//             };
 
-            reader.readAsDataURL(file);
-        } else {
-            console.log("invalid");
-            profileImage.attr('src', 'images/def.png');
+//             reader.readAsDataURL(file);
+//         } else {
+//             console.log("invalid");
+//             profileImage.attr('src', 'images/def.png');
 
-        }
-    }
-
-
+//         }
+//     }
 
 
 
 
 
 
-}
+
+
+// }
 
 
 // for the check box nav
