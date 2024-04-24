@@ -6,7 +6,7 @@ let loadingScreen = $(".outlosd");
 
 // $('.addedsuc2').hide();
 // $('.addedsuc').hide();
-let suprevId, userId, fn, query = '';
+let adminId, userId, fn, query = '';
 let fnameec, lnameec, mnameec, positionec, departmentec, roomec, gnec;
 
 let searchQuery = "%" + query + "%";
@@ -16,199 +16,8 @@ let searchQuery = "%" + query + "%";
 
 
 $(document).ready(function () {
-    let isDefault = true;
-    // let isCoordinatorsFuncReady = false;
+    searchRefresh();
 
-
-
-
-
-
-    $(document).on("click", "#tabs label", function (e) {
-        e.preventDefault(); // Prevent default link behavior
-        isDefault = false;
-        $("#tabs label").removeClass("on");
-        $(this).addClass("on");
-
-        let valiTabs = ['overview', 'coordinators', 'admins', 'student', 'enroll', 'mails', 'settings'];
-        var page = $(this).find("a").attr("href").substr(1);
-        if (handleDeviceWidth()) {
-            checkbox.checked = false;
-            handleCheckboxChange();
-        }
-        // console.log(page);
-        // switch (page) {
-        //     case "overview":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         // $("#overview").hide();
-        //     break;
-        //     case "coordinators":
-        //         // $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "admins":
-        //         $("#coordinators").hide();
-        //         // $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "students":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         // $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "enroll":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         // $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "mails":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         // $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "setting":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         // $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-
-        //     default:
-        //         $("#content").hide();
-        //     break;
-        // }
-        if (valiTabs.includes(page)) {
-            findPage(page);
-        }
-        // $("#content > *").hide();
-        // $("#" + page).show();
-
-        if (page == "overview") {
-            isDefault = false;
-
-
-        }
-
-
-        // else if (page == "coordinators") {
-        //     $("#overlayform").hide();
-        //     $("#coordinators").show();
-        //     console.log('coordinators');
-        //     searchRefresh();
-
-        // } else if (page == "admins") {
-        //     console.log('admins');
-        //     $("#coordinators").hide();
-        //     $("#coordinators ul").html('');
-
-        // } else if (page == "student") {
-        //     console.log('student');
-        //     $("#coordinators").hide();
-        //     $("#coordinators ul").html('');
-
-        // } else if (page == "enroll") {
-        //     console.log('enroll');
-        //     $("#coordinators").hide();
-        //     $("#coordinators ul").html('');
-
-        // } else if (page == "mails") {
-        //     console.log('mails');
-        //     $("#coordinators").hide();
-        //     $("#coordinators ul").html('');
-
-        // } else if (page == "settings") {
-        //     console.log('settings');
-        //     $("#coordinators").hide();
-        //     $("#coordinators ul").html('');
-
-        // }
-
-    });
-
-    function findPage(page) {
-        $.get('pannelparts/' + page + '.php', function (response) {
-            $('#content').html(response);
-            console.log('finded');
-            if (page == 'overview') {
-                console.log(' hhhhhhhhh');
-            }
-        }).done(function () {
-            if (page == "overview") {
-                if (isDefault == false) {
-                    getOverview();
-                }
-            } else if (page == "coordinators") {
-                isCoordinatorsFuncReady();
-
-            } else if (page == "admins") {
-                isAdminsFuncReady();
-
-            } else if (page == "student") {
-                isStudentFuncReady();
-
-            } else if (page == "enroll") {
-                isEnrollFuncReady();
-
-            } else if (page == "mails") {
-                isMailsFuncReady();
-
-            } else if (page == "settings") {
-                isSettingsFuncReady();
-
-            }
-
-        });
-    }
-
-    if (isDefault == true) {
-        getOverview();
-    }
-
-
-
-
-
-
-
-
-
-
-    /*
-        ----------------------------Coordinators Ready----------------------------
-    */
-
-    function isCoordinatorsFuncReady() {
-
-    };
 
     $("#searchForm").submit(function (event) {
         event.preventDefault();
@@ -220,7 +29,7 @@ $(document).ready(function () {
         let searchQuery = "%" + query + "%";
 
         $.ajax({
-            url: 'search.php',
+            url: '../adminSection/adminActionreq/search.php',
             method: 'GET',
             data: { query: searchQuery },
             success: function (response) {
@@ -232,11 +41,6 @@ $(document).ready(function () {
         });
     });
 
-
-
-
-
-
     let checkAdd;
     $('#changep2, #fnamec, #lnamec, #mnamec, #emailc, #positionc, #departmentc, #roomc, #gn, #usernamec, #passwordc, #confirm_passwordc').on('change', function () {
         formData = new FormData();
@@ -247,19 +51,16 @@ $(document).ready(function () {
         // Append other form data
         formData.append('fname', $('#fnamec').val());
         formData.append('lname', $('#lnamec').val());
-        formData.append('mname', $('#mnamec').val());
         formData.append('email', $('#emailc').val());
         formData.append('position', $('#positionc').val());
         formData.append('department', $('#departmentc').val());
-        formData.append('room', $('#roomc').val());
-        formData.append('gender', $('#gn').val());
 
         formData.append('username', $('#usernamec').val());
         formData.append('userpassword', $('#passwordc').val());
         formData.append('confirm_password', $('#confirm_passwordc').val());
         // console.log("lib");
         $.ajax({
-            url: 'mvcAddcoor/addcoor.php',
+            url: '../adminSection/mvcAddadmin/addAdmin.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -281,23 +82,19 @@ $(document).ready(function () {
 
     // let fnout,lnout;
     let addRes;
-    $('#coordinators').on("click", ".coradbut label", function (e) {
+    $('#admins').on("click", ".coradbut label", function (e) {
         e.preventDefault();
         if (checkAdd === 'All Set') {
             $('.outlosdadd').show();
             console.log('enteredfff');
             fnout = $('#fnamec').val();
-            mdnout = $('#mnamec').val();
             lnout = $('#lnamec').val();
             formData.append('fname', fnout);
             formData.append('lname', lnout);
             formData.append('iseror', 'gdtg');
-            formData.append('mname', $('#mnamec').val());
             formData.append('email', $('#emailc').val());
             formData.append('position', $('#positionc').val());
             formData.append('department', $('#departmentc').val());
-            formData.append('room', $('#roomc').val());
-            formData.append('gender', $('#gn').val());
 
             formData.append('username', $('#usernamec').val());
             formData.append('userpassword', $('#passwordc').val());
@@ -305,7 +102,7 @@ $(document).ready(function () {
 
 
             $.ajax({
-                url: 'mvcAddcoor/addcoor.php',
+                url: '../adminSection/mvcAddadmin/addAdmin.php',
                 method: 'POST',
                 data: formData,
                 contentType: false,
@@ -320,7 +117,7 @@ $(document).ready(function () {
                     $('.outlosdadd').hide();
                     if (addRes == 'success') {
                         console.log('adadad');
-                        $("#cont-addcoor").hide();
+                        $("#cont-addadmin").hide();
                         $("#cont-removeform").hide();
                         $("#cont-confirmforedit").hide();
                         $("#cont-editform").hide();
@@ -331,7 +128,7 @@ $(document).ready(function () {
                         $(".addedsuc .name h3").html("added successfully");
                         let setC = document.querySelector(".addedsuc .name h1");
                         setC.style.color = "#23e155ad";
-                        fulln = fnout + ' ' + mdnout + ' ' + lnout;
+                        fulln = fnout + ' ' + lnout;
                         forresponseinact(fulln, 1, emptfile);
                     }
                 }
@@ -355,7 +152,7 @@ $(document).ready(function () {
         let formData = new FormData();
         $(".outlosdrm").show();
         formData.append('password', $('#pwdd').val());
-        formData.append('suprevId', suprevId);
+        formData.append('adminId', adminId);
         formData.append('userId', userId);
         document.getElementById('delG').style.transform = 'translateX(13rem)';
 
@@ -366,7 +163,7 @@ $(document).ready(function () {
         isreadyrem = true;
         document.getElementById('delG').style.transform = 'translateX(0)';
         $.ajax({
-            url: 'actionreq/delete.php',
+            url: '../adminSection/adminActionreq/delete.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -380,7 +177,7 @@ $(document).ready(function () {
                 if (removeResponse == 'success') {
                     $("#overlayform2").show();
                     $(".addedsuc").show();
-                    $("#cont-addcoor").hide();
+                    $("#cont-addadmin").hide();
                     $("#cont-removeform").hide();
                     $("#cont-confirmforedit").hide();
                     $("#cont-editform").hide();
@@ -407,18 +204,11 @@ $(document).ready(function () {
     });
 
 
-    // Unfinished
-    // Unfinished
-    // Unfinished
-    // Unfinished
-    // Unfinished
-    // Unfinished
-    // Unfinished
-    // Unfinished
-    // Unfinished
+
     let primary = document.querySelector('.primaryaskedit');
     let secondary = document.querySelector('.secondaryaskedit-inner');
 
+    let isEditReqGranted, editReqGrantedRespone;
     $('#editformreq').submit(function (event) {
         event.preventDefault();
         let formData = new FormData();
@@ -427,7 +217,7 @@ $(document).ready(function () {
         formData.append('userId', userId);
 
         $.ajax({
-            url: 'actionreq/updateVerification.php',
+            url: '../adminSection/adminActionreq/updateVerification.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -435,10 +225,12 @@ $(document).ready(function () {
             success: function (response) {
 
                 $('#reqeditresponse').html(response);
+                editReqGrantedRespone = response;
             },
             complete: function () {
-
-                if ($('#reqeditresponse p').html() === "You Are Verified!!") {
+                console.log(editReqGrantedRespone);
+                if (editReqGrantedRespone === "You Are Verified") {
+                    isEditReqGranted = true;
                     $('#cont-confirmforedit').hide();
                     $('#cont-editform').show();
                     $("#cont-editform .loadingSc").show();
@@ -451,7 +243,7 @@ $(document).ready(function () {
                     $(".secondaryaskedit-inner").html('');
                     formData.append('userId', userId);
                     $.ajax({
-                        url: 'actionreq/primarydisplay.php',
+                        url: '../adminSection/adminActionreq/primarydisplay.php',
                         method: 'POST',
                         data: formData,
                         contentType: false,
@@ -473,6 +265,8 @@ $(document).ready(function () {
 
                         }
                     });
+                } else {
+                    isEditReqGranted = false;
                 }
                 $('.outlosdrmqrm').hide();
 
@@ -495,36 +289,32 @@ $(document).ready(function () {
         ------------------------------------SECONDARY SECTION------------------------------------------------------------
     
     */
-
-
-    $('#cont-editform').on('change', '#changep3, #fnamee, #lnamee, #mnamee, #positione, #departmente, #roome, #gne', function () {
+    let isImageSecondSectionChanged;
+    $('#cont-editform').on('change', '#changep3,#fnamee, #lnamee, #mnamee, #positione, #departmente, #roome, #gne', function () {
         formData = new FormData();
-        console.log("corabut");
-
-
         formData.append('image', $('#changep3')[0].files[0]);
 
+        if ($(this).is('#changep3')) {
+            isImageSecondSectionChanged = true;
+        } 
+        if (isImageSecondSectionChanged == true) {
+            formData.append('changed', 'changed');
+        }
 
         // omenta kita pasada Akel ya saka kita del ya pitchi konakel botton di may lidia 
         formData.append('fnameec', fnameec);
         formData.append('lnameec', lnameec);
-        formData.append('mnameec', mnameec);
         formData.append('positionec', positionec);
         formData.append('departmentec', departmentec);
-        formData.append('roomec', roomec);
-        formData.append('gnec', gnec);
 
         formData.append('fname', $('#fnamee').val());
         formData.append('lname', $('#lnamee').val());
-        formData.append('mname', $('#mnamee').val());
         formData.append('position', $('#positione').val());
         formData.append('department', $('#departmente').val());
-        formData.append('room', $('#roome').val());
-        formData.append('gender', $('#gne').val());
 
 
         $.ajax({
-            url: 'updatePattern/secondaryInfoCheck.php',
+            url: '../adminSection/adminUpdatePattern/secondaryInfoCheck.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -545,15 +335,19 @@ $(document).ready(function () {
     let pasid, reloadFrButton, secondaryRs;
     $('#secondarysec').submit(function (event) {
         event.preventDefault();
-        formData = new FormData();
-        console.log("corabutaaaaaaaaaaaaa");
 
-        console.log(idToBePass);
+        formData = new FormData();
 
         // Append file input
         formData.append('image', $('#changep3')[0].files[0]);
 
         // Append other form data
+
+        if (isImageSecondSectionChanged == true) {
+            formData.append('changed', 'changed');
+        }
+
+
         formData.append('key', idToBePass);
         formData.append('fnameec', fnameec);
         formData.append('lnameec', lnameec);
@@ -572,7 +366,7 @@ $(document).ready(function () {
         formData.append('gender', $('#gne').val());
 
         $.ajax({
-            url: 'updatePattern/submitPersonalInfoUpdate.php',
+            url: '../adminSection/adminUpdatePattern/submitPersonalInfoUpdate.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -585,6 +379,7 @@ $(document).ready(function () {
             complete: function () {
                 loadingScreen.hide();
                 if (secondaryRs == 'success') {
+                    isImageSecondSectionChanged = false;
                     $("#overlayform2").show();
                     $('.addedsuc2').show();
                     $('.addedsuc2 h1').html('Personal Information');
@@ -600,14 +395,6 @@ $(document).ready(function () {
 
 
     });
-
-
-
-
-
-
-
-
 
 
     /*
@@ -651,7 +438,7 @@ $(document).ready(function () {
 
 
         $.ajax({
-            url: 'updatePattern/primaryInfoCheck.php',
+            url: '../adminSection/adminUpdatePattern/primaryInfoCheck.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -679,7 +466,7 @@ $(document).ready(function () {
         formData.append('userpassword', $('#passworde').val());
         formData.append('confirm_password', $('#confirm_passworde').val());
         $.ajax({
-            url: 'updatePattern/submitLoginInfoUpdate.php',
+            url: '../adminSection/adminUpdatePattern/submitLoginInfoUpdate.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -734,9 +521,9 @@ $(document).ready(function () {
         let point = $(this).attr('id');
         // console.log(point);
         // console.log(i);
-        // supervId = 91;
+        // adminId = 91;
         // userId = 135;
-        console.log(suprevId);
+        console.log(adminId);
         console.log(userId);
 
         if (point == 'button2') {
@@ -748,7 +535,7 @@ $(document).ready(function () {
 
                 $("#cont-editform .loadingSc").show();
                 formData = new FormData();
-                formData.append('supervId', suprevId);
+                formData.append('adminId', adminId);
                 $(".primaryaskedit").html('');
                 // let imgSrc = $(this).closest(".secondaryaskedit-inner").find(".chpic img").attr('src');
                 document.getElementById('button1').style.backgroundColor = "transparent";
@@ -760,7 +547,7 @@ $(document).ready(function () {
                 // formData.append('userpassword', $('#passworde').val());
                 // formData.append('confirm_password', $('#confirm_passworde').val());
                 $.ajax({
-                    url: 'actionreq/secondarydisplay.php',
+                    url: '../adminSection/adminActionreq/secondarydisplay.php',
                     method: 'POST',
                     data: formData,
                     contentType: false,
@@ -808,7 +595,7 @@ $(document).ready(function () {
                 formData.append('userId', userId);
 
                 $.ajax({
-                    url: 'actionreq/primarydisplay.php',
+                    url: '../adminSection/adminActionreq/primarydisplay.php',
                     method: 'POST',
                     data: formData,
                     contentType: false,
@@ -842,7 +629,9 @@ $(document).ready(function () {
 
 
 
-    $("#coordinators").on("click", "#men", function (e) {
+
+
+    $("#admins").on("click", "#men", function (e) {
         e.preventDefault();
         // // console.log("hikusama");
         // if (emptfile) {
@@ -852,7 +641,7 @@ $(document).ready(function () {
         // }
         const hasClass = $(this).closest("li").find(".grupi").hasClass("grupiNew");
 
-        $("#coordinators .grupi").removeClass("grupiNew");
+        $("#admins .grupi").removeClass("grupiNew");
 
         $(this).closest("li").find(".grupi").addClass("grupiNew");
 
@@ -862,7 +651,7 @@ $(document).ready(function () {
     });
 
 
-    $("#coordinators #searchResults").on("click", ".showact .act1", function (e) {
+    $("#admins #searchResults").on("click", ".showact .act1", function (e) {
         e.preventDefault();
         $("#overlayform").show();
         $("#cont-confirmforedit").show();
@@ -874,15 +663,15 @@ $(document).ready(function () {
         valueBeforeN = catchid.substring(3, nIndex);
 
         valueAfterN = catchid.slice(nIndex + 1);
-        suprevId = parseInt(valueBeforeN);
+        adminId = parseInt(valueBeforeN);
         userId = parseInt(valueAfterN);
-        console.log(suprevId);
+        console.log(adminId);
         console.log(userId);
 
     });
 
     let filepicfordel;
-    $("#coordinators").on("click", ".showact .act2", function (e) {
+    $("#admins").on("click", ".showact .act2", function (e) {
         e.preventDefault();
         catchid = $(this).attr('id');
 
@@ -890,7 +679,7 @@ $(document).ready(function () {
         valueBeforeN = catchid.substring(3, nIndex);
 
         valueAfterN = catchid.slice(nIndex + 1);
-        suprevId = parseInt(valueBeforeN);
+        adminId = parseInt(valueBeforeN);
         userId = parseInt(valueAfterN);
 
         // console.log(" before N:" + valueBeforeN);
@@ -919,7 +708,7 @@ $(document).ready(function () {
 
 
 
-    $("#coordinators").on("click", ".showact .act3", function (e) {
+    $("#admins").on("click", ".showact .act3", function (e) {
         e.preventDefault();
         let formData = new FormData();
         let imgSrc = $(this).closest("li").find(".pfront img").attr('src');
@@ -927,13 +716,13 @@ $(document).ready(function () {
         let nIndex = catchid.indexOf('n');
         let valueBeforeN = catchid.substring(3, nIndex);
         // console.log(" before N:" + valueBeforeN);
-        let suprevId = parseInt(valueBeforeN);
-        // console.log(suprevId);
+        let adminId = parseInt(valueBeforeN);
+        // console.log(adminId);
         formData.append('imgdp', imgSrc);
-        formData.append('spid', suprevId);
+        formData.append('spid', adminId);
 
         $.ajax({
-            url: 'actionreq/viewinfo.php',
+            url: '../adminSection/adminActionreq/viewinfo.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -973,7 +762,7 @@ $(document).ready(function () {
 
 
 
-    $("#coordinators .btad").on("click", "#addcooraccount", function (e) {
+    $("#admins .btad").on("click", "#addadminaccount", function (e) {
         e.preventDefault();
         $("#back").show();
         $("#overlayform").show();
@@ -981,13 +770,13 @@ $(document).ready(function () {
         $("#cont-confirmforedit").hide();
         $("#cont-editform").hide();
         $("#cont-viewinform").hide();
-        $("#cont-addcoor").show();
+        $("#cont-addadmin").show();
 
     });
 
-    $("#coordinators").on("click", "#overlayform", function (e) {
+    $("#admins").on("click", "#overlayform", function (e) {
         $(this).hide();
-        $("#cont-addcoor").hide();
+        $("#cont-addadmin").hide();
         $("#cont-removeform").hide();
         $("#cont-confirmforedit").hide();
         $("#cont-editform").hide();
@@ -995,24 +784,28 @@ $(document).ready(function () {
         $(".addedsuc").hide();
         $("#reqeditresponse").html('');
         $("#conftopass").val('');
-        // searchRefresh();
+        if (isEditReqGranted === true) {
+            searchRefresh();
+            isEditReqGranted = false;
+        }
 
     });
-    $("#coordinators").on("click", "#back", function (e) {
+    $("#admins").on("click", "#back", function (e) {
         e.preventDefault();
-        $("#cont-addcoor").hide();
+
+        $("#cont-addadmin").hide();
         $("#overlayform").hide();
         $("#cont-editform").hide();
         $("#conftopass").val('');
         $("#reqeditresponse").html('');
-        // searchRefresh();
+        if (isEditReqGranted === true) {
+            searchRefresh();
+            isEditReqGranted = false;
+        }
 
 
     });
-    // $("#errorDisplay").on("click", "#addNewcoor", function (e) {
-    //     e.preventDefault();
-    // console.log("entered");
-    // });
+
     $(".addedsuc").on("click", "#done", function (e) {
         e.preventDefault();
         loadingScreen.show();
@@ -1032,8 +825,8 @@ $(document).ready(function () {
         $("#overlayform").hide();
         $("#overlayform2").hide();
         $(".addedsuc").hide();
-        $("#cont-addcoor").hide();
-        $("#profdisplay2").attr("src", "../images/mali.png");
+        $("#cont-addadmin").hide();
+        $("#profdisplay2").attr("src", "../../images/mali.png");
         $('#changep2').val('');
         $("#cont-removeform input").val("");
         $("#cont-removeform #responsetodel").val("");
@@ -1070,7 +863,7 @@ $(document).ready(function () {
             formData.append('userId', userId);
 
             $.ajax({
-                url: 'actionreq/primarydisplay.php',
+                url: '../adminSection/adminActionreq/primarydisplay.php',
                 method: 'POST',
                 data: formData,
                 contentType: false,
@@ -1099,10 +892,10 @@ $(document).ready(function () {
 
             $("#cont-editform .loadingSc").show();
             formData = new FormData();
-            formData.append('supervId', suprevId);
+            formData.append('adminId', adminId);
             $(".primaryaskedit").html('');
             $.ajax({
-                url: 'actionreq/secondarydisplay.php',
+                url: '../adminSection/adminActionreq/secondarydisplay.php',
                 method: 'POST',
                 data: formData,
                 contentType: false,
@@ -1147,7 +940,10 @@ $(document).ready(function () {
 
     const checkbox = document.getElementById('sideCheck');
 
-
+    if (handleDeviceWidth()) {
+        checkbox.checked = false;
+        handleCheckboxChange();
+    }
 
 
     const storedCheckboxState = localStorage.getItem('checkboxState');
@@ -1160,88 +956,7 @@ $(document).ready(function () {
     }
 
 
-
 });
-
-function getOverview() {
-    const xValues = ["Students", "Trainee", "Coordinator", "Admin"];
-    const yValues = [521, 320, 53, 230];
-    const barColors = [
-        "rgb(0, 191, 224)",
-        "rgb(151, 35, 0)",
-        "rgb(0, 187, 140)",
-        "rgb(104, 0, 165)"
-    ];
-    const studval = 520;
-    const coorval = 320;
-    const trval = 53;
-    const admins = 230;
-    console.log(studval);
-    console.log(coorval);
-    console.log(trval);
-    console.log(admins);
-
-    new Chart("myChart", {
-        type: "pie",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: "Users"
-            }
-        }
-    });
-
-
-
-    // $("#overview").show();
-
-    // $('.lardgeSide').on('change', checkbox ,function (e) {
-    //     e.preventDefault();
-    //     handleCheckboxChange();
-    // });
-
-
-    // function select(sl) {
-    //     return document.querySelector(sl);
-    // }
-
-
-    countTo(studval, "studnum", 400000);
-    countTo(coorval, "coor", 400000);
-    countTo(trval, "trainees", 400000);
-    countTo(admins, "ad", 400000);
-
-
-    const currentDate = new Date();
-
-    const year = currentDate.getFullYear();
-    const month = currentDate.toLocaleString('en-US', { month: 'long' });
-    const day = currentDate.getDate();
-    const weekday = currentDate.toLocaleString('en-US', { weekday: 'long' });
-
-    $('#year').html(year);
-    $('#month').html(month);
-    $('#day').html(day);
-    $('#weekday').html(weekday);
-}
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1257,8 +972,6 @@ function getOverview() {
 // ----------------------------gawang kamay mang inasal--------------------------
 
 
-
-
 function handleDeviceWidth() {
     const deviceWidth = window.innerWidth;
     if (deviceWidth <= 665) {
@@ -1268,24 +981,6 @@ function handleDeviceWidth() {
     }
 }
 
-
-
-
-function countTo(target, elementId, duration) {
-    const element = document.getElementById(elementId);
-    const increment = target / (duration / 1000);
-    let current = 0;
-
-    const intervalId = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            clearInterval(intervalId);
-            current = target;
-        }
-        element.innerHTML = Math.round(current);
-    }, 1);
-    console.log(element);
-}
 
 
 function handleCheckboxChange() {
@@ -1350,11 +1045,14 @@ function handleimg(a) {
 
         }
     } else if (a === 3) {
+
         const file = input3.files[0];
 
         if (file) {
             const reader = new FileReader();
             // console.log("file1");
+            // isImageSecondSectionChanged = true;
+            // console.log('ahsdjdh: '+ isImageSecondSectionChanged);
 
             reader.onload = function () {
                 profileImage3.attr('src', reader.result);
@@ -1431,7 +1129,7 @@ function searchRefresh() {
 
     $.ajax({
 
-        url: 'search.php',
+        url: '../adminSection/adminActionreq/search.php',
         method: 'GET',
         data: { query: searchQuery },
         success: function (response) {

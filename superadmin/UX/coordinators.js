@@ -16,199 +16,8 @@ let searchQuery = "%" + query + "%";
 
 
 $(document).ready(function () {
-    let isDefault = true;
-    // let isCoordinatorsFuncReady = false;
+    searchRefresh();
 
-
-
-
-
-
-    $(document).on("click", "#tabs label", function (e) {
-        e.preventDefault(); // Prevent default link behavior
-        isDefault = false;
-        $("#tabs label").removeClass("on");
-        $(this).addClass("on");
-
-        let valiTabs = ['overview', 'coordinators', 'admins', 'student', 'enroll', 'mails', 'settings'];
-        var page = $(this).find("a").attr("href").substr(1);
-        if (handleDeviceWidth()) {
-            checkbox.checked = false;
-            handleCheckboxChange();
-        }
-        // console.log(page);
-        // switch (page) {
-        //     case "overview":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         // $("#overview").hide();
-        //     break;
-        //     case "coordinators":
-        //         // $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "admins":
-        //         $("#coordinators").hide();
-        //         // $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "students":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         // $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "enroll":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         // $("#enroll").hide();
-        //         $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "mails":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         // $("#mails").hide();
-        //         $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-        //     case "setting":
-        //         $("#coordinators").hide();
-        //         $("#admins").hide();
-        //         $("#students").hide();
-        //         $("#enroll").hide();
-        //         $("#mails").hide();
-        //         // $("#settings").hide();
-        //         $("#overview").hide();
-        //     break;
-
-        //     default:
-        //         $("#content").hide();
-        //     break;
-        // }
-        if (valiTabs.includes(page)) {
-            findPage(page);
-        }
-        // $("#content > *").hide();
-        // $("#" + page).show();
-
-        if (page == "overview") {
-            isDefault = false;
-
-
-        }
-
-
-        // else if (page == "coordinators") {
-        //     $("#overlayform").hide();
-        //     $("#coordinators").show();
-        //     console.log('coordinators');
-        //     searchRefresh();
-
-        // } else if (page == "admins") {
-        //     console.log('admins');
-        //     $("#coordinators").hide();
-        //     $("#coordinators ul").html('');
-
-        // } else if (page == "student") {
-        //     console.log('student');
-        //     $("#coordinators").hide();
-        //     $("#coordinators ul").html('');
-
-        // } else if (page == "enroll") {
-        //     console.log('enroll');
-        //     $("#coordinators").hide();
-        //     $("#coordinators ul").html('');
-
-        // } else if (page == "mails") {
-        //     console.log('mails');
-        //     $("#coordinators").hide();
-        //     $("#coordinators ul").html('');
-
-        // } else if (page == "settings") {
-        //     console.log('settings');
-        //     $("#coordinators").hide();
-        //     $("#coordinators ul").html('');
-
-        // }
-
-    });
-
-    function findPage(page) {
-        $.get('pannelparts/' + page + '.php', function (response) {
-            $('#content').html(response);
-            console.log('finded');
-            if (page == 'overview') {
-                console.log(' hhhhhhhhh');
-            }
-        }).done(function () {
-            if (page == "overview") {
-                if (isDefault == false) {
-                    getOverview();
-                }
-            } else if (page == "coordinators") {
-                isCoordinatorsFuncReady();
-
-            } else if (page == "admins") {
-                isAdminsFuncReady();
-
-            } else if (page == "student") {
-                isStudentFuncReady();
-
-            } else if (page == "enroll") {
-                isEnrollFuncReady();
-
-            } else if (page == "mails") {
-                isMailsFuncReady();
-
-            } else if (page == "settings") {
-                isSettingsFuncReady();
-
-            }
-
-        });
-    }
-
-    if (isDefault == true) {
-        getOverview();
-    }
-
-
-
-
-
-
-
-
-
-
-    /*
-        ----------------------------Coordinators Ready----------------------------
-    */
-
-    function isCoordinatorsFuncReady() {
-
-    };
 
     $("#searchForm").submit(function (event) {
         event.preventDefault();
@@ -220,7 +29,7 @@ $(document).ready(function () {
         let searchQuery = "%" + query + "%";
 
         $.ajax({
-            url: 'search.php',
+            url: '../coordinatorsSection/coorActionreq/search.php',
             method: 'GET',
             data: { query: searchQuery },
             success: function (response) {
@@ -231,11 +40,6 @@ $(document).ready(function () {
             }
         });
     });
-
-
-
-
-
 
     let checkAdd;
     $('#changep2, #fnamec, #lnamec, #mnamec, #emailc, #positionc, #departmentc, #roomc, #gn, #usernamec, #passwordc, #confirm_passwordc').on('change', function () {
@@ -259,7 +63,7 @@ $(document).ready(function () {
         formData.append('confirm_password', $('#confirm_passwordc').val());
         // console.log("lib");
         $.ajax({
-            url: 'mvcAddcoor/addcoor.php',
+            url: '../coordinatorsSection/mvcAddcoor/addcoor.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -305,7 +109,7 @@ $(document).ready(function () {
 
 
             $.ajax({
-                url: 'mvcAddcoor/addcoor.php',
+                url: '../coordinatorsSection/mvcAddcoor/addcoor.php',
                 method: 'POST',
                 data: formData,
                 contentType: false,
@@ -366,7 +170,7 @@ $(document).ready(function () {
         isreadyrem = true;
         document.getElementById('delG').style.transform = 'translateX(0)';
         $.ajax({
-            url: 'actionreq/delete.php',
+            url: '../coordinatorsSection/coorActionreq/delete.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -407,18 +211,11 @@ $(document).ready(function () {
     });
 
 
-    // Unfinished
-    // Unfinished
-    // Unfinished
-    // Unfinished
-    // Unfinished
-    // Unfinished
-    // Unfinished
-    // Unfinished
-    // Unfinished
+
     let primary = document.querySelector('.primaryaskedit');
     let secondary = document.querySelector('.secondaryaskedit-inner');
 
+    let isEditReqGranted, editReqGrantedRespone;
     $('#editformreq').submit(function (event) {
         event.preventDefault();
         let formData = new FormData();
@@ -427,7 +224,7 @@ $(document).ready(function () {
         formData.append('userId', userId);
 
         $.ajax({
-            url: 'actionreq/updateVerification.php',
+            url: '../coordinatorsSection/coorActionreq/updateVerification.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -435,10 +232,12 @@ $(document).ready(function () {
             success: function (response) {
 
                 $('#reqeditresponse').html(response);
+                editReqGrantedRespone = response;
             },
             complete: function () {
-
-                if ($('#reqeditresponse p').html() === "You Are Verified!!") {
+                console.log(editReqGrantedRespone);
+                if (editReqGrantedRespone === "You Are Verified") {
+                    isEditReqGranted = true;
                     $('#cont-confirmforedit').hide();
                     $('#cont-editform').show();
                     $("#cont-editform .loadingSc").show();
@@ -451,7 +250,7 @@ $(document).ready(function () {
                     $(".secondaryaskedit-inner").html('');
                     formData.append('userId', userId);
                     $.ajax({
-                        url: 'actionreq/primarydisplay.php',
+                        url: '../coordinatorsSection/coorActionreq/primarydisplay.php',
                         method: 'POST',
                         data: formData,
                         contentType: false,
@@ -473,6 +272,8 @@ $(document).ready(function () {
 
                         }
                     });
+                } else {
+                    isEditReqGranted = false;
                 }
                 $('.outlosdrmqrm').hide();
 
@@ -495,14 +296,17 @@ $(document).ready(function () {
         ------------------------------------SECONDARY SECTION------------------------------------------------------------
     
     */
-
-
-    $('#cont-editform').on('change', '#changep3, #fnamee, #lnamee, #mnamee, #positione, #departmente, #roome, #gne', function () {
+    let isImageSecondSectionChanged;
+    $('#cont-editform').on('change', '#changep3,#fnamee, #lnamee, #mnamee, #positione, #departmente, #roome, #gne', function () {
         formData = new FormData();
-        console.log("corabut");
-
-
         formData.append('image', $('#changep3')[0].files[0]);
+
+        if ($(this).is('#changep3')) {
+            isImageSecondSectionChanged = true;
+        } 
+        if (isImageSecondSectionChanged == true) {
+            formData.append('changed', 'changed');
+        }
 
 
         // omenta kita pasada Akel ya saka kita del ya pitchi konakel botton di may lidia 
@@ -524,7 +328,7 @@ $(document).ready(function () {
 
 
         $.ajax({
-            url: 'updatePattern/secondaryInfoCheck.php',
+            url: '../coordinatorsSection/coorUpdatePattern/secondaryInfoCheck.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -545,15 +349,19 @@ $(document).ready(function () {
     let pasid, reloadFrButton, secondaryRs;
     $('#secondarysec').submit(function (event) {
         event.preventDefault();
-        formData = new FormData();
-        console.log("corabutaaaaaaaaaaaaa");
 
-        console.log(idToBePass);
+        formData = new FormData();
 
         // Append file input
         formData.append('image', $('#changep3')[0].files[0]);
 
         // Append other form data
+
+        if (isImageSecondSectionChanged == true) {
+            formData.append('changed', 'changed');
+        }
+
+
         formData.append('key', idToBePass);
         formData.append('fnameec', fnameec);
         formData.append('lnameec', lnameec);
@@ -572,7 +380,7 @@ $(document).ready(function () {
         formData.append('gender', $('#gne').val());
 
         $.ajax({
-            url: 'updatePattern/submitPersonalInfoUpdate.php',
+            url: '../coordinatorsSection/coorUpdatePattern/submitPersonalInfoUpdate.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -585,6 +393,7 @@ $(document).ready(function () {
             complete: function () {
                 loadingScreen.hide();
                 if (secondaryRs == 'success') {
+                    isImageSecondSectionChanged = false;
                     $("#overlayform2").show();
                     $('.addedsuc2').show();
                     $('.addedsuc2 h1').html('Personal Information');
@@ -600,14 +409,6 @@ $(document).ready(function () {
 
 
     });
-
-
-
-
-
-
-
-
 
 
     /*
@@ -651,7 +452,7 @@ $(document).ready(function () {
 
 
         $.ajax({
-            url: 'updatePattern/primaryInfoCheck.php',
+            url: '../coordinatorsSection/coorUpdatePattern/primaryInfoCheck.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -679,7 +480,7 @@ $(document).ready(function () {
         formData.append('userpassword', $('#passworde').val());
         formData.append('confirm_password', $('#confirm_passworde').val());
         $.ajax({
-            url: 'updatePattern/submitLoginInfoUpdate.php',
+            url: '../coordinatorsSection/coorUpdatePattern/submitLoginInfoUpdate.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -760,7 +561,7 @@ $(document).ready(function () {
                 // formData.append('userpassword', $('#passworde').val());
                 // formData.append('confirm_password', $('#confirm_passworde').val());
                 $.ajax({
-                    url: 'actionreq/secondarydisplay.php',
+                    url: '../coordinatorsSection/coorActionreq/secondarydisplay.php',
                     method: 'POST',
                     data: formData,
                     contentType: false,
@@ -808,7 +609,7 @@ $(document).ready(function () {
                 formData.append('userId', userId);
 
                 $.ajax({
-                    url: 'actionreq/primarydisplay.php',
+                    url: '../coordinatorsSection/coorActionreq/primarydisplay.php',
                     method: 'POST',
                     data: formData,
                     contentType: false,
@@ -836,6 +637,7 @@ $(document).ready(function () {
             }
         }
     });
+
 
 
 
@@ -933,7 +735,7 @@ $(document).ready(function () {
         formData.append('spid', suprevId);
 
         $.ajax({
-            url: 'actionreq/viewinfo.php',
+            url: '../coordinatorsSection/coorActionreq/viewinfo.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -995,24 +797,28 @@ $(document).ready(function () {
         $(".addedsuc").hide();
         $("#reqeditresponse").html('');
         $("#conftopass").val('');
-        // searchRefresh();
+        if (isEditReqGranted === true) {
+            searchRefresh();
+            isEditReqGranted = false;
+        }
 
     });
     $("#coordinators").on("click", "#back", function (e) {
         e.preventDefault();
+
         $("#cont-addcoor").hide();
         $("#overlayform").hide();
         $("#cont-editform").hide();
         $("#conftopass").val('');
         $("#reqeditresponse").html('');
-        // searchRefresh();
+        if (isEditReqGranted === true) {
+            searchRefresh();
+            isEditReqGranted = false;
+        }
 
 
     });
-    // $("#errorDisplay").on("click", "#addNewcoor", function (e) {
-    //     e.preventDefault();
-    // console.log("entered");
-    // });
+
     $(".addedsuc").on("click", "#done", function (e) {
         e.preventDefault();
         loadingScreen.show();
@@ -1033,7 +839,7 @@ $(document).ready(function () {
         $("#overlayform2").hide();
         $(".addedsuc").hide();
         $("#cont-addcoor").hide();
-        $("#profdisplay2").attr("src", "../images/mali.png");
+        $("#profdisplay2").attr("src", "../../images/mali.png");
         $('#changep2').val('');
         $("#cont-removeform input").val("");
         $("#cont-removeform #responsetodel").val("");
@@ -1070,7 +876,7 @@ $(document).ready(function () {
             formData.append('userId', userId);
 
             $.ajax({
-                url: 'actionreq/primarydisplay.php',
+                url: '../coordinatorsSection/coorActionreq/primarydisplay.php',
                 method: 'POST',
                 data: formData,
                 contentType: false,
@@ -1102,7 +908,7 @@ $(document).ready(function () {
             formData.append('supervId', suprevId);
             $(".primaryaskedit").html('');
             $.ajax({
-                url: 'actionreq/secondarydisplay.php',
+                url: '../coordinatorsSection/coorActionreq/secondarydisplay.php',
                 method: 'POST',
                 data: formData,
                 contentType: false,
@@ -1147,7 +953,10 @@ $(document).ready(function () {
 
     const checkbox = document.getElementById('sideCheck');
 
-
+    if (handleDeviceWidth()) {
+        checkbox.checked = false;
+        handleCheckboxChange();
+    }
 
 
     const storedCheckboxState = localStorage.getItem('checkboxState');
@@ -1160,88 +969,7 @@ $(document).ready(function () {
     }
 
 
-
 });
-
-function getOverview() {
-    const xValues = ["Students", "Trainee", "Coordinator", "Admin"];
-    const yValues = [521, 320, 53, 230];
-    const barColors = [
-        "rgb(0, 191, 224)",
-        "rgb(151, 35, 0)",
-        "rgb(0, 187, 140)",
-        "rgb(104, 0, 165)"
-    ];
-    const studval = 520;
-    const coorval = 320;
-    const trval = 53;
-    const admins = 230;
-    console.log(studval);
-    console.log(coorval);
-    console.log(trval);
-    console.log(admins);
-
-    new Chart("myChart", {
-        type: "pie",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: "Users"
-            }
-        }
-    });
-
-
-
-    // $("#overview").show();
-
-    // $('.lardgeSide').on('change', checkbox ,function (e) {
-    //     e.preventDefault();
-    //     handleCheckboxChange();
-    // });
-
-
-    // function select(sl) {
-    //     return document.querySelector(sl);
-    // }
-
-
-    countTo(studval, "studnum", 400000);
-    countTo(coorval, "coor", 400000);
-    countTo(trval, "trainees", 400000);
-    countTo(admins, "ad", 400000);
-
-
-    const currentDate = new Date();
-
-    const year = currentDate.getFullYear();
-    const month = currentDate.toLocaleString('en-US', { month: 'long' });
-    const day = currentDate.getDate();
-    const weekday = currentDate.toLocaleString('en-US', { weekday: 'long' });
-
-    $('#year').html(year);
-    $('#month').html(month);
-    $('#day').html(day);
-    $('#weekday').html(weekday);
-}
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1257,8 +985,6 @@ function getOverview() {
 // ----------------------------gawang kamay mang inasal--------------------------
 
 
-
-
 function handleDeviceWidth() {
     const deviceWidth = window.innerWidth;
     if (deviceWidth <= 665) {
@@ -1268,24 +994,6 @@ function handleDeviceWidth() {
     }
 }
 
-
-
-
-function countTo(target, elementId, duration) {
-    const element = document.getElementById(elementId);
-    const increment = target / (duration / 1000);
-    let current = 0;
-
-    const intervalId = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            clearInterval(intervalId);
-            current = target;
-        }
-        element.innerHTML = Math.round(current);
-    }, 1);
-    console.log(element);
-}
 
 
 function handleCheckboxChange() {
@@ -1350,11 +1058,14 @@ function handleimg(a) {
 
         }
     } else if (a === 3) {
+
         const file = input3.files[0];
 
         if (file) {
             const reader = new FileReader();
             // console.log("file1");
+            // isImageSecondSectionChanged = true;
+            // console.log('ahsdjdh: '+ isImageSecondSectionChanged);
 
             reader.onload = function () {
                 profileImage3.attr('src', reader.result);
@@ -1430,8 +1141,7 @@ function searchRefresh() {
     $('.outlosd').show();
 
     $.ajax({
-
-        url: 'search.php',
+        url: '../coordinatorsSection/coorActionreq/search.php',
         method: 'GET',
         data: { query: searchQuery },
         success: function (response) {

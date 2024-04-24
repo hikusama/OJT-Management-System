@@ -1,97 +1,99 @@
 
-const checkbox = document.getElementById('sideCheck');
-
-function handleCheckboxChange() {
-    if (this.checked) {
-        console.log('hello');
-        document.body.classList.add('newAll');
-        localStorage.setItem('checkboxState', 'checked');
-    } else {
-        document.body.classList.remove('newAll');
-        localStorage.setItem('checkboxState', 'unchecked');
-    }
-}
-
-checkbox.addEventListener('change', handleCheckboxChange);
-
-document.addEventListener('DOMContentLoaded', function () {
-    const storedCheckboxState = localStorage.getItem('checkboxState');
-    if (storedCheckboxState === 'checked') {
-        checkbox.checked = true;
-        document.body.classList.add('newAll');
-    } else if (storedCheckboxState === 'unchecked') {
-        checkbox.checked = false;
-        document.body.classList.remove('newAll');
-    }
-    $("#overview").show();
-
-});
 
 
+// const checkbox = document.getElementById('sideCheck');
 
+// function handleCheckboxChange() {
+//     if (this.checked) {
+//         console.log('hello');
+//         document.body.classList.add('newAll');
+//         localStorage.setItem('checkboxState', 'checked');
+//     } else {
+//         document.body.classList.remove('newAll');
+//         localStorage.setItem('checkboxState', 'unchecked');
+//     }
+// }
 
+// checkbox.addEventListener('change', handleCheckboxChange);
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     const storedCheckboxState = localStorage.getItem('checkboxState');
+//     if (storedCheckboxState === 'checked') {
+//         checkbox.checked = true;
+//         document.body.classList.add('newAll');
+//     } else if (storedCheckboxState === 'unchecked') {
+//         checkbox.checked = false;
+//         document.body.classList.remove('newAll');
+//     }
+//     $("#overview").show();
+
+// });
 
 
 
 
-const studval = 520;
-const coorval = 320;
-const trval = 53;
-const admins = 230;
-console.log(studval);
-console.log(coorval);
-console.log(trval);
-console.log(admins);
 
-const xValues = ["Students", "Trainee", "Coordinator", "Admin"];
-const yValues = [521, 320, 53, 230];
-const barColors = [
-    "rgb(0, 191, 224)",
-    "rgb(151, 35, 0)",
-    "rgb(0, 187, 140)",
-    "rgb(104, 0, 165)"
-];
 
-new Chart("myChart", {
-    type: "pie",
-    data: {
-        labels: xValues,
-        datasets: [{
-            backgroundColor: barColors,
-            data: yValues
-        }]
-    },
-    options: {
-        title: {
-            display: true,
-            text: "Users"
-        }
-    }
-});
+
+
+// const studval = 520;
+// const coorval = 320;
+// const trval = 53;
+// const admins = 230;
+// console.log(studval);
+// console.log(coorval);
+// console.log(trval);
+// console.log(admins);
+
+// const xValues = ["Students", "Trainee", "Coordinator", "Admin"];
+// const yValues = [521, 320, 53, 230];
+// const barColors = [
+//     "rgb(0, 191, 224)",
+//     "rgb(151, 35, 0)",
+//     "rgb(0, 187, 140)",
+//     "rgb(104, 0, 165)"
+// ];
+
+// new Chart("myChart", {
+//     type: "pie",
+//     data: {
+//         labels: xValues,
+//         datasets: [{
+//             backgroundColor: barColors,
+//             data: yValues
+//         }]
+//     },
+//     options: {
+//         title: {
+//             display: true,
+//             text: "Users"
+//         }
+//     }
+// });
 
 
 
 // counting function 
-function countTo(target, elementId, duration) {
-    const element = document.getElementById(elementId);
-    const increment = target / (duration / 1000); 
-    let current = 0;
+// function countTo(target, elementId, duration) {
+//     const element = document.getElementById(elementId);
+//     const increment = target / (duration / 1000); 
+//     let current = 0;
 
-    const intervalId = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            clearInterval(intervalId);
-            current = target; 
-        }
-        element.textContent = Math.round(current);
-    }, 1); 
-}
+//     const intervalId = setInterval(() => {
+//         current += increment;
+//         if (current >= target) {
+//             clearInterval(intervalId);
+//             current = target; 
+//         }
+//         element.textContent = Math.round(current);
+//     }, 1); 
+// }
 
 // Start counting animation per user
-countTo(studval, "studnum", 400000);
-countTo(coorval, "coor", 400000);
-countTo(trval, "trainees", 400000);
-countTo(admins, "ad", 400000);
+// countTo(studval, "studnum", 400000);
+// countTo(coorval, "coor", 400000);
+// countTo(trval, "trainees", 400000);
+// countTo(admins, "ad", 400000);
 
 
 
@@ -101,17 +103,17 @@ countTo(admins, "ad", 400000);
 
 
 // date and time obviously
-const currentDate = new Date();
+// const currentDate = new Date();
 
-const year = currentDate.getFullYear();
-const month = currentDate.toLocaleString('en-US', { month: 'long' });
-const day = currentDate.getDate();
-const weekday = currentDate.toLocaleString('en-US', { weekday: 'long' });
+// const year = currentDate.getFullYear();
+// const month = currentDate.toLocaleString('en-US', { month: 'long' });
+// const day = currentDate.getDate();
+// const weekday = currentDate.toLocaleString('en-US', { weekday: 'long' });
 
-select('#year').textContent = year;
-select('#month').textContent = month;
-select('#day').textContent = day;
-select('#weekday').textContent = weekday;
+// select('#year').textContent = year;
+// select('#month').textContent = month;
+// select('#day').textContent = day;
+// select('#weekday').textContent = weekday;
 
 
 
@@ -171,19 +173,19 @@ select('#weekday').textContent = weekday;
 
 
 // for the check box nav
-function handleDeviceWidth() {
-    const deviceWidth = window.innerWidth;
-    if (deviceWidth <= 665) {
-        return true;
-    } else {
-        return false;
-    }
-}
+// function handleDeviceWidth() {
+//     const deviceWidth = window.innerWidth;
+//     if (deviceWidth <= 665) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
 
-handleDeviceWidth();
+// handleDeviceWidth();
 
-window.addEventListener('resize', handleDeviceWidth);
+// window.addEventListener('resize', handleDeviceWidth);
 
-function select(sl) {
-    return document.querySelector(sl);
-}
+// function select(sl) {
+//     return document.querySelector(sl);
+// }
