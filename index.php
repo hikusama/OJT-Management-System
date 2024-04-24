@@ -231,7 +231,7 @@ session_start();
     </div>
 <?php  } else if (isset($_SESSION['user_role'], $_SESSION['user_id'])) {
             if ($_SESSION['user_role'] == 'SuperAdmin') {
-                header('location: superadmin/superAdmin.php');
+                header('location: superadmin/pannelparts/overview.php');
             } else if ($_SESSION['user_role'] == 'Supervisor') {
                 header('location: superadmin/coor.php');
             } else if ($_SESSION['user_role'] == 'Student') {
