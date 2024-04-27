@@ -253,11 +253,7 @@ body {
 
 
 
-#content>* {
-    /* animation-name: porolnav; */
-    /* animation-duration: 1s;
-    animation-iteration-count: 1; */
-}
+
 
 @keyframes porolnav {
     0% {
@@ -480,9 +476,7 @@ body {
     padding-bottom: 1rem;
 }
 
-.chartwcanvas{
-    
-}
+
 #myChart::before{
     content: '';
     position: absolute;
@@ -1175,7 +1169,6 @@ a {
     /* opacity: 40%; */
 }
 
-.tabinedit button:nth-child(2) {}
 
 .tabinedit button {
     cursor: pointer;
@@ -1454,7 +1447,6 @@ a {
 
 }
 
-.secondaryaskedit {}
 
 
 #addNewcoor {
