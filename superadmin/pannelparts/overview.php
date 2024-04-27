@@ -17,8 +17,8 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
-    <script src="../interaction//overview.js?v=<?php echo time(); ?>"></script>
     <link rel="stylesheet" href="../tp.css?v=<?php echo time(); ?>">
+
 
     <title>Document</title>
 </head>
@@ -39,24 +39,24 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                 </style>
             </div>
             <nav>
-            <nav>
-                <ul id="tabs">
-                        
+                <nav>
+                    <ul id="tabs">
+
                         <a id="overviewbtn" class="on" href="overview.php"><i class="fas fa-tachometer-alt"></i>overview</a>
-                        
+
                         <a id="coordinatorsbtn" href="coordinators.php"><i class="fas fa-users"></i>coordinators</a>
-                        
+
                         <a id="adminsbtn" href="admins.php"><i class="fas fa-cogs"></i>admins</a>
-                        
+
                         <a id="studentbtn" href="student.php"><i class="fas fa-user-graduate"></i>student</a>
-                        
+
                         <a id="enrollbtn" href="enroll.php"><i class="fas fa-tasks"></i>enroll</a>
-                        
+
                         <a id="mailsbtn" href="mails.php"><i class="fas fa-envelope"></i>mails</a>
-                        
+
                         <a id="settingsbtn" href="settings.php"><i class="fas fa-cog"></i>settings</a>
-                </ul>
-            </nav>
+                    </ul>
+                </nav>
             </nav>
         </div>
     </div>
@@ -65,6 +65,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
         <div class="head"><label id="toplab2" for="sideCheck">Overview</label></div>
         <input type="checkbox" id="sideCheck" onclick="handleCheckboxChange()">
         <div id="content">
+            <!-- <i class="fas fa-sync"></i> -->
             <div id="overview">
                 <div class="cards">
                     <li>
@@ -98,15 +99,27 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                 </div>
 
                 <div class="middleC">
+
                     <canvas id="myChart" style="color: #fff;display: block; width: 100%; max-width: 620px;"></canvas>
 
                     <div class="status">
                         <h3>Status</h3>
                         <div class="headStatus">
-                            <label for="#">Students</label>
-                            <label for="#">Trainees</label>
-                            <label for="#">Coordinators</label>
-                            <label for="#">Admins</label>
+                            <button id="fStudent">Students</button>
+                            <button id="fTrainees">Trainees</button>
+                            <button id="fCoordinators">Coordinators</button>
+                            <button id="fAdmins">Admins</button>
+                        </div>
+                        <div class="status-content">
+                            <li>
+                                <img src="../../images/mali.png" id="user1" alt="">
+                                <div class="persIn">
+                                    <h4>incentasda sdasdadsaa</h4>
+                                    <p>active 2mins ago</p>
+                                </div>
+                                <i id="showInf" class="fa-solid fa-ellipsis "></i>
+
+                            </li>
                         </div>
                     </div>
                     <div class="calendar">
@@ -124,6 +137,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
 
 
 
+    <script src="../UX/overview.js?v=<?php echo time(); ?>"></script>
 
 
 

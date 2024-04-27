@@ -77,7 +77,7 @@ $(document).ready(function () {
                     }, 3000);
 
                     setTimeout(function () {
-                        window.location.href = "../OJT-MANAGEMENT-SYSTEM/superadmin/superAdmin.php";
+                        window.location.href = "../OJT-MANAGEMENT-SYSTEM/superadmin/pannelparts/overview.php";
 
                     }, 5000);
                 }

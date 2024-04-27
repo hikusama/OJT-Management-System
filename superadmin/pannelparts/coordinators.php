@@ -21,7 +21,20 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
 
     <link rel="stylesheet" href="../tp.css?v=<?php echo time(); ?>">
 
-    <title>Document</title>
+    <style>
+        #cont-viewinform::after {
+            background-color: rgb(0, 187, 140);
+        }
+
+        #cont-viewinform::before {
+            background-color: rgb(0, 187, 140);
+        }
+
+        .viewinform #vinfo {
+            border: solid .2rem rgb(0, 187, 140);
+        }
+    </style>
+    <title>Coordinators</title>
 </head>
 
 <body>

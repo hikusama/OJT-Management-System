@@ -4,10 +4,7 @@
 // require_once 'login_Signup/signup_view.php';
 // require_once 'login_Signup/login_view.php';
 session_start();
-?>
-
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>

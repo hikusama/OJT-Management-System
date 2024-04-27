@@ -5,10 +5,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
 }
 
 
-?>
-
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>

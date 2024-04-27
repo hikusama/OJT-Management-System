@@ -20,7 +20,23 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
     <script src="../UX//admins.js?v=<?php echo time(); ?>"></script>
 
     <link rel="stylesheet" href="../tp.css?v=<?php echo time(); ?>">
+    <style>
+        #cont-viewinform::after {
+            background-color: rgb(104, 0, 165);
+        }
 
+        #cont-viewinform::before {
+            background-color: rgb(104, 0, 165);
+        }
+
+        .viewinform #vinfo {
+            background-color: rgb(104, 0, 165);
+        }
+
+        .profSide h2::before {
+            content: 'SuperAdmin';
+        }
+    </style>
     <title>Document</title>
 </head>
 
@@ -33,11 +49,6 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
             <div class="profSide">
                 <img src="../../images/mali.png" id="sidepic" alt="">
                 <h2>Marco J.</h2>
-                <style>
-                    .profSide h2::before {
-                        content: 'SuperAdmin';
-                    }
-                </style>
             </div>
             <nav>
                 <ul id="tabs">

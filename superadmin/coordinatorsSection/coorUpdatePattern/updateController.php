@@ -26,7 +26,7 @@ function is_empty_update_personal_inputs(
     string $position,
     string $department,
     string $room,
-    string $gender,
+    string $gender
 ) {
     if (
         empty($firstname) ||

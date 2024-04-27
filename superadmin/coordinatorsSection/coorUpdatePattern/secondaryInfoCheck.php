@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $position,
             $department,
             $room,
-            $gender,
+            $gender
         )) {
             $errors["empty_inputs"] = "Please fill all fields";
         }

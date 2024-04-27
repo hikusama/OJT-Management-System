@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 <?php
     } else {
-        echo "nahh youd loose";
+        echo "nahh you loose";
     }
 }
 ?>
