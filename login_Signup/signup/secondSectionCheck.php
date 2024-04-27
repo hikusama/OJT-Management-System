@@ -7,7 +7,6 @@ require_once '../../includes/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $gender = $_POST["gender"];
-    $email = $_POST["email"];
     $contact = intval($_POST["contact"]);
     $address = $_POST["address"];
     $course = $_POST["course"];
@@ -27,13 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             $errors['gender_invalid'] = "Invalid Gender!";
         }
-        if (is_invalid_email($email)) {
-            $errors["invalid_email"] = "Please input valid email!";
-        }
+
 
         if (is_empty_secondSection(
             $gender,
-            $email,
             $contact,
             $address,
             $course,
@@ -41,9 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         )) {
             $errors["empty_inputs"] = "Please fill all fields!";
         }
-        if (is_email_registered($pdo, $email)) {
-            $errors["email_registered"] = "Email has been already registered!";
-        }
+
 
         if (!$errors) {
             echo 'Ready to next';

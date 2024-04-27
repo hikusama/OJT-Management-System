@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
     $conf_pw = $_POST["conf_pw"];
+    $email = $_POST["email"];
 
 
     $errors = [];
@@ -37,46 +38,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $errors["pic_error"] = "Please choose a profile pic!";
         }
 
-        if(is_empty_lastSection($username,$password)){
+        if (is_empty_lastSection($username, $password)) {
             $errors["empty_inputs"] = "Please fill all fields!";
         }
-        if (is_username_taken($pdo,$username)) {
+        if (is_username_taken($pdo, $username)) {
             $errors["username_taken"] = "Username already taken!";
         }
-        if (is_password_not_matched($password,$conf_pw)) {
+        if (is_password_not_matched($password, $conf_pw)) {
             $errors["pw_not_matched"] = "Password not matched!";
         }
-        if (is_password_length_invalid($password) && !is_password_not_matched($password,$conf_pw)) {
+        if (is_password_length_invalid($password) && !is_password_not_matched($password, $conf_pw)) {
             $errors["pw_invalid_length"] = "Password must 6-8 characters!";
+        }
+        
+        if (is_invalid_email($email)) {
+            $errors["invalid_email"] = "Please input valid email!";
+        }
+        if (is_email_registered($pdo, $email)) {
+            $errors["email_registered"] = "Email has been already registered!";
         }
 
         if ($errors) {
             foreach ($errors as $error) {
                 echo '<p class="formError" style="color:red;font-family:sans-serif;">' . $error . '</p>';
             }
-        }else {
+        } else {
             echo 'All Set';
         }
-
-
-
-
-    }catch(PDOException $th){
+    } catch (PDOException $th) {
         echo 'Query Failed: ' . $th->getMessage();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -38,7 +38,7 @@ function get_student_id(object $pdo, int $student_id)
 
 function get_email(object $pdo, string $email)
 {
-    $query = "SELECT email FROM students WHERE email = :email;";
+    $query = "SELECT email FROM users WHERE email = :email;";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(":email", $email);
     $stmt->execute();
@@ -65,18 +65,20 @@ function get_email(object $pdo, string $email)
 
 
 
-function set_user(object $pdo, string $username, string $userpassword)
+    
+    function set_user(object $pdo, string $username, string $userpassword, string $email)
 {
     $user_role = "Student";
     $options = [
         'cost' => 12
     ];
     $hashedPassword = password_hash($userpassword, PASSWORD_BCRYPT, $options);
-    $query = "INSERT INTO users (username, password, user_role) VALUES (:username, :userpassword, :user_role);";
+    $query = "INSERT INTO users (username, password, user_role, email) VALUES (:username, :userpassword, :user_role, :email);";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(":username", $username);
     $stmt->bindParam(":userpassword", $hashedPassword);
     $stmt->bindParam(":user_role", $user_role);
+    $stmt->bindParam(":email", $email);
     $stmt->execute();
 }
 
@@ -97,7 +99,6 @@ function set_user_info(
     string $firstname,
     string $lastname,
     string $middlename,
-    string $email,
     int $contact,
     string $address,
     string $year_level,
@@ -114,7 +115,6 @@ function set_user_info(
     firstname, 
     lastname, 
     middlename, 
-    email, 
     contact, 
     address, 
     year_levelnsection, 
@@ -129,7 +129,6 @@ function set_user_info(
     :firstname, 
     :lastname, 
     :middlename, 
-    :email, 
     :contact, 
     :address, 
     :year_level, 
@@ -144,7 +143,6 @@ function set_user_info(
     $stmt->bindParam(":firstname", $firstname);
     $stmt->bindParam(":lastname", $lastname);
     $stmt->bindParam(":middlename", $middlename);
-    $stmt->bindParam(":email", $email);
     $stmt->bindParam(":contact", $contact);
     $stmt->bindParam(":address", $address);
     $stmt->bindParam(":year_level", $year_level);

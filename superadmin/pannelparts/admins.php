@@ -30,7 +30,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
         }
 
         .viewinform #vinfo {
-            background-color: rgb(104, 0, 165);
+            border: solid .2rem rgb(104, 0, 165);
         }
 
         .profSide h2::before {
@@ -247,6 +247,10 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                                         <input type=" text" id="usernamec" placeholder="Username" name="username">
                                     </div>
                                     <div class="inptcont">
+                                        <i class="fas fa-envelope"></i>
+                                        <input id="emailc" type="email" placeholder="E-mail " name="email">
+                                    </div>
+                                    <div class="inptcont">
                                         <i class="fas fa-lock"></i>
                                         <input type="password" id="passwordc" placeholder="Password" name="userpassword" class="border">
                                     </div>
@@ -269,10 +273,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                                         <input id="lnamec" type="text" placeholder="Last name" name="lname">
                                     </div>
 
-                                    <div class="inptcont">
-                                        <i class="fas fa-envelope"></i>
-                                        <input id="emailc" type="email" placeholder="E-mail " name="email">
-                                    </div>
+
 
                                     <div class="inptcont">
                                         <i class="fas fa-briefcase"></i>

@@ -72,7 +72,6 @@ function is_contact_invalid(string $contact)
 
 function is_empty_secondSection(
     string $gender,
-    string $email,
     string $contact,
     string $address,
     string $course,
@@ -80,7 +79,6 @@ function is_empty_secondSection(
 ) {
     if (
         empty($gender) ||
-        empty($email) ||
         empty($contact) ||
         empty($address) ||
         empty($course) ||
@@ -93,6 +91,15 @@ function is_empty_secondSection(
 }
 
 
+
+
+
+
+/*
+
+-------------------------------last Section-----------------------------
+
+*/
 function is_invalid_email(string $email)
 {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -109,15 +116,6 @@ function is_email_registered(object $pdo, string $email)
         return false;
     }
 }
-
-
-
-
-/*
-
--------------------------------last Section-----------------------------
-
-*/
 
 function is_empty_lastSection(
     string $username,
@@ -212,9 +210,9 @@ function is_empty_inputs(
     }
 }
 
-function create_user(object $pdo, string $username, string $userpassword)
+function create_user(object $pdo, string $username, string $userpassword, string $email)
 {
-    set_user($pdo, $username, $userpassword);
+    set_user($pdo, $username, $userpassword, $email);
     $users_id = $pdo->lastInsertId();
     return $users_id;
 }
@@ -238,7 +236,7 @@ function create_user_info(
     string $userpassword
 
 ) {
-    $user_id = create_user($pdo,$username,$userpassword);
+    $user_id = create_user($pdo,$username,$userpassword,$email);
     $user_id = intval($user_id);
     set_user_info(
         $pdo,
@@ -248,7 +246,6 @@ function create_user_info(
         $firstname,
         $lastname,
         $middlename,
-        $email,
         $contact,
         $address,
         $year_level,

@@ -4,7 +4,8 @@
 // require_once 'login_Signup/signup_view.php';
 // require_once 'login_Signup/login_view.php';
 session_start();
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -126,10 +127,7 @@ session_start();
                                     <option value="Male">Male</option>
                                 </select>
                             </div>
-                            <div class="icon-input-container">
-                                <i class="fa-regular fa-envelope"></i>
-                                <input id="EM" type="text" name="email" placeholder="Email">
-                            </div>
+
                             <div class="icon-input-container">
                                 <i class="fa-solid fa-phone"></i>
                                 <input id="CNT" type="number" name="contact" placeholder="Contact Number">
@@ -185,6 +183,10 @@ session_start();
                                 <div class="icon-input-container">
                                     <i class="fa-regular fa-circle-user"></i>
                                     <input id="UN" type="text" name="username" placeholder="Username">
+                                </div>
+                                <div class="icon-input-container">
+                                    <i class="fa-regular fa-envelope"></i>
+                                    <input id="EM" type="text" name="email" placeholder="Email">
                                 </div>
                                 <div class="icon-input-container">
                                     <i class="fas fa-lock"></i>

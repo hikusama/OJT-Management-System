@@ -557,7 +557,15 @@ body {
 .status-content::-webkit-scrollbar{
     display: none;
 }
+.on-status-button{
+
+    color: rgb(253, 94, 2) !important;
+}
+.on-status-button::after{
+    width: 100% !important;
+}
 .status-content{
+    position: relative;
     padding-top: .5rem;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -568,6 +576,9 @@ body {
     height: 66%;
     justify-content: center;
 
+}
+.status-content .loadingSc{
+    background-color: rgb(57, 57, 57);
 }
 .status-content li{
     border-radius: .5rem;

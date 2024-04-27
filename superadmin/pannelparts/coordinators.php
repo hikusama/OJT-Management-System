@@ -324,6 +324,10 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                                         <input type=" text" id="usernamec" placeholder="Username" name="username">
                                     </div>
                                     <div class="inptcont">
+                                        <i class="fas fa-envelope"></i>
+                                        <input id="emailc" type="email" placeholder="E-mail " name="email">
+                                    </div>
+                                    <div class="inptcont">
                                         <i class="fas fa-lock"></i>
                                         <input type="password" id="passwordc" placeholder="Password" name="userpassword" class="border">
                                     </div>
@@ -346,10 +350,6 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                                     <div class="inptcont">
                                         <i class="fas fa-user"></i>
                                         <input id="mnamec" type="text" placeholder=" Middle name" name="mname">
-                                    </div>
-                                    <div class="inptcont">
-                                        <i class="fas fa-envelope"></i>
-                                        <input id="emailc" type="email" placeholder="E-mail " name="email">
                                     </div>
                                     <div class="inptcont">
                                         <i class="fas fa-briefcase"></i>

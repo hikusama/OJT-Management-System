@@ -74,9 +74,9 @@ function is_password_not_matched(string $confirm_password, string $userpassword)
     }
 }
 
-function create_user(object $pdo, string $username, string $userpassword)
+function create_user(object $pdo, string $username, string $userpassword,string $email)
 {
-    set_user($pdo, $username, $userpassword);
+    set_user($pdo, $username, $userpassword, $email);
     $users_id = $pdo->lastInsertId();
     return $users_id;
 }
@@ -97,7 +97,7 @@ function setupCoor(
     string $userpassword
 ) {
 
-    $usrId = create_user($pdo,  $username,  $userpassword);
+    $usrId = create_user($pdo,  $username,  $userpassword, $email);
 
     set_user_info(
         $pdo,
@@ -106,7 +106,6 @@ function setupCoor(
         $firstname,
         $lastname,
         $middlename,
-        $email,
         $position,
         $department,
         $room,

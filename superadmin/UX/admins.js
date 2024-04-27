@@ -92,10 +92,10 @@ $(document).ready(function () {
             formData.append('fname', fnout);
             formData.append('lname', lnout);
             formData.append('iseror', 'gdtg');
-            formData.append('email', $('#emailc').val());
             formData.append('position', $('#positionc').val());
             formData.append('department', $('#departmentc').val());
-
+            
+            formData.append('email', $('#emailc').val());
             formData.append('username', $('#usernamec').val());
             formData.append('userpassword', $('#passwordc').val());
             formData.append('confirm_password', $('#confirm_passwordc').val());

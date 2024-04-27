@@ -111,15 +111,13 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                             <button id="fAdmins">Admins</button>
                         </div>
                         <div class="status-content">
-                            <li>
-                                <img src="../../images/mali.png" id="user1" alt="">
-                                <div class="persIn">
-                                    <h4>incentasda sdasdadsaa</h4>
-                                    <p>active 2mins ago</p>
+                            <div class="loadingSc">
+                                <div class="loadingSc-inner">
+                                    <span class="eloader2"></span>
                                 </div>
-                                <i id="showInf" class="fa-solid fa-ellipsis "></i>
+                            </div>
+                            <div class="status-content-inner"></div>
 
-                            </li>
                         </div>
                     </div>
                     <div class="calendar">

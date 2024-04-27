@@ -178,10 +178,9 @@ $(document).ready(function () {
     */
 
     let isSecondReady;
-    $('#signup').on('change', '#GN, #EM, #CNT, #address, #CRS, #DPT', function () {
+    $('#signup').on('change', '#GN, #CNT, #address, #CRS, #DPT', function () {
         formData = new FormData();
         formData.append('gender', $('#GN').val());
-        formData.append('email', $('#EM').val());
         formData.append('contact', $('#CNT').val());
         formData.append('address', $('#address').val());
         formData.append('course', $('#CRS').val());
@@ -226,11 +225,12 @@ $(document).ready(function () {
     */
 
     let isLastReady;
-    $('#signup').on('change', '#UN, #PW, #CONFPW, #image', function (e) {
+    $('#signup').on('change', '#UN, #EM, #PW, #CONFPW, #image', function (e) {
         e.preventDefault();
         formData = new FormData();
-
+        
         formData.append('image', $('#image')[0].files[0]);
+        formData.append('email', $('#EM').val());
         formData.append('username', $('#UN').val());
         formData.append('password', $('#PW').val());
         formData.append('conf_pw', $('#CONFPW').val());

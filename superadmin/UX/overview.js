@@ -198,15 +198,33 @@ $(document).ready(function () {
 
 
 
-    $('.headStatus button').click(function (e) {
-        e.preventDefault();
-        statusButtonCliked = $(this).attr('id');
-        if (statusButtonCliked == 'fStudent') {
-            getStatus('../overviewSection/status/getStudentsStatus.php','students');
+let statusButtonClicked = 'fStudent';
+let currentState = 'fStudent';
+
+getStatus('../overviewSection/status/getStudentsStatus.php', 'students');
+$('#' + statusButtonClicked).addClass('on-status-button');
+$('.loadingSc').show();
+
+$('.headStatus button').click(function(e) {
+    $('.headStatus button').removeClass('on-status-button'); // Remove class from all buttons
+    $(this).addClass('on-status-button'); // Add class to the clicked button
+    e.preventDefault();
+    statusButtonClicked = $(this).attr('id');
+    if (currentState !== statusButtonClicked) {
+        $('.loadingSc').show();
+        currentState = statusButtonClicked;
+        if (statusButtonClicked === 'fStudent') {
+            getStatus('../overviewSection/status/getStudentsStatus.php', 'students');
+        } else if (statusButtonClicked === 'fTrainees') {
+            getStatus('../overviewSection/status/getTraineesStatus.php', 'trainees');
+        } else if (statusButtonClicked === 'fCoordinators') {
+            getStatus('../overviewSection/status/getCoorStatus.php', 'supervisors');
+        } else if (statusButtonClicked === 'fAdmins') {
+            getStatus('../overviewSection/status/getAdminsStatus.php', 'admins');
         }
+    }
+});
 
-
-    });
 
 
 
@@ -216,17 +234,20 @@ $(document).ready(function () {
 
     function getStatus(url, table) {
         formData = new FormData();
-        formData.append('table',table)
+        formData.append('table', table)
         $.ajax({
             url: url,
             type: 'post',
-            data:formData,
+            data: formData,
             contentType: false,
             processData: false,
             success: function (response) {
-                $('.status-content').html(response);
+                $('.status-content-inner').html(response);
             },
             complete: function () {
+                setTimeout(() => {
+                    $('.loadingSc').hide();
+                }, 1800);
 
             }
         });
