@@ -48,6 +48,7 @@ $(document).ready(function () {
     --------------------------login-------------------------------
     
     */
+   
     $("#loginRequest").submit(function (e) {
         e.preventDefault();
         $('.outlosd').show();
@@ -75,10 +76,8 @@ $(document).ready(function () {
                     setTimeout(function () {
                         $('#loginErrors').html("<p style='color:rgb(2, 136, 189);'>Redirecting...</p> ");
                     }, 3000);
-
                     setTimeout(function () {
                         window.location.href = "../OJT-MANAGEMENT-SYSTEM/superadmin/pannelparts/overview.php";
-
                     }, 5000);
                 }
 

@@ -5,6 +5,8 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
 }
 
 
+
+
 ?>
 
 
@@ -18,9 +20,15 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../tp.css?v=<?php echo time(); ?>">
+    <style>
+        .profSide h2::before {
+            content: '<?php echo $_SESSION['user_role'] ?>';
+        }
+
+    </style>
 
 
-    <title>Document</title>
+    <title>Overview</title>
 </head>
 
 <body>
@@ -29,14 +37,12 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
     <div class="outside">
 
         <div class="sideP">
-            <div class="profSide">
-                <img src="../../images/mali.png" id="sidepic" alt="">
-                <h2>Marco J.</h2>
-                <style>
-                    .profSide h2::before {
-                        content: 'SuperAdmin';
-                    }
-                </style>
+            <div class="profSide" >
+
+                <div class="profsideCont" id="pcont">
+                    <img src="../../images/adminpic.png" id="sidepic" alt="">
+                    <h2 id="callN"><?php echo $_SESSION['username'] ?></h2>
+                </div>
             </div>
             <nav>
                 <nav>
@@ -53,11 +59,16 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                         <a id="enrollbtn" href="enroll.php"><i class="fas fa-tasks"></i>enroll</a>
 
                         <a id="mailsbtn" href="mails.php"><i class="fas fa-envelope"></i>mails</a>
+                        
+                        <a id="" href="other.php" ><i class="fa-solid fa-skull-crossbones"></i>other Access</a>
 
                         <a id="settingsbtn" href="settings.php"><i class="fas fa-cog"></i>settings</a>
                     </ul>
                 </nav>
             </nav>
+            <div class="logoutSec">
+                <button id="logoutClick">Logout</button>
+            </div>
         </div>
     </div>
     <label for="sideCheck" class="oberlay"></label>
@@ -67,6 +78,17 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
         <div id="content">
             <!-- <i class="fas fa-sync"></i> -->
             <div id="overview">
+                <label for="" id="overlayform2">
+                </label>
+                <div class="loggingoutVer-cont">
+                    <div class="loggingoutVer">
+                        <div class="buttonSec">
+                            <button id="yes">Yes</button>
+                            <button id="no">No</button>
+                        </div>
+                        <h2>Logging out...</h2>
+                    </div>
+                </div>
                 <div class="cards">
                     <li>
                         <i class="fas fa-user-graduate"></i>

@@ -59,6 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (is_username_taken($pdo, $username)) {
             $errors["username_taken"] = "Username already taken!";
         }
+        if (is_password_length_invalid($userpassword) && !is_password_not_matched($userpassword, $confirm_password)) {
+            $errors["pw_invalid_length"] = "Password must more than 6 characters!";
+        }
 
         if (is_email_registered($pdo, $email)) {
             $errors["email_registered"] = "Email has been already registered!";

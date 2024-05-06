@@ -32,6 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (is_password_not_matched($confirm_password, $userpassword)) {
                 $errors["not_matched"] = "Password not matched!";
             }
+            if (is_password_length_invalid($userpassword) && !is_password_not_matched($userpassword, $confirm_password)) {
+                $errors["pw_invalid_length"] = "Password must more than 6 characters!";
+            }
         }
 
         if ($firstusername != $username ) {
@@ -45,7 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $gooderrors["pasatt"] = "<p style='color:rgb(175 135 0);'>Password modification attempt!</p>";
         }
                                                                                                                                                                                                                                                      
-
 
 
 

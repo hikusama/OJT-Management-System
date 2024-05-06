@@ -81,6 +81,14 @@ function create_user(object $pdo, string $username, string $userpassword,string 
     return $users_id;
 }
 
+function is_password_length_invalid($userpassword){
+    $lengthPw = strlen($userpassword);
+    if ($lengthPw < 6 || $lengthPw > 8) {
+        return true;
+    }else{
+        return false;
+    }
+}
 
 function setupCoor(
     object $pdo,

@@ -17,6 +17,58 @@ let searchQuery = "%" + query + "%";
 
 $(document).ready(function () {
     searchRefresh();
+    // --------------------------logout------------------
+    let isLoginClicked = false;
+    $('#logoutClick').click(function (e) {
+        e.preventDefault();
+        if (isLoginClicked == false) {
+            $('.loggingoutVer').show();
+            $('#overlayform2').show();
+            $('.loggingoutVer h2').hide();
+            isLoginClicked = true;
+        }
+
+    });
+
+
+
+
+
+
+    $('#yes').hover(function () {
+        $('.loggingoutVer').addClass('hovered');
+    }, function () {
+        $('.loggingoutVer').removeClass('hovered');
+    });
+
+    $('#no').hover(function () {
+        $('.loggingoutVer').addClass('hovered2');
+    }, function () {
+        $('.loggingoutVer').removeClass('hovered2');
+    });
+
+
+    $('#yes').click(function (e) {
+        e.preventDefault();
+        $('.loggingoutVer').addClass('hovered3');
+        $('.loggingoutVer .buttonSec').hide();
+        $('.loggingoutVer h2').show();
+        setTimeout(function () {
+            window.location.href = "../pannelparts/logout.php";
+        }, 5000);
+    });
+
+
+    $('#no').click(function (e) {
+        e.preventDefault();
+        $('.loggingoutVer').hide();
+        $('#overlayform2').hide();
+        isLoginClicked = false;
+    });
+
+
+
+    
 
 
     $("#searchForm").submit(function (event) {

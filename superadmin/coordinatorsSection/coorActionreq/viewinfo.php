@@ -39,11 +39,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="viewinform">
             <img src="<?php echo $imgSrc ?>" id="vinfo" alt="">
-            <h2><?php echo $resultF["lastname"]  . ", " . $resultF["middlename"] . " " . $resultF["firstname"]; ?></h2>
+            <h2><?php echo $result1["lastname"]  . ", " . $result1["firstname"] . " " . $result1["middlename"]; ?></h2>
             <div class="inforsonal">
-                <p id="infoper1">Position<span><?php echo $resultF["position"] ?></span></p>
-                <p id="infoper2">Department<span><?php echo $resultF["department"] ?></span></p>
-                <p id="infoper3">Room<span><?php echo $resultF["room"] ?></span></p>
+                <p id="infoper1">Position<span><?php echo $result1["position"] ?></span></p>
+                <p id="infoper2">Department<span><?php echo $result1["department"] ?></span></p>
+                <p id="infoper3">Room<span><?php echo $result1["room"] ?></span></p>
                 <p id="infoper4">Email<span><?php echo $resultF["email"] ?></span></p>
                 <p id="infoper5">Trainee<span>0</span></p>
             </div>

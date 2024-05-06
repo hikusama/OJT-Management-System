@@ -47,7 +47,14 @@ function is_invalid_email(string $email)
         return false;
     }
 }
-
+function is_password_length_invalid($userpassword){
+    $lengthPw = strlen($userpassword);
+    if ($lengthPw < 6 ) {
+        return true;
+    }else{
+        return false;
+    }
+}
 
 function is_username_taken(object $pdo, string $username)
 {

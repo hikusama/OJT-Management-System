@@ -14,7 +14,6 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
     <script src="../UX//coordinators.js?v=<?php echo time(); ?>"></script>
@@ -33,7 +32,12 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
         .viewinform #vinfo {
             border: solid .2rem rgb(0, 187, 140);
         }
+        .profSide h2::before {
+            content: '<?php echo $_SESSION['user_role'] ?>';
+        }
     </style>
+
+
     <title>Coordinators</title>
 </head>
 
@@ -43,14 +47,16 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
     <div class="outside">
 
         <div class="sideP">
-            <div class="profSide">
-                <img src="../../images/mali.png" id="sidepic" alt="">
-                <h2>Marco J.</h2>
-                <style>
-                    .profSide h2::before {
-                        content: 'SuperAdmin';
-                    }
-                </style>
+            <div class="profSide" >
+                <div class="loadingSc" style="display: none;">
+                    <div class="loadingSc-inner">
+                        <span class="eloader2"></span>
+                    </div>
+                </div>
+                <div class="profsideCont" id="pcont">
+                    <img src="../../images/adminpic.png" id="sidepic" alt="">
+                    <h2 id="callN"><?php echo $_SESSION['username'] ?></h2>
+                </div>
             </div>
             <nav>
                 <ul id="tabs">
@@ -67,9 +73,14 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
 
                     <a id="mailsbtn" href="mails.php"><i class="fas fa-envelope"></i>mails</a>
 
+                    <a id="" href="other.php" ><i class="fa-solid fa-skull-crossbones"></i>Other Access</a>
+
                     <a id="settingsbtn" href="settings.php"><i class="fas fa-cog"></i>settings</a>
                 </ul>
             </nav>
+            <div class="logoutSec">
+                <button id="logoutClick">Logout</button>
+            </div>
         </div>
     </div>
     <label for="sideCheck" class="oberlay"></label>
@@ -94,88 +105,25 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                         </form>
 
                     </div>
-                    <ul id="searchResults">
-
-
-                        <!-- <li>
-
-                        <i id="men" class="fa-solid fa-ellipsis "></i>
-                        <div class="pfront">
-                            <img src="../images/mali.png" alt="" srcset="">
-                            <h4>Marco Jean</h4>
-                            <p>CICS</p>
-                        </div>
-                        <div class="grupi">
-                            <div class="showact" id="sa">
-                                <i class="fa-regular fa-pen-to-square act1"></i>
-                                <i class="fa-solid fa-user-slash act2"></i>
-                                <i class="fa-solid fa-person-circle-exclamation act3"></i>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-
-                        <i id="men" class="fa-solid fa-ellipsis "></i>
-                        <div class="pfront">
-                            <img src="../images/mali.png" alt="" srcset="">
-                            <h4>Marco Jean</h4>
-                            <p>CICS</p>
-                        </div>
-                        <div class="grupi">
-                            <div class="showact" id="sa">
-                                <i class="fa-regular fa-pen-to-square act1"></i>
-                                <i class="fa-solid fa-user-slash act2"></i>
-                                <i class="fa-solid fa-person-circle-exclamation act3"></i>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-
-                        <i id="men" class="fa-solid fa-ellipsis "></i>
-                        <div class="pfrparent">
-                            <div class="pfront">
-                                <img src="../images/mali.png" alt="" srcset="">
-                                <h4>Marco Jean</h4>
-                                <p>CICS</p>
-                            </div>
-                        </div>
-                        <div class="grupi">
-                            <div class="showact" id="sa">
-                                <i class="fa-regular fa-pen-to-square act1"></i>
-                                <i class="fa-solid fa-user-slash act2"></i>
-                                <i class="fa-solid fa-person-circle-exclamation act3"></i>
-                            </div>
-                        </div>
-                    </li> -->
-
-
-                        <!-- <li>
-                    <i id="men" class="fa-solid fa-ellipsis"></i>
-                    <div class="pfront">
-                        <img src="../images/mali.png" alt="" srcset="">
-                        <h4>Marco Jean</h4>
-                        <p>CICS</p>
+                    <div class="outUl">
+                        <ul id="searchResults"></ul>
                     </div>
-                </li>
-                <li>
-                    <i id="men" class="fa-solid fa-ellipsis"></i>
-                    <div class="pfront">
-                        <img src="../images/mali.png" alt="" srcset="">
-                        <h4>Marco Jean</h4>
-                        <p>CICS</p>
-                    </div>
-                </li> -->
-
-                    </ul>
                     <label for="" id="overlayform">
 
                     </label>
                     <label for="" id="overlayform2">
 
                     </label>
+                    <div class="loggingoutVer-cont">
+                        <div class="loggingoutVer">
 
+                            <div class="buttonSec">
+                                <button id="yes">Yes</button>
+                                <button id="no">No</button>
+                            </div>
+                            <h2>Logging out...</h2>
+                        </div>
+                    </div>
                     <div id="cont-editform">
                         <div class="editcoor-inner">
                             <i class="fa-regular fa-circle-xmark" id="back"></i>
@@ -365,7 +313,12 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                                     </div>
                                     <div class="inptcont">
                                         <i class="fas fa-mars"></i>
-                                        <input id="gn" type="text" placeholder="Gender" name="gender">
+                                        <!-- <input id="gn" type="text" placeholder="Gender" name="gender"> -->
+                                        <select id="gn">
+                                            <option value="">Gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
                                     </div>
                                 </div>
 

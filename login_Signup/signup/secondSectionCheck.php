@@ -18,6 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
 
         
+        require_once '../../superadmin/otherSection/coursesModel.php';
+        require_once '../../superadmin/otherSection/coursesController.php';
         require_once 'signup_model.php';
         require_once 'signup_contr.php';
 
@@ -36,6 +38,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $department
         )) {
             $errors["empty_inputs"] = "Please fill all fields!";
+        }
+
+        if (!is_dpt_registered($pdo, $department) && $department) {
+            $errors['department_registered'] = "Department not exist!";
         }
 
 

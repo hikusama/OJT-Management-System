@@ -14,7 +14,6 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
     <script src="../UX//admins.js?v=<?php echo time(); ?>"></script>
@@ -34,10 +33,12 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
         }
 
         .profSide h2::before {
-            content: 'SuperAdmin';
+            content: '<?php echo $_SESSION['user_role'] ?>';
         }
     </style>
-    <title>Document</title>
+
+
+    <title>Admins</title>
 </head>
 
 <body>
@@ -46,9 +47,16 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
     <div class="outside">
 
         <div class="sideP">
-            <div class="profSide">
-                <img src="../../images/mali.png" id="sidepic" alt="">
-                <h2>Marco J.</h2>
+            <div class="profSide" >
+                <div class="loadingSc" style="display: none;">
+                    <div class="loadingSc-inner">
+                        <span class="eloader2"></span>
+                    </div>
+                </div>
+                <div class="profsideCont" id="pcont">
+                    <img src="../../images/adminpic.png" id="sidepic" alt="">
+                    <h2 id="callN"><?php echo $_SESSION['username'] ?></h2>
+                </div>
             </div>
             <nav>
                 <ul id="tabs">
@@ -64,10 +72,16 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                     <a id="enrollbtn" href="enroll.php"><i class="fas fa-tasks"></i>enroll</a>
 
                     <a id="mailsbtn" href="mails.php"><i class="fas fa-envelope"></i>mails</a>
+                    
+                    <a id="" href="other.php" ><i class="fa-solid fa-skull-crossbones"></i>other Access</a>
 
                     <a id="settingsbtn" href="settings.php"><i class="fas fa-cog"></i>settings</a>
                 </ul>
             </nav>
+            <div class="logoutSec">
+                <button id="logoutClick">Logout</button>
+            </div>
+
         </div>
     </div>
     <label for="sideCheck" class="oberlay"></label>
@@ -76,6 +90,18 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
         <input type="checkbox" id="sideCheck" onclick="handleCheckboxChange()">
         <div id="content">
             <div id="admins">
+                <label for="" id="overlayform2">
+                </label>
+                <div class="loggingoutVer-cont">
+                    <div class="loggingoutVer">
+                        <div class="buttonSec">
+                            <button id="yes">Yes</button>
+                            <button id="no">No</button>
+                        </div>
+                        <h2>Logging out...</h2>
+                    </div>
+                </div>
+
                 <div class="admins-inner">
                     <div class="searchd">
                         <div class="btad">
@@ -90,9 +116,9 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                             <input type="search" name="" id="searchInput" placeholder="Search for admins...">
                         </form>
                     </div>
-                    <ul id="searchResults">
-
-                    </ul>
+                    <div class="outUl">
+                        <ul id="searchResults"></ul>
+                    </div>
                     <label for="" id="overlayform">
 
                     </label>
@@ -187,37 +213,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
 
 
                     <div id="cont-viewinform">
-                        <div class="outlosdviewinfo">
-                            <div class="innerloadsd">
-                                <div class="loader">
-                                    <div class="bar"></div>
-                                    <div class="bar"></div>
-                                    <div class="bar"></div>
-                                    <div class="bar"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="viewinform">
-                            <img src="" id="vinfo" alt="">
-                            <h2></h2>
-                            <div class="inforsonal">
-                                <p id="infoper1"><span></span></p>
-                                <p id="infoper2"><span></span></p>
-                                <p id="infoper3"><span></span></p>
-                                <p id="infoper4"><span></span></p>
-                                <p id="infoper5"><span></span></p>
-                            </div>
-                        </div>
-                        <div class="outlosdvw">
-                            <div class="innerloadsd">
-                                <div class="loader">
-                                    <div class="bar"></div>
-                                    <div class="bar"></div>
-                                    <div class="bar"></div>
-                                    <div class="bar"></div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
 
                     <!-- addcoordinator -->

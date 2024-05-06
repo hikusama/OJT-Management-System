@@ -151,7 +151,7 @@ function is_password_not_matched(string $confirm_password, string $userpassword)
 
 function is_password_length_invalid($userpassword){
     $lengthPw = strlen($userpassword);
-    if ($lengthPw < 6 || $lengthPw > 8) {
+    if ($lengthPw < 6 ) {
         return true;
     }else{
         return false;
@@ -238,6 +238,7 @@ function create_user_info(
 ) {
     $user_id = create_user($pdo,$username,$userpassword,$email);
     $user_id = intval($user_id);
+    
     set_user_info(
         $pdo,
         $user_id,

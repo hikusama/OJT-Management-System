@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"];
     $userpassword = $_POST["userpassword"];
     $confirm_password = $_POST["confirm_password"];
+    $genderREq = ['Female', 'Male'];
 
 
 
@@ -48,6 +49,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             $errors["pic_error"] = "Please choose a profile pic!";
         }
+        if (in_array($gender, $genderREq)) {
+        } else {
+            $errors['gender_invalid'] = "Invalid Gender!";
+        }
+
 
         if (is_empty_inputs(
             $student_id,

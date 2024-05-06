@@ -15,11 +15,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $userpassword = $_POST["userpassword"];
     $confirm_password = $_POST["confirm_password"];
     $user_role;
+
+
+    $genderREq = ['Female', 'Male'];
+
+    $errors = [];
     try {
         require_once 'addcoorModel.php';
         require_once 'addcoorController.php';
 
-        $errors = [];
 
         if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
             $allowedExtensions = ['jpg', 'jpeg', 'png'];
@@ -41,6 +45,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $errors["pic_error"] = "Please choose a profile pic!";
         }
 
+        if (in_array($gender, $genderREq)) {
+        } else {
+            $errors['gender_invalid'] = "Invalid Gender!";
+        }
+
+        if (is_password_length_invalid($userpassword) && !is_password_not_matched($userpassword, $confirm_password)) {
+            $errors["pw_invalid_length"] = "Password must 6-8 characters!";
+        }
 
 
         if (is_empty_inputs(

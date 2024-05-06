@@ -49,7 +49,14 @@ function is_username_taken(object $pdo, string $username)
     }
 }
 
-
+function is_password_length_invalid($userpassword){
+    $lengthPw = strlen($userpassword);
+    if ($lengthPw < 6 ) {
+        return true;
+    }else{
+        return false;
+    }
+}
 function is_password_not_matched(string $confirm_password, string $userpassword)
 {
     if ($confirm_password !== $userpassword) {

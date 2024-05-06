@@ -196,10 +196,10 @@ img {
   }
 }
 
-#SN::-webkit-outer-spin-button,
-#SN::-webkit-inner-spin-button,
 #CNT::-webkit-outer-spin-button,
-#CNT::-webkit-inner-spin-button {
+#CNT::-webkit-inner-spin-button,
+#SN::-webkit-outer-spin-button,
+#SN::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -492,8 +492,9 @@ textarea::-webkit-scrollbar {
 
 }
 
-#signupResponse1stsection > * , #signupResponse2ndsection > *,
-#signupResponselastsection > *{
+#signupResponse1stsection>*,
+#signupResponse2ndsection>*,
+#signupResponselastsection>* {
   animation-name: responseSignup;
   animation-duration: .5s;
   animation-iteration-count: 1;
@@ -506,7 +507,6 @@ textarea::-webkit-scrollbar {
   }
 }
 
-.nxbk i,
 .lasti i {
   cursor: pointer;
   transition: .3s;
@@ -525,9 +525,7 @@ textarea::-webkit-scrollbar {
   cursor: pointer;
 }
 
-.nxbk i:hover {
-  color: rgb(161, 161, 161) !important;
-}
+
 
 .nxbk {
   position: relative;

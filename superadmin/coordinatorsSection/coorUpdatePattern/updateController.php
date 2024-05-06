@@ -76,7 +76,14 @@ function update_Login_Cred_UserN_Only(
         $username
     );
 }
-
+function is_password_length_invalid($userpassword){
+    $lengthPw = strlen($userpassword);
+    if ($lengthPw < 6 ) {
+        return true;
+    }else{
+        return false;
+    }
+}
 function update_Login_Cred_Pw_Only(
     object $pdo,
     int $key,

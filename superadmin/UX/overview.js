@@ -16,14 +16,32 @@ let searchQuery = "%" + query + "%";
 
 
 $(document).ready(function () {
-
-    // countTo(studval, "studnum", 400000);
-    // countTo(coorval, "coor", 400000);
-    // countTo(trval, "trainees", 400000);
-    // countTo(admins, "ad", 400000);
-
-
-
+    // document.getElementById('pcont').style.visibility = "hidden";
+    // // countTo(studval, "studnum", 400000);
+    // // countTo(coorval, "coor", 400000);
+    // // countTo(trval, "trainees", 400000);
+    // // countTo(admins, "ad", 400000);
+    // let pimgIdS = $('.profSide').attr('id');
+    // let pimgId = parseInt(pimgIdS.substring(1));
+    // formData = new FormData();
+    // formData.append('uID', pimgId);
+    // $('.loadingSc').show();
+    // $.ajax({
+    //     type: "post",
+    //     url: "../pannelparts/getForProf.php",
+    //     data: formData,
+    //     contentType: false,
+    //     processData: false,
+    //     success: function (response) {
+    //         $('.profsideCont').html(response);
+    //     },
+    //     complete: function () {
+    //         setTimeout(() => {
+    //             document.getElementById('pcont').style.visibility = "visible";
+    //             $('.loadingSc').hide();
+    //         }, 3000);
+    //     }
+    // });
 
 
 
@@ -167,16 +185,16 @@ $(document).ready(function () {
     function userCount() {
         if (activeRequests === 0) {
 
-            setInterval(function () {
-                fetchDataAndUpdate('../overviewSection/alluser/studentCount.php', 'studnum');
-                fetchDataAndUpdate('../overviewSection/alluser/coordinatorCount.php', 'coor');
-                fetchDataAndUpdate('../overviewSection/alluser/traineeCount.php', 'trainees');
-                fetchDataAndUpdate('../overviewSection/alluser/adminCount.php', 'ad');
-                if ((studval, coorval, trval, admins) != undefined) {
-                    console.log('good');
-                    updateChart([studval, trval, coorval, admins])
-                }
-            }, 1000);
+            // setInterval(function () {
+            //     fetchDataAndUpdate('../overviewSection/alluser/studentCount.php', 'studnum');
+            //     fetchDataAndUpdate('../overviewSection/alluser/coordinatorCount.php', 'coor');
+            //     fetchDataAndUpdate('../overviewSection/alluser/traineeCount.php', 'trainees');
+            //     fetchDataAndUpdate('../overviewSection/alluser/adminCount.php', 'ad');
+            //     if ((studval, coorval, trval, admins) != undefined) {
+            //         console.log('good');
+            //         updateChart([studval, trval, coorval, admins])
+            //     }
+            // }, 1000);
 
         }
     }
@@ -198,32 +216,32 @@ $(document).ready(function () {
 
 
 
-let statusButtonClicked = 'fStudent';
-let currentState = 'fStudent';
+    let statusButtonClicked = 'fStudent';
+    let currentState = 'fStudent';
 
-getStatus('../overviewSection/status/getStudentsStatus.php', 'students');
-$('#' + statusButtonClicked).addClass('on-status-button');
-$('.loadingSc').show();
+    getStatus('../overviewSection/status/getStudentsStatus.php', 'students');
+    $('#' + statusButtonClicked).addClass('on-status-button');
+    $('.loadingSc').show();
 
-$('.headStatus button').click(function(e) {
-    $('.headStatus button').removeClass('on-status-button'); // Remove class from all buttons
-    $(this).addClass('on-status-button'); // Add class to the clicked button
-    e.preventDefault();
-    statusButtonClicked = $(this).attr('id');
-    if (currentState !== statusButtonClicked) {
-        $('.loadingSc').show();
-        currentState = statusButtonClicked;
-        if (statusButtonClicked === 'fStudent') {
-            getStatus('../overviewSection/status/getStudentsStatus.php', 'students');
-        } else if (statusButtonClicked === 'fTrainees') {
-            getStatus('../overviewSection/status/getTraineesStatus.php', 'trainees');
-        } else if (statusButtonClicked === 'fCoordinators') {
-            getStatus('../overviewSection/status/getCoorStatus.php', 'supervisors');
-        } else if (statusButtonClicked === 'fAdmins') {
-            getStatus('../overviewSection/status/getAdminsStatus.php', 'admins');
+    $('.headStatus button').click(function (e) {
+        $('.headStatus button').removeClass('on-status-button'); // Remove class from all buttons
+        $(this).addClass('on-status-button'); // Add class to the clicked button
+        e.preventDefault();
+        statusButtonClicked = $(this).attr('id');
+        if (currentState !== statusButtonClicked) {
+            $('.loadingSc').show();
+            currentState = statusButtonClicked;
+            if (statusButtonClicked === 'fStudent') {
+                getStatus('../overviewSection/status/getStudentsStatus.php', 'students');
+            } else if (statusButtonClicked === 'fTrainees') {
+                getStatus('../overviewSection/status/getTraineesStatus.php', 'trainees');
+            } else if (statusButtonClicked === 'fCoordinators') {
+                getStatus('../overviewSection/status/getCoorStatus.php', 'supervisors');
+            } else if (statusButtonClicked === 'fAdmins') {
+                getStatus('../overviewSection/status/getAdminsStatus.php', 'admins');
+            }
         }
-    }
-});
+    });
 
 
 
@@ -254,7 +272,62 @@ $('.headStatus button').click(function(e) {
     }
 
 
+    // ----------------------------logout--------------------------
 
+
+
+
+    let isLoginClicked = false;
+    $('#logoutClick').click(function (e) {
+        e.preventDefault();
+        if (isLoginClicked == false) {
+            $('.loggingoutVer').show();
+            $('#overlayform2').show();
+            $('.loggingoutVer h2').hide();
+            isLoginClicked = true;
+            if (handleDeviceWidth()) {
+                checkbox.checked = false;
+                handleCheckboxChange();
+            }
+        }
+
+    });
+
+
+
+
+
+
+    $('#yes').hover(function () {
+        $('.loggingoutVer').addClass('hovered');
+    }, function () {
+        $('.loggingoutVer').removeClass('hovered');
+    });
+
+    $('#no').hover(function () {
+        $('.loggingoutVer').addClass('hovered2');
+    }, function () {
+        $('.loggingoutVer').removeClass('hovered2');
+    });
+
+
+    $('#yes').click(function (e) {
+        e.preventDefault();
+        $('.loggingoutVer').addClass('hovered3');
+        $('.loggingoutVer .buttonSec').hide();
+        $('.loggingoutVer h2').show();
+        setTimeout(function () {
+            window.location.href = "../pannelparts/logout.php";
+        }, 5000);
+    });
+
+
+    $('#no').click(function (e) {
+        e.preventDefault();
+        $('.loggingoutVer').hide();
+        $('#overlayform2').hide();
+        isLoginClicked = false;
+    });
 
 
 
@@ -314,7 +387,6 @@ function handleCheckboxChange() {
     }
 
 }
-
 
 
 

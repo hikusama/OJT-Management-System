@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $errors["pw_not_matched"] = "Password not matched!";
         }
         if (is_password_length_invalid($password) && !is_password_not_matched($password, $conf_pw)) {
-            $errors["pw_invalid_length"] = "Password must 6-8 characters!";
+            $errors["pw_invalid_length"] = "Password must more than 6 characters!";
         }
         
         if (is_invalid_email($email)) {
