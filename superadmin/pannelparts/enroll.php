@@ -1,11 +1,11 @@
-<!-- <?php
+ <?php
 session_start();
 if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
   header('location: ../../index.php');
 }
 
 
-?> -->
+?> 
 
 
 <!DOCTYPE html>
@@ -16,10 +16,10 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
-  <script src="../UX//student.js"></script>
-  <script src="../UX//enroll.js"></script>
+  <!-- <script src="../UX/student.js"></script> -->
+  <script src="../UX/enroll.js?v=<?php echo time(); ?>"></script>
 
-  <link rel="stylesheet" href="../tp.css">
+  <link rel="stylesheet" href="../tp.css?v=<?php echo time(); ?>">
   <style>
     #cont-viewinform::after {
       background-color: rgb(0, 174, 255);

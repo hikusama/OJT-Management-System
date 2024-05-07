@@ -258,12 +258,16 @@ body {
     position: fixed;
     width: 19rem;
     border-radius: 2rem 0 0 2rem;
-    /* transform: translateX(20rem) ; */
+    transform: translateX(20rem) ;
     right: 0;
     height: 100%;
     background-color: rgb(57, 57, 57);
     top: 5rem;
     transition: .3s;
+}
+.picEnrollee{
+    display: grid;
+    place-items: center;
 }
 
 .logoutSec {
@@ -1046,6 +1050,7 @@ a {
 }
 
 .inputWtType {
+    position: relative;
     width: fit-content;
     height: fit-content;
 }
@@ -1241,7 +1246,7 @@ a {
 
 .infoNotEnroll h5 {
     text-transform: capitalize;
-    width: 6rem;
+    width: 8rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1256,8 +1261,8 @@ a {
 
 .infoNotEnroll {
     text-align: start;
-    width: fit-content;
-    height: 1.8rem;
+    width: 8rem;
+    height: 2rem;
 
 }
 

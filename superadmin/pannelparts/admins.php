@@ -16,7 +16,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
-    <script src="../UX//admins.js?v=<?php echo time(); ?>"></script>
+    <script src="../UX/admins.js?v=<?php echo time(); ?>"></script>
 
     <link rel="stylesheet" href="../tp.css?v=<?php echo time(); ?>">
     <style>
