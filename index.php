@@ -54,7 +54,7 @@ session_start();
                         <h2>Login</h2>
                         <div class="icon-input-container">
                             <i class="fa-regular fa-circle-user" "></i>
-                    <input type=" text" id="Logusername" placeholder="Username" class="border">
+                    <input type=" text" id="Logusername" autocomplete="off" placeholder="Username" class="border">
                         </div>
                         <div class="icon-input-container">
                             <i class="fas fa-lock"></i>
@@ -137,12 +137,14 @@ session_start();
                                 <textarea class="A" name="address" id="address" cols="30" rows="2" placeholder="Address"></textarea>
                             </div>
                             <div class="icon-input-container">
-                                <i class="fas fa-book"></i>
-                                <input id="CRS" type="text" name="course" placeholder="Course">
+                                <i class="fas fa-building"></i>
+                                <input id="DPT" type="text" name="department" autocomplete="off" placeholder="Department">
+                                <div class="suggestDpt"></div>
                             </div>
                             <div class="icon-input-container">
-                                <i class="fas fa-building"></i>
-                                <input id="DPT" type="text" name="department" placeholder="Department">
+                                <i class="fas fa-book"></i>
+                                <input id="CRS" type="text" name="course" autocomplete="off" placeholder="Course">
+                                <div class="suggestCrs"></div>
                             </div>
                             <div id="signupResponse2ndsection"></div>
 

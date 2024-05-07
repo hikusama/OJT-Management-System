@@ -25,7 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $resultF = $stmt2->fetch(PDO::FETCH_ASSOC);
         if ($resultF) {
-?>
+
+
+    ?>
+
             <div class="outlosdviewinfo">
                 <div class="innerloadsd">
                     <div class="loader">

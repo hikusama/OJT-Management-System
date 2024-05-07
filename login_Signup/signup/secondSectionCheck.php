@@ -18,8 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
 
         
-        require_once '../../superadmin/otherSection/coursesModel.php';
-        require_once '../../superadmin/otherSection/coursesController.php';
+        require_once '../../superadmin/otherSection/adding/othersModel.php';
+        require_once '../../superadmin/otherSection/adding/othersController.php';
         require_once 'signup_model.php';
         require_once 'signup_contr.php';
 
@@ -42,6 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if (!is_dpt_registered($pdo, $department) && $department) {
             $errors['department_registered'] = "Department not exist!";
+        }
+        if (!is_course_registered($pdo, $course) && $course) {
+            $errors['CRS_registered'] = "Course not exist!";
         }
 
 

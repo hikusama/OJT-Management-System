@@ -11,25 +11,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $searchQuery = isset($_POST['searchQuery']) ? $_POST['searchQuery'] : '';
 
-    // Prepare and execute the database query
-    $sql = "SELECT * FROM department RIGHT JOIN course ON dept_id = :searchQuery ";
+    $sql = "SELECT * FROM department where department = :searchQuery ";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':searchQuery', $userids, PDO::PARAM_INT);
+    $stmt->bindParam(':searchQuery', $searchQuery, PDO::PARAM_STR);
     $stmt->execute();
+    $result1 = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Fetch the search results
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // Display the search results (you can customize this part based on your needs)
-    if ($results) {
-        echo '<option value="">Course</option>';
-        foreach ($results as $result) {
+    if ($result1) {
+        $deptId = $result1['program_id'];
+        $sql2 = "SELECT * FROM course where dept_id = :deptId ";
+        $stmt2 = $pdo->prepare($sql2);
+        $stmt2->bindParam(':deptId', $deptId);
+        $stmt2->execute();
+        $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+        if ($result2) {
+            foreach ($result2 as $result) {
 ?>
-
-            <option value="<?php echo $result['course'] ?>"><?php echo $result['course'] ?></option>
+                <p><?php echo $result['course'] ?></p>
 <?php
+            }
+        } else {
+            echo 'No courses in this Dept.';
         }
-    } else {
+    }else{
+        echo 'No courses in this Dept.';
 
     }
 } ?>

@@ -47,7 +47,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
     <div class="outside">
 
         <div class="sideP">
-            <div class="profSide" >
+            <div class="profSide">
                 <div class="loadingSc" style="display: none;">
                     <div class="loadingSc-inner">
                         <span class="eloader2"></span>
@@ -72,8 +72,8 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                     <a id="enrollbtn" href="enroll.php"><i class="fas fa-tasks"></i>enroll</a>
 
                     <a id="mailsbtn" href="mails.php"><i class="fas fa-envelope"></i>mails</a>
-                    
-                    <a id="" href="other.php" ><i class="fa-solid fa-skull-crossbones"></i>other Access</a>
+
+                    <a id="" href="other.php"><i class="fa-solid fa-skull-crossbones"></i>other Access</a>
 
                     <a id="settingsbtn" href="settings.php"><i class="fas fa-cog"></i>settings</a>
                 </ul>
@@ -191,7 +191,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                                 <p>Confirm for deletion</p>
                                 <div class="wr">
                                     <i class="fas fa-lock"></i>
-                                    <input type="password" name="password" placeholder="Confirm password"  autocomplete="new-password"  autocomplete="new-password" id="pwdd">
+                                    <input type="password" name="password" placeholder="Confirm password" autocomplete="new-password" autocomplete="new-password" id="pwdd">
                                 </div>
                                 <div id="responsetodel"></div>
                                 <button id="delG">Delete</button>
@@ -293,14 +293,12 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                                         <div class="icon-input-container">
                                             <i class="fas fa-building"></i>
                                             <input id="DPT" type="text" autocomplete="off" name="department" placeholder="Department">
-                                            <div class="suggestDpt">
-                                            </div>
+                                            <div class="suggestDpt"></div>
                                         </div>
                                         <div class="icon-input-container">
                                             <i class="fas fa-book"></i>
-                                            <select name="" id="CRS">
-                                                <option value="">Course</option>
-                                            </select>
+                                            <input name="" id="CRS" placeholder="Course" autocomplete="off">
+                                            <div class="suggestCrs"></div>
                                         </div>
                                         <div id="studentsResponse2ndsection"></div>
 
@@ -347,7 +345,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                                             </div>
                                             <div class="icon-input-container">
                                                 <i class="fas fa-lock"></i>
-                                                <input id="CONFPW"  autocomplete="new-password" type="password" name="confirm_password" placeholder="Confirm Password">
+                                                <input id="CONFPW" autocomplete="new-password" type="password" name="confirm_password" placeholder="Confirm Password">
                                             </div>
                                             <div id="studentsResponselastsection"></div>
                                             <div class="cont-studaddbut">
@@ -359,9 +357,6 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                                         </div>
                                     </div>
                                 </div>
-
-
-
                             </form>
                         </div>
 
@@ -375,9 +370,6 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                                 <button id="done">Done</button>
                             </div>
                         </div>
-
-
-
                     </div>
                     <div class="addedsuc2">
                         <div class="pannelanim">

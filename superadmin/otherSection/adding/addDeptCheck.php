@@ -2,21 +2,22 @@
 
 <?php
 
-require_once '../../includes/config.php';
+require_once '../../../includes/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $course = $_POST['course'];
     $dpt = $_POST['dpt'];
-    $crsacrn = $_POST['cacrn'];
     $deptacrn = $_POST['dacrn'];
+
+    // $course = $_POST['course'];
+    // $crsacrn = $_POST['cacrn'];
 
 
     $errors = [];
     try {
 
-        require_once 'coursesModel.php';
-        require_once 'coursesController.php';
+        require_once 'othersModel.php';
+        require_once 'othersController.php';
 
         if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
             $allowedExtensions = ['jpg', 'jpeg', 'png'];
@@ -38,25 +39,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors["pic_error"] = "Please choose a Department pic!";
         }
 
-        if (is_course_registered($pdo, $course)) {
-            $errors['course_registered'] = "Course already Registered!";
-        }
-
 
         if (is_dpt_registered($pdo, $dpt)) {
-            $errors['dept_registered'] = "Dept already used!";
+            $errors['dept_registered'] = "Dept already registered!";
         }
-        if (is_crsacrm_registered($pdo, $crsacrn)) {
-            $errors['deptacronym_registered'] = "Course Acronym already used!";
+        if (is_deptacrm_registered($pdo, $deptacrn)) {
+            $errors['deptacr_registered'] = "Acronym already used!";
         }
 
-        if (is_field_empty($course,$dpt,$crsacrn,$deptacrn)) {
-            $errors['empty'] = "Fill up the course!";
+        if (is_dept_field_empty($dpt,$deptacrn)) {
+            $errors['empty'] = "Fill up the fields!";
         }
 
         if (!$errors) {
-            echo 'success';
-            addCourse($pdo,$course,$ImageData,$dpt,$crsacrn,$deptacrn);
+            echo 'Dept Section Ready';
+
         } else {
             foreach ($errors as $error) {
                 echo '<p class="formError" style="color:red;font-family:sans-serif;">' . $error . '</p>';

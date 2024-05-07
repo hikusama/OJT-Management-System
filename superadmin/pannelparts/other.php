@@ -17,7 +17,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../tp.css?v=<?php echo time(); ?>">
-  <script src="../UX/course.js?v=<?php echo time(); ?>"></script>
+  <script src="../UX/others.js?v=<?php echo time(); ?>"></script>
 
   <style>
     #cont-viewinform::after {
@@ -120,35 +120,47 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
 
         <div id="cont-addCourse">
           <div class="addCourse-inner">
-            <div class="formsact">
-              <form id="courseAddForm" enctype="multipart/form-data">
+            <div class="formsact2">
+              <form id="submitDept" enctype="multipart/form-data">
+                <h3>Add Department</h3>
                 <div class="chpic">
                   <img src="../../images/mali.png" id="profileImage" alt="">
                   <label for="image">Department Logo</label>
                   <input type="file" name="image" id="image" accept="image/*" onchange="handleimg()">
                 </div>
-                <div class="crsPart">
-                  <div class="inptcont">
-                    <i class="fas fa-book"></i>
-                    <input type="text" placeholder="Course" id="course">
-                  </div>
-                  <div class="inptcont">
-                    <div class="acr">
-                      <i class="fas fa-key"></i>
-                      <input type="text" placeholder="Acronym" id="crsacrn">
-                    </div>
-                  </div>
-                </div>
                 <div class="deptPart">
                   <div class="inptcont">
                     <i class="fas fa-building"></i>
-                    <input type="text" placeholder="Department" id="dpt">
+                    <input autocomplete="off" type="text" placeholder="Department" id="dpt">
                   </div>
                   <div class="inptcont">
-                    <div class="acr">
-                      <i class="fas fa-key"></i>
-                      <input type="text" placeholder="Acronym" id="deptacrn">
-                    </div>
+                    <i class="fas fa-key"></i>
+                    <input autocomplete="off" type="text" placeholder="Acronym" id="deptacrn">
+                  </div>
+                </div>
+                <div id="deptErrorResponse"></div>
+                <div class="submitDeptBut">
+                  <button type="submit">Submit</button>
+                </div>
+              </form>
+
+              <form id="submitCourse">
+                <h3>Add Course</h3>
+
+                <div class="crsPart">
+                  <div class="inptcont">
+                    <i class="fas fa-building"></i>
+                    <input autocomplete="off" type="text" placeholder="Dept. Belong" id="deptBel">
+                    <div class="suggestDpt"></div>
+
+                  </div>
+                  <div class="inptcont">
+                    <i class="fas fa-book"></i>
+                    <input autocomplete="off" name="" id="course" type="text" placeholder="Course">
+                  </div>
+                  <div class="inptcont">
+                    <i class="fas fa-key"></i>
+                    <input autocomplete="off" type="text" placeholder="Acronym" id="crsacrn">
                   </div>
                 </div>
                 <div id="courseErrorResponse"></div>
@@ -173,7 +185,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
 
 
         <div class="responseMssg">
-          <h3>New Program Catalog Added Successfully</h3>
+          <h3></h3>
           <p>Click anywhere to continue</p>
         </div>
         <div class="outlosd">
@@ -186,19 +198,31 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
             </div>
           </div>
         </div>
-        <ul id="programCatalogContent">
-
-        </ul>
+        <ul id="programCatalogContent"></ul>
       </div>
     </div>
   </div>
 
   </div>
-
-
-
-
-
 </body>
 
 </html>
+
+<!-- 
+<div class="crsPart">
+                  <div class="inptcont">
+                    <i class="fas fa-building"></i>
+                    <input type="text" placeholder="Dept. Belong" id="deptBel">
+                  </div>
+                  <div class="inptcont">
+                    <i class="fas fa-book"></i>
+                    <select name="" id="course">
+                      <option value="">Course</option>
+                    </select>
+                  </div>
+                  <div class="inptcont">
+                      <i class="fas fa-key"></i>
+                      <input type="text" placeholder="Acronym" id="crsacrn">
+                      
+                  </div>
+                </div> -->

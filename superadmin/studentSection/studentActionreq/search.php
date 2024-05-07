@@ -24,12 +24,19 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     // Display the search results (you can customize this part based on your needs)
     if ($results) {
         foreach ($results as $result) {
+            $department = $result['department'];
+            $sql3 = "SELECT * FROM department where department = :department";
+            $stmt3 = $pdo->prepare($sql3);
+            $stmt3 -> bindParam(':department',$department);
+            $stmt3 -> execute();
+    
+            $resultDept = $stmt3 -> fetch(PDO::FETCH_ASSOC);
             echo '<li>';
             echo '<i id="men" class="fa-solid fa-ellipsis "></i>
              <div class="pfront">';
             echo "<img src='data:image/jpeg;base64," . base64_encode($result["profile_pic"]) . "' alt='' srcset='' id='myproffromdb'>";
             echo "<h4>{$result["firstname"]}</h4>";
-            echo "<p>{$result["department"]}</p>";
+            echo "<p>{$resultDept["deptAcronym"]}</p>";
             echo '</div>';
 
             echo '<div class="grupi">';

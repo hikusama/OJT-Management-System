@@ -54,11 +54,46 @@ $(document).ready(function () {
 
 
 
-    let lastGet = '';
+    // ------------------------Student suggesting Department------------------------
     let isWho = true;
+    $('.suggestCrs').on('click', 'p', function (e) {
+        $('#CRS').val($(this).text());
+        $('.suggestCrs').hide();
+        
+        formData = new FormData();
+        formData.append('gender', $('#GN').val());
+        formData.append('contact', $('#CNT').val());
+        formData.append('address', $('#address').val());
+        formData.append('course', $('#CRS').val());
+        formData.append('department', $('#DPT').val());
+
+
+        $.ajax({
+            url: '../../login_Signup/signup/secondSectionCheck.php',
+            data: formData,
+            method: 'post',
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('#studentsResponse2ndsection').html(response);
+                if (response == 'Ready to next') {
+                    isSecondReady = true;
+                    $('#nextToLast').addClass('newSecond');
+
+
+                } else {
+                    if ($('#nextToLast').hasClass('newSecond')) {
+                        $('#nextToLast').removeClass('newSecond');
+                    }
+                    isSecondReady = false;
+
+                }
+            }
+        });
+
+    });
     $('.suggestDpt').on('click', 'p', function (e) {
         e.preventDefault();
-
 
 
         if (isWho == true) {
@@ -89,11 +124,8 @@ $(document).ready(function () {
                             $('#nextToLast').removeClass('newSecond');
                         }
                         isSecondReady = false;
+
                     }
-                },
-                complete: function () {
-
-
                 }
             });
             isWho = false;
@@ -101,25 +133,20 @@ $(document).ready(function () {
 
         $('.suggestDpt').hide();
         $('#DPT').val($(this).text());
-        if ($(this).val() == lastGet) {
-            formData = new FormData();
-            let query = $(this).attr('id').substring(2);
-            query = parseInt(query);
-            formData.append('searchQuery',query);
-            $.ajax({
-                url: '../../login_Signup/signup/getCourse.php',
-                method: 'post',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    $("#CRS").html(response);
-                },
-                complete: function () {
 
-                }
-            });
-        }
+        formData = new FormData();
+        let query = $('#DPT').val();
+        formData.append('searchQuery', query);
+        $.ajax({
+            url: '../../login_Signup/signup/getCourse.php',
+            method: 'post',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $(".suggestCrs").html(response);
+            }
+        });
 
     });
 
@@ -144,27 +171,37 @@ $(document).ready(function () {
 
 
 
+
     // $('#DPT').blur(function () {
     //     setTimeout(function () {
     //         $('.suggestDpt').hide();
     //     }, 150);
     // });
-    $('#DPT').focus(function () {
+    $('#DPT').click(function () {
         $('.suggestDpt').show();
+
+    });
+    $('#CRS').click(function () {
+        $('.suggestCrs').show();
 
     });
 
 
-    $('#studentsForm').on('click', 'input, textarea, select', function (e) {
+    $('#second').on('click', 'input, textarea, select', function (e) {
         e.preventDefault();
-        
+
         if (!$(this).is('#DPT')) {
             isWho = false;
             lastGet = $('#DPT').val();
             $('.suggestDpt').hide();
-        }else{
+        } else {
             isWho = true;
+        }
+        if (!$(this).is('#CRS')) {
+            $('.suggestCrs').hide();
 
+        } else {
+            isWho = true;
         }
 
     });
@@ -387,10 +424,9 @@ $(document).ready(function () {
 
                         }
                         isSecondReady = false;
-                    }
+                        $('#CRS').val('');
 
-                },
-                complete: function () {
+                    }
 
                 }
             });

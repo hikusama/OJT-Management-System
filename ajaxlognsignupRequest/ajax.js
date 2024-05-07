@@ -7,6 +7,170 @@ $(document).ready(function () {
     // }, 5000);
 
 
+    // --------------finding mimong and mimang----------------
+    $('#DPT').click(function () {
+        $('.suggestDpt').show();
+
+    });
+    $('#CRS').click(function () {
+        $('.suggestCrs').show();
+
+    });
+    $('#second').on('click', 'input, textarea, select', function (e) {
+        e.preventDefault();
+
+        if (!$(this).is('#DPT')) {
+            isWho = false;
+            lastGet = $('#DPT').val();
+            $('.suggestDpt').hide();
+        } else {
+            isWho = true;
+        }
+        if (!$(this).is('#CRS')) {
+            $('.suggestCrs').hide();
+
+        } else {
+            isWho = true;
+        }
+
+    });
+
+    $('.icon-input-container').on('input', '#DPT', function () {
+
+        let query = $(this).val().trim();
+        let searchQuery = "%" + query + "%";
+
+        $.ajax({
+            url: '../OJT-Management-System/login_Signup/signup/getDept.php',
+            method: 'GET',
+            data: { searchQuery: searchQuery },
+            success: function (response) {
+                $(".suggestDpt").html(response);
+            },
+            complete: function () {
+
+            }
+        });
+    });
+
+
+
+    let isWho = true;
+    $('.suggestCrs').on('click', 'p', function (e) {
+        $('#CRS').val($(this).text());
+        $('.suggestCrs').hide();
+
+        formData = new FormData();
+        formData.append('gender', $('#GN').val());
+        formData.append('contact', $('#CNT').val());
+        formData.append('address', $('#address').val());
+        formData.append('course', $('#CRS').val());
+        formData.append('department', $('#DPT').val());
+
+
+        $.ajax({
+            url: '../OJT-MANAGEMENT-SYSTEM/login_Signup/signup/secondSectionCheck.php',
+            data: formData,
+            method: 'post',
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('#signupResponse2ndsection').html(response);
+                if (response == 'Ready to next') {
+                    isSecondReady = true;
+                    $('#nextToLast').addClass('newSecond');
+
+
+                } else {
+                    if ($('#nextToLast').hasClass('newSecond')) {
+                        $('#nextToLast').removeClass('newSecond');
+                    }
+                    isSecondReady = false;
+
+                }
+            }
+        });
+
+    });
+
+    $('.suggestDpt').on('click', 'p', function (e) {
+        e.preventDefault();
+
+
+        $('.suggestDpt').hide();
+        $('#DPT').val($(this).text());
+
+        formData = new FormData();
+        let query = $('#DPT').val();
+        formData.append('searchQuery', query);
+        $.ajax({
+            url: '../OJT-MANAGEMENT-SYSTEM/login_Signup/signup/getCourse.php',
+            method: 'post',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $(".suggestCrs").html(response);
+            }
+        });
+
+        if (isWho == true) {
+
+            formData = new FormData();
+            formData.append('gender', $('#GN').val());
+            formData.append('contact', $('#CNT').val());
+            formData.append('address', $('#address').val());
+            formData.append('course', $('#CRS').val());
+            formData.append('department', $('#DPT').val());
+
+
+            $.ajax({
+                url: '../OJT-MANAGEMENT-SYSTEM/login_Signup/signup/secondSectionCheck.php',
+                data: formData,
+                method: 'post',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $('#signupResponse2ndsection').html(response);
+                    if (response == 'Ready to next') {
+                        isSecondReady = true;
+                        $('#nextToLast').addClass('newSecond');
+
+
+                    } else {
+                        if ($('#nextToLast').hasClass('newSecond')) {
+                            $('#nextToLast').removeClass('newSecond');
+                        }
+                        isSecondReady = false;
+                        $('#CRS').val('');
+
+                    }
+                }
+            });
+            isWho = false;
+        }
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     $(document).on("click", "#contentry .top a", function (e) {
         e.preventDefault();
@@ -48,7 +212,7 @@ $(document).ready(function () {
     --------------------------login-------------------------------
     
     */
-   
+
     $("#loginRequest").submit(function (e) {
         e.preventDefault();
         $('.outlosd').show();
@@ -157,7 +321,7 @@ $(document).ready(function () {
                 } else {
                     if ($('#nextToSecond').hasClass('newFirst')) {
                         $('#nextToSecond').removeClass('newFirst');
-                        
+
 
                     }
                     isFirstReady = false;
@@ -186,31 +350,36 @@ $(document).ready(function () {
         formData.append('department', $('#DPT').val());
 
 
-        $.ajax({
-            url: '../OJT-MANAGEMENT-SYSTEM/login_Signup/signup/secondSectionCheck.php',
-            data: formData,
-            method: 'post',
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                $('#signupResponse2ndsection').html(response);
-                if (response == 'Ready to next') {
-                    isSecondReady = true;
-                    $('#nextToLast').addClass('newSecond');
+        if (isWho == false) {
 
-                } else {
-                    if ($('#nextToLast').hasClass('newSecond')) {
-                        $('#nextToLast').removeClass('newSecond');
+            $.ajax({
+                url: '../OJT-MANAGEMENT-SYSTEM/login_Signup/signup/secondSectionCheck.php',
+                data: formData,
+                method: 'post',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $('#signupResponse2ndsection').html(response);
+                    if (response == 'Ready to next') {
+                        isSecondReady = true;
+                        $('#nextToLast').addClass('newSecond');
+
+                    } else {
+                        if ($('#nextToLast').hasClass('newSecond')) {
+                            $('#nextToLast').removeClass('newSecond');
+
+                        }
+                        isSecondReady = false;
+                        $('#CRS').val('');
 
                     }
-                    isSecondReady = false;
+
+                },
+                complete: function () {
+
                 }
-
-            },
-            complete: function () {
-
-            }
-        });
+            });
+        }
 
     });
 
@@ -227,7 +396,7 @@ $(document).ready(function () {
     $('#signup').on('change', '#UN, #EM, #PW, #CONFPW, #image', function (e) {
         e.preventDefault();
         formData = new FormData();
-        
+
         formData.append('image', $('#image')[0].files[0]);
         formData.append('email', $('#EM').val());
         formData.append('username', $('#UN').val());
@@ -313,7 +482,7 @@ $(document).ready(function () {
 
                         setTimeout(() => {
                             $('.redirect').show();
-                        $('#signupResponselastsection').html('');
+                            $('#signupResponselastsection').html('');
 
                         }, 1000);
 

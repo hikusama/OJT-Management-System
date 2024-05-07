@@ -8,6 +8,7 @@ body {
   background-color: rgb(41, 41, 41);
   color: white;
   width: 100vw;
+  font-family: sans-serif;
 }
 
 img {
@@ -166,6 +167,7 @@ img {
 
 
 .entry {
+  /* display: block !important; */
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
@@ -212,7 +214,60 @@ img {
   justify-content: center;
 }
 
+.suggestDpt,
+.suggestCrs {
+  text-align: center;
+  display: none;
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  border-radius: 0 0 .5rem .5rem;
+  border: solid 1px #ffffff2e;
+  border-top: none;
+  background-color: rgb(46 46 46);
+  max-height: 10rem;
+  height: fit-content;
+  overflow-y: scroll;
+  margin-top: .2rem;
+  padding: .2rem 0;
+}
+
+.suggestDpt::-webkit-scrollbar {
+  display: none;
+}
+
+.suggestCrs::-webkit-scrollbar {
+  display: none;
+}
+
+.suggestDpt p,
+.suggestCrs p {
+  font-size: .8rem;
+  text-align: center;
+  padding: .2rem 0;
+  margin: .2rem 0;
+  transition: .1s;
+  cursor: pointer;
+}
+
+.suggestCrs {
+  text-align: center;
+  font-size: .8rem;
+  padding: .2rem 0;
+  margin: .2rem 0;
+}
+
+.suggestDpt p:hover {
+  background-color: #0b74ebd2;
+}
+
+.suggestCrs p:hover {
+  background-color: #0b74ebd2;
+}
+
 #logn {
+  /* display: none !important; */
+
   position: relative;
   animation-name: smoothlog;
   animation-duration: .5s;
@@ -231,6 +286,7 @@ img {
 }
 
 #logn form {
+
   overflow: hidden;
   border-radius: 1.5rem;
   padding: 3.5rem 3.5rem;
@@ -629,6 +685,7 @@ textarea::-webkit-scrollbar {
   flex-direction: column;
   row-gap: 11px;
   width: 20rem;
+
 }
 
 #second>* {

@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 
     $searchQuery = isset($_GET['searchQuery']) ? $_GET['searchQuery'] : '';
-
+    $searchQuery = trim($searchQuery);
     // Prepare and execute the database query
     $sql = "SELECT * FROM department WHERE department LIKE :searchQuery or deptAcronym like :searchQuery";
     $stmt = $pdo->prepare($sql);

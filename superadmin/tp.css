@@ -1363,12 +1363,9 @@ a {
     height: fit-content;
     background: linear-gradient(transparent, rgb(0 0 0 / 70%)) !important;
     border: 1px solid rgba(243, 243, 243, 0.377);
-    z-index: 4;
     animation-duration: .3s;
     animation-iteration-count: 1;
     position: absolute;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(9px);
@@ -1384,7 +1381,7 @@ a {
     display: none;
     z-index: 4;
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     animation-name: addCrs;
@@ -1407,65 +1404,68 @@ a {
     text-align: center;
     margin-top: .3rem;
 }
+#deptErrorResponse>* {
+    text-align: center;
+    display: grid;
+}
 
-#courseAddForm {
+#deptErrorResponse {
+    display: grid;
+    text-align: center;
+    margin-top: .3rem;
+}
+
+#submitDept,
+#submitCourse
+ {
+    text-align: center;
     display: grid;
     row-gap: .5rem;
 
 }
 
-#courseAddForm .inptcont {
+#submitCourse .inptcont ,
+#submitDept .inptcont {
     width: 100%;
 }
 
-#courseAddForm .inptcont .acr {
-    width: fit-content;
-    position: relative;
-    margin-top: .3rem;
+
+#submitCourse .inptcont input ,
+#submitDept .inptcont input {
+    width: 15rem;
 }
 
-#courseAddForm .inptcont input {
-    width: 100%;
-}
-
-#courseAddForm .deptPart .inptcont,
-.crsPart .inptcont {
-    place-items: end;
+.deptPart ,
+.crsPart  {
+    place-items: center;
     display: grid;
+    row-gap: .3rem;
+}
+#deptacrn, #crsacrn{
+    text-transform: uppercase !important;
+}
+#deptacrn::placeholder, #crsacrn::placeholder{
+    text-transform: capitalize !important;
 }
 
-#courseAddForm .deptPart .inptcont:nth-child(1) input {
-    width: 14rem;
-}
 
-#courseAddForm .crsPart .inptcont:nth-child(1) input {
-    width: 14rem;
-}
-
-#courseAddForm .deptPart .inptcont:nth-child(2) input {
+/*
+#submitDept .inptcont input {
     width: 9rem;
 }
-
-#courseAddForm .crsPart .inptcont:nth-child(2) input {
+#submitCourse .inptcont input {
     width: 9rem;
-}
+} */
 
 
-#courseAddForm input {
+#submitDept input ,
+#submitCourse input {
     text-transform: capitalize;
     width: unset;
 }
 
-#courseAddForm .acr input {
-    text-transform: uppercase;
-}
-
-#courseAddForm .acr input::placeholder {
-    text-transform: capitalize;
-
-}
-
-#courseAddForm button {
+#submitCourse button ,
+#submitDept button {
     text-transform: lowercase;
     font-variant: small-caps;
     height: 1.5rem;
@@ -1495,7 +1495,6 @@ a {
     flex-direction: column;
     justify-content: start;
 
-
 }
 
 #programCatalogContent::-webkit-scrollbar {
@@ -1503,7 +1502,6 @@ a {
 }
 
 #programCatalogContent li {
-    overflow: hidden;
     place-items: center;
     height: fit-content;
     padding: 1rem;
@@ -1518,8 +1516,14 @@ a {
     cursor: pointer;
 
 }
+.dp{
+    display: grid;
+    place-items: center;
+}
 
 #programCatalogContent li .overlayProg {
+    border-radius: 1rem;
+
     z-index: 1;
     position: absolute;
     left: 0;
@@ -1583,6 +1587,10 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-width: 10.6rem;
+    max-width: 19rem;
+    width: 100%;
+    
 }
 
 #programCatalogContent li .det h4 {
@@ -2059,6 +2067,11 @@ a {
     width: 100%;
 
 }
+.formsact2{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 2rem;
+}
 
 .editcoor-inner form {
     display: flex;
@@ -2174,7 +2187,9 @@ a {
 #CRS,
 #genderc,
 #yearlevel,
-#courseAddForm input {
+#submitCourse input ,
+#submitDept input 
+{
     color: rgb(223, 223, 223);
     background-color: rgb(41, 41, 41);
     border: 1px solid rgba(85, 85, 85, 0.85);
@@ -2857,7 +2872,7 @@ a {
 }
 
 #cont-addstudents {
-    /* display: none; */
+    display: none;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -2916,12 +2931,12 @@ a {
 }
 
 #first {
-    display: none;
+    /* display: none; */
 }
 
 
 #second {
-    /* display: none; */
+    display: none;
     place-items: center;
 }
 
@@ -2933,7 +2948,8 @@ a {
 
 
 
-.suggestDpt{
+.suggestDpt,
+.suggestCrs{
     text-align: center;
     display: none;
     z-index: 2;
@@ -2952,8 +2968,11 @@ a {
 .suggestDpt::-webkit-scrollbar{
     display: none;
 }
+.suggestCrs::-webkit-scrollbar{
+    display: none;
+}
 
-.suggestDpt p{
+.suggestDpt p,.suggestCrs p{
     font-size: .8rem;
     text-align: center;
     padding: .2rem 0;
@@ -2961,8 +2980,17 @@ a {
     transition: .1s;
     cursor: pointer;
 }
+.suggestCrs{
+    text-align: center;
+    font-size: .8rem;
+    padding: .2rem 0;
+    margin: .2rem 0;
+}
 
 .suggestDpt p:hover{
+    background-color: #0b74ebd2;
+}
+.suggestCrs p:hover{
     background-color: #0b74ebd2;
 }
 
