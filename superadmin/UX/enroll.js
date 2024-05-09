@@ -415,6 +415,7 @@ $(document).ready(function () {
     $("#overlayform").click(function (e) {
         e.preventDefault();
         $(this).hide();
+        $("#cont-removeform").hide();
         $('#cont-viewinform').hide();
     });
 

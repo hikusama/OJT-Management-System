@@ -3313,6 +3313,9 @@ a {
         justify-content: center;
         flex-wrap: wrap;
     }
+.logoutSec {
+    bottom:7rem
+}
 
     #programCatalogContent li .det {
         text-align: center;
