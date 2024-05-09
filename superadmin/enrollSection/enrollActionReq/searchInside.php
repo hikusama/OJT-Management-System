@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                   </ol>
                 </div>
               </div>
-                    <li>
+                    <li >
                     <div class="picEnrollee">
                     <img id="enrolProfPic" src="data:image/jpeg;base64,' . base64_encode($result["profile_pic"]) . '" >
                     </div>

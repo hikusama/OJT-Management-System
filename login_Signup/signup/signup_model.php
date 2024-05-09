@@ -106,7 +106,6 @@ function set_user_info(
     string $department,
     string $gender
 ) {
-    $duty_Status = "offDuty";
 
     $query = "INSERT INTO students (
     users_id, 
@@ -120,8 +119,8 @@ function set_user_info(
     year_levelnsection, 
     course, 
     department, 
-    gender, 
-    duty_Status) 
+    gender
+    ) 
     VALUES (
     :users_id, 
     :student_id, 
@@ -134,8 +133,9 @@ function set_user_info(
     :year_level, 
     :course, 
     :department, 
-    :gender, 
-    :duty_Status) ;";
+    :gender
+    ) 
+    ;";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(":users_id", $users_id);
     $stmt->bindParam(":student_id", $student_id);
@@ -149,6 +149,5 @@ function set_user_info(
     $stmt->bindParam(":course", $course);
     $stmt->bindParam(":department", $department);
     $stmt->bindParam(":gender", $gender);
-    $stmt->bindParam(":duty_Status", $duty_Status);
     $stmt->execute();
 }

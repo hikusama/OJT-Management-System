@@ -32,7 +32,7 @@ session_start();
         ?>
 
             <div class="side">
-                <div class="in">On Job Training</div>
+                <div class="in">On The Job Training</div>
             </div>
 
             <div class="overlaylogn"></div>

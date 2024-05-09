@@ -16,6 +16,8 @@ let searchQuery = "%" + query + "%";
 
 
 $(document).ready(function () {
+    $('.outlosd').show();
+
     searchRefresh();
 
     // -----------------------logout---------------------
@@ -37,7 +39,7 @@ $(document).ready(function () {
             $('#cont-removeform').hide();
             $('#addedsuc2').hide();
             $('#addedsuc').hide();
-            $('.responseMssg').hide();
+            $('.responseMssg-out').hide();
             $('#cont-addCourse').hide();
             $('#asdads').hide();
             if (handleDeviceWidth()) {
@@ -533,12 +535,11 @@ $(document).ready(function () {
                         $('#studentsResponse1stsection').html('');
                         $('#studentsResponse2ndsection').html('');
                         $('.outlosdsign').hide();
-                        $('.responseMssg').show();
+                        $('.responseMssg-out').show();
                         $('#cont-addstudents #first').show();
                         $('#cont-addstudents #second').hide();
                         $('#cont-addstudents #last').hide();
                         $('#cont-addstudents').hide();
-                        $('#overlayform').hide();
                         $('#overlayform2').show();
                         $('#nextToSecond').removeClass('newFirst');
                         canhide = true;
@@ -631,7 +632,8 @@ $(document).ready(function () {
         formData.append('studentsId', studentsId);
         formData.append('userId', userId);
         document.getElementById('delG').style.transform = 'translateX(13rem)';
-
+        console.log(userId);
+        console.log(studentsId);
 
 
 
@@ -888,8 +890,8 @@ $(document).ready(function () {
                         isImageSecondSectionChanged = false;
                         $("#overlayform2").show();
                         canhide2 = true;
-                        $('.responseMssg').show();
-                        $('.responseMssg h3').html('Personal Info Updated Successfully');
+                        $('.responseMssg-out').show();
+                        $('.responseMssg-out h3').html('Personal Info Updated Successfully');
                         $("#overlayform").hide();
 
                     } else {
@@ -1032,8 +1034,8 @@ $(document).ready(function () {
                     if (prResponse == 'username updated succesfully') {
                         $("#overlayform2").show();
                         canhide2 = true;
-                        $('.responseMssg').show();
-                        $('.responseMssg h3').html('Username Updated Successfully');
+                        $('.responseMssg-out').show();
+                        $('.responseMssg-out h3').html('Username Updated Successfully');
                         $('#primaryErrorDisplay').html("");
                         loadingScreen.hide();
                         isFirstSecModified = false;
@@ -1043,8 +1045,8 @@ $(document).ready(function () {
                     } else if (prResponse == 'password updated succesfully') {
                         $("#overlayform2").show();
                         canhide2 = true;
-                        $('.responseMssg').show();
-                        $('.responseMssg h3').html('Password Updated Successfully');
+                        $('.responseMssg-out').show();
+                        $('.responseMssg-out h3').html('Password Updated Successfully');
                         $('#primaryErrorDisplay').html("");
                         loadingScreen.hide();
                         isFirstSecModified = false;
@@ -1054,8 +1056,8 @@ $(document).ready(function () {
                     } else if (prResponse == 'login credentials updated succesfully') {
                         $("#overlayform2").show();
                         canhide2 = true;
-                        $('.responseMssg').show();
-                        $('.responseMssg h3').html('Login Info Updated Successfully');
+                        $('.responseMssg-out').show();
+                        $('.responseMssg-out h3').html('Login Info Updated Successfully');
                         $('#primaryErrorDisplay').html("");
                         $('#cont-editform').hide();
                         loadingScreen.hide();
@@ -1403,7 +1405,7 @@ $(document).ready(function () {
     });
     $('#overlayform2').click(function (e) {
         e.preventDefault();
-        $('.responseMssg').hide();
+        $('.responseMssg-out').hide();
         if (canhide == true) {
             $(this).hide();
             canhide = false;
@@ -1430,7 +1432,7 @@ $(document).ready(function () {
         }
     });
 
-    $('.responseMssg').click(function (e) {
+    $('.p0').click(function (e) {
         e.preventDefault();
         $(this).hide();
         searchRefresh();
@@ -1449,7 +1451,6 @@ $(document).ready(function () {
 
 
     });
-    $('.responseMssg').hide();
 
     function button1Refresh() {
         $("#cont-editform .loadingSc").show();
@@ -1849,14 +1850,9 @@ function forresponseinact(fulln, nmbr, mfile) {
 
 
 function searchRefresh() {
-    let query = '', searchQuery = "%" + query + "%";
-    $('.outlosd').show();
-
     $.ajax({
-
         url: '../studentSection/studentActionreq/search.php',
         method: 'GET',
-        data: { query: searchQuery },
         success: function (response) {
             $("#searchResults").html(response);
         }, complete: function () {

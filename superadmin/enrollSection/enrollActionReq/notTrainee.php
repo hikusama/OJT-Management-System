@@ -8,17 +8,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
 
-        $sql = 'SELECT students.*, department.deptAcronym
-                FROM students
-                LEFT JOIN trainee ON students.stu_id = trainee.stu_id
-                LEFT JOIN department ON students.department = department.department
-                WHERE trainee.stu_id IS NULL';
+        $sql = 'SELECT students.*, course.crsAcronym
+        FROM students
+        LEFT JOIN trainee ON students.stu_id = trainee.stu_id
+        LEFT JOIN course ON students.course = course.course
+        
+        WHERE trainee.stu_id IS NULL';
 
         // If there's a search query, add it to the SQL query
         if (!empty($searchQuery)) {
             $sql .= ' AND (students.firstname LIKE :searchQuery 
                         OR students.lastname LIKE :searchQuery 
-                        OR department.deptAcronym LIKE :searchQuery)';
+                        OR course.course LIKE :searchQuery)';
         }
 
         $stmt = $pdo->prepare($sql);
@@ -33,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if ($results) {
-
             foreach ($results as $result) {
                 echo '
                     <div class="loadli">
@@ -57,19 +57,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </div>
                     <li>
+                    <div class="ovCrs">
+                    <i id="add_course_ByOne"  class="fa-solid fa-square-plus " title="Enroll This Student" ></i>
+                </div>
                         <div class="picEnrollee">
                             <img id="enrolProfPic" src="data:image/jpeg;base64,' . base64_encode($result["profile_pic"]) . '">
                         </div>
                         <div class="infoNotEnroll">
-                            <h5>' . $result["lastname"] . ', '  . $result["firstname"] . '</h5>
-                            <p>' . $result['deptAcronym'] . '</p>
+                            <h5 id="sp'. $result['stu_id'] . '">' . $result["lastname"] . ', '  . $result["firstname"] . '</h5>
+                            <p>' . $result['crsAcronym'] . '</p>
                         </div>
                     </li>
                 ';
             }
+        }else{
+            echo 'No result found';
         }
     } catch (\Throwable $th) {
         // Handle exceptions here
     }
 }
-?>

@@ -185,16 +185,16 @@ $(document).ready(function () {
     function userCount() {
         if (activeRequests === 0) {
 
-            // setInterval(function () {
-            //     fetchDataAndUpdate('../overviewSection/alluser/studentCount.php', 'studnum');
-            //     fetchDataAndUpdate('../overviewSection/alluser/coordinatorCount.php', 'coor');
-            //     fetchDataAndUpdate('../overviewSection/alluser/traineeCount.php', 'trainees');
-            //     fetchDataAndUpdate('../overviewSection/alluser/adminCount.php', 'ad');
-            //     if ((studval, coorval, trval, admins) != undefined) {
-            //         console.log('good');
-            //         updateChart([studval, trval, coorval, admins])
-            //     }
-            // }, 1000);
+            setInterval(function () {
+                fetchDataAndUpdate('../overviewSection/alluser/studentCount.php', 'studnum');
+                fetchDataAndUpdate('../overviewSection/alluser/coordinatorCount.php', 'coor');
+                fetchDataAndUpdate('../overviewSection/alluser/traineeCount.php', 'trainees');
+                fetchDataAndUpdate('../overviewSection/alluser/adminCount.php', 'ad');
+                if ((studval, coorval, trval, admins) != undefined) {
+                    console.log('good');
+                    updateChart([studval, trval, coorval, admins])
+                }
+            }, 1000);
 
         }
     }
