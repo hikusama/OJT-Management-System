@@ -361,27 +361,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                         </div>
 
                     </div>
-                    <div class="addedsuc">
-                        <div class="pannelanim">
-                            <img src="" id="displayaddanim" alt="">
-                            <div class="name">
-                                <h1></h1>
-                                <h3></h3>
-                                <button id="done">Done</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="addedsuc2">
-                        <div class="pannelanim">
-                            <div class="name">
-                                <h1></h1>
-                                <h3></h3>
-                                <button id="done2">Done</button>
-                            </div>
-                        </div>
 
-
-                    </div>
                     <div class="responseMssg-out">
                         <div class="responseMssg">
                             <h3>New Student Added Successfully</h3>

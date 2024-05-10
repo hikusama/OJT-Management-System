@@ -9,19 +9,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
 
         $sql = 'SELECT 
-            course.*,
-            trainee.*,
-            COUNT(students.student_id) AS total_students
-        FROM 
-            course
-        INNER JOIN 
-            students ON students.course = course.course
-        LEFT JOIN
-            trainee ON trainee.stu_id = students.stu_id
-        GROUP BY
-            course.course_id
-        HAVING 
-            COUNT(trainee.stu_id) = 0';
+        course.*,
+        trainee.*,
+        COUNT(students.student_id) AS total_students
+    FROM 
+        course
+    INNER JOIN 
+        students ON students.course = course.course
+    LEFT JOIN
+        trainee ON trainee.stu_id = students.stu_id';
 
         if (!empty($searchQuery)) {
             $sql .= ' AND (course.course LIKE :searchQuery 
@@ -91,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </section>
 <?php
             }
-        }else{
+        } else {
             echo 'No Courses found!';
         }
 

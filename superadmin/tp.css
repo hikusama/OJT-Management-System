@@ -910,15 +910,43 @@ a {
     place-items: center;
     display: grid;
 }
-
+#settings .settings-inner{
+    place-items: start;
+    
+}
 #coordinators,
 #admins,
+#settings,
 #students {
     width: 100%;
     /* display: none; */
 
 
 
+}
+.forEditFr{
+    width: fit-content;
+    padding: 1rem;
+    height: fit-content;
+}
+.fSeen{
+    text-align: center;
+    margin-left: 3rem;
+    width: fit-content;
+}
+.fSeen button{
+    margin-top: 1rem;
+    background: rgba(0, 0, 0, 0.075);
+    color: rgb(223, 223, 223);
+    border-radius: .5rem;
+    height: 2rem;
+    border: solid 1px rgb(223, 223, 223);
+    width: 10rem;
+    transition: .3s;
+}
+.fSeen button:hover{
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .outUl {
@@ -1715,6 +1743,7 @@ a {
 
 #coordinators ul,
 #admins ul,
+#settings ul,
 #students ul {
     display: flex;
     justify-content: space-around;
@@ -1727,6 +1756,7 @@ a {
 
 #coordinators li,
 #admins li,
+#settings li,
 #students .liEnroll {
     position: relative;
     border-radius: .3rem 3rem;
@@ -1775,6 +1805,16 @@ a {
     position: absolute;
     border-radius: 50%;
 }
+#settings li::after {
+    top: -1.5rem;
+    left: -1.5rem;
+    content: "";
+    height: 3rem;
+    width: 3rem;
+    background-color: rgb(104, 0, 165);
+    position: absolute;
+    border-radius: 50%;
+}
 
 #students li::after {
     top: -1.5rem;
@@ -1789,6 +1829,7 @@ a {
 
 #coordinators li #men,
 #admins li #men,
+#settings li #men,
 #students li #men {
     cursor: pointer;
     height: 1.4rem;
@@ -1814,6 +1855,10 @@ a {
     background-color: rgba(2, 2, 2, 0.774);
 
 }
+#settings li #men:hover {
+    background-color: rgba(2, 2, 2, 0.774);
+
+}
 
 #students li #men:hover {
     background-color: rgba(2, 2, 2, 0.774);
@@ -1822,6 +1867,7 @@ a {
 
 #coordinators li .pfront,
 #admins li .pfront,
+#settings li .pfront,
 #students li .pfront {
     display: grid;
     place-items: center;
@@ -1842,12 +1888,15 @@ a {
 
 #coordinators li .pfront h4,
 #admins li .pfront h4,
+#settings li .pfront h4,
 #students li .pfront h4 {
     margin-top: .5rem;
-}
+    text-transform: capitalize;
+}    
 
 #coordinators li .pfront p,
 #admins li .pfront p,
+#settings li .pfront p,
 #students li .pfront p {
     font-variant: small-caps;
     text-align: center;
@@ -1861,6 +1910,7 @@ a {
 
 #coordinators li img,
 #admins li img,
+#settings li img,
 #students li img {
     height: 3.5rem;
     width: 3.5rem;
@@ -1955,7 +2005,7 @@ a {
 
 
 
-.editcoor-inner {
+.editcoor-inner,.edit-myCred {
     position: relative;
     background: rgb(0, 0, 0);
     height: 100%;
@@ -2025,12 +2075,13 @@ a {
     animation-name: addporm;
 }
 
-.editcoor-inner {
+.editcoor-inner , .edit-myCred{
     background: linear-gradient(transparent, rgb(0 0 0 / 70%)) !important;
 
 }
 
 .addcoor-inner,
+.edit-myCred,
 .addadmin-inner,
 .editcoor-inner {
     min-height: 18rem;
@@ -2078,6 +2129,7 @@ a {
 
 .addcoor-inner form .inptcont,
 .othersec-inner form .inptcont,
+.edit-myCred .inptcont,
 .addadmin-inner form .inptcont,
 .editcoor-inner form .inptcont {
     width: fit-content;
@@ -2086,6 +2138,7 @@ a {
 
 .addcoor-inner form i,
 .othersec-inner form .inptcont i,
+.edit-myCred form i,
 .addadmin-inner form i,
 .editcoor-inner form i {
     border-radius: 2rem;
@@ -2144,7 +2197,9 @@ a {
     row-gap: 2rem;
 }
 
-.editcoor-inner form {
+.edit-myCred form ,
+.editcoor-inner form 
+{
     display: flex;
     flex-direction: column;
 
@@ -2253,6 +2308,7 @@ a {
 .addcoor-inner form input,
 .addadmin-inner form input,
 .editcoor-inner form input,
+.edit-myCred form input,
 #gn,
 #GN,
 #CRS,
@@ -2330,7 +2386,9 @@ a {
     visibility: hidden;
 }
 
-.editcoor-inner .coradbut2 button {
+.editcoor-inner .coradbut2 button, 
+.edit-myCred .coradbut2 button 
+{
     cursor: pointer;
     display: grid;
     place-items: center;
@@ -2347,6 +2405,10 @@ a {
 }
 
 .editcoor-inner .coradbut label:hover {
+    background-color: rgba(2, 136, 189, 0.842);
+
+}
+.edit-myCred .coradbut label:hover {
     background-color: rgba(2, 136, 189, 0.842);
 
 }
@@ -2999,11 +3061,11 @@ a {
         height: 2rem;
     }
 }
-
+/*
 #first {
-    /* display: none; */
+     display: none; 
 }
-
+*/
 
 #second {
     display: none;

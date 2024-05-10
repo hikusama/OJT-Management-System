@@ -4,6 +4,8 @@
 // require_once 'login_Signup/signup_view.php';
 // require_once 'login_Signup/login_view.php';
 session_start();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,13 +32,10 @@ session_start();
         <?php
         if (!isset($_SESSION["user_id"])) {
         ?>
-
             <div class="side">
                 <div class="in">On The Job Training</div>
             </div>
-
             <div class="overlaylogn"></div>
-
             <div class="entry">
 
                 <div id="logn">
@@ -234,9 +233,11 @@ session_start();
             if ($_SESSION['user_role'] == 'SuperAdmin') {
                 header('location: superadmin/pannelparts/overview.php');
             } else if ($_SESSION['user_role'] == 'Supervisor') {
-                header('location: superadmin/coor.php');
+                // header('location: superadmin/coor.php');
             } else if ($_SESSION['user_role'] == 'Student') {
-                header('location: Student/index.php');
+                // header('location: Student/index.php');
+            } else if ($_SESSION['user_role'] == 'Admin') {
+                header('location: admin/pannelparts/overview.php');
             }
         }
 ?>

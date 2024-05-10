@@ -32,7 +32,7 @@ function get_email(object $pdo, string $email)
 
 function set_user(object $pdo, string $username, string $userpassword,string $email)
 {
-    $user_role = "Supervisor";
+    $user_role = "Admin";
     $options = [
         'cost' => 12
     ];

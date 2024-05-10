@@ -42,6 +42,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["user_id"] = $result["user_id"];
             $_SESSION['username'] = $result['username'];
             $_SESSION['user_role'] = $result['user_role'];
+
+            // if ($_SESSION['user_role'] == 'SuperAdmin') {
+            //     header('location: ../../superadmin/pannelparts/overview.php');
+            // } else if ($_SESSION['user_role'] == 'Supervisor') {
+            //     // header('location: ../../superadmin/coor.php');
+            // } else if ($_SESSION['user_role'] == 'Student') {
+            //     // header('location: ../../Student/index.php');
+            // } else if ($_SESSION['user_role'] == 'Admin') {
+            //     header('location: ../../admin/pannelparts/overview.php');
+            // }
         } else {
             foreach ($errors as $error) {
                 echo '<h4 class="formError" style="color:red;font-family:sans-serif;">' . $error . '</h4>';
