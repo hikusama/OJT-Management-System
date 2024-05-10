@@ -19,7 +19,9 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../tp.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../css/tp.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../admin.css?v=<?php echo time(); ?>">
+
     <style>
         .profSide h2::before {
             content: '<?php echo $_SESSION['user_role'] ?>';
@@ -43,8 +45,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
                     </div>
                 </div>
                 <div class="profsideCont" id="pcont">
-                    <img src="../../images/adminpic.png" id="sidepic" alt="">
-                    <h2 id="callN"><?php echo $_SESSION['username'] ?></h2>
+
                 </div>
             </div>
             <nav>

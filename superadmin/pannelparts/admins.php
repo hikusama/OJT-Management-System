@@ -17,8 +17,8 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
     <script src="../UX/admins.js?v=<?php echo time(); ?>"></script>
-
-    <link rel="stylesheet" href="../tp.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../superAdmin.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../css/tp.css?v=<?php echo time(); ?>">
     <style>
         #cont-viewinform::after {
             background-color: rgb(104, 0, 165);
@@ -47,7 +47,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
     <div class="outside">
 
         <div class="sideP">
-            <div class="profSide" >
+            <div class="profSide">
                 <div class="loadingSc" style="display: none;">
                     <div class="loadingSc-inner">
                         <span class="eloader2"></span>
@@ -72,8 +72,8 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                     <a id="enrollbtn" href="enroll.php"><i class="fas fa-tasks"></i>enroll</a>
 
                     <a id="mailsbtn" href="mails.php"><i class="fas fa-envelope"></i>mails</a>
-                    
-                    <a id="" href="other.php" ><i class="fa-solid fa-skull-crossbones"></i>other Access</a>
+
+                    <a id="" href="other.php"><i class="fa-solid fa-skull-crossbones"></i>other Access</a>
 
                     <a id="settingsbtn" href="settings.php"><i class="fas fa-cog"></i>settings</a>
                 </ul>

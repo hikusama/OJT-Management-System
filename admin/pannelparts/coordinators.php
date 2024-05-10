@@ -17,8 +17,8 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
     <script src="../UX//coordinators.js?v=<?php echo time(); ?>"></script>
-
-    <link rel="stylesheet" href="../tp.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../admin.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../css/tp.css?v=<?php echo time(); ?>">
 
     <style>
         #cont-viewinform::after {
@@ -32,9 +32,12 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
         .viewinform #vinfo {
             border: solid .2rem rgb(0, 187, 140);
         }
+
         .profSide h2::before {
             content: '<?php echo $_SESSION['user_role'] ?>';
         }
+
+
     </style>
 
 
@@ -47,15 +50,14 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
     <div class="outside">
 
         <div class="sideP">
-            <div class="profSide" >
+            <div class="profSide">
                 <div class="loadingScprf" style="display: none;">
                     <div class="loadingSc-inner">
                         <span class="eloader2"></span>
                     </div>
                 </div>
                 <div class="profsideCont" id="pcont">
-                    <img src="../../images/adminpic.png" id="sidepic" alt="">
-                    <h2 id="callN"><?php echo $_SESSION['username'] ?></h2>
+
                 </div>
             </div>
             <nav>

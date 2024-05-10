@@ -16,33 +16,21 @@ let searchQuery = "%" + query + "%";
 
 
 $(document).ready(function () {
-    // document.getElementById('pcont').style.visibility = "hidden";
-    // // countTo(studval, "studnum", 400000);
-    // // countTo(coorval, "coor", 400000);
-    // // countTo(trval, "trainees", 400000);
-    // // countTo(admins, "ad", 400000);
-    // let pimgIdS = $('.profSide').attr('id');
-    // let pimgId = parseInt(pimgIdS.substring(1));
-    // formData = new FormData();
-    // formData.append('uID', pimgId);
-    // $('.loadingSc').show();
-    // $.ajax({
-    //     type: "post",
-    //     url: "../pannelparts/getForProf.php",
-    //     data: formData,
-    //     contentType: false,
-    //     processData: false,
-    //     success: function (response) {
-    //         $('.profsideCont').html(response);
-    //     },
-    //     complete: function () {
-    //         setTimeout(() => {
-    //             document.getElementById('pcont').style.visibility = "visible";
-    //             $('.loadingSc').hide();
-    //         }, 3000);
-    //     }
-    // });
-
+    $('.loadingScprf').show();
+    $.ajax({
+        type: "post",
+        url: "../pannelparts/getForProf.php",
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            $('.profsideCont').html(response);
+        },
+        complete: function () {
+            setTimeout(() => {
+                $('.loadingScprf').hide();
+            }, 1000);
+        }
+    });
 
 
 
@@ -105,15 +93,14 @@ $(document).ready(function () {
     $('#weekday').html(weekday);
 
     let activeRequests = 0, firstRun = 5;
-    let studval, coorval, trval, admins;
+    let studval, coorval, trval;
 
-    const yValues = [studval, coorval, trval, admins];
-    const xValues = ["Students", "Trainee", "Coordinator", "Admin"];
+    const yValues = [studval, coorval, trval];
+    const xValues = ["Students", "Trainee", "Coordinator"];
     const barColors = [
         "rgb(0, 191, 224)",
         "rgb(151, 35, 0)",
-        "rgb(0, 187, 140)",
-        "rgb(104, 0, 165)"
+        "rgb(0, 187, 140)"
     ];
 
 

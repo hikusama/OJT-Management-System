@@ -1,0 +1,44 @@
+.status .headStatus button::after {
+    background-color: rgb(253, 94, 2) !important;
+}
+
+.status .headStatus button:hover {
+    color: rgb(253, 94, 2) !important;
+}
+
+.status .headStatus button:hover {
+    color: rgb(253, 94, 2) !important;
+}
+
+.on-status-button {
+
+    color: rgb(253, 94, 2) !important;
+}
+
+#toplab2:hover {
+    cursor: ew-resize;
+    color: rgb(253, 94, 2) !important;
+}
+
+.sideP ul a:hover {
+    color: rgb(253, 94, 2);
+}
+
+.sideP ul a:hover a {
+    color: rgb(253, 94, 2) !important;
+}
+
+.on {
+    color: rgb(253, 94, 2) !important;
+
+}
+
+#toplab2:hover {
+    cursor: ew-resize;
+    color: rgb(253, 94, 2);
+}
+
+.profSide h2::before {
+ 
+    color: rgb(253, 94, 2);
+}

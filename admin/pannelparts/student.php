@@ -17,8 +17,9 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
     <script src="../UX//student.js?v=<?php echo time(); ?>"></script>
+    <link rel="stylesheet" href="../admin.css?v=<?php echo time(); ?>">
 
-    <link rel="stylesheet" href="../tp.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../css/tp.css?v=<?php echo time(); ?>">
     <style>
         #cont-viewinform::after {
             background-color: rgb(0, 174, 255);
@@ -54,8 +55,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
                     </div>
                 </div>
                 <div class="profsideCont" id="pcont">
-                    <img src="../../images/adminpic.png" id="sidepic" alt="">
-                    <h2 id="callN"><?php echo $_SESSION['username'] ?></h2>
+
                 </div>
             </div>
             <nav>

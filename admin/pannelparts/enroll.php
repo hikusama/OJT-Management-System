@@ -17,8 +17,9 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
    <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
    <!-- <script src="../UX/student.js"></script> -->
+   <link rel="stylesheet" href="../admin.css?v=<?php echo time(); ?>">
 
-   <link rel="stylesheet" href="../tp.css?v=<?php echo time(); ?>">
+   <link rel="stylesheet" href="../../css/tp.css?v=<?php echo time(); ?>">
    <style>
      .liEnroll::after {
        background: linear-gradient(271deg, black, red) !important;
@@ -63,9 +64,8 @@
            </div>
          </div>
          <div class="profsideCont" id="pcont">
-           <img src="../../images/adminpic.png" id="sidepic" alt="">
-           <h2 id="callN"><?php echo $_SESSION['username'] ?></h2>
-         </div>
+
+</div>
        </div>
        <nav>
          <ul id="tabs">

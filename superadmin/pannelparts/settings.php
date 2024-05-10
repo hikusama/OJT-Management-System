@@ -17,8 +17,9 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
     <script src="../UX/settings.js?v=<?php echo time(); ?>"></script>
+    <link rel="stylesheet" href="../superAdmin.css?v=<?php echo time(); ?>">
 
-    <link rel="stylesheet" href="../tp.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../css/tp.css?v=<?php echo time(); ?>">
     <style>
         #cont-viewinform::after {
             background-color: rgb(104, 0, 165);

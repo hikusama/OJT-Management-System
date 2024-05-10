@@ -20,6 +20,23 @@ $(document).ready(function () {
 
     searchRefresh();
 
+    $('.loadingScprf').show();
+    $.ajax({
+        type: "post",
+        url: "../pannelparts/getForProf.php",
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            $('.profsideCont').html(response);
+        },
+        complete: function () {
+            setTimeout(() => {
+                $('.loadingScprf').hide();
+            }, 1000);
+        }
+    });
+
+
     // -----------------------logout---------------------
     let isLoginClicked = false;
     $('#logoutClick').click(function (e) {
