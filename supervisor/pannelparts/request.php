@@ -56,8 +56,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
                     </div>
                 </div>
                 <div class="profsideCont" id="pcont">
-                    <img src="../../images/adminpic.png" id="sidepic" alt="">
-                    <h2 id="callN"><?php echo $_SESSION['username'] ?></h2>
+ 
                 </div>
             </div>
             <nav>

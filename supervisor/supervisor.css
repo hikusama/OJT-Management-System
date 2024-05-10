@@ -42,3 +42,87 @@
  
     color: rgb(0, 187, 140);
 }
+
+
+
+
+
+
+.request-inner{
+    display: grid;
+    justify-content: center;
+}
+.contReq{
+    width: fit-content;
+}
+
+.contReq li{
+    border-radius: .3rem;
+    padding: 2rem 1rem;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    list-style: none;
+    background:rgb(71, 71, 71) ;
+    width: 10rem;
+    position: relative;
+    overflow: hidden;
+}
+.contReq li::after{
+    top: -1.3rem;
+    left: -1rem;
+    position: absolute;
+    content: ' ';
+    background:linear-gradient(315deg, black, rgb(255 187 0)) ;
+    height: 3.5rem;
+    width: 2.5rem;
+    transform: rotate(45deg);
+}
+.contReq li .profCred img{
+    height: 4rem;
+}
+.dashEme{
+    width: 100%;
+}
+
+.dasheme-inner{
+    
+    width: 19rem;
+    background:rgb(71, 71, 71) ;
+}
+.action-to-req{
+    display: grid;
+    place-items: center;
+    height: 7rem;
+}
+.action-to-req button{
+    cursor: pointer;
+    color: rgb(231, 231, 231);
+    border-radius: .3rem;
+    height: 1.5rem;
+    width: 8rem;
+    border: solid 1px rgba(214, 214, 214, 0.295);
+}
+
+#admit{
+    background: rgba(6, 189, 143, 0.267);
+}
+
+#refuse{
+    background: rgba(189, 6, 6, 0.267);
+}
+#view{
+    background: rgba(6, 64, 189, 0.267);
+}
+#admit:hover{
+    background: rgba(6, 189, 143, 0.76);
+}
+
+#refuse:hover{
+    background: rgba(189, 6, 6, 0.61);
+}
+#view:hover{
+    background: rgba(6, 64, 189, 0.678);
+}
+
+

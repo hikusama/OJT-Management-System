@@ -22,8 +22,10 @@ function executeAddTrainee(object $pdo, int $course_id)
 
         foreach ($studCrsResults as $studCrsResult) {
             $ntr = $studCrsResult['stu_id'];
-            $sql = "INSERT INTO trainee(stu_id) 
-            VALUE(:ntr);";
+            $sql = "INSERT INTO trainee (stu_id) 
+            SELECT :ntr 
+            WHERE NOT EXISTS (SELECT 1 FROM trainee WHERE stu_id = :ntr);
+            ";
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':ntr', $ntr);
             $stmt->execute();
@@ -32,12 +34,14 @@ function executeAddTrainee(object $pdo, int $course_id)
 }
 
 
-function executeAddTraineeByOne(object $pdo,int $student){
+function executeAddTraineeByOne(object $pdo, int $student)
+{
 
-    $sql = "INSERT INTO trainee(stu_id) 
-            VALUE(:student);";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':student', $student);
-            $stmt->execute();
-
+    $sql = "INSERT INTO trainee (stu_id) 
+    SELECT :student 
+    WHERE NOT EXISTS (SELECT 1 FROM trainee WHERE stu_id = :student);
+    ";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':student', $student);
+    $stmt->execute();
 }

@@ -8,16 +8,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
 
+        // COUNT(students.student_id) AS total_students
         $sql = 'SELECT 
-        course.*,
-        trainee.*,
-        COUNT(students.student_id) AS total_students
-    FROM 
-        course
-    INNER JOIN 
-        students ON students.course = course.course
-    LEFT JOIN
-        trainee ON trainee.stu_id = students.stu_id';
+                course.*,
+                COUNT(students.student_id) AS total_students_left,
+                trainee.*,
+                department.program_pic
+            FROM 
+                course
+            INNER JOIN 
+                students ON students.course = course.course
+            LEFT JOIN
+                trainee ON trainee.stu_id = students.stu_id
+            LEFT JOIN
+                department ON students.department = department.department
+            WHERE 
+                students.stu_id NOT IN (SELECT stu_id FROM trainee)
+                GROUP BY course.course_id
+';
 
         if (!empty($searchQuery)) {
             $sql .= ' AND (course.course LIKE :searchQuery 
@@ -27,30 +35,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql .= ' LIMIT 0, 25;';
 
         $stmt = $pdo->prepare($sql);
-
         if (!empty($searchQuery)) {
             $searchParam = "%$searchQuery%";
             $stmt->bindParam(':searchQuery', $searchParam);
         }
-
         $stmt->execute();
-
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
 
         if ($results) {
 
             foreach ($results as $result) {
-                $toDeptId = $result['dept_id'];
-                $sql2 = 'SELECT
-                            department.program_pic
-                        FROM
-                            department
-                        WHERE department.program_id = :toDeptId';
-                $stmt2 = $pdo->prepare($sql2);
-                $stmt2->bindParam(':toDeptId', $toDeptId);
-                $stmt2->execute();
 
-                $resultforp = $stmt2->fetch(PDO::FETCH_ASSOC);
 ?>
                 <div class="loadli">
                     <div class="inner-loadli">
@@ -74,12 +71,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <section>
                     <div class="stdCnt">Student:
-                        <span><?php echo $result['total_students'] ?></span>
+                        <span><?php echo $result['total_students_left'] ?></span>
                     </div>
                     <div class="ovCrs">
                         <i class="fa-solid fa-square-plus" title="Enroll This Course" id="add_course_package"></i>
                     </div>
-                    <img src="data:image/jpeg;base64,<?php echo base64_encode($resultforp['program_pic']) ?>" id="coursePic" alt="">
+                    <img src="data:image/jpeg;base64,<?php echo base64_encode($result['program_pic']) ?>" id="coursePic" alt="">
                     <div class="infoEnrl">
                         <h4 id="wl<?php echo $result['course_id'] ?>"><?php echo $result['crsAcronym'] ?></h4>
                         <p><?php echo $result['course'] ?></p>

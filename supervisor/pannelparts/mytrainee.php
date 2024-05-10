@@ -21,26 +21,7 @@
 
    <link rel="stylesheet" href="../../css/tp.css?v=<?php echo time(); ?>">
    <style>
-     .liEnroll::after {
-       background: linear-gradient(271deg, black, red) !important;
-
-     }
-
-     #cont-viewinform::after {
-       background: linear-gradient(271deg, black, red);
-     }
-
-     #cont-viewinform::before {
-       background: linear-gradient(271deg, black, red);
-     }
-
-     #students .liEnroll .pfront p {
-       color: red !important;
-     }
-
-     .viewinform #vinfo {
-       border: solid .2rem red;
-     }
+ 
 
      .profSide h2::before {
        content: '<?php echo $_SESSION['user_role'] ?>';
@@ -48,7 +29,7 @@
    </style>
 
 
-   <title>Enroll</title>
+   <title>My Trainee</title>
  </head>
 
  <body>
@@ -69,11 +50,11 @@
        </div>
        <nav>
          <ul id="tabs">
-           <a id="overviewbtn" class="on" href="overview.php"><i class="fas fa-tachometer-alt"></i>overview</a>
+           <a id="overviewbtn"  href="overview.php"><i class="fas fa-tachometer-alt"></i>overview</a>
 
            <a id="mailsbtn" href="request.php"><i class="fas fa-envelope"></i>request</a>
 
-           <a id="coordinatorsbtn" href="mytrainee.php"><i class="fas fa-users"></i>my trainee</a>
+           <a id="coordinatorsbtn"class="on" href="mytrainee.php"><i class="fas fa-users"></i>my trainee</a>
 
            <a id="enrollbtn" href="trainee.php"><i class="fas fa-tasks"></i>trainee</a>
 
@@ -90,7 +71,7 @@
    </div>
    <label for="sideCheck" class="oberlay"></label>
    <div class="lardgeSide">
-     <div class="head"><label id="toplab2" for="sideCheck">Enroll</label></div>
+     <div class="head"><label id="toplab2" for="sideCheck">My Trainee</label></div>
      <input type="checkbox" id="sideCheck" onclick="handleCheckboxChange()">
      <div id="content">
        <div id="students">
@@ -110,8 +91,6 @@
 
          <div class="students-inner">
            <div class="enrollHeadSec">
-             <h2>Enroll !!</h2>
-             <button id="enrollStudent">Enroll Student</button>
              <form id="searchTrainee">
                <div class="inputWtType">
                  <i class="fa-solid fa-magnifying-glass"></i>
@@ -135,114 +114,14 @@
              </ul>
            </div>
          </div>
-         <div id="cont-removeform">
-           <div class="removeform">
-             <form id="rmformreq">
-               <p>Confirm for deletion</p>
-               <div class="wr">
-                 <i class="fas fa-lock"></i>
-                 <input type="password" name="password" placeholder="Confirm password" autocomplete="new-password" autocomplete="new-password" id="pwdd">
-               </div>
-               <div id="responsetodel"></div>
-               <button id="delG">Delete</button>
-             </form>
 
-           </div>
-           <div class="outlosdrm">
-             <div class="innerloadsd">
-               <div class="loader">
-                 <div class="bar"></div>
-                 <div class="bar"></div>
-                 <div class="bar"></div>
-                 <div class="bar"></div>
-               </div>
-             </div>
-           </div>
-         </div>
          <div id="cont-viewinform">
          </div>
 
        </div>
      </div>
-     <div id="rightSidepane">
-       <i class="fas fa-arrow-left" id="back2"></i>
-       <div class="typeOfSearch">
-         <h3>Enroll Here!</h3>
-         <div class="navTraining">
-           <button id="onebone" class="newenrollbutton">One by One</button>
-           <button id="bygroup">By Course</button>
-         </div>
-         <div class="searchTp">
-           <div class="srSpec">
-             <form id="searchBySpec">
-               <div class="inputWtType">
-                 <i class="fa-solid fa-magnifying-glass"></i>
-                 <input type="search" name="" id="searchStud" placeholder="Search for students...">
-               </div>
-             </form>
-           </div>
-           <div class="srGrp">
-             <form id="searchGroup">
-               <div class="inputWtType">
-                 <i class="fa-solid fa-magnifying-glass"></i>
-                 <input type="search" name="" id="searchCrs" placeholder="Search for courses...">
-               </div>
-             </form>
-           </div>
-         </div>
-       </div>
-       <ul id="studContent">
+     
 
-         <div class="loadli">
-           <div class="inner-loadli">
-             <ol>
-               <span class="pictemplate"></span>
-               <span class="infotemplate"><span class="Displayname"></span></span>
-             </ol>
-             <ol>
-               <span class="pictemplate"></span>
-               <span class="infotemplate"><span class="Displayname"></span></span>
-             </ol>
-             <ol>
-               <span class="pictemplate"></span>
-               <span class="infotemplate"><span class="Displayname"></span></span>
-             </ol>
-             <ol>
-               <span class="pictemplate"></span>
-               <span class="infotemplate"><span class="Displayname"></span></span>
-             </ol>
-           </div>
-         </div>
-
-
-
-       </ul>
-     </div>
-
-     <div id="cont-confirmforedit">
-       <div class="innerforeditform">
-         <form id="editformreq">
-           <p>Is it you?</p>
-           <div class="wr">
-             <i class="fas fa-lock"></i>
-             <input type="password" placeholder="Password.." id="conftopass">
-           </div>
-           <div id="reqeditresponse"></div>
-           <button id="ver">Verify</button>
-         </form>
-
-       </div>
-       <div class="outlosdrmqrm">
-         <div class="innerloadsd">
-           <div class="loader">
-             <div class="bar"></div>
-             <div class="bar"></div>
-             <div class="bar"></div>
-             <div class="bar"></div>
-           </div>
-         </div>
-       </div>
-     </div>
      <div class="responseMssg-out">
 
        <div class="responseMssg">

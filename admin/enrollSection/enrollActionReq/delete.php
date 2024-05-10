@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
+    header('location: ../../index.php');
+}
+
 
 require_once '../../../includes/config.php';
 
@@ -6,8 +11,7 @@ require_once '../../../includes/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $_SESSION["signup_data"] = "cent";
-        $username =  $_SESSION["signup_data"];
+        $username =  $_SESSION["username"];
         $userpassword = $_POST["password"];
         $studentsId = $_POST["studentsId"];
 

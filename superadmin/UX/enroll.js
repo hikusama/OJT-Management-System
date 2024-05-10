@@ -19,7 +19,7 @@ $(document).ready(function () {
     // $('#add_course_package').click(function (e) { 
     $('.outlosdEnr').show();
 
-    refreshDisplayTrainee();
+    refreshNotDeployed();
 
 
 
@@ -33,8 +33,8 @@ $(document).ready(function () {
 
         $.ajax({
             method: "GET",
-            url: "../enrollSection/enrollActionReq/searchTrainee.php",
-            data: { search: searchQuery },
+            url: "../enrollSection/enrollActionReq/notDeployed.php",
+            data: { query: searchQuery },
             success: function (response) {
                 $('#searchResults').html(response);
             },
@@ -259,11 +259,12 @@ $(document).ready(function () {
                     $('.responseMssg-out').show();
                     if (isGroup == true) {
                         $('.responseMssg-out h3').html(courseAdded + ' Enrolled Successfully');
-
-                    } else {
+                        refreshGroup();
+                    } else if(isGroup == false){
                         $('.responseMssg-out h3').html(' Student named "' + studentAdded + '" Enrolled Successfully');
+                        refreshBySpecSection(); 
                     }
-                    refreshDisplayTrainee();
+                    refreshNotDeployed();
 
                 }
             }
@@ -385,7 +386,7 @@ $(document).ready(function () {
                     $("#overlayform2").show();
                     $('.responseMssg-out').show();
                     $('.responseMssg-out h3').html('Trainee deleted successfully!');
-                    refreshDisplayTrainee();
+                    refreshNotDeployed();
 
                 }
                 setTimeout(() => {
@@ -396,6 +397,40 @@ $(document).ready(function () {
 
         });
     });
+
+
+    let notdplyElement = document.getElementById('notDply');
+    let dplyElement = document.getElementById('dply');
+
+    let isdpClicked = true;
+    $('#notDply').click(function (e) {
+        e.preventDefault();
+        if (isdpClicked == false) {
+            notdplyElement.style.background = "linear-gradient(271deg, black, rgba(255, 187, 0, 0.678)";
+            dplyElement.style.background = "transparent";
+            refreshNotDeployed();
+            isdpClicked = true;
+        }else{
+            dplyElement.style.background = "linear-gradient(271deg, black, red)";
+            notdplyElement.style.background = "transparent";
+        }
+    });
+    $('#dply').click(function (e) { 
+        e.preventDefault();
+        if (isdpClicked == true) {
+            refreshDeployed();
+            isdpClicked = false;
+            dplyElement.style.background = "linear-gradient(271deg, black, red)";
+            notdplyElement.style.background = "transparent";
+        }else{
+            notdplyElement.style.background = "linear-gradient(271deg, black, rgba(255, 187, 0, 0.678)";
+            dplyElement.style.background = "transparent";
+        }
+        
+    });
+
+
+
 
 
 
@@ -546,17 +581,65 @@ function handleDeviceWidth() {
 }
 
 
-function refreshDisplayTrainee() {
+function refreshNotDeployed() {
     $('.outlosdEnr').show();
     $.ajax({
         method: "GET",
-        url: "../enrollSection/enrollActionReq/searchTrainee.php",
+        url: "../enrollSection/enrollActionReq/notDeployed.php",
         success: function (response) {
             $('#searchResults').html(response);
         },
         complete: function () {
             $('.outlosdEnr').hide();
 
+        }
+    });
+}
+
+function refreshDeployed() {
+    $('.outlosdEnr').show();
+    $.ajax({
+        method: "GET",
+        url: "../enrollSection/enrollActionReq/deployed.php",
+        success: function (response) {
+            $('#searchResults').html(response);
+        },
+        complete: function () {
+            $('.outlosdEnr').hide();
+
+        }
+    });
+}
+
+
+function refreshGroup() {
+    $.ajax({
+        type: "POST",
+        url: "../enrollSection/enrollActionReq/enrollSecGetCourse.php",
+        success: function (response) {
+
+            $('#studContent').html(response);
+            $('.loadli').show();
+        },
+        complete: function () {
+            setTimeout(() => {
+                $('.loadli').hide();
+            }, 3000);
+        }
+    });
+}
+function refreshBySpecSection() {
+    $.ajax({
+        type: "post",
+        url: "../enrollSection/enrollActionReq/notTrainee.php",
+        success: function (response) {
+            $('#studContent').html(response);
+            $('.loadli').show();
+
+        }, complete: function () {
+            setTimeout(() => {
+                $('.loadli').hide();
+            }, 3000);
         }
     });
 }

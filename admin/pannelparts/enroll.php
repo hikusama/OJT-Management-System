@@ -21,27 +21,6 @@
 
    <link rel="stylesheet" href="../../css/tp.css?v=<?php echo time(); ?>">
    <style>
-     .liEnroll::after {
-       background: linear-gradient(271deg, black, red) !important;
-
-     }
-
-     #cont-viewinform::after {
-       background: linear-gradient(271deg, black, red);
-     }
-
-     #cont-viewinform::before {
-       background: linear-gradient(271deg, black, red);
-     }
-
-     #students .liEnroll .pfront p {
-       color: red !important;
-     }
-
-     .viewinform #vinfo {
-       border: solid .2rem red;
-     }
-
      .profSide h2::before {
        content: '<?php echo $_SESSION['user_role'] ?>';
      }
@@ -58,14 +37,15 @@
 
      <div class="sideP">
        <div class="profSide">
-         <div class="loadingScprf" style="display: none;">
+         <div class="loadingSc" style="display: none;">
            <div class="loadingSc-inner">
              <span class="eloader2"></span>
            </div>
          </div>
          <div class="profsideCont" id="pcont">
-
-</div>
+           <img src="../../images/adminpic.png" id="sidepic" alt="">
+           <h2 id="callN"><?php echo $_SESSION['username'] ?></h2>
+         </div>
        </div>
        <nav>
          <ul id="tabs">
@@ -120,6 +100,12 @@
                </div>
              </form>
            </div>
+           <div class="navenroll">
+             <div class="navenroll-inner">
+               <button id="notDply">Not Deployed</button>
+               <button id="dply">Deployed</button>
+             </div>
+           </div>
            <div class="outUl" id="rev">
              <div class="outlosdEnr">
                <div class="innerloadsd">
@@ -135,33 +121,33 @@
 
              </ul>
            </div>
-          </div>
-          <div id="cont-removeform">
-            <div class="removeform">
-              <form id="rmformreq">
-                <p>Confirm for deletion</p>
-                <div class="wr">
-                  <i class="fas fa-lock"></i>
-                  <input type="password" name="password" placeholder="Confirm password" autocomplete="new-password" autocomplete="new-password" id="pwdd">
-                </div>
-                <div id="responsetodel"></div>
-                <button id="delG">Delete</button>
-              </form>
+         </div>
+         <div id="cont-removeform">
+           <div class="removeform">
+             <form id="rmformreq">
+               <p>Confirm for deletion</p>
+               <div class="wr">
+                 <i class="fas fa-lock"></i>
+                 <input type="password" name="password" placeholder="Confirm password" autocomplete="new-password" autocomplete="new-password" id="pwdd">
+               </div>
+               <div id="responsetodel"></div>
+               <button id="delG">Delete</button>
+             </form>
 
-            </div>
-            <div class="outlosdrm">
-              <div class="innerloadsd">
-                <div class="loader">
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="cont-viewinform">
-          </div>
+           </div>
+           <div class="outlosdrm">
+             <div class="innerloadsd">
+               <div class="loader">
+                 <div class="bar"></div>
+                 <div class="bar"></div>
+                 <div class="bar"></div>
+                 <div class="bar"></div>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div id="cont-viewinform">
+         </div>
 
        </div>
      </div>

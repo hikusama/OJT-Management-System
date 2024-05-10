@@ -445,8 +445,35 @@ body {
     background-color: rgb(57, 57, 57);
 
 }
+.loadingScprf{
+    display: none !important;
+}
+.navenroll-inner{
+    margin-top: 2rem;
+}
 
-
+.profSide{
+    height: 10.9rem;
+}
+.navenroll-inner button{
+    height: 2rem;
+    width: 8rem;
+    background: none;
+    color: #ffffffc2;
+    border: solid 1px #ffffffc4;
+    border-radius: .3rem;
+    transition: .3s;
+    cursor: pointer;
+}
+.navenroll-inner button:hover:nth-child(1){
+    background:  linear-gradient(271deg, black, rgba(255, 187, 0, 0.678)) ;
+}
+.navenroll-inner button:hover:nth-child(2){
+    background: linear-gradient(271deg, black, red) ;
+}
+#notDply{
+    background:  linear-gradient(271deg, black, rgba(255, 187, 0, 0.678)) ;
+}
 
 
 #sidepic {

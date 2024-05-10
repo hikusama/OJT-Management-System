@@ -49,11 +49,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
 
         <div class="sideP">
             <div class="profSide">
-                <div class="loadingScprf"  >
-                    <div class="loadingSc-inner">
-                        <span class="eloader2"></span>
-                    </div>
-                </div>
+
                 <div class="profsideCont" id="pcont">
  
                 </div>
