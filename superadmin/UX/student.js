@@ -32,6 +32,8 @@ $(document).ready(function () {
             $('#overlayform').hide();
             $('.loggingoutVer h2').hide();
             isLoginClicked = true;
+            canhide = false;
+            canhide2 = false;
             $('#cont-addstudents').hide();
             $('#cont-viewinform').hide();
             $('#cont-confirmforedit').hide();
@@ -267,52 +269,7 @@ $(document).ready(function () {
             }
         });
     });
-
-    // let checkAdd;
-    // $('#changep2, #fnamec, #lnamec, #mnamec, #emailc, #positionc, #departmentc, #roomc, #gn, #usernamec, #passwordc, #confirm_passwordc').on('change', function () {
-    //     formData = new FormData();
-
-    //     // Append file input
-    //     formData.append('image', $('#changep2')[0].files[0]);
-
-    //     // Append other form data
-    //     formData.append('fname', $('#fnamec').val());
-    //     formData.append('lname', $('#lnamec').val());
-    //     formData.append('email', $('#emailc').val());
-    //     formData.append('position', $('#positionc').val());
-    //     formData.append('department', $('#departmentc').val());
-
-    //     formData.append('username', $('#usernamec').val());
-    //     formData.append('userpassword', $('#passwordc').val());
-    //     formData.append('confirm_password', $('#confirm_passwordc').val());
-    //     // console.log("lib");
-    //     $.ajax({
-    //         url: '../studentsSection/mvcAddstudents/addstudents.php',
-    //         method: 'POST',
-    //         data: formData,
-    //         contentType: false,
-    //         processData: false,
-    //         success: function (response) {
-    //             $('#errorDisplay').html(response);
-    //             checkAdd = response;
-    //         },
-    //         complete: function () {
-
-    //         }
-    //     });
-
-    //     console.log("corabut");
-    //     fnout = $('#fnamec').val();
-    //     lnout = $('#lnamec').val();
-
-    // });
-
-
-
-
-
-
-
+ 
 
 
 
@@ -537,10 +494,12 @@ $(document).ready(function () {
                         $('#studentsResponse2ndsection').html('');
                         $('.outlosdsign').hide();
                         $('.responseMssg-out').show();
+                        $('.responseMssg-out h3').html('Added Successfully!!');
                         $('#cont-addstudents #first').show();
                         $('#cont-addstudents #second').hide();
                         $('#cont-addstudents #last').hide();
                         $('#cont-addstudents').hide();
+                        $('#overlayform').hide();
                         $('#overlayform2').show();
                         $('#nextToSecond').removeClass('newFirst');
                         canhide = true;
@@ -654,19 +613,19 @@ $(document).ready(function () {
             complete: function () {
 
                 if (removeResponse == 'success') {
+                    $("#overlayform").hide();
                     $("#overlayform2").show();
                     $(".addedsuc").show();
+                    canhide = true;
                     $("#cont-addstudents").hide();
+                    $("#pwdd").val('');
+                    $("#responsetodel").html('');
                     $("#cont-removeform").hide();
-                    $("#cont-confirmforedit").hide();
-                    $("#cont-editform").hide();
-                    $("#cont-viewinform").hide();
-                    $(".addedsuc .name h3").html("deleted successfully");
-                    let setC = document.querySelector(".addedsuc .name h3");
-                    setC.style.color = "red";
+                    $(".responseMssg-out").show();
+                    $(".responseMssg-out h3").html("Deleted successfully");
                     $("#blinkround").hide();
+                    searchRefresh();
 
-                    forresponseinact(fn, 2, filepicfordel);
                 }
                 setTimeout(() => {
                     document.getElementById('delG').style.transform = 'translateX(0)';
@@ -908,27 +867,7 @@ $(document).ready(function () {
 
     });
 
-    $('.responseMssg-out').click(function (e) {
-        e.preventDefault();
-        $(this).hide();
-        if (btn2 == true && canhide != true) {
-            $("#overlayform").show();
-            $('#cont-editform').show();
-            button2Refresh();
-        } else if(btn2 == false && canhide != true){
-            
-            button1Refresh();
-            $("#overlayform").show();
-            $('#cont-editform').show();
-        }
-        if (canhide == true) {
-            $("#cont-addstudents").hide();
-            $('#overlayform').hide();
-            
-        }
-        $('#overlayform2').hide();
-        $('#overlayform1').hide();
-    });
+
 
     /*
     
@@ -1434,11 +1373,9 @@ $(document).ready(function () {
         $('.responseMssg-out').hide();
         if (canhide == true) {
             $(this).hide();
-
             canhide = false;
             searchRefresh();
-            $("#overlayform").show();
-
+            $(".responseMssg-out").hide();
         }
         if (canhide2 == true) {
             $(this).hide();
@@ -1464,6 +1401,31 @@ $(document).ready(function () {
             }
         }
     });
+
+    
+    $('.responseMssg-out').click(function (e) {
+        e.preventDefault();
+        $(this).hide();
+        if (btn2 == true && canhide != true) {
+            $("#overlayform").show();
+            $('#cont-editform').show();
+            button2Refresh();
+        } else if (btn2 == false && canhide != true) {
+
+            button1Refresh();
+            $("#overlayform").show();
+            $('#cont-editform').show();
+        }
+        if (canhide == true) {
+            $("#cont-addstudents").hide();
+            $('#overlayform').hide();
+
+        }
+        $('#overlayform2').hide();
+        $('#overlayform1').hide();
+    });
+
+
 
     $('.p0').click(function (e) {
         e.preventDefault();

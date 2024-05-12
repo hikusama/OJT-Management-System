@@ -356,6 +356,12 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
 
 
                     </div>
+                    <div class="responseMssg-out">
+                        <div class="responseMssg">
+                            <h3>New Student Added Successfully</h3>
+                            <p>Click anywhere to continue</p>
+                        </div>
+                    </div>
                     <div class="outlosd">
                         <div class="innerloadsd">
                             <div class="loader">

@@ -17,6 +17,44 @@ let searchQuery = "%" + query + "%";
 
 $(document).ready(function () {
     searchRefresh();
+
+
+
+
+    $('#overlayform2').click(function (e) {
+        e.preventDefault();
+        $('.responseMssg-out').hide();
+        if (canhide == true) {
+            $(this).hide();
+            canhide = false;
+            searchRefresh();
+            $(".responseMssg-out").hide();
+        }
+ 
+    });
+
+    
+    $('.responseMssg-out').click(function (e) {
+        e.preventDefault();
+        $(this).hide();
+ 
+        if (canhide == true) {
+            $("#cont-addstudents").hide();
+            $('#overlayform').hide();
+
+        }
+        $('#overlayform2').hide();
+        $('#overlayform1').hide();
+    });
+
+
+
+
+
+
+
+
+
     // --------------------------logout------------------
     let isLoginClicked = false;
     $('#logoutClick').click(function (e) {

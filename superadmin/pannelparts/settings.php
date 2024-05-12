@@ -49,7 +49,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
 
         <div class="sideP">
             <div class="profSide">
-                <div class="loadingSc" style="display: none;">
+                <div class="loadingScprf" style="display: none;">
                     <div class="loadingSc-inner">
                         <span class="eloader2"></span>
                     </div>

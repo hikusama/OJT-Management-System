@@ -2,8 +2,8 @@
 
 
 session_start();
-if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
-    header('location: ../../../index.php');
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
+    header('location: ../../index.php');
 }
 
 require_once '../../includes/config.php';
