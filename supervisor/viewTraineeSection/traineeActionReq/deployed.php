@@ -19,7 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     WHERE students.stu_id IN (
         SELECT stu_id
         FROM trainee
-    ) and trainee.supervisor_info_id is null";
+    ) and trainee.supervisor_info_id is not null";
+
+
 
     if (!empty($searchQuery)) {
         $sql .= ' AND
@@ -39,29 +41,30 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if ($results) {
         echo '<style>
+        
         .liEnroll::after {
-      background: linear-gradient(271deg, black, rgb(255 187 0))  ;
+      background: linear-gradient(271deg, black, red) !important;
 
     }
 
     #cont-viewinform::after {
-      background: linear-gradient(271deg, black, rgb(255 187 0)) ;
+      background: linear-gradient(271deg, black, red);
     }
 
     #cont-viewinform::before {
-      background: linear-gradient(271deg, black, rgb(255 187 0)) ;
+      background: linear-gradient(271deg, black, red);
     }
 
-    #students .liEnroll .pfront p {
-      color: rgba(255, 187, 0, 0.678) !important;
+    #trainee .liEnroll .pfront p {
+      color: red !important;
     }
 
     .viewinform #vinfo {
-      border: solid .2rem rgba(255, 187, 0, 0.678);
+      border: solid .2rem red;
     }
 </style>';
         foreach ($results as $result) {
-            echo '<li class="liEnroll" >';
+            echo '<li class="liEnroll">';
             echo '<i id="men" class="fa-solid fa-ellipsis "></i>
              <div class="pfront">';
             echo "<img src='data:image/jpeg;base64," . base64_encode($result["profile_pic"]) . "' alt='' srcset='' id='myproffromdb'>";
@@ -71,9 +74,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
             echo '<div class="grupi">';
 ?>
-
             <div class="showact" id="enrl">
-                <i class="fa-solid fa-person-circle-exclamation act3" id="del<?php echo $result["stu_id"] . "n" . $result["users_id"]; ?>" ></i>
+                <i class="fa-solid fa-person-circle-exclamation act3" id="del<?php echo $result["stu_id"] . "n" . $result["users_id"]; ?>"></i>
             <?php
             echo '</div>';
             echo '</div>';

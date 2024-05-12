@@ -19,6 +19,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
   <link rel="stylesheet" href="../supervisor.css?v=<?php echo time(); ?>">
   <link rel="stylesheet" href="../../css/tp.css?v=<?php echo time(); ?>">
   <style>
+    
     .profSide h2::before {
       content: '<?php echo $_SESSION['user_role'] ?>';
     }
@@ -69,7 +70,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
     <div class="head"><label id="toplab2" for="sideCheck">Trainee</label></div>
     <input type="checkbox" id="sideCheck" onclick="handleCheckboxChange()">
     <div id="content">
-      <div id="students">
+      <div id="trainee">
         <label for="" id="overlayform2">
         </label>
         <label for="" id="overlayform">
@@ -84,7 +85,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
           </div>
         </div>
 
-        <div class="students-inner">
+        <div class="trainee-inner">
           <div class="enrollHeadSec">
             <form id="searchTrainee">
               <div class="inputWtType">
@@ -120,7 +121,30 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
     </div>
  
 
+    <div id="cont-confirmforedit">
+       <div class="innerforeditform">
+         <form id="editformreq">
+           <p>Is it you?</p>
+           <div class="wr">
+             <i class="fas fa-lock"></i>
+             <input type="password" placeholder="Password.." id="conftopass">
+           </div>
+           <div id="reqeditresponse"></div>
+           <button id="ver">Verify</button>
+         </form>
 
+       </div>
+       <div class="outlosdrmqrm">
+         <div class="innerloadsd">
+           <div class="loader">
+             <div class="bar"></div>
+             <div class="bar"></div>
+             <div class="bar"></div>
+             <div class="bar"></div>
+           </div>
+         </div>
+       </div>
+     </div>
     <div class="responseMssg-out">
       <div class="responseMssg">
         <h3></h3>
@@ -133,7 +157,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
 
 
 
-  <script src="../UX/enroll.js?v=<?php echo time(); ?>"></script>
+  <script src="../UX/trainee.js?v=<?php echo time(); ?>"></script>
 
 
 </body>

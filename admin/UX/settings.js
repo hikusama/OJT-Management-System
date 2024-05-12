@@ -151,7 +151,7 @@ $(document).ready(function () {
 
 
         $.ajax({
-            url: '../coordinatorsSection/coorUpdatePattern/primaryInfoCheck.php',
+            url: '../settingsSection/primaryInfoCheck.php',
             method: 'POST',
             data: formData,
             contentType: false,
@@ -177,7 +177,7 @@ $(document).ready(function () {
         formData.append('userpassword', $('#passworde').val());
         formData.append('confirm_password', $('#confirm_passworde').val());
         $.ajax({
-            url: '../coordinatorsSection/coorUpdatePattern/submitLoginInfoUpdate.php',
+            url: '../settingsSection/submitLoginInfoUpdate.php',
             method: 'POST',
             data: formData,
             contentType: false,

@@ -1,13 +1,15 @@
 <?php
-
+session_start();
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
+    header('location: ../../../index.php');
+}
 require_once '../../../includes/config.php';
 
 // session_start(); // Start the session
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $_SESSION["signup_data"] = "cent";
-        $username =  $_SESSION["signup_data"];
+    $username =  $_SESSION['username'];
         $userpassword = $_POST["password"];
         $usrId = $_POST["userId"];
         $supId = $_POST["suprevId"];

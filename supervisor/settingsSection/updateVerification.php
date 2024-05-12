@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
     header('location: ../../index.php');
 }
 require_once '../../includes/config.php';
@@ -8,7 +8,7 @@ require_once '../../includes/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $user_id =  $_SESSION['user_id'];
+    $username =  $_SESSION['username'];
     $conftopass = $_POST["conftopass"];
 
 
@@ -18,13 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once 'actionfunc.php';
         // require_once 'addtrainee.php';
         // para ma display sa view
-        $getUnresult = get_un_byid($pdo, $user_id);
 
 
         if (is_inputs_empty($conftopass)) {
             $errors["empty_inputs"] = "Please fill all fields!";
         }
-        $result = get_user($pdo, $getUnresult);
+        $result = get_user($pdo, $username);
 
         if (is_userpassword_wrong($conftopass, $result["password"])) {
             $errors["login_incorrect"] = "Wrong password!";

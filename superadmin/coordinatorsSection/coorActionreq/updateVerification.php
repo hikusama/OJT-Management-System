@@ -9,7 +9,7 @@ require_once '../../../includes/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $user_id =  $_SESSION['user_id'];
+    $username =  $_SESSION['username'];
 
         $conftopass = $_POST["conftopass"];
         $usrId = $_POST["userId"];

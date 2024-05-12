@@ -39,7 +39,7 @@
 }
 
 .profSide h2::before {
- 
+
     color: rgb(0, 187, 140);
 }
 
@@ -48,54 +48,101 @@
 
 
 
-.request-inner{
+.request-inner {
     display: grid;
-    justify-content: center;
-}
-.contReq{
-    width: fit-content;
+    place-items: center;
 }
 
-.contReq li{
+.dashEme {
     border-radius: .3rem;
+    height: 4.5rem;
+    width: 19rem;
+    background-color: rgb(57, 57, 57);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(179, 179, 179, 0.16);
+    display: grid;
+    place-items: center;
+
+}
+
+.dasheme-inner {
+    width: fit-content;
+    display: grid;
+    place-items: center;
+
+}
+
+.contReq-out {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    overflow: hidden;
+}
+
+.contReq {
+    height: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 80vw;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.contReq::-webkit-scrollbar {
+    display: none;
+}
+
+.contReq li {
+    list-style: none;
+
+}
+
+.contReq .innerCount {
+    scroll-snap-align: center;
+    height: fit-content;
+    border-radius: .5rem;
     padding: 2rem 1rem;
     text-align: center;
     display: grid;
     place-items: center;
-    list-style: none;
-    background:rgb(71, 71, 71) ;
     width: 10rem;
     position: relative;
     overflow: hidden;
+    background: rgba(22, 22, 22, 0.55);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border: 1px solid rgba(179, 179, 179, 0.16);
 }
-.contReq li::after{
+
+.contReq .innerCount::after {
     top: -1.3rem;
     left: -1rem;
     position: absolute;
     content: ' ';
-    background:linear-gradient(315deg, black, rgb(255 187 0)) ;
+    background: linear-gradient(315deg, black, rgb(255 187 0));
     height: 3.5rem;
     width: 2.5rem;
     transform: rotate(45deg);
 }
-.contReq li .profCred img{
+
+.contReq .innerCount .profCred img {
     height: 4rem;
-}
-.dashEme{
-    width: 100%;
+    width: 4rem;
+    border-radius: 50%;
+    border: solid 2px rgba(231, 231, 231, 0.61);
 }
 
-.dasheme-inner{
-    
-    width: 19rem;
-    background:rgb(71, 71, 71) ;
-}
-.action-to-req{
+.action-to-req {
     display: grid;
     place-items: center;
     height: 7rem;
 }
-.action-to-req button{
+
+.action-to-req button {
     cursor: pointer;
     color: rgb(231, 231, 231);
     border-radius: .3rem;
@@ -104,25 +151,62 @@
     border: solid 1px rgba(214, 214, 214, 0.295);
 }
 
-#admit{
+#admit {
     background: rgba(6, 189, 143, 0.267);
 }
 
-#refuse{
+#reject {
     background: rgba(189, 6, 6, 0.267);
 }
-#view{
+
+#view {
     background: rgba(6, 64, 189, 0.267);
 }
-#admit:hover{
+
+#admit:hover {
     background: rgba(6, 189, 143, 0.76);
 }
 
-#refuse:hover{
+#reject:hover {
     background: rgba(189, 6, 6, 0.61);
 }
-#view:hover{
+
+#view:hover {
     background: rgba(6, 64, 189, 0.678);
 }
 
 
+.records {
+    width: 80%;
+    margin-top: 4rem;
+    text-align: center;
+    height: 25vh;
+    overflow-y: scroll;
+}
+.records::-webkit-scrollbar{
+    display: none;
+}
+
+
+.records table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.records th,
+.records td {
+    border: 1px solid rgba(179, 179, 179, 0.16);
+    padding: 8px;
+    text-align: left;
+    font-weight: 100;
+    font-size: .8rem ;
+
+}
+
+.records th {
+    font-size: .9rem !important;
+    background-color: rgb(57, 57, 57);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+}
+ 

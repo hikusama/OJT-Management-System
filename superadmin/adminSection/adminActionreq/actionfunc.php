@@ -24,16 +24,7 @@ function get_user(object $pdo, string $username)
         return null;
     }
 }
-function get_un_byid(object $pdo, int $user_id)
-{
-    $query = "SELECT * FROM users WHERE user_id = :user_id;";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(":user_id", $user_id);
-    $stmt->execute();
 
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $result['username'];
-}
 
 function is_userpassword_wrong(string $userpassword, string $hashedPassword)
 {
