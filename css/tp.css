@@ -1042,6 +1042,7 @@ a {
 
 .searchd input,
 #searchBySpec input,
+#searchTraineeDply input,
 #searchTrainee input,
 #searchGroup input,
 #searchCourse input {
@@ -1057,7 +1058,13 @@ a {
 #searchTrainee input{
     width: 20rem;
 }
-
+#searchTraineeDply input{
+    width: 20rem;
+}
+.searchTraineeDply-cont
+{
+    display:none;
+}
 #searchBySpec input,
 #searchGroup input {
     height: 2rem;
@@ -1115,6 +1122,7 @@ a {
 }
 
 #searchTrainee,
+#searchTraineeDply,
 #searchBySpec,
 #searchGroup {
 
@@ -1133,6 +1141,7 @@ a {
 
 .searchd #searchForm i,
 #searchCourse i,
+#searchTraineeDply i,
 #searchTrainee i,
 #searchBySpec i,
 #searchGroup i {

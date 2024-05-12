@@ -203,6 +203,7 @@ $(document).ready(function () {
                     $('.responseMssg-out').show();
                     $('#overlayform').hide();
                     $('.responseMssg-out h3').html('Password updated succesfully');
+                    $("#overlayform2").show();
 
                 } else if (prResponse == 'login credentials updated succesfully') {
                     $("#overlayform2").show();
@@ -265,15 +266,16 @@ $(document).ready(function () {
         e.preventDefault();
         $(this).hide();
         $('#overlayform2').hide();
-        $('#overlayform1').hide();
     });
+
+
     $("#overlayform2").click(function (e) {
         e.preventDefault();
         if (isLoginClicked == false) {
             $(this).hide();
             $('#cont-editform').hide();
+            $('.responseMssg-out').hide();
         }
-
     });
 
 

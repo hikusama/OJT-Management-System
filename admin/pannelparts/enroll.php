@@ -93,12 +93,25 @@
            <div class="enrollHeadSec">
              <h2>Enroll !!</h2>
              <button id="enrollStudent">Enroll Student</button>
-             <form id="searchTrainee">
-               <div class="inputWtType">
-                 <i class="fa-solid fa-magnifying-glass"></i>
-                 <input type="search" name="" id="searchTr" placeholder="Search for trainee...">
-               </div>
-             </form>
+
+             <div class="searchTraineeNotDply-cont">
+               <form id="searchTrainee">
+                 <div class="inputWtType">
+                   <i class="fa-solid fa-magnifying-glass"></i>
+                   <input type="search" name="" id="searchTr" placeholder="Search for trainee...">
+                 </div>
+               </form>
+             </div>
+
+             <div class="searchTraineeDply-cont">
+               <form id="searchTraineeDply">
+                 <div class="inputWtType">
+                   <i class="fa-solid fa-magnifying-glass"></i>
+                   <input type="search" name="" id="searchDply" placeholder="Search for trainee...">
+                 </div>
+               </form>
+             </div>
+
            </div>
            <div class="navenroll">
              <div class="navenroll-inner">

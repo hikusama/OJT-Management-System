@@ -41,19 +41,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo '<p class="formError" style="color:red;font-family:sans-serif;">' . $error . '</p>';
                 }
             } else {
-                $sql = "DELETE FROM students WHERE stu_id = :studentsId";
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute(['studentsId' => $studentsId]);
+                // $sql = "DELETE FROM students WHERE stu_id = :studentsId";
+                // $stmt = $pdo->prepare($sql);
+                // $stmt->execute(['studentsId' => $studentsId]);
 
-                $sql2 = "DELETE FROM users WHERE user_id = :usrId";
-                $stmt2 = $pdo->prepare($sql2);
-                $stmt2->execute(['usrId' => $usrId]);
-                // echo '<input type="radio" id="sakses" style="position:absolute; visibility:hidden;" value="success">';
+                // $sql2 = "DELETE FROM users WHERE user_id = :usrId";
+                // $stmt2 = $pdo->prepare($sql2);
+                // $stmt2->execute(['usrId' => $usrId]);
+                // // echo '<input type="radio" id="sakses" style="position:absolute; visibility:hidden;" value="success">';
 
-                if ($stmt->rowCount() > 0 && $stmt2->rowCount() > 0) {
+                // if ($stmt->rowCount() > 0 && $stmt2->rowCount() > 0) {
 
-                    echo 'success';
-                }
+                // }
+                echo 'success';
             }
         } catch (PDOException $e) {
             die("Query Deletion Failed: " . $e->getMessage());

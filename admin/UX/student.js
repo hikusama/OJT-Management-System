@@ -558,6 +558,7 @@ $(document).ready(function () {
                         $('#cont-addstudents #second').hide();
                         $('#cont-addstudents #last').hide();
                         $('#cont-addstudents').hide();
+                        $('#overlayform').hide();
                         $('#overlayform2').show();
                         $('#nextToSecond').removeClass('newFirst');
                         canhide = true;
@@ -671,19 +672,16 @@ $(document).ready(function () {
             complete: function () {
 
                 if (removeResponse == 'success') {
+                    $("#overlayform").hide();
                     $("#overlayform2").show();
-                    $(".addedsuc").show();
-                    $("#cont-addstudents").hide();
                     $("#cont-removeform").hide();
-                    $("#cont-confirmforedit").hide();
-                    $("#cont-editform").hide();
+                    $("#responsetodel").html('');
+                    $("#pwdd").val('');
                     $("#cont-viewinform").hide();
-                    $(".addedsuc .name h3").html("deleted successfully");
-                    let setC = document.querySelector(".addedsuc .name h3");
-                    setC.style.color = "red";
+                    $('.responseMssg-out').show();
+                    $('.responseMssg-out h3').html('Deleted Successfully');
                     $("#blinkround").hide();
-
-                    forresponseinact(fn, 2, filepicfordel);
+canhide = true;
                 }
                 setTimeout(() => {
                     document.getElementById('delG').style.transform = 'translateX(0)';
@@ -1454,7 +1452,6 @@ $(document).ready(function () {
 
             canhide = false;
             searchRefresh();
-            $("#overlayform").show();
 
         }
         if (canhide2 == true) {

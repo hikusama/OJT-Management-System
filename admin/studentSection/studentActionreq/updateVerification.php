@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
 
 
-        $result = get_user($pdo, $getUnresult);
+        $result = get_user($pdo, $username);
 
         if (is_userpassword_wrong($conftopass, $result["password"])) {
             $errors["login_incorrect"] = "Wrong password!";
