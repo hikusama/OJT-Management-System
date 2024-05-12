@@ -1,7 +1,8 @@
 <?php
-
-
-
+session_start();
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
+    header('location: ../../index.php');
+}
 
 require_once '../../includes/config.php';
 
@@ -20,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = [];
     try {
 
+        require_once 'actionfunc.php';
         require_once 'updateModel.php';
         require_once 'updateController.php';
 
@@ -52,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $key,
                     $username
                 );
+                $_SESSION["username"] = get_un_byid($pdo,$_SESSION["user_id"]);
                 echo 'username updated succesfully';
 
             } else if (($firstusername == $username) && !empty($userpassword) && !empty($confirm_password)) {

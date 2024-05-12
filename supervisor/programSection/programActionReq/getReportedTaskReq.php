@@ -19,10 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 
   $sql = "SELECT *
-  FROM students
-  LEFT JOIN department ON department.department = students.department
-  LEFT JOIN trainee ON trainee.stu_id = students.stu_id
-  
+  FROM trainee
+  RIGHT JOIN tasks ON tasks.trainee_id = .trainee.trainee_id
+  RIGHT JOIN tasks_photos ON tasks_photos.trainee_id = .trainee.trainee_id
+
   WHERE trainee.supervisor_info_id = :superVid ";
 
   if (!empty($searchQuery)) {

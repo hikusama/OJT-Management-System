@@ -471,6 +471,7 @@ body {
 .navenroll-inner button:hover:nth-child(2){
     background: linear-gradient(271deg, black, red) ;
 }
+ 
 #notDply{
     background:  linear-gradient(271deg, black, rgba(255, 187, 0, 0.678)) ;
 }
