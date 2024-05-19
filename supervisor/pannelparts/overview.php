@@ -96,13 +96,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
                             <p>students</p>
                         </div>
                     </li>
-                    <li>
-                        <i class="fas fa-users"></i>
-                        <div class="mgs">
-                            <h4 id="coor">0</h4>
-                            <p>coordinator</p>
-                        </div>
-                    </li>
+
                     <li>
                         <i class="fas fa-users"></i>
                         <div class="mgs">

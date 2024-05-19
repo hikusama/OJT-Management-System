@@ -44,9 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors["limit_reached"] = "5 Trainee limit reached!";
         }
         if ($reqFrom == 'Admit') {
-            if (isTraineeExist($pdo, $studId)) {
+            if (isTraineeExist($pdo, $studId,$superVid)) {
                 $errors["trainee_exist"] = "Already your trainee!";
-            }
+            } 
         }
 
         if ($errors) {
@@ -54,12 +54,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo '<p class="formError" style="color:red;font-family:sans-serif;">' . $error . '</p>';
             }
         } else {
+            if (isOnReq( $pdo,  $studId,  $superVid,  $reqId)) {
             if ($reqFrom == 'Admit') {
                 admit_trainee($pdo, $studId, $superVid, $reqId);
             }else if($reqFrom == 'Reject'){
-                reject_student($pdo,$studId,$reqId);
+                reject_student($pdo,$studId,$reqId,$superVid);
             }
             echo 'You Are Verified';
+        }else{
+            echo 'Request Not Found..';
+        }
+
         }
     } catch (PDOException $e) {
         die("Query Deletion Failed: " . $e->getMessage());

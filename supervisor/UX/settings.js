@@ -199,6 +199,7 @@ $(document).ready(function () {
                 } else if (prResponse == 'password updated succesfully') {
                     $('#primaryErrorDisplay').html("");
                     $('#cont-editform').hide();
+                    $("#overlayform2").show();
                     $('.outlosdrmqrm').hide();
                     $('.responseMssg-out').show();
                     $('#overlayform').hide();

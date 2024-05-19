@@ -19,7 +19,7 @@ $(document).ready(function () {
     // $('#add_course_package').click(function (e) { 
     $('.outlosdEnr').show();
 
-    // refreshNotDeployed();
+    refreshNotDeployed();
 
     $('.loadingScprf').show();
     $.ajax({

@@ -15,14 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     // Prepare and execute the database query
     $sql = "SELECT *
-    FROM students
-    WHERE stu_id NOT IN (
-        SELECT stu_id
-        FROM trainee
-    )";
+    FROM students";
 
     if (!empty($searchQuery)) {
-        $sql .= ' AND (firstname LIKE :searchQuery)';
+        $sql .= ' WHERE (firstname LIKE :searchQuery)';
     }
 
     $stmt = $pdo->prepare($sql);

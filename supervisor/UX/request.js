@@ -14,22 +14,7 @@ $(document).ready(function () {
 
     }, 2000);
 
-    function isHorizontalScrollbarVisible(element) {
-        return element.get(0).scrollWidth > element.width();
-    }
 
-    function handleResize() {
-        var contReq = $('.contReq');
-        if (isHorizontalScrollbarVisible(contReq)) {
-            document.getElementById('cntReq').style.justifyContent = "flex-start";
-        } else {
-            document.getElementById('cntReq').style.justifyContent = "center";
-        }
-    }
-
-    $(window).resize(handleResize);
-
-    handleResize();
     getTrReq();
     getRecords();
     countMyTr();
@@ -155,7 +140,7 @@ $(document).ready(function () {
             processData: false,
             success: function (response) {
                 $('#reqeditresponse').html(response);
-                editReqGrantedRespone = response;
+                editReqGrantedRespone = response.trim();
             },
             complete: function () {
                 console.log(editReqGrantedRespone);

@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,28 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
-    <script src="../UX/program.js"></script>
-    <link rel="stylesheet" href="../supervisor.css">
+    <script src="../UX/home.js"></script>
+    <link rel="stylesheet" href="../../css/tp.css">
+    <link rel="stylesheet" href="../student.css">
 
-    <link rel="stylesheet" href="../../css/tp.css ">
     <style>
-        #cont-viewinform::after {
-            background-color: rgb(104, 0, 165);
-        }
-
-        #cont-viewinform::before {
-            background-color: rgb(104, 0, 165);
-        }
-
-        .viewinform #vinfo {
-            border: solid .2rem rgb(104, 0, 165);
-        }
-
- 
+        .profSide h2::before {}
     </style>
 
 
-    <title>Program</title>
+    <title>Home</title>
 </head>
 
 <body>
@@ -40,43 +25,40 @@
 
         <div class="sideP">
             <div class="profSide">
-                <div class="loadingScprf" style="display: none;">
+                <div class="loadingScprf">
                     <div class="loadingSc-inner">
                         <span class="eloader2"></span>
                     </div>
                 </div>
                 <div class="profsideCont" id="pcont">
- 
                 </div>
             </div>
             <nav>
-                <ul id="tabs">
+                <nav>
+                    <ul id="tabs">
 
-                    <a id="overviewbtn" href="overview.php"><i class="fas fa-tachometer-alt"></i>overview</a>
+                        <a id="overviewbtn" class="on" href="home.php"><i class="fas fa-tachometer-alt"></i>home</a>
 
-                    <a id="mailsbtn" href="request.php" ><i class="fas fa-envelope"></i>request</a>
+                        <a id="mailsbtn" href="request.php"><i class="fas fa-envelope"></i>request</a>
 
-                    <a id="coordinatorsbtn" href="mytrainee.php"><i class="fas fa-users"></i>my trainee</a>
+                        <a id="mailsbtn" href="program.php"><i class="fas fa-envelope"></i>program</a>
 
-                    <a id="enrollbtn" href="trainee.php"><i class="fas fa-tasks"></i>trainee</a>
-
-                    <a id="mailsbtn" class="on" href="program.php"><i class="fas fa-envelope"></i>program</a>
-
-                    <a id="settingsbtn" href="settings.php" ><i class="fas fa-cog"></i>settings</a>
-                </ul>
+                        <a id="settingsbtn" href="settings.php"><i class="fas fa-cog"></i>settings</a>
+                    </ul>
+                </nav>
             </nav>
             <div class="logoutSec">
                 <button id="logoutClick">Logout</button>
             </div>
-
         </div>
     </div>
     <label for="sideCheck" class="oberlay"></label>
     <div class="lardgeSide">
-        <div class="head"><label id="toplab2" for="sideCheck">Program</label></div>
+        <div class="head"><label id="toplab2" for="sideCheck">Home</label></div>
         <input type="checkbox" id="sideCheck" onclick="handleCheckboxChange()">
         <div id="content">
-            <div id="program">
+            <!-- <i class="fas fa-sync"></i> -->
+            <div id="home">
                 <label for="" id="overlayform2">
                 </label>
                 <div class="loggingoutVer-cont">
@@ -89,144 +71,122 @@
                     </div>
                 </div>
 
+                <div class="home-inner">
+                    <div class="homeFirstSection">
 
-                <div class="program-inner">
-                    <div class="progHead">
-                            <button id="allReq">All</button>
-                            <button id="repReq">Reported</button>
-                            <button id="apprvReq">Approved</button>
-                            <button id="rejReq">Rejected</button>
                     </div>
-                    <div class="program-cont">
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
+                    <hr>
+                    <div class="homeSecondSection">
+                        <div class="morning">
+                            <h3>Morning</h3>
+                            <div class="table-out">
+
+                                <table>
+                                    <th>time-in</th>
+                                    <th>time-out</th>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+
+                                </table>
                             </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                    </div>
-                </div>
+
+                        </div>
 
 
+                        <div class="afternoon">
+                            <h3>Afternoon</h3>
+                            <div class="table-out">
 
-                <div class="responseMssg-out">
-                    <div class="responseMssg">
-                        <h3>New Student Added Successfully</h3>
-                        <p>Click anywhere to continue</p>
+                                <table>
+                                    <th>time-in</th>
+                                    <th>time-out</th>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>12:00</td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
-    </div>
-
-
-
-
 
 
 

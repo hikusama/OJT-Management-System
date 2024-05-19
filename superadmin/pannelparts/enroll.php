@@ -21,8 +21,6 @@
 
    <link rel="stylesheet" href="../../css/tp.css?v=<?php echo time(); ?>">
    <style>
-
-
      .profSide h2::before {
        content: '<?php echo $_SESSION['user_role'] ?>';
      }
@@ -210,6 +208,10 @@
 
 
        </ul>
+       <div class="requestForEnroll">
+         <button id="byReq">Requests</button>
+         <ul id="reqContent"></ul>
+       </div>
      </div>
 
      <div id="cont-confirmforedit">

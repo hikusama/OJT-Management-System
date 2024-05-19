@@ -27,6 +27,14 @@ $(document).ready(function () {
             $('#overlayform2').show();
             $('.loggingoutVer h2').hide();
             isLoginClicked = true;
+            
+            if (handleDeviceWidth()) {
+                checkbox.checked = false;
+                handleCheckboxChange();
+            } else {
+                checkbox.checked = true;
+                handleCheckboxChange();
+            }
         }
 
     });

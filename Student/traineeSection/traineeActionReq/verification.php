@@ -2,7 +2,7 @@
 
 
 session_start();
-if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Student")) {
     header('location: ../../../index.php');
 }
 require_once '../../../includes/config.php';

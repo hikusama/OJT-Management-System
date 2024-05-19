@@ -20,7 +20,7 @@ $(document).ready(function () {
     $('.outlosdEnr').show();
 
     refreshNotDeployed();
-
+    refreshReqests();
 
 
 
@@ -117,6 +117,7 @@ $(document).ready(function () {
                     }, 3000);
                 }
             });
+            refreshReqests();
         }
     });
 
@@ -204,7 +205,7 @@ $(document).ready(function () {
         $('#overlayform2').show();
     });
 
-    $("#studContent").on("click", ".ovCrs #add_course_ByOne", function (e) {
+    $("#rightSidepane").on("click", ".ovCrs #add_course_ByOne", function (e) {
         e.preventDefault();
         isGroup = false;
         let catchid = $(this).closest("li").find(".infoNotEnroll h5").attr('id');
@@ -218,12 +219,14 @@ $(document).ready(function () {
 
 
 
-
+let canhide = true;
     $('#overlayform2').click(function (e) {
         e.preventDefault();
         $('#cont-confirmforedit').hide();
-        $('#overlayform2').hide();
         $('.responseMssg-out').hide();
+        if (canhide == true) {
+            $('#overlayform2').hide();
+        }
     });
 
 
@@ -260,12 +263,12 @@ $(document).ready(function () {
                     if (isGroup == true) {
                         $('.responseMssg-out h3').html(courseAdded + ' Enrolled Successfully');
                         refreshGroup();
-                    } else if(isGroup == false){
+                    } else if (isGroup == false) {
                         $('.responseMssg-out h3').html(' Student named "' + studentAdded + '" Enrolled Successfully');
-                        refreshBySpecSection(); 
+                        refreshBySpecSection();
                     }
                     refreshNotDeployed();
-
+                    refreshReqests();
                 }
             }
         });
@@ -380,8 +383,9 @@ $(document).ready(function () {
             complete: function () {
 
                 if (removeResponse == 'success') {
-        $("#overlayform").hide();
-                    $("#cont-removeform input").val('');
+                    $("#overlayform").hide();
+                    $("#pwdd").val('');
+                    $("#responsetodel").html('');
                     $("#cont-removeform").hide();
                     $("#overlayform2").show();
                     $('.responseMssg-out').show();
@@ -410,23 +414,23 @@ $(document).ready(function () {
             dplyElement.style.background = "transparent";
             refreshNotDeployed();
             isdpClicked = true;
-        }else{
+        } else {
             dplyElement.style.background = "linear-gradient(271deg, black, red)";
             notdplyElement.style.background = "transparent";
         }
     });
-    $('#dply').click(function (e) { 
+    $('#dply').click(function (e) {
         e.preventDefault();
         if (isdpClicked == true) {
             refreshDeployed();
             isdpClicked = false;
             dplyElement.style.background = "linear-gradient(271deg, black, red)";
             notdplyElement.style.background = "transparent";
-        }else{
+        } else {
             notdplyElement.style.background = "linear-gradient(271deg, black, rgba(255, 187, 0, 0.678)";
             dplyElement.style.background = "transparent";
         }
-        
+
     });
 
 
@@ -485,7 +489,7 @@ $(document).ready(function () {
     $('#logoutClick').click(function (e) {
         e.preventDefault();
         if (isLoginClicked == false) {
-            
+
             const checkbox = document.getElementById('sideCheck');
 
             $('.loggingoutVer').show();
@@ -510,6 +514,8 @@ $(document).ready(function () {
                 checkbox.checked = true;
                 handleCheckboxChange();
             }
+            canhide = false;
+            
         }
 
     });
@@ -545,6 +551,7 @@ $(document).ready(function () {
         $('.loggingoutVer').hide();
         $('#overlayform2').hide();
         isLoginClicked = false;
+        canhide = true;
     });
 
 
@@ -642,4 +649,15 @@ function refreshBySpecSection() {
             }, 3000);
         }
     });
+}
+
+function refreshReqests() {
+    $.ajax({
+        type: "POST",
+        url: "../enrollSection/enrollActionReq/requestsFromStud.php",
+        success: function (response) {
+            $('#reqContent').html(response);
+        }
+    });
+
 }

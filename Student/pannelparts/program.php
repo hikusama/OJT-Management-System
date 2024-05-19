@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Student")) {
     header('location: ../../index.php');
 }
 
@@ -17,7 +17,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
     <script src="../UX/program.js?v=<?php echo time(); ?>"></script>
-    <link rel="stylesheet" href="../supervisor.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../student.css?v=<?php  echo time(); ?>">
 
     <link rel="stylesheet" href="../../css/tp.css?v=<?php echo time(); ?>">
     <style>
@@ -55,23 +55,18 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
                     </div>
                 </div>
                 <div class="profsideCont" id="pcont">
- 
+
                 </div>
             </div>
             <nav>
                 <ul id="tabs">
 
-                    <a id="overviewbtn" href="overview.php"><i class="fas fa-tachometer-alt"></i>overview</a>
+                    <a id="overviewbtn"  href="studHome.php"><i class="fas fa-tachometer-alt"></i>home</a>
 
-                    <a id="mailsbtn" href="request.php" ><i class="fas fa-envelope"></i>request</a>
+                    <a id="mailsbtn" href="program.php" class="on"><i class="fas fa-envelope"></i>program</a>
 
-                    <a id="coordinatorsbtn" href="mytrainee.php"><i class="fas fa-users"></i>my trainee</a>
+                    <a id="settingsbtn" href="settings.php"><i class="fas fa-cog"></i>settings</a>
 
-                    <a id="enrollbtn" href="trainee.php"><i class="fas fa-tasks"></i>trainee</a>
-
-                    <a id="mailsbtn" class="on" href="program.php"><i class="fas fa-envelope"></i>program</a>
-
-                    <a id="settingsbtn" href="settings.php" ><i class="fas fa-cog"></i>settings</a>
                 </ul>
             </nav>
             <div class="logoutSec">
@@ -100,10 +95,10 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
 
                 <div class="program-inner">
                     <div class="progHead">
-                            <button id="allReq">All</button>
-                            <button id="repReq">Reported</button>
-                            <button id="apprvReq">Approved</button>
-                            <button id="rejReq">Rejected</button>
+                        <button id="allReq">All</button>
+                        <button id="repReq">Reported</button>
+                        <button id="apprvReq">Approved</button>
+                        <button id="rejReq">Rejected</button>
                     </div>
                     <div class="program-cont">
                         <li>

@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!empty($searchQuery)) {
             $sql .= ' AND (students.firstname LIKE :searchQuery 
                         OR students.lastname LIKE :searchQuery 
+                        OR students.student_id LIKE :searchQuery 
                         OR course.course LIKE :searchQuery)';
         }
 
@@ -34,28 +35,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if ($results) {
+            echo '                    <div class="loadli">
+            <div class="inner-loadli">
+                <ol>
+                    <span class="pictemplate"></span>
+                    <span class="infotemplate"><span class="Displayname"></span></span>
+                </ol>
+                <ol>
+                    <span class="pictemplate"></span>
+                    <span class="infotemplate"><span class="Displayname"></span></span>
+                </ol>
+                <ol>
+                    <span class="pictemplate"></span>
+                    <span class="infotemplate"><span class="Displayname"></span></span>
+                </ol>
+                <ol>
+                    <span class="pictemplate"></span>
+                    <span class="infotemplate"><span class="Displayname"></span></span>
+                </ol>
+            </div>
+        </div>'; 
             foreach ($results as $result) {
                 echo '
-                    <div class="loadli">
-                        <div class="inner-loadli">
-                            <ol>
-                                <span class="pictemplate"></span>
-                                <span class="infotemplate"><span class="Displayname"></span></span>
-                            </ol>
-                            <ol>
-                                <span class="pictemplate"></span>
-                                <span class="infotemplate"><span class="Displayname"></span></span>
-                            </ol>
-                            <ol>
-                                <span class="pictemplate"></span>
-                                <span class="infotemplate"><span class="Displayname"></span></span>
-                            </ol>
-                            <ol>
-                                <span class="pictemplate"></span>
-                                <span class="infotemplate"><span class="Displayname"></span></span>
-                            </ol>
-                        </div>
-                    </div>
+
                     <li>
                     <div class="ovCrs">
                     <i id="add_course_ByOne"  class="fa-solid fa-square-plus " title="Enroll This Student" ></i>
@@ -68,6 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <p>' . $result['crsAcronym'] . '</p>
                         </div>
                     </li>
+                    
                 ';
             }
         }else{

@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 department ON students.department = department.department
             WHERE 
                 students.stu_id NOT IN (SELECT stu_id FROM trainee)
-                GROUP BY course.course_id
+                
 ';
 
         if (!empty($searchQuery)) {
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         OR course.crsAcronym LIKE :searchQuery)';
         }
 
-        $sql .= ' LIMIT 0, 25;';
+        $sql .= 'GROUP BY course.course_id LIMIT 0, 25;';
 
         $stmt = $pdo->prepare($sql);
         if (!empty($searchQuery)) {

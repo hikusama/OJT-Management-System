@@ -43,6 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['username'] = $result['username'];
             $_SESSION['user_role'] = $result['user_role'];
 
+            if ($result['user_role'] == 'Student') {
+                $studId = get_stud_id($pdo, intval($_SESSION["user_id"]));
+                $_SESSION["accesstype"] = get_userType($pdo, intval($studId['stu_id']));
+            }
             // if ($_SESSION['user_role'] == 'SuperAdmin') {
             //     header('location: ../../superadmin/pannelparts/overview.php');
             // } else if ($_SESSION['user_role'] == 'Supervisor') {
@@ -61,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // $newSessionId = session_create_id();
         // $SessionId = $newSessionId . "_" . $result["id"];
         // session_id($SessionId);
-        
+
 
         // $_SESSION["last_regeneration"] = time();
 

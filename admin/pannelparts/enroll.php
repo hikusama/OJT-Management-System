@@ -56,11 +56,11 @@
 
            <a id="studentbtn" href="student.php"><i class="fas fa-user-graduate"></i>student</a>
 
-           <a id="enrollbtn" href="enroll.php" class="on"><i class="fas fa-tasks"></i>enroll</a>
+           <a id="enrollbtn" href="enroll.php"class="on"><i class="fas fa-tasks"></i>enroll</a>
 
            <a id="mailsbtn" href="mails.php"><i class="fas fa-envelope"></i>mails</a>
 
-           <a id="settingsbtn" href="settings.php"><i class="fas fa-cog"></i>settings</a>
+           <a id="settingsbtn" href="settings.php" ><i class="fas fa-cog"></i>settings</a>
          </ul>
        </nav>
        <div class="logoutSec">
@@ -93,25 +93,12 @@
            <div class="enrollHeadSec">
              <h2>Enroll !!</h2>
              <button id="enrollStudent">Enroll Student</button>
-
-             <div class="searchTraineeNotDply-cont">
-               <form id="searchTrainee">
-                 <div class="inputWtType">
-                   <i class="fa-solid fa-magnifying-glass"></i>
-                   <input type="search" name="" id="searchTr" placeholder="Search for trainee...">
-                 </div>
-               </form>
-             </div>
-
-             <div class="searchTraineeDply-cont">
-               <form id="searchTraineeDply">
-                 <div class="inputWtType">
-                   <i class="fa-solid fa-magnifying-glass"></i>
-                   <input type="search" name="" id="searchDply" placeholder="Search for trainee...">
-                 </div>
-               </form>
-             </div>
-
+             <form id="searchTrainee">
+               <div class="inputWtType">
+                 <i class="fa-solid fa-magnifying-glass"></i>
+                 <input type="search" name="" id="searchTr" placeholder="Search for trainee...">
+               </div>
+             </form>
            </div>
            <div class="navenroll">
              <div class="navenroll-inner">
@@ -217,6 +204,10 @@
 
 
        </ul>
+       <div class="requestForEnroll">
+         <button id="byReq">Requests</button>
+         <ul id="reqContent"></ul>
+       </div>
      </div>
 
      <div id="cont-confirmforedit">

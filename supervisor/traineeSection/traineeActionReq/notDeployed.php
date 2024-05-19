@@ -20,8 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     WHERE students.stu_id IN (
         SELECT stu_id
         FROM trainee
-    ) and trainee.supervisor_info_id is null 
-    and request.request_status != 'Pending'";
+    ) 
+    and trainee.supervisor_info_id is null ";
 
   if (!empty($searchQuery)) {
     $sql .= ' AND

@@ -22,9 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (is_inputs_empty($conftopass)) {
                 $errors["empty_inputs"] = "Please fill all fields!";
             }
-            $getUnresult = get_un_byid($pdo, $user_id);
 
-            $result = get_user($pdo, $getUnresult);
+            $result = get_user($pdo, $username);
             if (is_userpassword_wrong($conftopass, $result["password"])) {
                 $errors["login_incorrect"] = "Wrong password!";
             }

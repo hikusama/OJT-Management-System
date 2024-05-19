@@ -54,8 +54,7 @@ $(document).ready(function () {
     $.ajax({
         type: "post",
         url: "../pannelparts/getForProf.php",
-        contentType: false,
-        processData: false,
+
         success: function (response) {
             $('.profsideCont').html(response);
         },
@@ -198,6 +197,7 @@ $(document).ready(function () {
                     $('.outlosdrmqrm').hide();
                 } else if (prResponse == 'password updated succesfully') {
                     $('#primaryErrorDisplay').html("");
+                    $("#overlayform2").show();
                     $('#cont-editform').hide();
                     $('.outlosdrmqrm').hide();
                     $('.responseMssg-out').show();
@@ -267,11 +267,14 @@ $(document).ready(function () {
         $('#overlayform2').hide();
         $('#overlayform1').hide();
     });
+
+
     $("#overlayform2").click(function (e) {
         e.preventDefault();
         if (isLoginClicked == false) {
             $(this).hide();
             $('#cont-editform').hide();
+            $('..responseMssg-out').hide();
         }
 
     });

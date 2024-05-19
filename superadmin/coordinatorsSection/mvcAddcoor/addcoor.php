@@ -23,6 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
         require_once 'addcoorModel.php';
         require_once 'addcoorController.php';
+        require_once '../../otherSection/adding/othersModel.php';
+        require_once '../../otherSection/adding/othersController.php';
 
 
         if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
@@ -48,6 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (in_array($gender, $genderREq)) {
         } else {
             $errors['gender_invalid'] = "Invalid Gender!";
+        }
+        if (!is_dpt_registered($pdo, $department) && $department) {
+            $errors['department_registered'] = "Department not exist!";
         }
 
         if (is_password_length_invalid($userpassword) && !is_password_not_matched($userpassword, $confirm_password)) {

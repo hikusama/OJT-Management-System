@@ -177,7 +177,7 @@ $(document).ready(function () {
 
 
         var page = $(this).attr("href").substr(1);
-        console.log(page);
+        // console.log(page);
         if (page == "register") {
             // changeURL('/dashboard');
             $("title").html("Register");
@@ -196,7 +196,7 @@ $(document).ready(function () {
         $(this).hide();
         $(".entry").show();
         $(".overlaylogn").show();
-        console.log(" hello");
+        // console.log(" hello");
     });
 
     $("#contentry").on("click", ".overlaylogn", function (e) {
@@ -204,7 +204,7 @@ $(document).ready(function () {
         $(this).hide();
         $(".entry").hide();
         $("#xplore").show();
-        console.log(" hello");
+        // console.log(" hello");
     });
 
     /*
@@ -222,8 +222,8 @@ $(document).ready(function () {
         formData.append('username', $('#Logusername').val());
         formData.append('password', $('#Logpassword').val());
 
-        console.log($('#Logusername').val());
-        console.log($('#Logpassword').val());
+        // console.log($('#Logusername').val());
+        // console.log($('#Logpassword').val());
         $.ajax({
             url: '../OJT-MANAGEMENT-SYSTEM/login_Signup/login/login.php',
             data: formData,
@@ -445,10 +445,10 @@ $(document).ready(function () {
         formData.append('username', $('#UN').val());
         formData.append('userpassword', $('#PW').val());
         formData.append('confirm_password', $('#CONFPW').val());
-        console.log('JEASDFD');
-        console.log($('#SN').val());
+        // console.log('JEASDFD');
+        // console.log($('#SN').val());
         if (isFirstReady && isSecondReady && isLastReady) {
-            console.log('aaaaaa');
+            // console.log('aaaaaa');
             $('.outlosdsign').show();
 
             $.ajax({
@@ -508,16 +508,16 @@ $(document).ready(function () {
         e.preventDefault();
 
         var iconId = $(this).attr("id");
-        console.log(iconId);
+        // console.log(iconId);
 
         if (iconId == "nextToSecond" && isFirstReady == true) {
-            console.log('1st done');
+            // console.log('1st done');
             $('#first').hide();
             $('#second').show();
             $('#last').hide();
         }
         if (iconId == "nextToLast" && isSecondReady == true) {
-            console.log('2nd done');
+            // console.log('2nd done');
             $('#first').hide();
             $('#second').hide();
             $('#last').show();
@@ -581,7 +581,7 @@ function handleImgLogin() {
     const file = input.files[0];
     if (file) {
         const reader = new FileReader();
-        console.log("file1");
+        // console.log("file1");
 
         reader.onload = function () {
             profileImage.attr('src', reader.result);
@@ -589,7 +589,7 @@ function handleImgLogin() {
 
         reader.readAsDataURL(file);
     } else {
-        console.log("invalid");
+        // console.log("invalid");
         profileImage.attr('src', 'images/def.png');
 
     }

@@ -20,17 +20,16 @@ $(document).ready(function () {
     $('.outlosdEnr').show();
 
     refreshNotDeployed();
+    refreshReqests();
 
 
 
-
-    // -----------------------SEARCH TRAINEE Not Deployed----------------
+    // -----------------------SEARCH TRAINEE----------------
     $('#searchTrainee').submit(function (e) {
         e.preventDefault();
         let query = $('#searchTr').val();
         let searchQuery = "%" + query + "%";
         $('.outlosdEnr').show();
-        console.log(query);
 
         $.ajax({
             method: "GET",
@@ -41,27 +40,6 @@ $(document).ready(function () {
             },
             complete: function () {
                 $('.outlosdEnr').hide();
-
-            }
-        });
-    });
-
-    // -----------------------SEARCH TRAINEE Deployed----------------
-    $('#searchTraineeDply').submit(function (e) {
-        e.preventDefault();
-        let query = $('#searchDply').val();
-        let searchQuery = "%" + query + "%";
-        $('.outlosdEnr').show();
-        console.log(query);
-
-        $.ajax({
-            method: "GET",
-            url: "../enrollSection/enrollActionReq/deployed.php",
-            data: { query: searchQuery },
-            success: function (response) {
-                $('#searchResults').html(response);
-            },
-            complete: function () {
                 $('.outlosdEnr').hide();
 
             }
@@ -139,6 +117,7 @@ $(document).ready(function () {
                     }, 3000);
                 }
             });
+            refreshReqests();
         }
     });
 
@@ -226,7 +205,7 @@ $(document).ready(function () {
         $('#overlayform2').show();
     });
 
-    $("#studContent").on("click", ".ovCrs #add_course_ByOne", function (e) {
+    $("#rightSidepane").on("click", ".ovCrs #add_course_ByOne", function (e) {
         e.preventDefault();
         isGroup = false;
         let catchid = $(this).closest("li").find(".infoNotEnroll h5").attr('id');
@@ -240,12 +219,14 @@ $(document).ready(function () {
 
 
 
-
+let canhide = true;
     $('#overlayform2').click(function (e) {
         e.preventDefault();
         $('#cont-confirmforedit').hide();
-        $('#overlayform2').hide();
         $('.responseMssg-out').hide();
+        if (canhide == true) {
+            $('#overlayform2').hide();
+        }
     });
 
 
@@ -287,7 +268,7 @@ $(document).ready(function () {
                         refreshBySpecSection();
                     }
                     refreshNotDeployed();
-
+                    refreshReqests();
                 }
             }
         });
@@ -403,7 +384,7 @@ $(document).ready(function () {
 
                 if (removeResponse == 'success') {
                     $("#overlayform").hide();
-                    $("#cont-removeform input").val('');
+                    $("#pwdd").val('');
                     $("#responsetodel").html('');
                     $("#cont-removeform").hide();
                     $("#overlayform2").show();
@@ -412,7 +393,10 @@ $(document).ready(function () {
                     refreshNotDeployed();
 
                 }
-                $(".outlosdrm").hide();
+                setTimeout(() => {
+                    document.getElementById('delG').style.transform = 'translateX(0)';
+                    $(".outlosdrm").hide();
+                }, 2000);
             }
 
         });
@@ -430,9 +414,6 @@ $(document).ready(function () {
             dplyElement.style.background = "transparent";
             refreshNotDeployed();
             isdpClicked = true;
-
-            $('.searchTraineeDply-cont').hide();
-            $('.searchTraineeNotDply-cont').show();
         } else {
             dplyElement.style.background = "linear-gradient(271deg, black, red)";
             notdplyElement.style.background = "transparent";
@@ -441,8 +422,6 @@ $(document).ready(function () {
     $('#dply').click(function (e) {
         e.preventDefault();
         if (isdpClicked == true) {
-            $('.searchTraineeDply-cont').show();
-            $('.searchTraineeNotDply-cont').hide();
             refreshDeployed();
             isdpClicked = false;
             dplyElement.style.background = "linear-gradient(271deg, black, red)";
@@ -535,6 +514,8 @@ $(document).ready(function () {
                 checkbox.checked = true;
                 handleCheckboxChange();
             }
+            canhide = false;
+            
         }
 
     });
@@ -570,6 +551,7 @@ $(document).ready(function () {
         $('.loggingoutVer').hide();
         $('#overlayform2').hide();
         isLoginClicked = false;
+        canhide = true;
     });
 
 
@@ -667,4 +649,15 @@ function refreshBySpecSection() {
             }, 3000);
         }
     });
+}
+
+function refreshReqests() {
+    $.ajax({
+        type: "POST",
+        url: "../enrollSection/enrollActionReq/requestsFromStud.php",
+        success: function (response) {
+            $('#reqContent').html(response);
+        }
+    });
+
 }

@@ -235,7 +235,7 @@ session_start();
             } else if ($_SESSION['user_role'] == 'Supervisor') {
                 header('location: supervisor/pannelparts/overview.php');
             } else if ($_SESSION['user_role'] == 'Student') {
-                // header('location: student/pannelparts/overview.php');
+                header('location: student/pannelparts/studHome.php');
             } else if ($_SESSION['user_role'] == 'Admin') {
                 header('location: admin/pannelparts/overview.php');
             }

@@ -31,24 +31,27 @@ function getDeptAcr(object $pdo, string $dept)
 
     return $result['deptAcronym'];
 }
-function isTraineeExist(object $pdo,int $studId){
+function isTraineeExist(object $pdo, int $studId, int $superVid)
+{
     $sql = "SELECT trainee.stu_id FROM trainee 
-    where trainee.stu_id = :studId";
+    where trainee.stu_id = :studId
+    and trainee.supervisor_info_id = :superVid";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':studId', $studId);
+    $stmt->bindParam(':superVid', $superVid);
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if(!empty($result['stu_id'])){
+    if ($result) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
 
 
-function countMyTrainee(object $pdo,int $superVid)
+function countMyTrainee(object $pdo, int $superVid)
 {
 
     $sql = "SELECT COUNT(*) AS my_trainee_total from trainee
@@ -64,7 +67,33 @@ function countMyTrainee(object $pdo,int $superVid)
 
     if ($totr <= 5) {
         return null;
-    }else{
+    } else {
         return $totr;
     }
+}
+
+
+function isOnReq(object $pdo, int $studId, int $superVid, int $reqId)
+{
+
+    $sql = "SELECT * FROM request 
+where request.supervisor_id  = :superVid 
+and request.stu_id  = :studId 
+and request.request_id = :reqId 
+and request.request_status = 'Pending'";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':reqId', $reqId, PDO::PARAM_INT);
+    $stmt->bindParam(':studId', $studId, PDO::PARAM_INT);
+    $stmt->bindParam(':superVid', $superVid, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        return true;
+    }else{
+        return false;
+    }
+
+
 }

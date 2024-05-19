@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once '../reqModel.php';
 
     $superVid = getSupId($pdo, $user_id);
-    $sql = "SELECT students.firstname,department.deptAcronym,course.crsAcronym,request.request_status,request.request_at,request.action_at
+    $sql = "SELECT students.firstname,department.deptAcronym,course.crsAcronym,request.request_status,request.request_at,request.respond_at
     FROM students 
         INNER JOIN  request on students.stu_id = request.stu_id 
         LEFT JOIN  department on department.department = students.department 
@@ -21,8 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         WHERE request.request_status != 'Pending' 
         AND request.supervisor_id = :superVid
-        AND request.requested_by = 'Student'
-        ORDER BY request.action_at DESC";
+        AND request.requested_to = 'Supervisor'
+        ORDER BY request.request_at DESC";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':superVid', $superVid, PDO::PARAM_INT);
     $stmt->execute();
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <td><?php echo $result['deptAcronym'] ?></td>
                 <td><?php echo $result['crsAcronym'] ?></td>
                 <td style="color: <?php echo $colorStat ?>"><?php echo $result['request_status'] ?></td>
-                <td><?php echo $result['action_at'] ?></td>
+                <td><?php echo $result['respond_at'] ?></td>
                 <td><?php echo $result['request_at'] ?></td>
             </tr>
 <?php

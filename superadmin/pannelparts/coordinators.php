@@ -307,6 +307,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                                     <div class="inptcont">
                                         <i class="fas fa-building"></i>
                                         <input id="departmentc" type="text" placeholder="Department" name="department">
+                                        <div class="suggestDpt"></div>
                                     </div>
                                     <div class="inptcont">
                                         <i class="fas fa-door-open"></i>

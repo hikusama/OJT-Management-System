@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Student")) {
     header('location: ../../index.php');
 }
 
@@ -14,8 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $usid = $_SESSION["user_id"];
     $un = $_SESSION["username"];
-    $sql = "SELECT supervisors.profile_pic FROM supervisors
-    left join users on users.user_id = supervisors.users_id
+    $sql = "SELECT students.profile_pic FROM students
+    left join users on users.user_id = students.users_id
     where users.user_id = :usid";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':usid', $usid, PDO::PARAM_INT);
@@ -34,4 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "No matching admin found.";
     }
+}else{
+    header('location: studHome.php');
+
 }

@@ -30,14 +30,14 @@ $(document).ready(function () {
             searchRefresh();
             $(".responseMssg-out").hide();
         }
- 
+
     });
 
-    
+
     $('.responseMssg-out').click(function (e) {
         e.preventDefault();
         $(this).hide();
- 
+
         if (canhide == true) {
             $("#cont-addstudents").hide();
             $('#overlayform').hide();
@@ -64,6 +64,13 @@ $(document).ready(function () {
             $('#overlayform2').show();
             $('.loggingoutVer h2').hide();
             isLoginClicked = true;
+            if (handleDeviceWidth()) {
+                checkbox.checked = false;
+                handleCheckboxChange();
+            } else {
+                checkbox.checked = true;
+                handleCheckboxChange();
+            }
         }
 
     });
@@ -106,7 +113,7 @@ $(document).ready(function () {
 
 
 
-    
+
 
 
     $("#searchForm").submit(function (event) {
@@ -172,6 +179,52 @@ $(document).ready(function () {
         lnout = $('#lnamec').val();
 
     });
+
+
+
+    $('.suggestDpt').on('click', 'p', function (e) {
+        $('.suggestDpt').hide();
+        $('#departmentc').val($(this).text());
+    });
+
+
+
+    $('.inptcont').on('input', '#departmentc', function () {
+
+        let query = $(this).val().trim();
+        let searchQuery = "%" + query + "%";
+
+        $.ajax({
+            url: '../../login_Signup/signup/getDept.php',
+            method: 'GET',
+            data: { searchQuery: searchQuery },
+            success: function (response) {
+                $(".suggestDpt").html(response);
+            },
+            complete: function () {
+
+            }
+        });
+    });
+
+    $('#departmentc').click(function () {
+        $('.suggestDpt').show();
+
+    });
+
+
+    $('.inptcont').on('click', 'input, textarea, select', function (e) {
+        e.preventDefault();
+        if (!$(this).is('#departmentc')) {
+            $('.suggestDpt').hide();
+        }
+    });
+
+
+
+
+
+
 
     // let fnout,lnout;
     let addRes;
@@ -393,7 +446,7 @@ $(document).ready(function () {
 
         if ($(this).is('#changep3')) {
             isImageSecondSectionChanged = true;
-        } 
+        }
         if (isImageSecondSectionChanged == true) {
             formData.append('changed', 'changed');
         }

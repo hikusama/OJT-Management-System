@@ -16,16 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     $superVid = getSupId($pdo, $user_id);
 
-    $sql = "SELECT DISTINCT students.firstname, students.stu_id, students.profile_pic, students.department, request.request_id
+    $sql = "SELECT students.firstname, students.stu_id, students.profile_pic, students.department, request.request_id,request.supervisor_id
     FROM request
     INNER JOIN supervisors ON supervisors.supervisor_info_id = request.supervisor_id
     LEFT JOIN trainee ON request.supervisor_id = trainee.supervisor_info_id
     LEFT JOIN students ON request.stu_id = students.stu_id
-    WHERE students.stu_id IN (
-        SELECT stu_id
-        FROM trainee
-    ) AND supervisors.supervisor_info_id = :superVid AND request.request_status = 'Pending' and request.requested_by = 'Student' ;
-    ";
+    WHERE request.supervisor_id = :superVid AND request.request_status = 'Pending' and request.requested_to = 'Supervisor' 
+    GROUP by request.stu_id";
 
     if (!empty($searchQuery)) {
         $sql .= ' AND

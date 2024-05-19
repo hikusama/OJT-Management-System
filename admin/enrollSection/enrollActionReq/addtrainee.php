@@ -37,6 +37,8 @@ function executeAddTrainee(object $pdo, int $course_id)
 function executeAddTraineeByOne(object $pdo, int $student)
 {
 
+
+
     $sql = "INSERT INTO trainee (stu_id) 
     SELECT :student 
     WHERE NOT EXISTS (SELECT 1 FROM trainee WHERE stu_id = :student);
@@ -44,4 +46,24 @@ function executeAddTraineeByOne(object $pdo, int $student)
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':student', $student);
     $stmt->execute();
+
+
+    $sql2 = "UPDATE request 
+    SET request_status = 'Accepted', 
+        respond_at = NOW() 
+    WHERE stu_id = :student 
+    AND request_status = 'Pending'
+    AND requested_to = 'Management';
+    ";
+    $stmt2 = $pdo->prepare($sql2);
+    $stmt2->bindParam(':student', $student);
+    $stmt2->execute();
+
+
+    // $sql2 = "DELETE FROM request 
+    // where request.request_status = 'Pending' 
+    // and request.stu_id = :student";
+    // $stmt2 = $pdo->prepare($sql2);
+    // $stmt2->bindParam(':student', $student, PDO::PARAM_INT);
+    // $stmt2->execute();
 }

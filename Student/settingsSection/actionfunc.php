@@ -20,10 +20,10 @@ function get_user(object $pdo, string $username)
 
         return $user;
     } else {
-        // User not found
         return null;
     }
 }
+
 function get_un_byid(object $pdo, int $user_id)
 {
     $query = "SELECT * FROM users WHERE user_id = :user_id;";
@@ -34,6 +34,7 @@ function get_un_byid(object $pdo, int $user_id)
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result['username'];
 }
+
 function is_userpassword_wrong(string $userpassword, string $hashedPassword)
 {
     if ($hashedPassword === null) {

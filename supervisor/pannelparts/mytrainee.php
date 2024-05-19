@@ -110,6 +110,10 @@
          </div>
 
          <div class="mytr-inner">
+          <div class="attendanceAction">
+            <button id="openTr">Open Attendance</button>
+            <button id="closeTr">Close Attendance</button>
+          </div>
            <div class="enrollHeadSec">
              <form id="searchTrainee">
                <div class="inputWtType">
@@ -170,6 +174,51 @@
          </div>
        </div>
      </div>
+
+
+     <!-- ---------open attendance---------- -->
+
+     <div class="container-mytrainee">
+       <i class="fas fa-arrow-left" id="back2"></i>
+       <div class="inner-mytrainee">
+         <div class="headAtt">
+           <h3>Open Attendance</h3>
+           <button id="toAll" class="onBeff">Open to all</button>
+           <button id="specTr">Open trainee</button>
+         </div>
+         <ul id="trcontentForAtt">
+
+
+         </ul>
+       </div>
+     </div>
+
+
+
+     <!-- ---------close attendance---------- -->
+     <div class="container-close">
+       <i class="fas fa-arrow-left" id="back2"></i>
+       <div class="inner-close">
+         <div class="headAtt-close">
+           <h3>Close Attendance</h3>
+           <button id="close-toAll" class="onBeff2">Close to all</button>
+           <button id="close-specTr">Close to trainee</button>
+         </div>
+         <ul id="trcontentForAtt-close">
+
+         </ul>
+       </div>
+     </div>
+           <!-- <li>
+            <div class="imgInAtt">
+              <img src="../../images/mali.png"  alt="">
+            </div>
+            <div class="myTrInAtt">
+              <h4 id="name">Ramillano, incent</h4>
+            </div>
+            <div><i class="fas fa-lock-open"></i></div>
+          </li> -->
+
      <div class="responseMssg-out">
 
        <div class="responseMssg">

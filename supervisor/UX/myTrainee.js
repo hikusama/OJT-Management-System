@@ -57,6 +57,364 @@ $(document).ready(function () {
     });
 
 
+    let isOpenOn = false;
+    let isCloseOn = false;
+    let isOnOnlyOpenWindow = false;
+    let isOnOnlyCloseWindow = false;
+    // ------------------------------Open Attendance Pannel------------------------------
+    $('#openTr').click(function (e) {
+        e.preventDefault();
+
+        if (isOpenOn == false) {
+            $('.container-mytrainee').show();
+            // $('.outlosdrmqrm').show();
+
+            if (isOnOnlyOpenWindow == false) {
+                formData = new FormData();
+                formData.append('toAll', 'ngiao');
+                $.ajax({
+                    url: "../myTraineeSection/myTraineeActionReq/openAttendance.php",
+                    method: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $('#trcontentForAtt').html(response);
+                    }, complete: function () {
+                        // $('.outlosdrmqrm').hide();
+                    }
+                });
+            }
+
+
+            $('.container-mytrainee').show();
+            $('.container-close').hide();
+            isOpenOn = true;
+            isCloseOn = false;
+
+        }
+
+    });
+
+
+    // ------------------------------Close Attendance Pannel------------------------------
+
+    $('#closeTr').click(function (e) {
+        e.preventDefault();
+
+        if (isCloseOn == false) {
+
+            $('.container-close').show();
+            // $('.outlosdrmqrm').show();
+            if (isOnOnlyCloseWindow == false) {
+
+                formData = new FormData();
+                formData.append('toAll', 'ngiao');
+                $.ajax({
+                    url: "../myTraineeSection/myTraineeActionReq/closeAttendance.php",
+                    method: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $('#trcontentForAtt-close').html(response);
+                    }, complete: function () {
+                        // $('.outlosdrmqrm').hide();
+                    }
+                });
+            }
+
+            $('.container-mytrainee').hide();
+            $('.container-close').show();
+            isCloseOn = true;
+            isOpenOn = false;
+
+        }
+
+    });
+
+    $('.container-mytrainee').on('click', '#back2', function (e) {
+        e.preventDefault();
+        $('.container-mytrainee').hide();
+        isOpenOn = false;
+
+    });
+    $('.container-close').on('click', '#back2', function (e) {
+        e.preventDefault();
+        $('.container-close').hide();
+        isCloseOn = false;
+
+    });
+
+    // ------------------------------Open All Part Attendance Request Button Pannel------------------------------
+
+    let isallClicked = true;
+    $('#toAll').click(function (e) {
+        e.preventDefault();
+        if (isallClicked == false) {
+            // $('.outlosdrmqrm').show();
+            $('#toAll').addClass('onBeff');
+            $('#specTr').removeClass('onBeff');
+
+            formData = new FormData();
+            formData.append('toAll', 'ngiao');
+
+            $.ajax({
+                url: "../myTraineeSection/myTraineeActionReq/openAttendance.php",
+                method: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $('#trcontentForAtt').html(response);
+                }, complete: function () {
+                    // $('.outlosdrmqrm').hide();
+                }
+            });
+            isOnOnlyOpenWindow = false;
+
+            isallClicked = true;
+        }
+
+    });
+
+
+    // ------------------------------Open ByOne Part Attendance Request Button Pannel------------------------------
+
+    $('#specTr').click(function (e) {
+        e.preventDefault();
+        if (isallClicked == true) {
+            $('#toAll').removeClass('onBeff');
+            $('#specTr').addClass('onBeff');
+            // $('.outlosdrmqrm').show();
+            refreshSpecific("../myTraineeSection/myTraineeActionReq/getForAttendance.php");
+            isallClicked = false;
+            isOnOnlyOpenWindow = true;
+
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ------------------------------Close All Part Attendance Request Button Pannel------------------------------
+    let isallClicked_close = true;
+
+    $('#close-toAll').click(function (e) {
+        e.preventDefault();
+        if (isallClicked_close == false) {
+            // $('.outlosdrmqrm').show();
+            $('#close-toAll').addClass('onBeff2');
+            $('#close-specTr').removeClass('onBeff2');
+
+            formData = new FormData();
+            formData.append('toAll', 'ngiao');
+
+            $.ajax({
+                url: "../myTraineeSection/myTraineeActionReq/closeAttendance.php",
+                method: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $('#trcontentForAtt-close').html(response);
+                }, complete: function () {
+                    // $('.outlosdrmqrm').hide();
+
+                }
+            });
+            isOnOnlyCloseWindow = false;
+            isallClicked_close = true;
+
+        }
+
+    });
+
+    // ------------------------------Close ByOne Part Attendance Request Button Pannel------------------------------
+
+    $('#close-specTr').click(function (e) {
+        e.preventDefault();
+        if (isallClicked_close == true) {
+            $('#close-toAll').removeClass('onBeff2');
+            $('#close-specTr').addClass('onBeff2');
+            // $('.outlosdrmqrm').show();
+            refreshSpecific("../myTraineeSection/myTraineeActionReq/getForAttendance.php", "forClosing");
+            isallClicked_close = false;
+            isOnOnlyCloseWindow = true;
+
+        }
+    });
+
+
+
+
+
+
+
+    // ------------------------------Open attendance to all------------------------------
+
+    $('#trcontentForAtt').on('click', '#openForAllExe', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: "../myTraineeSection/myTraineeActionReq/openAttendance.php",
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('#trcontentForAtt').html(response);
+            }, complete: function () {
+                // $('.outlosdrmqrm').hide();
+            }
+        });
+    });
+
+
+
+    // ------------------------------Open attendance by specific------------------------------
+
+    $('#trcontentForAtt').on('click', '.ngiao', function (e) {
+        e.preventDefault();
+        catchTraineeId = $(this).attr('id');
+        catchTraineeId = catchTraineeId.substring(3);
+        catchTraineeId = parseInt(catchTraineeId);
+
+
+        formData = new FormData();
+        formData.append('trainee_id', catchTraineeId);
+
+        $.ajax({
+            url: "../myTraineeSection/myTraineeActionReq/openAttendance.php",
+            method: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('#trcontentForAtt').html(response);
+            }, complete: function () {
+                // $('.outlosdrmqrm').hide();
+                refreshSpecific("../myTraineeSection/myTraineeActionReq/getForAttendance.php");
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+    // ------------------------------Close attendance to all------------------------------
+
+    $('#trcontentForAtt-close').on('click', '#closeForAllExe', function (e) {
+        e.preventDefault();
+        // formData = new FormData();
+        // formData.append('trainee_id', catchTraineeId);
+
+        $.ajax({
+            url: "../myTraineeSection/myTraineeActionReq/closeAttendance.php",
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('#trcontentForAtt-close').html(response);
+            }, complete: function () {
+                // $('.outlosdrmqrm').hide();
+            }
+        });
+    });
+
+
+    // ------------------------------Close attendance by specific------------------------------
+
+    $('#trcontentForAtt-close').on('click', '.ngiao2', function (e) {
+        e.preventDefault();
+        catchTraineeId = $(this).attr('id');
+        catchTraineeId = catchTraineeId.substring(3);
+        catchTraineeId = parseInt(catchTraineeId);
+
+
+        formData = new FormData();
+        formData.append('trainee_id', catchTraineeId);
+
+        $.ajax({
+            url: "../myTraineeSection/myTraineeActionReq/closeAttendance.php",
+            method: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('#trcontentForAtt-close').html(response);
+            }, complete: function () {
+                // $('.outlosdrmqrm').hide();
+                refreshSpecific("../myTraineeSection/myTraineeActionReq/getForAttendance.php", 'forClosing');
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+    function refreshSpecific(pathUrl, type) {
+        if (type == 'forClosing') {
+            formData = new FormData();
+            formData.append(type, type);
+
+            $.ajax({
+                url: pathUrl,
+                method: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $('#trcontentForAtt-close').html(response);
+                }, complete: function () {
+                    // $('.outlosdrmqrm').hide();
+                }
+            });
+        } else {
+
+            $.ajax({
+                url: pathUrl,
+                method: 'POST',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $('#trcontentForAtt').html(response);
+                }, complete: function () {
+                    // $('.outlosdrmqrm').hide();
+                }
+            });
+        }
+    }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -192,7 +550,7 @@ $(document).ready(function () {
     $('#editformreq').submit(function (event) {
         event.preventDefault();
         let formData = new FormData();
-        $('.outlosdrmqrm').show();
+        // $('.outlosdrmqrm').show();
         formData.append('conftopass', $('#conftopass').val());
         formData.append('studId', studentsId);
         $.ajax({
@@ -216,7 +574,7 @@ $(document).ready(function () {
                     $('.responseMssg-out h3').html(`Student named '${nameStud}' Dropped Successfully!`);
                     getMyTrainee();
                 }
-                $('.outlosdrmqrm').hide();
+                // $('.outlosdrmqrm').hide();
 
             }
         });

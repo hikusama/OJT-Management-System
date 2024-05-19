@@ -1,0 +1,115 @@
+
+
+
+                    <div class="homeTraineeDepFirstSection">
+                        <div class="fDp">
+                            <img src="../../images/mali.png" alt="">
+                            <h2>Marcco</h2>
+                            <div class="timestamp"></div>
+                        </div>
+                        <div class="attendanceButton">
+                            <button id="timein">Time-in</button>
+                            <button id="timeout">Time-out</button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="homeTraineeDepSecondSection">
+                        <div class="morning">
+                            <h3>Morning</h3>
+                            <table>
+                                <th>time-in</th>
+                                <th>time-out</th>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+
+                            </table>
+                        </div>
+
+
+                        <div class="afternoon">
+                            <h3>Afternoon</h3>
+                            <table>
+                                <th>time-in</th>
+                                <th>time-out</th>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>8:00</td>
+                                    <td>12:00</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>

@@ -16,8 +16,9 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
-    <script src="../UX//coordinators.js?v=<?php echo time(); ?>"></script>
+    <script src="../UX/coordinators.js?v=<?php echo time(); ?>"></script>
     <link rel="stylesheet" href="../admin.css?v=<?php echo time(); ?>">
+
     <link rel="stylesheet" href="../../css/tp.css?v=<?php echo time(); ?>">
 
     <style>
@@ -36,8 +37,6 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
         .profSide h2::before {
             content: '<?php echo $_SESSION['user_role'] ?>';
         }
-
-
     </style>
 
 
@@ -51,13 +50,14 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
 
         <div class="sideP">
             <div class="profSide">
-                <div class="loadingScprf" style="display: none;">
+                <div class="loadingSc" style="display: none;">
                     <div class="loadingSc-inner">
                         <span class="eloader2"></span>
                     </div>
                 </div>
                 <div class="profsideCont" id="pcont">
-
+                    <img src="../../images/adminpic.png" id="sidepic" alt="">
+                    <h2 id="callN"><?php echo $_SESSION['username'] ?></h2>
                 </div>
             </div>
             <nav>
@@ -65,7 +65,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
 
                     <a id="overviewbtn" href="overview.php"><i class="fas fa-tachometer-alt"></i>overview</a>
 
-                    <a id="coordinatorsbtn" class="on" href="coordinators.php"><i class="fas fa-users"></i>coordinators</a>
+                    <a id="coordinatorsbtn" href="coordinators.php"class="on"><i class="fas fa-users"></i>coordinators</a>
 
                     <a id="studentbtn" href="student.php"><i class="fas fa-user-graduate"></i>student</a>
 
@@ -73,8 +73,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
 
                     <a id="mailsbtn" href="mails.php"><i class="fas fa-envelope"></i>mails</a>
 
-
-                    <a id="settingsbtn" href="settings.php"><i class="fas fa-cog"></i>settings</a>
+                    <a id="settingsbtn" href="settings.php" ><i class="fas fa-cog"></i>settings</a>
                 </ul>
             </nav>
             <div class="logoutSec">
@@ -305,6 +304,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
                                     <div class="inptcont">
                                         <i class="fas fa-building"></i>
                                         <input id="departmentc" type="text" placeholder="Department" name="department">
+                                        <div class="suggestDpt"></div>
                                     </div>
                                     <div class="inptcont">
                                         <i class="fas fa-door-open"></i>
@@ -353,6 +353,12 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
                         </div>
 
 
+                    </div>
+                    <div class="responseMssg-out">
+                        <div class="responseMssg">
+                            <h3>New Student Added Successfully</h3>
+                            <p>Click anywhere to continue</p>
+                        </div>
                     </div>
                     <div class="outlosd">
                         <div class="innerloadsd">

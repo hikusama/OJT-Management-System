@@ -32,6 +32,47 @@ function getDeptAcr(object $pdo, string $dept)
     return $result['deptAcronym'];
 }
 
+function executeOpenAttendaceByOne(object $pdo, int $trId){
+    $sql = "UPDATE trainee 
+    set  trainee.attendance_access = 'Open'
+    where trainee.trainee_id = :trId";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':trId', $trId);
+    $stmt->execute();
+}
+
+function executeOpenAttendaceToAll(object $pdo, int $superVid){
+    $sql = "UPDATE trainee 
+    set  trainee.attendance_access = 'Open'
+    where trainee.supervisor_info_id = :superVid";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':superVid', $superVid);
+    $stmt->execute();
+}
+
+
+function executeCloseAttendaceByOne(object $pdo, int $trId){
+    $sql = "UPDATE trainee 
+    set  trainee.attendance_access = 'Close'
+    where trainee.trainee_id = :trId";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':trId', $trId);
+    $stmt->execute();
+}
+
+function executeCloseAttendaceToAll(object $pdo, int $superVid){
+    $sql = "UPDATE trainee 
+    set  trainee.attendance_access = 'Close'
+    where trainee.supervisor_info_id = :superVid";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':superVid', $superVid);
+    $stmt->execute();
+}
+
+ 
+
+
+
 
 // function countMyTrainee(object $pdo)
 // {
