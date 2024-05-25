@@ -71,8 +71,10 @@
        <nav>
          <ul id="tabs">
            <a id="overviewbtn" href="overview.php"><i class="fas fa-tachometer-alt"></i>overview</a>
+           
 
-           <a id="mailsbtn" href="request.php"><i class="fas fa-envelope"></i>request</a>
+           <a id="mailsbtn" href="request.php"><i class="fas fa-flag act1" title="Request"></i>request</a>
+           
 
            <a id="coordinatorsbtn" class="on" href="mytrainee.php"><i class="fas fa-users"></i>my trainee</a>
 
@@ -184,7 +186,7 @@
          <div class="headAtt">
            <h3>Open Attendance</h3>
            <button id="toAll" class="onBeff">Open to all</button>
-           <button id="specTr">Open trainee</button>
+           <button id="specTr">Specific trainee</button>
          </div>
          <ul id="trcontentForAtt">
 
@@ -202,7 +204,7 @@
          <div class="headAtt-close">
            <h3>Close Attendance</h3>
            <button id="close-toAll" class="onBeff2">Close to all</button>
-           <button id="close-specTr">Close to trainee</button>
+           <button id="close-specTr">Specific trainee</button>
          </div>
          <ul id="trcontentForAtt-close">
 

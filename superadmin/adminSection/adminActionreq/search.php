@@ -14,7 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $searchQuery = isset($_GET['query']) ? $_GET['query'] : '';
 
     // Prepare and execute the database query
-    $sql = "SELECT * FROM admins WHERE firstname LIKE :searchQuery";
+    $sql = "SELECT * FROM admins 
+    inner join department on department.department = admins.department 
+    WHERE firstname LIKE :searchQuery";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['searchQuery' => $searchQuery]);
 
@@ -29,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
              <div class="pfront">';
             echo "<img src='data:image/jpeg;base64," . base64_encode($result["profile_pic"]) . "' alt='' srcset='' id='myproffromdb'>";
             echo "<h4>{$result["firstname"]}</h4>";
-            echo "<p>{$result["department"]}</p>";
+            echo "<p>{$result["deptAcronym"]}</p>";
             echo '</div>';
 
             echo '<div class="grupi">';

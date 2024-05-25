@@ -213,41 +213,46 @@ $(document).ready(function () {
     
     */
 
+    let isLogInRequesting = false;
     $("#loginRequest").submit(function (e) {
         e.preventDefault();
-        $('.outlosd').show();
-        let rs;
-        formData = new FormData();
+        if (isLogInRequesting == false) {
 
-        formData.append('username', $('#Logusername').val());
-        formData.append('password', $('#Logpassword').val());
+            $('.outlosd').show();
+            let rs;
+            formData = new FormData();
 
-        // console.log($('#Logusername').val());
-        // console.log($('#Logpassword').val());
-        $.ajax({
-            url: '../OJT-MANAGEMENT-SYSTEM/login_Signup/login/login.php',
-            data: formData,
-            method: 'post',
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                $('#loginErrors').html("<p style='color:green;'>" + response + "</p>");
-                rs = response;
-            },
-            complete: function () {
-                $('.outlosd').hide();
-                if (rs == "You are verified!!") {
-                    setTimeout(function () {
-                        $('#loginErrors').html("<p style='color:rgb(2, 136, 189);'>Redirecting...</p> ");
-                    }, 3000);
-                    setTimeout(function () {
-                        window.location.href = "../OJT-MANAGEMENT-SYSTEM/superadmin/pannelparts/overview.php";
-                    }, 5000);
+            formData.append('username', $('#Logusername').val());
+            formData.append('password', $('#Logpassword').val());
+
+            // console.log($('#Logusername').val());
+            // console.log($('#Logpassword').val());
+            $.ajax({
+                url: '../OJT-MANAGEMENT-SYSTEM/login_Signup/login/login.php',
+                data: formData,
+                method: 'post',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $('#loginErrors').html("<p style='color:green;'>" + response + "</p>");
+                    rs = response;
+                },
+                complete: function () {
+                    $('.outlosd').hide();
+                    if (rs == "You are verified!!") {
+                        setTimeout(function () {
+                            $('#loginErrors').html("<p style='color:rgb(2, 136, 189);'>Redirecting...</p> ");
+                        }, 3000);
+                        setTimeout(function () {
+                            window.location.href = "../OJT-MANAGEMENT-SYSTEM/superadmin/pannelparts/overview.php";
+                        }, 5000);
+                    }
+
+
                 }
-
-
-            }
-        });
+            });
+            isLogInRequesting = true;
+        }
 
 
     });

@@ -11,3 +11,11 @@ try {
 } catch (PDOException $e) {
     die("Connection Failed: " . $e->getMessage());
 }
+
+
+function time_controll(): string
+{
+    date_default_timezone_set('Asia/Manila');
+
+    return '08:00:00';
+}

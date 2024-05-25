@@ -1,5 +1,14 @@
 <?php
 
+
+
+session_start();
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
+    header('location: ../../index.php');
+}
+
+
+
 require_once '../../../includes/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -7,6 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $searchQuery = isset($_POST['search']) ? $_POST['search'] : '';
 
     try {
+
+        $department = $_SESSION['department'];
 
         // COUNT(students.student_id) AS total_students
         $sql = 'SELECT 
@@ -23,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             LEFT JOIN
                 department ON students.department = department.department
             WHERE 
-                students.stu_id NOT IN (SELECT stu_id FROM trainee)
+                students.stu_id NOT IN (SELECT stu_id FROM trainee) 
+                and department.department = :department 
                 
 ';
 
@@ -39,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $searchParam = "%$searchQuery%";
             $stmt->bindParam(':searchQuery', $searchParam);
         }
+        $stmt->bindParam(':department', $department);
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

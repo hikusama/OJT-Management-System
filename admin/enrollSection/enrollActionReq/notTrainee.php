@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
+    header('location: ../../index.php');
+}
+
 
 require_once '../../../includes/config.php';
 
@@ -8,18 +13,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
 
+        $department = $_SESSION['department'];
+
         $sql = 'SELECT students.*, course.crsAcronym
         FROM students
         LEFT JOIN trainee ON students.stu_id = trainee.stu_id
         LEFT JOIN course ON students.course = course.course
         
-        WHERE trainee.stu_id IS NULL';
+        WHERE trainee.stu_id IS NULL 
+        AND students.department = :department';
 
         // If there's a search query, add it to the SQL query
         if (!empty($searchQuery)) {
             $sql .= ' AND (students.firstname LIKE :searchQuery 
                         OR students.lastname LIKE :searchQuery 
                         OR students.student_id LIKE :searchQuery 
+                        OR course.crsAcronym LIKE :searchQuery 
                         OR course.course LIKE :searchQuery)';
         }
 
@@ -29,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $searchParam = "%$searchQuery%";
             $stmt->bindParam(':searchQuery', $searchParam);
         }
+        $stmt->bindParam(':department', $department);
 
         $stmt->execute();
 

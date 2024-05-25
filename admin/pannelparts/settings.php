@@ -69,8 +69,6 @@ s    <style>
 
                     <a id="enrollbtn" href="enroll.php"><i class="fas fa-tasks"></i>enroll</a>
 
-                    <a id="mailsbtn" href="mails.php"><i class="fas fa-envelope"></i>mails</a>
-
                     <a id="settingsbtn" href="settings.php" class="on"><i class="fas fa-cog"></i>settings</a>
                 </ul>
             </nav>

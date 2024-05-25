@@ -90,127 +90,32 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Student")) {
                 </div>
 
                 <div class="home-inner">
-                    <div class="daySummary">
-                        <h3 class="date">May, 15, 2024</h3>
-                        <h4>3hrs</h4>
-                    </div>
+
                     <div class="homeFirstSection">
                         <div class="refreshSomething">
-                            <div class="fDp">
 
-                            </div>
-                            <div class="attendanceButton">
-                                <button id="timein">Time-in</button>
-                                <button id="timeout">Time-out</button>
-                            </div>
                         </div>
                     </div>
                     <hr>
                     <div class="homeSecondSection">
 
-                        <div class="morning">
-                            <h3>Morning</h3>
-                            <div class="table-out">
-
-                                <table>
-                                    <th>time-in</th>
-                                    <th>time-out</th>
-                                    <tr>
-                                        <td>8:00</td>
-                                        <td>12:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8:00</td>
-                                        <td>12:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8:00</td>
-                                        <td>12:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8:00</td>
-                                        <td>12:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8:00</td>
-                                        <td>12:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8:00</td>
-                                        <td>12:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8:00</td>
-                                        <td>12:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8:00</td>
-                                        <td>12:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8:00</td>
-                                        <td>12:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8:00</td>
-                                        <td>12:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8:00</td>
-                                        <td>12:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8:00</td>
-                                        <td>12:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8:00</td>
-                                        <td>12:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8:00</td>
-                                        <td>12:00</td>
-                                    </tr>
-
-                                </table>
-                            </div>
-                        </div>
+                        <div class="table-out">
 
 
-                        <div class="afternoon">
-                            <h3>Afternoon</h3>
-                            <div class="table-out">
-
-                                <table>
-                                    <th>time-in</th>
-                                    <th>time-out</th>
-                                    <tr>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-
-
-
-                                </table>
-                            </div>
                         </div>
 
                     </div>
+
                 </div>
+
+
+
             </div>
+
         </div>
+    </div>
+    </div>
+    </div>
     </div>
 
 

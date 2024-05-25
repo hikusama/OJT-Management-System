@@ -14,6 +14,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $superVid = getSupId($pdo, $user_id);
 
+  date_default_timezone_set('Asia/Manila');
+  // $current_time = date('H:i');
+  $current_time = time_controll();
+
+  $lunch_time = '12:00';
+  $entry_time = '08:00';
+  $afternoon_time = '13:00';
+  $dismiss_time = '17:00';
+
+
 
   $access = 'Close';
   $pusa = 'ngiao';
@@ -41,10 +51,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  if ($results) {
+  if (!($current_time > $dismiss_time)) {
+    if ($results) {
 
-    foreach ($results as $result) {
-      echo '<li>
+      foreach ($results as $result) {
+        echo '<li>
             <div class="imgInAtt">
               <img src="data:image/jpeg;base64,' . base64_encode($result['profile_pic']) . '"  alt="">
             </div>
@@ -53,8 +64,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div><i class="fas ' . $action . ' ' . $pusa . '" id="def' . $result['trainee_id'] . '"></i></div>
           </li>';
+      }
+    } else {
+      echo "<p>No trainees found.</p>";
     }
   } else {
-    echo "<p>No trainees found.</p>";
+    executeCloseAttendaceToAll($pdo, $superVid);
+    echo '<p class="resClose">Have a <span>"GREAT NIGHT.."</span></p>';
   }
 }

@@ -72,8 +72,6 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
 
                     <a id="enrollbtn" href="enroll.php"><i class="fas fa-tasks"></i>enroll</a>
 
-                    <a id="mailsbtn" href="mails.php"><i class="fas fa-envelope"></i>mails</a>
-
                     <a id="" href="other.php"><i class="fa-solid fa-skull-crossbones"></i>other Access</a>
 
                     <a id="settingsbtn" href="settings.php"><i class="fas fa-cog"></i>settings</a>

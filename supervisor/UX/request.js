@@ -170,6 +170,17 @@ $(document).ready(function () {
 
 
 
+    $('.dashEme').on('click', '#fetch', function (e) {
+        e.preventDefault();
+        getTrReq();
+        
+    });
+
+
+
+
+
+
 
 
 

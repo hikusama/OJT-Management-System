@@ -59,7 +59,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
 
                     <a id="overviewbtn" href="overview.php"><i class="fas fa-tachometer-alt"></i>overview</a>
 
-                    <a id="mailsbtn" href="request.php"><i class="fas fa-envelope"></i>request</a>
+                    <a id="mailsbtn" href="request.php"><i class="fas fa-flag act1" title="Request"></i>request</a>
 
                     <a id="coordinatorsbtn" href="mytrainee.php"><i class="fas fa-users"></i>my trainee</a>
 

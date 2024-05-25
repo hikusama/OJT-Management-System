@@ -18,6 +18,69 @@ let searchQuery = "%" + query + "%";
 $(document).ready(function () {
     searchRefresh();
 
+
+
+
+    // -----------------------department---------------------
+
+    $('.suggestDpt').on('click', 'p', function (e) {
+        $('.suggestDpt').hide();
+        $('#departmentc').val($(this).text());
+    });
+
+
+
+    $('.inptcont').on('input', '#departmentc', function () {
+
+        let query = $(this).val().trim();
+        let searchQuery = "%" + query + "%";
+
+        $.ajax({
+            url: '../../login_Signup/signup/getDept.php',
+            method: 'GET',
+            data: { searchQuery: searchQuery },
+            success: function (response) {
+                $(".suggestDpt").html(response);
+            },
+            complete: function () {
+
+            }
+        });
+    });
+
+    $('#departmentc').click(function () {
+        $('.suggestDpt').show();
+
+    });
+
+
+    $('.inptcont').on('click', 'input, textarea, select', function (e) {
+        e.preventDefault();
+        if (!$(this).is('#departmentc')) {
+            $('.suggestDpt').hide();
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // -----------------------logout---------------------
     let isLoginClicked = false;
     $('#logoutClick').click(function (e) {

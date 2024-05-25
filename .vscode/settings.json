@@ -11,7 +11,8 @@
             "driver": "MySQL",
             "name": "Hiku",
             "database": "ojtsys",
-            "username": "root"
+            "username": "root",
+            "files.restoreUndoStack": false
         }
     ],
     "liveServer.settings.port": 5501

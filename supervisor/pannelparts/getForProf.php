@@ -12,6 +12,7 @@ require_once '../../includes/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    
     $usid = $_SESSION["user_id"];
     $un = $_SESSION["username"];
     $sql = "SELECT supervisors.profile_pic FROM supervisors
@@ -32,6 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php
 
     } else {
-        echo "No matching admin found.";
+        echo "No matching user found.";
     }
 }

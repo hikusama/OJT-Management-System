@@ -13,9 +13,10 @@ require_once '../../includes/config.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $usid = $_SESSION["user_id"];
-    $un = $_SESSION["username"];
-    $sql = "SELECT admins.profile_pic FROM admins
+    $sql = "SELECT admins.profile_pic,department.deptAcronym,department.department, department.program_pic,department.program_id 
+    FROM admins
     left join users on users.user_id = admins.users_id
+    left join  department on department.department = admins.department
     where users.user_id = :usid";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':usid', $usid, PDO::PARAM_INT);
@@ -25,10 +26,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($result) {
+        $_SESSION['department'] = $result['department'];
+        $_SESSION['program_id'] = $result['program_id'];
 
 ?>
-            <img src="data:image/jpeg;base64,<?php echo base64_encode($result['profile_pic']) ?>" id="sidepic" alt="">
-            <h2 id="callN"><?php echo $un ?></h2>
+        <div class="imgLabeling">
+            <img src="data:image/jpeg;base64,<?php echo base64_encode($result['profile_pic']) ?>" id="sidepicUser" alt="">
+            <img src="data:image/jpeg;base64,<?php echo base64_encode($result['program_pic']) ?>" id="sidepic" alt="">
+        </div>
+        <h2 id="callN"><?php echo $result['deptAcronym'] ?></h2>
 <?php
 
     } else {

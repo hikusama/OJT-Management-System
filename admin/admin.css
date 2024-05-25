@@ -1,44 +1,71 @@
 .status .headStatus button::after {
-    background-color: rgb(163 0 255) !important;
+    background-color: #b376ff !important;
 }
 
 .status .headStatus button:hover {
-    color: rgb(163 0 255) !important;
+    color: #b376ff !important;
 }
 
 .status .headStatus button:hover {
-    color: rgb(163 0 255) !important;
+    color: #b376ff !important;
 }
 
 .on-status-button {
 
-    color: rgb(163 0 255) !important;
+    color: #b376ff !important;
 }
 
 #toplab2:hover {
     cursor: ew-resize;
-    color: rgb(163 0 255) !important;
+    color: #b376ff !important;
 }
 
 .sideP ul a:hover {
-    color: rgb(163 0 255);
+    color: #b376ff;
 }
 
 .sideP ul a:hover a {
-    color: rgb(163 0 255) !important;
+    color: #b376ff !important;
 }
 
 .on {
-    color: rgb(163 0 255) !important;
+    color: #b376ff !important;
 
 }
 
 #toplab2:hover {
     cursor: ew-resize;
-    color: rgb(163 0 255);
+    color: #b376ff;
 }
 
 .profSide h2::before {
  
-    color: rgb(163 0 255);
+    color: #b376ff;
+}
+
+#callN{
+
+}
+.imgLabeling{
+    position: relative;
+    height: 6rem;
+    width: 6rem;
+}
+
+
+#sidepicUser{
+    position: absolute;
+    z-index: 1;
+    height: 3.2rem;
+    width: 3.2rem;
+    border: solid 3px #b376ff;
+    border-radius: 50%;
+    background: rgb(57, 57, 57);
+    right:-1.5rem;
+    bottom:-.2rem
+}
+
+
+#students li .pfront p {
+    font-size: .75rem;
 }

@@ -30,28 +30,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $timeArg = '';
     $timeInType = '';
 
-    if ($current_time > $entry_time && $current_time < $lunch_time) {
+
+
+    if ($current_time > $entry_time && $current_time < $afternoon_time) {
         $timeInType = 'M';
-        $timeArg = ($current_time <= '08:10:00') ? '08:00:00' : $current_time;
+        $timeArg =  '12:00:00';
     } else {
         $timeInType = 'A';
-        $timeArg = ($current_time <= '13:10:00') ? '13:00:00' : $current_time;
+        $timeArg = ($current_time >= $dismiss_time) ? '17:00:00'  : $current_time;
     }
 
 
+
+
     try {
+
         if (checkAttendance($pdo, $studId)) {
 
-
-            if (!(($current_time > $lunch_time && $current_time < $afternoon_time) || ($current_time >= $dismiss_time))) {
-                if (!isAlready_Timein($pdo, $studId)) {
-                    time_inExecute($pdo, $traineeId, $studId, $timeArg, $timeInType);
-                    echo 'time in successfully';
+            if ($current_time >= $lunch_time && $current_time < $afternoon_time || ($current_time >= $dismiss_time)) {
+                if (!isAlready_TimeOut($pdo, $studId)) {
+                    time_outExecute($pdo, $studId, $timeArg, $timeInType);
+                    time_acq($pdo, $studId);
+                    echo 'success';
                 } else {
-                    echo 'already time in';
+                    echo 'alreadytimeout';
                 }
             }
-        } 
+        }
+
+
+
+
+        echo isAlready_TimeOut($pdo, $studId);
     } catch (PDOException $e) {
         die("Query Failed1: " . $e->getMessage());
     }

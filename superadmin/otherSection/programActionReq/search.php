@@ -39,10 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             // Output results
             ?>
             <li>
-                <div class="overlayProg ">
-                    <i class="fa-regular fa-pen-to-square act1"></i>
-                    <i class="fa-solid fa-trash act2"></i>
-                </div>
                 <img src="data:image/jpeg;base64,<?php echo base64_encode($result['program_pic']) ?>" alt="">
                 <div class="det">
                     <h4><?php echo $result['deptAcronym'] ?></h4>

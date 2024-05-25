@@ -1,5 +1,9 @@
 <?php
 
+session_start();
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
+    header('location: ../../index.php');
+}
 
 require_once '../../../includes/config.php';
 
@@ -13,20 +17,37 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     $searchQuery = isset($_GET['query']) ? $_GET['query'] : '';
 
+
+
+    try {
+    } catch (\Throwable $th) {
+        //throw $th;
+    }
+
+    $department1 = $_SESSION['department'];
+
+
+
+
     // Prepare and execute the database query
     $sql = "SELECT *
-    FROM students ";
+    FROM students 
+    left join  department on department.department = students.department
+    left join  course on course.course = students.course
+    where students.department = :department1";
+
 
     if (!empty($searchQuery)) {
-        $sql .= 'WHERE (firstname LIKE :searchQuery)';
+        $sql .= ' AND firstname LIKE :searchQuery';
+ 
     }
 
     $stmt = $pdo->prepare($sql);
-    if (!empty($searchQuery)) {
+    if ($searchQuery != '') {
         $searchParam = "%$searchQuery%";
         $stmt->bindParam(':searchQuery', $searchParam);
     }
-
+    $stmt->bindParam(':department1', $department1);
     $stmt->execute();
 
     // Fetch the search results
@@ -35,32 +56,25 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     // Display the search results (you can customize this part based on your needs)
     if ($results) {
         foreach ($results as $result) {
-            $department = $result['department'];
-            $sql3 = "SELECT * FROM department where department = :department";
-            $stmt3 = $pdo->prepare($sql3);
-            $stmt3->bindParam(':department', $department);
-            $stmt3->execute();
 
-            $resultDept = $stmt3->fetch(PDO::FETCH_ASSOC);
             echo '<li class="liEnroll" >';
             echo '<i id="men" class="fa-solid fa-ellipsis "></i>
              <div class="pfront">';
             echo "<img src='data:image/jpeg;base64," . base64_encode($result["profile_pic"]) . "' alt='' srcset='' id='myproffromdb'>";
             echo "<h4>{$result["firstname"]}</h4>";
-            echo "<p>{$resultDept["deptAcronym"]}</p>";
+            echo "<p>{$result["crsAcronym"]}</p>";
             echo '</div>';
 
-            echo '<div class="grupi">';
-?>
-            <div class="showact" id="<?php echo $result["firstname"] . "_" . $result["lastname"]; ?>">
+            echo '<div class="grupi">
+
+            <div class="showact" id="'. $result["firstname"] . "_" . $result["lastname"] . '">
                 <i class="fa-regular fa-pen-to-square act1"></i>
-                <i class="fa-solid fa-user-slash act2" id="del<?php echo $result["stu_id"] . "n" . $result["users_id"]; ?>"></i>
+                <i class="fa-solid fa-user-slash act2" id="del' . $result["stu_id"] . "n" . $result["users_id"] . '"></i>
                 <i class="fa-solid fa-person-circle-exclamation act3"></i>
-            <?php
-            echo '</div>';
-            echo '</div>';
-
-            echo '</li>';
+ 
+            </div> 
+            </div>
+            </li>';
         }
         // 38
         // 40
@@ -71,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         // 46
 
 
-            ?>
+?>
 
     <?php
 

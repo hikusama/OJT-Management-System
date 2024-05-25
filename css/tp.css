@@ -1671,57 +1671,21 @@ a {
     border-radius: 1rem;
     border: solid 1px rgb(173 173 173 / 56%);
     cursor: pointer;
+    transition: .2s;
 
 }
+#programCatalogContent li:hover {
+    background: linear-gradient(85deg, rgb(0, 0, 0), rgba(4, 131, 131, 0.89));
 
+}
 .dp {
     display: grid;
     place-items: center;
 }
 
-#programCatalogContent li .overlayProg {
-    border-radius: 1rem;
+ 
 
-    z-index: 1;
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.39);
-    backdrop-filter: blur(3px);
-    display: none;
-    /* overflow: hidden; */
-    justify-content: center;
-    place-items: center;
-    column-gap: .5rem;
-}
-
-
-#programCatalogContent li .overlayProg i {
-    padding: .4rem;
-    background: rgba(116, 116, 116, 0.445);
-    border: solid 1px rgb(173 173 173 / 56%);
-    border-radius: .5rem;
-    animation-duration: .5s;
-    animation-iteration-count: 1;
-}
-
-#programCatalogContent li .overlayProg i:nth-child(1):hover {
-    background: rgba(20, 59, 185, 0.486);
-}
-
-#programCatalogContent li .overlayProg i:nth-child(2):hover {
-    background: rgba(185, 20, 20, 0.486);
-}
-
-#programCatalogContent li .overlayProg i:nth-child(1) {
-    animation-name: fActionProg;
-}
-
-#programCatalogContent li .overlayProg i:nth-child(2) {
-    animation-name: lActionProg;
-}
-
+ 
 @keyframes fActionProg {
     0% {
         transform: translateY(-3rem);
@@ -1736,9 +1700,7 @@ a {
 
 }
 
-#programCatalogContent li:hover .overlayProg {
-    display: flex;
-}
+
 
 #programCatalogContent li .det {
     position: relative;
@@ -3198,7 +3160,7 @@ a {
     height: fit-content;
     overflow-y: scroll;
     margin-top: .2rem;
-    padding: .2rem 0 4rem 0;
+    padding: .2rem 0 1rem 0;
 }
 
 .suggestDpt::-webkit-scrollbar {

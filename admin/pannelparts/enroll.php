@@ -43,8 +43,7 @@
            </div>
          </div>
          <div class="profsideCont" id="pcont">
-           <img src="../../images/adminpic.png" id="sidepic" alt="">
-           <h2 id="callN"><?php echo $_SESSION['username'] ?></h2>
+ 
          </div>
        </div>
        <nav>
@@ -57,8 +56,6 @@
            <a id="studentbtn" href="student.php"><i class="fas fa-user-graduate"></i>student</a>
 
            <a id="enrollbtn" href="enroll.php"class="on"><i class="fas fa-tasks"></i>enroll</a>
-
-           <a id="mailsbtn" href="mails.php"><i class="fas fa-envelope"></i>mails</a>
 
            <a id="settingsbtn" href="settings.php" ><i class="fas fa-cog"></i>settings</a>
          </ul>

@@ -7,8 +7,48 @@
 // $('.addedsuc').hide();
 
 
+function getCurrentTimeInTimezone(timezone) {
+    const now = new Date();
+    const options = {
+        timeZone: timezone,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    };
+    return new Intl.DateTimeFormat('en-US', options).format(now);
+}
 
 $(document).ready(function () {
+
+    getCurrentTimeInTimezone('Asia/Manila');
+
+    const now = new Date();
+
+    const hours = now.getHours();
+    // const minutes = now.getMinutes();
+    const lunch = 12;
+    // const mornIn = 8;
+    const aftIn = 13;
+    const dismiss = 17;
+
+
+
+
+    // if (!(hours >= lunch && hours < aftIn)) {
+
+        setInterval(() => {
+
+            if (hours >= lunch && hours < aftIn || hours >= dismiss) {
+                time_out_dayEnd();
+
+            }
+
+
+        }, 1500);
+
+    // }
+
 
     $('.loadingScprf').show();
     $.ajax({
@@ -26,56 +66,26 @@ $(document).ready(function () {
         }
     });
     refreshFrontPic();
+    getAttendance()
 
 
 
 
 
 
-
-// script.js
-
-let startTime;
-let elapsedTime = 0;
-let timerInterval;
-
-function timeToString(time) {
-    let diffInHrs = time / 3600000;
-    let hh = Math.floor(diffInHrs);
-
-    let diffInMin = (diffInHrs - hh) * 60;
-    let mm = Math.floor(diffInMin);
-
-    let diffInSec = (diffInMin - mm) * 60;
-    let ss = Math.floor(diffInSec);
-
-    let formattedHH = hh.toString().padStart(2, "0");
-    let formattedMM = mm.toString().padStart(2, "0");
-    let formattedSS = ss.toString().padStart(2, "0");
-
-    return `${formattedHH}:${formattedMM}:${formattedSS}`;
-}
-print('00:00:00');
-
-function print(txt) {
-    $('.timestamp').html(txt);
-}
+    // script.js
 
 
 
 
     let isTimeInClicked = false;
-    $('.attendanceButton').on('click', '#timein', function (e) {
+    $('.refreshSomething').on('click', '#timein', function (e) {
         e.preventDefault();
         if (isTimeInClicked == false) {
             document.getElementById('timein').style.opacity = '50%';
-            document.getElementById('timeout').style.opacity = '1'; isTimeInClicked = true;
+            document.getElementById('timein').style.cursor = 'not-allowed';
             isTimeInClicked = true;
-            startTime = Date.now() - elapsedTime;
-            timerInterval = setInterval(function() {
-                elapsedTime = Date.now() - startTime;
-                print(timeToString(elapsedTime));
-            }, 1000);
+            time_in();
 
             // $.ajax({
             //     type: "POST",
@@ -84,7 +94,7 @@ function print(txt) {
             //     url: "url",
             //     data: "data",
             //     success: function (response) {
-                    
+
             //     }
             // });
         }
@@ -93,24 +103,10 @@ function print(txt) {
     });
 
 
-    $('.attendanceButton').on('click', '#timeout', function (e) {
-        e.preventDefault();
-        if (isTimeInClicked == true) {
-            document.getElementById('timeout').style.opacity = '50%';
-            document.getElementById('timein').style.opacity = '1';
-            isTimeInClicked = false;
-            clearInterval(timerInterval);
-            print('00:00:00');
-            elapsedTime = 0;
-        }
 
 
 
-
-    });
-
-
-    $('#req').click(function (e) { 
+    $('#req').click(function (e) {
         e.preventDefault();
         $.ajax({
             type: "POST",
@@ -304,13 +300,69 @@ function refreshFrontPic() {
         contentType: false,
         processData: false,
         success: function (response) {
-            $('.fDp').html(response);
+            $('.refreshSomething').html(response);
             $('.outlosdrmqrm').show();
         },
         complete: function () {
             setTimeout(() => {
                 $('.outlosdrmqrm').hide();
             }, 1000);
+        }
+    });
+}
+function getAttendance() {
+    $.ajax({
+        type: "post",
+        url: "../homeSection/getAttendance.php",
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            $('.table-out').html(response);
+        }
+    });
+}
+
+function time_in() {
+    $.ajax({
+        type: "post",
+        url: "../homeSection/deployedActionReq/time_in.php",
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            getAttendance();
+            refreshFrontPic();
+        }
+    });
+}
+
+
+
+function time_out_lunch() {
+    $.ajax({
+        type: "post",
+        url: "../homeSection/deployedActionReq/time_out.php",
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            getAttendance();
+            refreshFrontPic();
+        }
+    });
+}
+
+
+function time_out_dayEnd() {
+    $.ajax({
+        type: "post",
+        url: "../homeSection/deployedActionReq/time_out.php",
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            response = response.trim();
+            if (response) {
+                refreshFrontPic();
+                getAttendance();
+            }
         }
     });
 }

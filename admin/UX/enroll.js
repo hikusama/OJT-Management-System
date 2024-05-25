@@ -10,7 +10,20 @@
 
 $(document).ready(function () {
 
-
+    $.ajax({
+        type: "post",
+        url: "../pannelparts/getForProf.php",
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            $('.profsideCont').html(response);
+        },
+        complete: function () {
+            setTimeout(() => {
+                $('.loadingScprf').hide();
+            }, 1000);
+        }
+    });
 
 
 
