@@ -240,6 +240,8 @@ $(document).ready(function () {
                 complete: function () {
                     $('.outlosd').hide();
                     if (rs == "You are verified!!") {
+                        isLogInRequesting = true;
+
                         setTimeout(function () {
                             $('#loginErrors').html("<p style='color:rgb(2, 136, 189);'>Redirecting...</p> ");
                         }, 3000);
@@ -251,7 +253,6 @@ $(document).ready(function () {
 
                 }
             });
-            isLogInRequesting = true;
         }
 
 

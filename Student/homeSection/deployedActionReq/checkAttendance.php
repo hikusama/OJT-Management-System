@@ -41,8 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
 
         if (checkAttendance($pdo, $studId)) {
-            if (!waiting_for_aft($pdo, $studId) && (waiting_nxt_morn($pdo, $studId))) {
-                if (!waiting_nxt_morn($pdo, $studId)) {
+            if (!(waiting_for_aft($pdo, $studId) && $current_time <= $lunch_time)) {
+                if (!(waiting_nxt_morn($pdo, $studId) && $current_time >= $afternoon_time  && $current_time < $dismiss_time)) {
 
                     if (!($current_time >= $lunch_time && $current_time < $afternoon_time)) {
 
@@ -81,10 +81,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                 } else {
 
-                    echo '<p class="notOpenAtt">Wait for the next Afternoon!!</p>';
+                    echo '<p class="notOpenAtt">Wait for the next Morning!!</p>';
                 }
             } else {
-                echo '<p class="notOpenAtt">Wait for the next Morning!!</p>';
+                echo '<p class="notOpenAtt">Wait for the next Afternoon!!</p>';
             }
         } else {
             echo '

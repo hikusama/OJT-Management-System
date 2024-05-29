@@ -17,7 +17,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Student")) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/02db36d522.js" crossorigin="anonymous"></script>
     <script src="../UX/program.js?v=<?php echo time(); ?>"></script>
-    <link rel="stylesheet" href="../student.css?v=<?php  echo time(); ?>">
+    <link rel="stylesheet" href="../student.css?v=<?php echo time(); ?>">
 
     <link rel="stylesheet" href="../../css/tp.css?v=<?php echo time(); ?>">
     <style>
@@ -61,7 +61,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Student")) {
             <nav>
                 <ul id="tabs">
 
-                    <a id="overviewbtn"  href="studHome.php"><i class="fas fa-tachometer-alt"></i>home</a>
+                    <a id="overviewbtn" href="studHome.php"><i class="fas fa-tachometer-alt"></i>home</a>
 
                     <a id="mailsbtn" href="program.php" class="on"><i class="fas fa-envelope"></i>program</a>
 
@@ -95,128 +95,55 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Student")) {
 
                 <div class="program-inner">
                     <div class="progHead">
-                        <button id="allReq">All</button>
-                        <button id="repReq">Reported</button>
+                        <button id="allReq" class="on_select_rep">All</button>
+                        <button id="repReq">Pending</button>
                         <button id="apprvReq">Approved</button>
                         <button id="rejReq">Rejected</button>
                     </div>
                     <div class="program-cont">
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
+ 
+
+                    </div>
+                </div>
+                <div class="form_prog_out">
+                    <div class="form_prog">
+                        <form id="submitFormReport">
+                            <input type="file" id="img">
+                            <div class="input_cont">
+                                <i class="fas fa-star"></i>
+                                <input type="text" placeholder="Title" id="title">
                             </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
+                            <div class="input_cont">
+                                <i class="fa-solid fa-map-pin"></i>
+                                <input type="text" placeholder="Place" id="place">
                             </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
+                            <div class="input_cont">
+                                <i class="fa-solid fa-business-time"></i>
+                                <input type="number" placeholder="Hours acquired" id="time_acquired">
                             </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
+                            <div class="input_cont">
+                                <i class="fa-regular fa-file-word" id="mubrep"></i>
+                                <textarea id="narrative" spellcheck="false" placeholder="Narrative" rows="3"></textarea>
                             </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
+                            <div id="submitReportResponseMsg"></div>
+                            <div class="butActionRep">
+                                <button id="submitReport" type="submit">Submit</button>
+                                <button id="cancelReport">Cancel</button>
+
                             </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
+                        </form>
+                    </div>
+                </div>
+                <div class="frame_outer">
+
+                    <div class="frame">
+                       
                     </div>
                 </div>
 
-
-
                 <div class="responseMssg-out">
                     <div class="responseMssg">
-                        <h3>New Student Added Successfully</h3>
+                        <h3>Report submitted successfully..</h3>
                         <p>Click anywhere to continue</p>
                     </div>
                 </div>

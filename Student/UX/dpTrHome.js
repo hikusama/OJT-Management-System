@@ -25,6 +25,7 @@ $(document).ready(function () {
 
     const now = new Date();
 
+    // const hours = 8;
     const hours = now.getHours();
     // const minutes = now.getMinutes();
     const lunch = 12;

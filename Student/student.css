@@ -51,10 +51,11 @@
 }
 
 
-.refreshSomething p span{
+.refreshSomething p span {
     color: rgb(0, 184, 0);
     font-weight: 600;
 }
+
 .homeFirstSection img {
     height: 8rem;
     width: 8rem;
@@ -182,7 +183,7 @@ hr {
     overflow-y: scroll;
 }
 
- 
+
 
 
 
@@ -238,23 +239,27 @@ hr {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
 }
+
 .home-inner td:nth-child(1) {
     background-color: rgb(0 116 228 / 22%);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
 }
+
 .home-inner td:nth-child(3) {
-    background-color:rgb(0 116 228 / 22%);
+    background-color: rgb(0 116 228 / 22%);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
 }
+
 .home-inner th:nth-child(1) {
     background-color: rgb(0 116 228 / 22%);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
 }
+
 .home-inner th:nth-child(3) {
-    background-color:rgb(0 116 228 / 22%);
+    background-color: rgb(0 116 228 / 22%);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
 }
@@ -485,3 +490,143 @@ hr {
     place-items: center;
     font-size: .9rem;
 }
+
+ 
+.on_select_rep {
+    background-color: rgba(179, 179, 179, 0.377) !important;
+}
+
+#showReportForm {
+    margin-bottom: .5rem;
+    display: grid;
+    place-items: center;
+    font-size: 3rem;
+    width: 5rem;
+    height: 5rem;
+    border: solid 1px rgb(255 255 255 / 20%);
+    background-color: rgb(70 70 70 / 31%);
+    border-radius: .1rem;
+    transition: .3s;
+    position: relative;
+}
+#showReportForm::after {
+    content: 'Submit Report';
+    position: absolute;
+    font-size: .8rem;
+    width: 8rem;
+    font-family: sans-serif;
+    text-align: center;
+    bottom: -20px;
+    color: aliceblue;
+    font-weight: 100;
+}
+#showReportForm:hover {
+    cursor: pointer;
+    background-color: rgba(70, 70, 70, 0.034);
+
+}
+.form_prog_out{
+    z-index: 4;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    animation-name: showREpFr;
+    animation-duration: .3s;
+    animation-iteration-count: 1;
+}
+@keyframes showREpFr {
+    0%{
+        top: 35%;
+        opacity: 50%;
+    }
+}
+.form_prog {
+    border-radius: 1rem;
+    width: 22rem;
+    background-color: rgba(41, 41, 41, 0.699);
+    border: solid 1px rgb(255 255 255 / 20%);
+
+}
+#submitReportResponseMsg{
+    text-align: center;
+    color: rgb(2, 145, 2);
+}
+.form_prog #img {
+    height: fit-content;
+    padding: 0;
+
+}
+
+.form_prog form {
+    row-gap: .4rem;
+    display: grid;
+    place-items: center;
+    padding: 2rem 1rem;
+}
+
+.form_prog input,.form_prog textarea {
+    padding-left: 1.6rem;
+    height: 1.9rem;
+    border-radius: .2rem;
+    border: solid 1px rgb(255 255 255 / 20%);
+    background-color: rgba(41, 41, 41, 0.699);
+    color: white;
+    text-transform: capitalize;
+}
+
+.form_prog textarea{
+    padding: .9rem .9rem .9rem 1.6rem;
+    resize: none;
+    height: 13rem;
+    width: 18rem;
+    
+}
+.form_prog textarea::-webkit-scrollbar {
+    display: none;
+}
+#submitReport,#cancelReport{
+    margin-top: 1rem;
+    background-color: rgba(4, 116, 64, 0.452);
+    color: white;
+    border: solid 1px rgb(255 255 255 / 20%);
+    border-radius: .2rem;
+    padding: .4rem 1.8rem;
+    cursor: pointer;
+    transition: background-color .2s;
+
+}
+#cancelReport{
+    background-color: rgba(90, 90, 90, 0.452);
+
+}
+#cancelReport:hover{
+    background-color: rgba(90, 90, 90, 0.144);
+
+}
+.input_cont{
+    position: relative;
+}
+.input_cont i{
+    position: absolute;
+    top: 50%;
+    font-size: .8rem;
+    left: .9rem;
+    transform: translate(-50%,-50%);
+}
+#mubrep{
+    top: 1.4rem;
+}
+#submitReport:hover{
+    background-color: rgba(4, 116, 64, 0.151);
+    
+}
+.dttt{
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    width: fit-content !important;
+    font-size: .8rem;
+}
+ 

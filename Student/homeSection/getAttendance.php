@@ -18,7 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $studId = getStudId($pdo, intval($_SESSION["user_id"]));
 
     $sql = "SELECT * FROM attendance
-    WHERE attendance.stu_id = :studId";
+    WHERE attendance.stu_id = :studId
+    ORDER BY day_date DESC";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':studId', $studId);
     $stmt->execute();

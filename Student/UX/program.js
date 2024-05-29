@@ -15,130 +15,166 @@ $(document).ready(function () {
 
 
 
-    document.querySelector(".progHead > *").style.background = "transparent";
-
-let currState;
-
-$('#allReq').click(function (e) { 
-    e.preventDefault();
-    if (currState != 'allreq') {
-        getUi('allReq','repReq','apprvReq','rejReq',);
-
-        currState = 'allreq';
-    }
-});
 
 
- 
-$('#repReq').click(function (e) { 
-    e.preventDefault();
-    if (currState != 'repReq') {
-        getUi('repReq','allReq','apprvReq','rejReq',);
-     
-        
+    $('.program-cont').on('click', '#showReportForm', function () {
+        $('.form_prog_out').show();
+        $('#overlayform2').show();
+        isLoginClicked = false;
+    });
 
 
-        currState = 'repReq';
 
-    }
-    
-});
+    $('#program').on('click', '#vrep', function (e) {
+        e.preventDefault();
+        $('.frame_outer').show();
+        repid = $(this).attr('class')
+        repid = parseInt(repid);
+        viewMyRep(repid);
+    });
+    $('#program').on('click', '#bc', function (e) {
+        e.preventDefault();
+        $('.frame_outer').hide();
+
+    });
 
 
 
 
-$('#apprvReq').click(function (e) { 
-    e.preventDefault();
-
-    if (currState != 'apprvReq') {
-        getUi('apprvReq','repReq','allReq','rejReq',);
-     
-        
-
-        currState = 'apprvReq';
-
-    }
-});
 
 
 
 
-$('#rejReq').click(function (e) { 
-    e.preventDefault();
-    if (currState != 'rejReq') {
-        getUi('rejReq','repReq','apprvReq','allReq',);
-        
-
-        currState = 'rejReq';
-
-    }
-});
 
 
 
 
-function getUi(idTostyle,mt1,mt2,mt3) {
-    document.getElementById(idTostyle).style.background = "rgba(179, 179, 179, 0.377)";
-    document.getElementById(mt1).style.background = "transparent";
-    document.getElementById(mt2).style.background = "transparent";
-    document.getElementById(mt3).style.background = "transparent";
+
+    $('#cancelReport').click(function (e) {
+        e.preventDefault();
+        $('.form_prog_out').hide();
+        $('#overlayform2').hide();
+        isLoginClicked = false;
+    });
 
 
-}
+    $('#submitFormReport').submit(function (e) {
+        e.preventDefault();
+
+        console.log('hello');
+        formData = new FormData()
+        formData.append('img', $('#img')[0].files[0]);
+        formData.append('title', $('#title').val());
+        formData.append('place', $('#place').val());
+        formData.append('time_acquired', $('#time_acquired').val());
+        formData.append('narrative', $('#narrative').val());
+
+        $.ajax({
+            type: "post",
+            url: "../programSection/submitReport.php",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('#submitReportResponseMsg').html(response);
+                response = response.trim()
+                if (response == 'success') {
+                    $('#submitReportResponseMsg').html('');
+                    $('.responseMssg-out').show();
+                    $('.form_prog_out form input').val('');
+                    $('.form_prog_out form textarea').val('');
+                    $('.form_prog_out').hide();
+                    isLoginClicked = false;
+                    getReports("../programSection/programActionReq/getAllReportReq.php");
+
+                }
+            }
+        });
 
 
-function getAllTaskReq() {
-    $.ajax({
-        type: "POST",
-        url: '../programSection/programActionReq/getAllTask.php',
-        success: function (response) {
-            $('.program-cont').html(response);
+
+
+    });
+
+
+    let currState;
+    getReports("../programSection/programActionReq/getAllReportReq.php");
+
+    $('#allReq').click(function (e) {
+        e.preventDefault();
+        if (currState != 'allreq') {
+            getUi('allReq', 'repReq', 'apprvReq', 'rejReq',);
+            getReports("../programSection/programActionReq/getAllReportReq.php");
+            currState = 'allreq';
         }
     });
-}
 
 
-function getReportedTaskReq() {
-    $.ajax({
-        type: "POST",
-        url: '../programSection/programActionReq/getReportedTaskReq.php',
-        success: function (response) {
-            $('.program-cont').html(response);
+
+    $('#apprvReq').click(function (e) {
+        e.preventDefault();
+
+        if (currState != 'apprvReq') {
+            getUi('apprvReq', 'repReq', 'allReq', 'rejReq',);
+            getReports("../programSection/programActionReq/getApprovedReportReq.php");
+
+
+
+            currState = 'apprvReq';
+
         }
     });
-}
 
 
 
-function getApprovedTaskReq() {
-    $.ajax({
-        type: "POST",
-        url: '../programSection/programActionReq/getApprovedTaskReq.php',
-        success: function (response) {
-            $('.program-cont').html(response);
+    $('#repReq').click(function (e) {
+        e.preventDefault();
+        if (currState != 'repReq') {
+            getUi('repReq', 'allReq', 'apprvReq', 'rejReq',);
+            getReports("../programSection/programActionReq/getPendingReportReq.php");
+
+
+
+
+            currState = 'repReq';
+
+        }
+
+    });
+
+
+
+
+
+
+
+    $('#rejReq').click(function (e) {
+        e.preventDefault();
+        if (currState != 'rejReq') {
+            getUi('rejReq', 'repReq', 'apprvReq', 'allReq',);
+            getReports("../programSection/programActionReq/getRejectedReportReq.php");
+
+
+            currState = 'rejReq';
+
         }
     });
-}
 
 
 
 
-function getRejectedTaskReq() {
-    $.ajax({
-        type: "POST",
-        url: '../programSection/programActionReq/getRejectedTaskReq.php',
-        success: function (response) {
-            $('.program-cont').html(response);
-        }
-    });
-}
+    function getUi(idTostyle, mt1, mt2, mt3) {
+        $('#' + idTostyle).addClass('on_select_rep');
+        $('#' + mt1).removeClass('on_select_rep');
+        $('#' + mt2).removeClass('on_select_rep');
+        $('#' + mt3).removeClass('on_select_rep');
+        // document.getElementById(idTostyle).classList.add;
+        // document.getElementById(mt1).style.background = "transparent";
+        // document.getElementById(mt2).style.background = "transparent";
+        // document.getElementById(mt3).style.background = "transparent";
 
 
-
-
-
-
-
+    }
 
 
 
@@ -161,7 +197,15 @@ function getRejectedTaskReq() {
 
 
 
-    
+
+
+
+
+
+
+
+
+
     const checkbox = document.getElementById('sideCheck');
     if (handleDeviceWidth()) {
         checkbox.checked = false;
@@ -262,7 +306,9 @@ function getRejectedTaskReq() {
         e.preventDefault();
         if (isLoginClicked == false) {
             $(this).hide();
-            $('#cont-editform').hide();
+            $('.form_prog_out').hide();
+            $('.responseMssg-out').hide();
+
         }
 
     });
@@ -301,7 +347,7 @@ function getRejectedTaskReq() {
         isLoginClicked = false;
     });
 
-    
+
 });
 
 
@@ -332,4 +378,35 @@ function handleDeviceWidth() {
     } else {
         return false;
     }
+}
+
+
+
+function getReports(urlSend) {
+    $.ajax({
+        type: "post",
+        url: urlSend,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            $('.program-cont').html(response);
+        }
+    });
+}
+
+function viewMyRep(repid) {
+
+    formData = new FormData()
+    formData.append('repid',repid)
+
+    $.ajax({
+        type: "post",
+        url: '../programSection/programActionReq/view.php',
+        data:formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            $('.frame').html(response);
+        }
+    });
 }

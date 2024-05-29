@@ -136,7 +136,11 @@ function waiting_for_aft(object $pdo, int $studentId)
 {
     $sql = "SELECT 1 FROM attendance 
     WHERE attendance.day_date = CURRENT_DATE 
-    AND attendance.Mtime_in IS NOT NULL AND attendance.Mtime_out IS NOT NULL AND attendance.stu_id = :studentId";
+    AND attendance.Mtime_in IS NOT NULL 
+    AND attendance.Mtime_out IS NOT NULL 
+    AND attendance.Atime_in IS NULL 
+    AND attendance.Atime_out IS NULL 
+    AND attendance.stu_id = :studentId";
 
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':studentId', $studentId, PDO::PARAM_INT);
@@ -149,7 +153,11 @@ function waiting_nxt_morn(object $pdo, int $studentId)
 {
     $sql = "SELECT 1 FROM attendance 
     WHERE attendance.day_date = CURRENT_DATE 
-    and attendance.Atime_in IS NOT NULL AND attendance.Atime_out IS NOT NULL AND attendance.stu_id = :studentId";
+    AND attendance.Mtime_in IS NOT NULL 
+    AND attendance.Mtime_out IS NOT NULL 
+    AND attendance.Atime_in IS NOT NULL 
+    AND attendance.Atime_out IS NOT NULL 
+    AND attendance.stu_id = :studentId";
 
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':studentId', $studentId, PDO::PARAM_INT);
