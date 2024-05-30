@@ -63,8 +63,6 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
 
                     <a id="overviewbtn" href="overview.php"><i class="fas fa-tachometer-alt"></i>overview</a>
 
-                    <a id="coordinatorsbtn" href="coordinators.php"><i class="fas fa-users"></i>coordinators</a>
-
                     <a id="studentbtn" href="student.php" class="on"><i class="fas fa-user-graduate"></i>student</a>
 
                     <a id="enrollbtn" href="enroll.php"><i class="fas fa-tasks"></i>enroll</a>

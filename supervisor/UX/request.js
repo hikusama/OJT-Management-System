@@ -130,7 +130,6 @@ $(document).ready(function () {
         formData.append('reqId', reqId);
         formData.append('conftopass', $('#conftopass').val());
         formData.append('studId', studentsIdReq);
-        formData.append('studId', studentsIdReq);
 
         $.ajax({
             url: '../requestSection/requestActionreq/verification.php',
@@ -173,7 +172,7 @@ $(document).ready(function () {
     $('.dashEme').on('click', '#fetch', function (e) {
         e.preventDefault();
         getTrReq();
-        
+        countMyTr()
     });
 
 
@@ -293,6 +292,7 @@ $(document).ready(function () {
         if (isLoginClicked == false) {
             $(this).hide();
             $('#cont-editform').hide();
+            $('.responseMssg-out').hide();
         }
 
     });

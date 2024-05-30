@@ -173,13 +173,13 @@ hr {
 .notTraineeLogs {
     display: grid;
     place-items: center;
-    position: absolute;
     z-index: 1;
     height: fit-content;
     width: 100%;
     max-width: 50rem;
     padding: 0 .9rem;
     max-height: 18rem;
+    margin-top: 2rem;
     overflow-y: scroll;
 }
 
@@ -492,9 +492,6 @@ hr {
 }
 
  
-.on_select_rep {
-    background-color: rgba(179, 179, 179, 0.377) !important;
-}
 
 #showReportForm {
     margin-bottom: .5rem;
@@ -622,11 +619,3 @@ hr {
     background-color: rgba(4, 116, 64, 0.151);
     
 }
-.dttt{
-    position: absolute;
-    top: .5rem;
-    right: .5rem;
-    width: fit-content !important;
-    font-size: .8rem;
-}
- 

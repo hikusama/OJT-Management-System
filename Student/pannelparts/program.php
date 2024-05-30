@@ -100,8 +100,18 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Student")) {
                         <button id="apprvReq">Approved</button>
                         <button id="rejReq">Rejected</button>
                     </div>
+                    <div class="outlosdrmqrm">
+                        <div class="innerloadsd">
+                            <div class="loader">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="program-cont">
- 
+
 
                     </div>
                 </div>
@@ -136,8 +146,8 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Student")) {
                 </div>
                 <div class="frame_outer">
 
-                    <div class="frame">
-                       
+                    <div id="frame">
+
                     </div>
                 </div>
 

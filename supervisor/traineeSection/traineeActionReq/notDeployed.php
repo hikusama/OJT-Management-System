@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $sql .= ' AND
         (students.firstname LIKE :searchQuery OR students.lastname LIKE :searchQuery)';
   }
-
+  $sql .= " GROUP BY students.stu_id";
   $stmt = $pdo->prepare($sql);
 
   if (!empty($searchQuery)) {

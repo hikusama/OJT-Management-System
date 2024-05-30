@@ -101,7 +101,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
                         <i class="fas fa-users"></i>
                         <div class="mgs">
                             <h4 id="trainees">0</h4>
-                            <p>trainees</p>
+                            <p>My trainees</p>
                         </div>
                     </li>
 
@@ -112,7 +112,6 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
                     <canvas id="myChart" style="color: #fff;display: block; width: 100%; max-width: 620px;"></canvas>
 
                     <div class="status">
-                        <h3>Status</h3>
                         <div class="headStatus">
                             <button id="fStudent">Students</button>
                             <button id="fTrainees">Trainees</button>

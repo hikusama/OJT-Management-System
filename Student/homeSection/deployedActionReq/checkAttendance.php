@@ -39,18 +39,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     try {
+    $type = get_userType($pdo, $studId);
 
-        if (checkAttendance($pdo, $studId)) {
-            if (!(waiting_for_aft($pdo, $studId) && $current_time <= $lunch_time)) {
-                if (!(waiting_nxt_morn($pdo, $studId) && $current_time >= $afternoon_time  && $current_time < $dismiss_time)) {
+        if ($type == 'notTrainee') {
+            echo 'Please refresh your page you are NOT TRAINEE anymore';
+            $_SESSION["accesstype"] = $type;
+        } else if ($type == 'notDeployed') {
+            echo 'Please refresh your page you are now a TRAINEE';
+            $_SESSION["accesstype"] = $type;
+        } else if ($type == 'deployed') {
 
-                    if (!($current_time >= $lunch_time && $current_time < $afternoon_time)) {
+            if (checkAttendance($pdo, $studId)) {
+                if (!(waiting_for_aft($pdo, $studId) && $current_time <= $lunch_time)) {
+                    if (!(waiting_nxt_morn($pdo, $studId) && $current_time >= $afternoon_time  && $current_time < $dismiss_time)) {
+
+                        if (!($current_time >= $lunch_time && $current_time < $afternoon_time)) {
 
 
-                        if (!($current_time > $dismiss_time)) {
+                            if (!($current_time > $dismiss_time)) {
 
 
-                            echo '
+                                echo '
             <div class="outlosdrmqrm">
             <div class="innerloadsd">
                 <div class="loader">
@@ -67,27 +76,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="attendanceButton">
             ';
-                            if (!isAlready_Timein($pdo, $studId)) {
-                                echo '<button id="timein">Time-in</button>';
+                                if (!isAlready_Timein($pdo, $studId)) {
+                                    echo '<button id="timein">Time-in</button>';
+                                } else {
+                                    echo '<button id="" style="opacity:50%;cursor:not-allowed;" >Time is running</button>';
+                                }
+                                echo '</div>';
                             } else {
-                                echo '<button id="" style="opacity:50%;cursor:not-allowed;" >Time is running</button>';
+                                echo '<p class="resClose">Have a <span>"GREAT NIGHT.."</span></p>';
                             }
-                            echo '</div>';
                         } else {
-                            echo '<p class="resClose">Have a <span>"GREAT NIGHT.."</span></p>';
+                            echo '<p class="resClose"><span>"LUNCH"</span> time!.</p>';
                         }
                     } else {
-                        echo '<p class="resClose"><span>"LUNCH"</span> time!.</p>';
+
+                        echo '<p class="notOpenAtt">Wait for the next Morning!!</p>';
                     }
                 } else {
-
-                    echo '<p class="notOpenAtt">Wait for the next Morning!!</p>';
+                    echo '<p class="notOpenAtt">Wait for the next Afternoon!!</p>';
                 }
             } else {
-                echo '<p class="notOpenAtt">Wait for the next Afternoon!!</p>';
-            }
-        } else {
-            echo '
+                echo '
     <div class="outlosdrmqrm">
     <div class="innerloadsd">
         <div class="loader">
@@ -101,6 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <p class="notOpenAtt">Attendance Closed!!</p>
     
     ';
+            }
         }
     } catch (PDOException $e) {
         die("Query Failed: " . $e->getMessage());

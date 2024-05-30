@@ -1,14 +1,22 @@
 <?php
 
+session_start();
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
+    header('location: ../../index.php');
+}
+
 require_once '../../../includes/config.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $department = $_SESSION['department'];
     $table = $_POST['table'];
-    $sql = "SELECT * FROM $table";
+    $sql = "SELECT * FROM $table 
+    where department = :department";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute();
+        $stmt->bindParam(':department',$department);
+        $stmt->execute();
 
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

@@ -383,6 +383,8 @@ function handleDeviceWidth() {
 
 
 function getReports(urlSend) {
+    $('.program-inner .outlosdrmqrm').show();
+
     $.ajax({
         type: "post",
         url: urlSend,
@@ -390,6 +392,12 @@ function getReports(urlSend) {
         processData: false,
         success: function (response) {
             $('.program-cont').html(response);
+        }, complete: function () {
+
+            setTimeout(() => {
+                $('.program-inner .outlosdrmqrm').hide();
+
+            }, 500);
         }
     });
 }
@@ -397,16 +405,22 @@ function getReports(urlSend) {
 function viewMyRep(repid) {
 
     formData = new FormData()
-    formData.append('repid',repid)
-
+    formData.append('repid', repid)
+    $('.frame_outer .outlosdrmqrm').show();
+    
     $.ajax({
         type: "post",
         url: '../programSection/programActionReq/view.php',
-        data:formData,
+        data: formData,
         contentType: false,
         processData: false,
         success: function (response) {
-            $('.frame').html(response);
+            $('#frame').html(response);
+            $('.frame_outer .outlosdrmqrm').show();
+        }, complete: function () {
+            setTimeout(() => {
+                $('.frame_outer .outlosdrmqrm').hide();
+            }, 500);
         }
     });
 }

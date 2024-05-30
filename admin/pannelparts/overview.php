@@ -54,8 +54,6 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
 
                         <a id="overviewbtn" class="on" href="overview.php"><i class="fas fa-tachometer-alt"></i>overview</a>
 
-                        <a id="coordinatorsbtn" href="coordinators.php"><i class="fas fa-users"></i>coordinators</a>
-
                         <a id="studentbtn" href="student.php"><i class="fas fa-user-graduate"></i>student</a>
 
                         <a id="enrollbtn" href="enroll.php"><i class="fas fa-tasks"></i>enroll</a>
@@ -95,13 +93,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
                             <p>students</p>
                         </div>
                     </li>
-                    <li>
-                        <i class="fas fa-users"></i>
-                        <div class="mgs">
-                            <h4 id="coor">0</h4>
-                            <p>coordinator</p>
-                        </div>
-                    </li>
+
                     <li>
                         <i class="fas fa-users"></i>
                         <div class="mgs">
@@ -117,11 +109,9 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
                     <canvas id="myChart" style="color: #fff;display: block; width: 100%; max-width: 620px;"></canvas>
 
                     <div class="status">
-                        <h3>Status</h3>
                         <div class="headStatus">
                             <button id="fStudent">Students</button>
                             <button id="fTrainees">Trainees</button>
-                            <button id="fCoordinators">Coordinators</button>
                         </div>
                         <div class="status-content">
                             <div class="loadingSc">

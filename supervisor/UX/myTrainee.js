@@ -520,7 +520,7 @@ $(document).ready(function () {
         let catchid = $(this).closest("li").find(".showact .act3").attr('id');
         let valueBeforeN = catchid.substring(3);
         studentsId = parseInt(valueBeforeN);
-        nameStud = $(this).closest("li").find(".profCred h3").html();
+        nameStud = $(this).closest("li").find(".pfront h4").html();
 
     });
 

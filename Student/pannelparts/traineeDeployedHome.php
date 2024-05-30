@@ -4,6 +4,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Student")) {
     header('location: ../../index.php');
 } else {
 
+ 
     if ($_SESSION["accesstype"] == 'notTrainee') {
         header('location: studHome.php');
     } elseif ($_SESSION["accesstype"] == 'notDeployed') {
@@ -33,6 +34,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Student")) {
             content: '<?php echo $_SESSION['user_role'] ?>';
         }
     </style>
+
 
 
     <title>Home</title>

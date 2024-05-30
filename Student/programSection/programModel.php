@@ -30,7 +30,7 @@ function getStudId(object $pdo, int $uid)
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return $result['stu_id'];
+    return intval($result['stu_id']);
 }
 
 function getTraineeId(object $pdo, $studentId): int
@@ -41,5 +41,6 @@ function getTraineeId(object $pdo, $studentId): int
     $stmt->bindParam(':studentId', $studentId);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $result['trainee_id'];
+
+    return intval($result['trainee_id']);
 }

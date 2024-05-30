@@ -1,14 +1,23 @@
 <?php
+
+session_start();
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
+    header('location: ../../index.php');
+}
+
 require_once '../../../includes/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $searchQuery = intval($_POST['spid']);
     $imgSrc = $_POST['imgdp'];
+    $department = $_SESSION['department'];
 
     // Prepare the SQL statement with named placeholders
-    $sql = "SELECT * FROM students WHERE stu_id = :searchQuery";
+    $sql = "SELECT * FROM students WHERE stu_id = :searchQuery
+    and department = :department";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':searchQuery', $searchQuery, PDO::PARAM_INT);
+    $stmt->bindParam(':department', $department);
     $stmt->execute();
 
     // Fetch the search result (assuming there's only one result)

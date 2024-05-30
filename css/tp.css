@@ -72,6 +72,10 @@ body {
     border-radius: .5rem;
 }
 
+#frame.outlosdrmqrm {
+    visibility: visible !important;
+}
+
 .outlosdEnr {
     background-color: rgb(41, 41, 41);
     position: absolute;
@@ -1529,6 +1533,18 @@ a {
 
 }
 
+.dttt {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    width: fit-content !important;
+    font-size: .8rem;
+}
+
+.on_select_rep {
+    background-color: rgba(179, 179, 179, 0.377) !important;
+}
+
 #courseResponse {
 
     /* border: solid .1px; */
@@ -1544,8 +1560,6 @@ a {
     animation-iteration-count: 1;
     position: absolute;
     transform: translate(-50%, -50%);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(9px);
     width: fit-content;
     display: grid;
     place-items: center;
@@ -2610,7 +2624,6 @@ a {
 #cont-addcoor,
 #cont-confirmforedit,
 #cont-addadmin {
-    background: linear-gradient(transparent, rgb(0 0 0 / 70%)) !important;
     border: 1px solid rgba(243, 243, 243, 0.377);
 
 }
@@ -2621,6 +2634,7 @@ a {
 #cont-addcoor,
 #cont-confirmforedit,
 #cont-addadmin {
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.829)) !important;
     z-index: 4;
     animation-duration: .3s;
     animation-iteration-count: 1;
@@ -2628,8 +2642,6 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(9px);
     /* overflow: hidden; */
     display: none;
 
@@ -3413,22 +3425,29 @@ a {
 
 
 .frame_outer {
+    background: #000000c7;
     height: 100%;
     width: 100%;
     display: none;
-
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    z-index: 3;
 }
 
+.min {
+    visibility: hidden;
+}
 
-
-.frame {
+#frame {
     animation-name: viewrp;
     animation-duration: .4s;
     animation-iteration-count: 1;
     height: fit-content;
     width: 80%;
     min-width: 20rem;
-    max-width: 75rem;
+    max-width: 40rem;
     background: linear-gradient(137deg, #0a20628f, #000000);
     border: solid .1px rgba(255, 255, 255, 0.589);
     border-radius: .8rem;
@@ -3442,24 +3461,30 @@ a {
     left: 50%;
     gap: 1.5rem;
 }
+
 @keyframes viewrp {
     0% {
-        top:40% ;
+        top: 40%;
         opacity: 50%;
     }
 }
+
 #proof_pic {
     max-width: 18rem;
     height: 15rem;
     border: solid 1px rgba(255, 255, 255, 0.418);
 }
 
+.vrepInfo {
+    width: 100%;
+}
+
 #narrated_dp {
-    max-height: 10rem;
+    max-height: 7rem;
     min-width: 15rem;
     width: 100%;
     overflow-y: scroll;
-    height: fit-content;
+    height: 100%;
     min-height: 3rem;
 }
 
@@ -3540,6 +3565,10 @@ a {
 
 
 
+.program-inner {
+    position: relative;
+}
+
 
 
 
@@ -3552,6 +3581,20 @@ a {
     width: 100%;
     justify-content: center;
     column-gap: 1rem;
+    position: relative;
+    z-index: 3;
+    overflow-x: scroll;
+}
+
+.progHead::-webkit-scrollbar {
+    display: none;
+}
+
+@media screen and (max-width:421px) {
+    .progHead {
+        justify-content: start;
+        padding: 0 1.5rem;
+    }
 }
 
 .progHead button {

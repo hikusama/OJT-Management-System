@@ -97,28 +97,19 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Student")) {
                         <div class="yrnot">
 
                         </div>
-                        <div class="outer-notTraineeLogs">
-                            <div class="notTraineeLogs">
-
-                            </div>
-
-                        </div>
 
 
                     </div>
                     <hr>
                     <div class="homeSecondSection">
-                    <div class="outer-notTraineeLogsSecond">
+                        <div class="outer-notTraineeLogsSecond">
+                            <div class="outer-notTraineeLogs">
+                                <div class="notTraineeLogs">
 
-                        <table>
-                            <tr>
-                                <th>Time in</th>
-                                <th>Time out</th>
-                                <th>Date</th>
-                            </tr>
-                            </table>
-                            <p class="noRec">No records yet.</p>
-                    </div>
+                                </div>
+
+                            </div>
+                        </div>
 
                     </div>
                 </div>

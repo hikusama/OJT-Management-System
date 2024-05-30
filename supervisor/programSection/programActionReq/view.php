@@ -2,7 +2,7 @@
 
 
 session_start();
-if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Student")) {
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
     header('location: ../../../index.php');
 }
 require_once '../../../includes/config.php';
@@ -10,23 +10,47 @@ require_once '../programModel.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $studId = getStudId($pdo, intval($_SESSION["user_id"]));
-    $trainee_id = getTraineeId($pdo, $studId);
+    $supVId = getSupId($pdo, intval($_SESSION["user_id"]));
 
     $report_id = intval($_POST['repid']);
 
+
+
     $sql = "SELECT * FROM reports
-  where trainee_id = :trainee_id
-  and report_id = :report_id";
+    inner join trainee on trainee.trainee_id = reports.trainee_id
+  where trainee.supervisor_info_id = :supVId
+  and report_id = :report_id
+  ORDER BY report_id DESC";
+
+
 
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':trainee_id', $trainee_id);
+    $stmt->bindParam(':supVId', $supVId);
     $stmt->bindParam(':report_id', $report_id);
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-echo '                    <div class="outlosdrmqrm">
+    $actionthings = '<div class="actRepBut">
+    <button id="bc">Back</button>
+</div>';
+    if ($result['report_status'] == 'Pending') {
+        $actionthings = '
+        <div class="actRepBut">
+        <button id="ap">Approve</button>
+        <button id="rj">Reject</button> 
+        <button id="bc">Back</button>
+    </div>';
+    } else {
+        $actionthings = '
+        <div class="actRepBut">
+        <button id="bc">Back</button>
+    </div>';
+    }
+ 
+    
+
+    echo '<div class="outlosdrmqrm">
 <div class="innerloadsd">
     <div class="loader">
         <div class="bar"></div>
@@ -38,8 +62,8 @@ echo '                    <div class="outlosdrmqrm">
 </div>';
 
     if ($result) {
- 
-            echo '
+
+        echo '
             <div class="dttt">' . $result['day_date'] . '</div>
             <div class="imageSec">
                 <img src="data:image/jpeg;base64,' . base64_encode($result['pic_proof']) . '" alt="" id="proof_pic">
@@ -52,12 +76,7 @@ echo '                    <div class="outlosdrmqrm">
             <div class="vrepInfo">
                 <h4>Narrative:</h4>
                 <div id="narrated_dp">' . $result['narrative'] . '</div>
-            </div>
-            <div class="actRepBut">
-                <!-- <button id="ap">Approve</button>
-                <button id="rj">Reject</button> -->
-                <button id="bc">Back</button>
-            </div>
+            </div>'. $actionthings .'
             
             ';
     } else {

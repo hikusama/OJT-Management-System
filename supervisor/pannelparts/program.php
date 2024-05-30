@@ -55,7 +55,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
                     </div>
                 </div>
                 <div class="profsideCont" id="pcont">
- 
+
                 </div>
             </div>
             <nav>
@@ -71,7 +71,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
 
                     <a id="mailsbtn" class="on" href="program.php"><i class="fas fa-envelope"></i>program</a>
 
-                    <a id="settingsbtn" href="settings.php" ><i class="fas fa-cog"></i>settings</a>
+                    <a id="settingsbtn" href="settings.php"><i class="fas fa-cog"></i>settings</a>
                 </ul>
             </nav>
             <div class="logoutSec">
@@ -100,128 +100,37 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Supervisor")) {
 
                 <div class="program-inner">
                     <div class="progHead">
-                            <button id="allReq">All</button>
-                            <button id="repReq">Reported</button>
-                            <button id="apprvReq">Approved</button>
-                            <button id="rejReq">Rejected</button>
+                        <button id="allReq" class="on_select_rep">Today</button>
+                        <button id="repReq">Pending</button>
+                        <button id="apprvReq">Approved</button>
+                        <button id="rejReq">Rejected</button>
+                    </div>
+                    <div class="outlosdrmqrm">
+                        <div class="innerloadsd">
+                            <div class="loader">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="program-cont">
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="firstInfo">
-                                <img src="../../images/mali.png" alt="">
-                                <h3>Marco</h3>
-                                <p>March 24 2020</p>
-                            </div>
-                            <div class="secondInfo">
-                                <h4>Naglampaso sa gym</h4>
-                                <p>Time acquired: 8hrs</p>
-                                <button>view report</button>
-                            </div>
-                        </li>
+
+
+                    </div>
+                </div>
+ 
+                <div class="frame_outer">
+
+                    <div id="frame">
+
                     </div>
                 </div>
 
-
-
                 <div class="responseMssg-out">
                     <div class="responseMssg">
-                        <h3>New Student Added Successfully</h3>
+                        <h3>Report rejected successfully..</h3>
                         <p>Click anywhere to continue</p>
                     </div>
                 </div>

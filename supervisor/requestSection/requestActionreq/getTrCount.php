@@ -16,8 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     $sql = "SELECT COUNT(*) AS my_trainee_total from trainee
-    INNER join supervisors ON trainee.supervisor_info_id = supervisors.supervisor_info_id
-    where supervisors.supervisor_info_id = :superVid";
+    where trainee.supervisor_info_id = :superVid";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':superVid', $superVid, PDO::PARAM_INT);
     $stmt->execute();

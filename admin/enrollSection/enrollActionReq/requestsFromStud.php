@@ -1,8 +1,15 @@
 <?php
 
+session_start();
+if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "Admin")) {
+    header('location: ../../index.php');
+}
+
 require_once '../../../includes/config.php';
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $department = $_SESSION['department'];
 
 
     try {
@@ -13,9 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         inner JOIN course as c ON s.course = c.course  
         left JOIN trainee as tr ON s.stu_id = tr.stu_id
         
-        WHERE tr.stu_id IS NULL and rq.requested_to = "Management" and rq.request_status = "Pending"';
+        WHERE tr.stu_id IS NULL 
+        and rq.requested_to = "Management" 
+        and rq.request_status = "Pending"
+        and s.department = :department';
         $stmt = $pdo->prepare($sql);
-
+        $stmt->bindParam(':department',$department);
         $stmt->execute();
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);

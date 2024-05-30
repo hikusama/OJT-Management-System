@@ -93,14 +93,13 @@ $(document).ready(function () {
     $('#weekday').html(weekday);
 
     let activeRequests = 0, firstRun = 5;
-    let studval, coorval, trval;
+    let studval, trval;
 
-    const yValues = [studval, coorval, trval];
-    const xValues = ["Students", "Trainee", "Coordinator"];
+    const yValues = [studval,  trval];
+    const xValues = ["Students", "Trainee"];
     const barColors = [
         "rgb(0, 191, 224)",
-        "rgb(151, 35, 0)",
-        "rgb(0, 187, 140)"
+        "rgb(151, 35, 0)"
     ];
 
 
@@ -140,9 +139,7 @@ $(document).ready(function () {
                     case 'studnum':
                         studval = response;
                         break;
-                    case 'coor':
-                        coorval = response;
-                        break;
+                
                     case 'trainees':
                         trval = response;
                         break;
@@ -172,11 +169,10 @@ $(document).ready(function () {
 
             setInterval(function () {
                 fetchDataAndUpdate('../overviewSection/alluser/studentCount.php', 'studnum');
-                fetchDataAndUpdate('../overviewSection/alluser/coordinatorCount.php', 'coor');
                 fetchDataAndUpdate('../overviewSection/alluser/traineeCount.php', 'trainees');
-                if ((studval, coorval, trval) != undefined) {
+                if ((studval,  trval) != undefined) {
                     console.log('good');
-                    updateChart([studval, trval, coorval])
+                    updateChart([studval, trval])
                 }
             }, 1000);
 
@@ -219,9 +215,7 @@ $(document).ready(function () {
                 getStatus('../overviewSection/status/getStudentsStatus.php', 'students');
             } else if (statusButtonClicked === 'fTrainees') {
                 getStatus('../overviewSection/status/getTraineesStatus.php', 'trainees');
-            } else if (statusButtonClicked === 'fCoordinators') {
-                getStatus('../overviewSection/status/getCoorStatus.php', 'supervisors');
-            }
+            } 
         }
     });
 

@@ -4,7 +4,7 @@
 require_once '../../../includes/config.php';
 
 
-$sql = "SELECT COUNT(*) AS total_rows FROM students";
+$sql = "SELECT COUNT(*) AS total_rows FROM students ";
 
 try {
     $stmt = $pdo->prepare($sql);

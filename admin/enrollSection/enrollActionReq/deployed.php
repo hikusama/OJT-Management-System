@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
           }
 
           #students .liEnroll .pfront p {
-            color: red !important;
+            color: #ff4141 !important;
           }
 
           .viewinform #vinfo {
