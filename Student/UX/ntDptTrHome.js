@@ -129,7 +129,7 @@ $(document).ready(function () {
                 responseRecieve = response.trim();
             }, complete: function () {
                 $('.loadli').hide();
-                if (responseRecieve == 'Please refresh your page you are now a NOT-TRAINEE' || responseRecieve == 'Please refresh your page you are now a TRAINEE') {
+                if (responseRecieve == 'Please refresh your page you are not a TRAINEE anymore' || responseRecieve == 'Please refresh your page you are now a TRAINEE-DEPLOYED') {
 
                 }else{
                     refreshSupFind();

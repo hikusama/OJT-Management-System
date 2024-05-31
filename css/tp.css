@@ -2639,7 +2639,7 @@ a {
     animation-duration: .3s;
     animation-iteration-count: 1;
     position: absolute;
-    top: 50%;
+    top: 52%;
     left: 50%;
     transform: translate(-50%, -50%);
     /* overflow: hidden; */

@@ -15,30 +15,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     require_once '../homeModel.php';
 
-    $studId = getStudId($pdo,intval($_SESSION["user_id"]));
+    $studId = getStudId($pdo, intval($_SESSION["user_id"]));
 
- 
+
 
 
     try {
-        if (!isRequested($pdo,$studId)) {
-            reqForTraineeExecute($pdo,$studId);
-            echo '<p>Request Sent.</p>
-            <button id="viewNotTrlogs">view logs</button>';
+        $type = get_userType($pdo, $studId);
 
-
-        }else{
-            echo '<p>Request For Trainee Already Sent.</p>
+        if ($type == 'notTrainee') {
+            if (!isRequested($pdo, $studId)) {
+                reqForTraineeExecute($pdo, $studId);
+                echo '<p>Request Sent.</p>
             <button id="viewNotTrlogs">view logs</button>';
+            } else {
+                echo '<p>Request For Trainee Already Sent.</p>
+            <button id="viewNotTrlogs">view logs</button>';
+            }
+        } else if ($type == 'notDeployed') {
+            echo 'Please refresh your page you are now a TRAINEE';
+            $_SESSION["accesstype"] = $type;
+        } else if ($type == 'deployed') {
+            echo 'Please refresh your page you are now a TRAINEE-DEPLOYED';
+            $_SESSION["accesstype"] = $type;
         }
- 
-
-    }  catch (PDOException $e) {
+    } catch (PDOException $e) {
         die("Query Failed: " . $e->getMessage());
     }
-
-
-
-
 }
-

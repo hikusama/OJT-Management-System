@@ -125,7 +125,6 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["user_role"] == "SuperAdmin")) {
                     <canvas id="myChart" style="color: #fff;display: block; width: 100%; max-width: 620px;"></canvas>
 
                     <div class="status">
-                        <h3>Status</h3>
                         <div class="headStatus">
                             <button id="fStudent">Students</button>
                             <button id="fTrainees">Trainees</button>

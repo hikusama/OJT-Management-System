@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $type = get_userType($pdo,$studId);
 
         if ($type == 'notTrainee') {
-            echo 'Please refresh your page you are now a NOT-TRAINEE';
+            echo 'Please refresh your page you are not a TRAINEE anymore';
             $_SESSION["accesstype"] = $type;
         
         }else if ($type == 'notDeployed') {
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             
         }else if ($type == 'deployed') {
-            echo 'Please refresh your page you are now a TRAINEE';
+            echo 'Please refresh your page you are now a TRAINEE-DEPLOYED';
             $_SESSION["accesstype"] = $type;
 
 
